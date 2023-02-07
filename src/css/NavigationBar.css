@@ -1,3 +1,54 @@
-.bar {
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500&display=swap');
+
+.navigation-bar {
+    margin-top: px;
     background-color: #6096B4;
+    width: 100%;
+}
+
+p {
+    display: inline-block;
+}
+
+.logo {
+    font-size: 2.7rem;
+    padding: 10px 0 0 15px;
+    font-family: 'Cinzel', serif;
+}
+
+.icon {
+    font-size: 2.7rem;
+    margin-left: 10px;
+    padding-top: 10px;
+}
+
+.navigation-bar-and-basket {
+    display:flex;
+    justify-content: space-between;
+}
+
+.navigation-bar-menus {
+    list-style: none;
+    display: flex;
+}
+
+li {
+    font-size: 1.5rem;
+    color: #EEE9DA;
+    padding: 5px 15px 15px 15px;
+    font-family: 'Open Sans', sans-serif
+}
+
+.sign-up {
+    font-size: 1.5rem;
+    color: #EEE9DA;
+    margin-right: 20px;
+    font-family: 'Open Sans', sans-serif
+}
+
+.basket-logo {
+    margin-right: 20px;
+    font-size: 2rem;
+    color: #EEE9DA;
 }

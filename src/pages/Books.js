@@ -1,9 +1,15 @@
 import React from "react";
+import NavigationBar from '../components/NavigationBar.js';
 
 const Books = () => {
     return(
         <div>
-            books
+            <div>
+                <NavigationBar/>
+            </div>
+            <div>
+                books
+            </div>
         </div>
     )
 }
