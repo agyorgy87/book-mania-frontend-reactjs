@@ -8,7 +8,14 @@ const Books = () => {
                 <NavigationBar/>
             </div>
             <div>
-                books
+                <select>
+                    <option value="cooking">cooking</option>
+                    <option value="fantasy">fantasy</option>
+                    <option value="history">history</option>
+                    <option value="horror">horror</option>
+                    <option value="it">it</option>
+                </select>
+                <input placeholder="search by title or author"/>
             </div>
         </div>
     )
