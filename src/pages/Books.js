@@ -51,6 +51,26 @@ const Books = () => {
                     <option value="Horror">HORROR</option>
                     <option value="IT">IT</option>
                 </select>
+                <div> 
+                <select>
+                    <option value="none">filter by price</option>
+                    <option value="Cooking"></option>
+                    <option value="Fantasy"></option>
+                    <option value="History"></option>
+                    <option value="Horror"></option>
+                    <option value="IT"></option>
+                </select>
+            </div>
+            <div> 
+                <select>
+                    <option value="none">filter by Publication Date</option>
+                    <option value="Cooking"></option>
+                    <option value="Fantasy"></option>
+                    <option value="History"></option>
+                    <option value="Horror"></option>
+                    <option value="IT"></option>
+                </select>
+            </div>
             </div>
                 <input placeholder="search by title or author"/>
             <div className="visible-movies-container">

@@ -11,7 +11,7 @@ const NavigationBar = () => {
     return (
         <div className="navigation-bar">
             <div className="logo">
-                <p>BOOK MANIAC</p><ImBooks className="icon"/>
+                <p>BOOK MANIA</p><ImBooks className="icon"/>
             </div>
             <div className="navigation-bar-and-basket">
                 <div>
