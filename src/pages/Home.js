@@ -8,15 +8,17 @@ const Home = () => {
 
     const bookDetails = useContext(BookContext);
 
+    const [newness, setNewness] = useState([]);
+
     useEffect(() => {  
-        fetch("http:/localhost:4000/get-all-newness")
+        fetch("http://localhost:4000/get-all-newness")
             .then(data => data.json())
             .then(parsedData => {
-                bookDetails.setValue(parsedData)
+            setNewness(parsedData)
         })
     }, [])
 
-    console.log(bookDetails);
+    console.log(newness);
 
     //axios
 
@@ -37,19 +39,20 @@ const Home = () => {
                     </div>
                 </div>
                 <div>  
-                4 different newness
-                {
-                                    bookDetails.value.map((book, index) => (
-                                        <div>  
-                                            {book.title}
-                                            {book.genre}
-                                            {book.author}
-                                        </div>
-                                    ))
-                                }
+                    Newness
+                        {
+                            newness.map((book, index) => (
+                                <div>  
+                                    <img src={"http://localhost:4000/books_img/" + book.image} alt="image"/>
+                                    {book.title}
+                                    {book.genre}
+                                    {book.author_name}
+                                </div>
+                            ))
+                        }
                 </div>
                 <div>
-                books of more than 500 pages
+                success books from bestline publishing
                 </div>
             </div>
         </div>
