@@ -4,7 +4,6 @@ import NavigationBar from '../components/NavigationBar.js';
 
 const Books = () => {
 
-    /*
     const allBooks = useRef([]);
     const [visibleBooks, setVisibleBooks] = useState([]);
     const [selectedBooksGenre, setSelectedBooksGenre] = useState([]);
@@ -12,15 +11,13 @@ const Books = () => {
     const [filterByReleaseDate, setFilterByReleaseDate] = useState("none");
 
     useEffect(() => {  
-
         fetch("http://localhost:4000/get-all-books")
             .then(data => data.json())
             .then(parsedData => {
                 allBooks.current = parsedData;
                 setVisibleBooks(parsedData);
             })
-
-    }, [visibleBooks])
+    }, [])
 
 
     useEffect(() => { 
@@ -62,7 +59,8 @@ const Books = () => {
             setVisibleBooks(allBooks.current)
         }
     }
-*/
+
+
     return(
         <div>
             <div>
@@ -116,24 +114,23 @@ const Books = () => {
                         <option value="IT"></option>
                     </select>
                 <input placeholder="search by title or author"/>  
-                {/*
+                
             <div className="visible-movies-container">
                 {
                     visibleBooks.map( book => (
                         <div>  
                             <img 
-                                src={"http://localhost:4000/books_img/" + book.image}
+                                src={"http://localhost:4000/books_img/" + book.img_directory + "/" + book.image}
                                 className="movies-movie-icons"
                                 alt="book"                             
                                 />
                             {book.title}
-                            {book.genre}
                             {book.author_name}
                         </div> 
                                 ))
                             }
             </div> 
-                        */}  
+                        
                 </div>
             </div>         
     </div>   

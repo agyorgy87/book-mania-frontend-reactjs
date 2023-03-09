@@ -11,19 +11,26 @@ const Home = () => {
 
     const [newness, setNewness] = useState([]);
     const [onlyKing, setOnlyKing] = useState([]);
+    const [bestlineNotLikeCooking, setBestlineNotLikeCooking] = useState([]);
 
     useEffect(() => {  
 
-        fetch("http://localhost:4000/get-all-newness")
+        fetch("http://localhost:4000/get-all-by-newness/1")
             .then(data => data.json())
             .then(parsedData => {
             setNewness(parsedData)
         })
 
-        fetch("http://localhost:4000/get-all-stephen-king-books")
+        fetch("http://localhost:4000/get-all-author/Stephen%20King")
             .then(data => data.json())
             .then(parsedData => {
             setOnlyKing(parsedData)
+        })
+
+        fetch("http://localhost:4000/get-all-by-publisher-and-not-genre-type/Bestline/Cooking")
+            .then(data => data.json())
+            .then(parsedData => {
+            setBestlineNotLikeCooking(parsedData)
         })
 
     }, [])
@@ -72,7 +79,7 @@ const Home = () => {
                                 <div class="card mb-3 me-1 border-0 " style={{maxWidth: "400px"}}>
                                     <div class="row g-0">
                                         <div class="col-md-5">
-                                            <img src={"http://localhost:4000/books_img/" + book.image} class="img-fluid rounded-0" alt="..." style={{maxHeight: "100%"}}/>
+                                            <img src={"http://localhost:4000/books_img/" + book.img_directory + "/" + book.image} class="img-fluid rounded-0" alt="..." style={{maxHeight: "100%"}}/>
                                         </div>
                                         <div class="col-md-7">
                                             <div class="card-body pt-0">
@@ -100,7 +107,7 @@ const Home = () => {
                             <div class="card mb-3 border-0" style={{maxWidth: "400px"}}>
                                 <div class="row g-0">
                                     <div class="col-md-4">
-                                        <img src={"http://localhost:4000/books_img/" + book.image} class="img-fluid rounded-0" alt="..." style={{maxHeight: "100%"}}/>
+                                        <img src={"http://localhost:4000/books_img/" + book.img_directory + "/" + book.image} class="img-fluid rounded-0" alt="..." style={{maxHeight: "100%"}}/>
                                     </div>
                                     <div class="col-md-8">
                                         <div class="card-body pt-0">
@@ -121,10 +128,33 @@ const Home = () => {
                 </div>
                 </div>
                 <div>
-                success books from bestline publishing
-                </div>
-                
-            
+                <div> 
+                    <h1 className="">Bestline</h1>    
+                    </div> 
+                        {
+                            bestlineNotLikeCooking.map((book, index) => (
+                                <div class="card mb-3 me-1 border-0 " style={{maxWidth: "400px"}}>
+                                    <div class="row g-0">
+                                        <div class="col-md-5">
+                                            <img src={"http://localhost:4000/books_img/" + book.img_directory + "/" + book.image} class="img-fluid rounded-0" alt="..." style={{maxHeight: "100%"}}/>
+                                        </div>
+                                        <div class="col-md-7">
+                                            <div class="card-body pt-0">
+                                                <h5 class="card-text ">{book.title}</h5>
+                                                <p class="card-text">{book.author_name}</p>
+                                                <h4 class="card-text">{book.price} $</h4>
+                                            </div>
+                                            <div className="card-body">
+                                            <p><i class="bi bi-heart me-1"></i>Add To Wishlist</p>
+                                            {/*<i class="bi bi-heart"></i> -> filled heart icon*/}
+                                            <button type="button" className="add-to-cart-buttons">Add To Cart</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            ))
+                        }
+                    </div> 
         </div>
     );
 }
