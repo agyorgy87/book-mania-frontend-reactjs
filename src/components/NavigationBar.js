@@ -36,7 +36,8 @@ const NavigationBar = () => {
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item navigation-menus">
-                            <a class="nav-link fs-3" href="#" style={{ color: "#EEE9DA"}}>Login</a>
+                            <a class="nav-link fs-3" href="#" style={{ color: "#EEE9DA"}} onClick={() => {navigate("/login")}}>+name no login</a>
+                            <a class="nav-link fs-3" href="#" style={{ color: "#EEE9DA"}} onClick={() => {navigate("/login")}}>Login</a>
                         </li>
                         <li class="nav-item navigation-menus">
                             <a class="nav-link" href="#" style={{ color: "#EEE9DA"}}>< CgShoppingCart className="fs-1"/></a>
