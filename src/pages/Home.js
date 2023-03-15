@@ -21,7 +21,7 @@ const Home = () => {
             setNewness(parsedData)
         })
 
-        fetch("http://localhost:4000/get-all-author/Stephen%20King")
+        fetch("http://localhost:4000/get-all-by-author/Stephen%20King")
             .then(data => data.json())
             .then(parsedData => {
             setOnlyKing(parsedData)
@@ -68,15 +68,15 @@ const Home = () => {
                         </div>
                     </div>
                 </div>
-            </div>
-            <div className="d-flex justify-content-center ms-5">   
-                <div className="row"> 
+            </div>  
+            <div className="row"> 
                 <div> 
-                    <h1 className="">Newness</h1>    
-                    </div> 
+                    <h1 className="d-flex flex-row ps-5">Newness</h1>    
+                </div> 
+                    <div className="d-flex justify-content-around ps-5 col-xl-">
                         {
                             newness.map((book, index) => (
-                                <div class="card mb-3 me-1 border-0 " style={{maxWidth: "400px"}}>
+                                <div class="card mb-3 border-0 " style={{maxWidth: "100vh"}}>
                                     <div class="row g-0">
                                         <div class="col-md-5">
                                             <img src={"http://localhost:4000/books_img/" + book.img_directory + "/" + book.image} class="img-fluid rounded-0" alt="..." style={{maxHeight: "100%"}}/>
@@ -97,8 +97,9 @@ const Home = () => {
                                 </div>
                             ))
                         }
+                        </div>
                     </div> 
-                </div>
+                
                 <div>
                 stephen king books
                 <div className="row w-100 d-flex justify-content-center">                

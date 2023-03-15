@@ -1,63 +1,43 @@
 import '../css/Books.css';
 import React, { useState, useEffect, useRef } from "react";
 import NavigationBar from '../components/NavigationBar.js';
+import axios from "axios";
 
 const Books = () => {
 
-    const allBooks = useRef([]);
+    //const allBooks = useRef([]);
     const [visibleBooks, setVisibleBooks] = useState([]);
-    const [selectedBooksGenre, setSelectedBooksGenre] = useState([]);
-    const [filterByPrice, setFilterByPrice] = useState("none");
-    const [filterByReleaseDate, setFilterByReleaseDate] = useState("none");
 
-    useEffect(() => {  
+    //const [filterByPrice, setFilterByPrice] = useState("none");
+    //const [filterByReleaseDate, setFilterByReleaseDate] = useState("none");
+
+    useEffect(() => { 
+        /*
         fetch("http://localhost:4000/get-all-books")
             .then(data => data.json())
             .then(parsedData => {
                 allBooks.current = parsedData;
                 setVisibleBooks(parsedData);
             })
+        */
+        allBooks();     
     }, [])
 
-
-    useEffect(() => { 
-        bookGenreSelection();
-    },[selectedBooksGenre])
-
-    useEffect(() => { 
-        bookPriceSelection();
-    },[filterByPrice])
-      
-    
-    const bookGenreSelection = () => {
-
-        let filterBooksGenre = allBooks.current
-
-        if(selectedBooksGenre !== "none"){   
-            filterBooksGenre = filterBooksGenre.filter(book => book.genre === selectedBooksGenre);
-            setVisibleBooks(filterBooksGenre); 
-        }
-        setVisibleBooks(filterBooksGenre);    
+    const allBooks = () => {
+        axios.get("http://localhost:4000/get-all-books")
+            .then((response) => {
+            setVisibleBooks(response.data);
+          });
     }
 
 
-    const bookPriceSelection = () => {
+    const callGenre = (e) => {
+        let genreName = e.currentTarget.id;
 
-        if(filterByPrice === "0-20"){
-            const priceBetweenZeroAndTwenty = allBooks.current.filter(book => book.price >= 0 && book.price <= 20);
-            setVisibleBooks(priceBetweenZeroAndTwenty);
-        }
-        else if(filterByPrice === "21-40"){
-            const priceBetweenTwentyOneAndFourty = allBooks.current.filter(book => book.price >= 21 && book.price <= 40);
-            setVisibleBooks(priceBetweenTwentyOneAndFourty);
-        }
-        else if(filterByPrice === "41-60"){
-            const priceBetweenFourtyOneAndSixty = allBooks.current.filter(book => book.price >= 41 && book.price <= 60);
-            setVisibleBooks(priceBetweenFourtyOneAndSixty);
-        }
-        else if(filterByPrice === "none"){
-            setVisibleBooks(allBooks.current)
-        }
+        axios.get(`http://localhost:4000/get-all-by-genre/"${genreName}"`)
+            .then((response) => {
+            setVisibleBooks(response.data);
+            }) 
     }
 
 
@@ -70,11 +50,12 @@ const Books = () => {
                 <div className="search-lists-container w-25 h-100 ps-5">
                     <ul class="list-group mt-4">
                         <li class="list-group-item active border-0 rounded">Categories</li>
-                        <li class="list-group-item list-group-item-action border-0">Cooking</li>
-                        <li class="list-group-item list-group-item-action border-0">Fantasy</li>
-                        <li class="list-group-item list-group-item-action border-0">History</li>
-                        <li class="list-group-item list-group-item-action border-0">Horror</li>
-                        <li class="list-group-item list-group-item-action border-0">IT</li>                       
+                        <li class="list-group-item list-group-item-action border-0" onClick={allBooks}>All</li>
+                        <li class="list-group-item list-group-item-action border-0" id="Cooking" onClick={callGenre}>Cooking</li>
+                        <li class="list-group-item list-group-item-action border-0" id="Fantasy" onClick={callGenre}>Fantasy</li>
+                        <li class="list-group-item list-group-item-action border-0" id="History" onClick={callGenre}>History</li>
+                        <li class="list-group-item list-group-item-action border-0" id="Horror" onClick={callGenre}>Horror</li>
+                        <li class="list-group-item list-group-item-action border-0" id="IT" onClick={callGenre}>IT</li>                       
                     </ul>
                     <ul class="list-group mt-4">
                         <li class="list-group-item active border-0 rounded">Price</li>
@@ -93,10 +74,18 @@ const Books = () => {
                     </ul>
                     <ul class="list-group mt-4">
                         <li class="list-group-item active border-0 rounded">Special</li>
-                        <li class="list-group-item list-group-item-action border-0"></li>
-                        <li class="list-group-item list-group-item-action border-0"></li>
-                        <li class="list-group-item list-group-item-action border-0"></li>
-                        <li class="list-group-item list-group-item-action border-0"></li>                       
+                        <li class="list-group-item list-group-item-action border-0">ABC order</li>
+                        <li class="list-group-item list-group-item-action border-0">Number of pages in ascending order</li>                       
+                        <li class="list-group-item list-group-item-action border-0">From the cheapest book</li>
+                        <li class="list-group-item list-group-item-action border-0">From the most expensive book</li>
+                    </ul>
+                    <ul class="list-group mt-4">
+                        <li class="list-group-item active border-0 rounded">Publishers</li>
+                        <li class="list-group-item list-group-item-action border-0">Ad Astra</li>
+                        <li class="list-group-item list-group-item-action border-0">Bestline</li>                       
+                        <li class="list-group-item list-group-item-action border-0">Disciplina</li>
+                        <li class="list-group-item list-group-item-action border-0">ComputerPanorama</li>
+                        <li class="list-group-item list-group-item-action border-0">ComputerComplex</li>
                     </ul>
                 </div>
                 <div className="w-75 h-100">
@@ -171,3 +160,43 @@ const Books = () => {
 }
 
 export default Books;
+
+/*
+    useEffect(() => { 
+        bookGenreSelection();
+    },[selectedBooksGenre])
+
+    useEffect(() => { 
+        bookPriceSelection();
+    },[filterByPrice])
+      
+    const bookGenreSelection = () => {
+
+        let filterBooksGenre = allBooks.current
+
+        if(selectedBooksGenre !== "none"){   
+            filterBooksGenre = filterBooksGenre.filter(book => book.genre === selectedBooksGenre);
+            setVisibleBooks(filterBooksGenre); 
+        }
+        setVisibleBooks(filterBooksGenre);    
+    }
+
+const bookPriceSelection = () => {
+
+    if(filterByPrice === "0-20"){
+        const priceBetweenZeroAndTwenty = allBooks.current.filter(book => book.price >= 0 && book.price <= 20);
+        setVisibleBooks(priceBetweenZeroAndTwenty);
+    }
+    else if(filterByPrice === "21-40"){
+        const priceBetweenTwentyOneAndFourty = allBooks.current.filter(book => book.price >= 21 && book.price <= 40);
+        setVisibleBooks(priceBetweenTwentyOneAndFourty);
+    }
+    else if(filterByPrice === "41-60"){
+        const priceBetweenFourtyOneAndSixty = allBooks.current.filter(book => book.price >= 41 && book.price <= 60);
+        setVisibleBooks(priceBetweenFourtyOneAndSixty);
+    }
+    else if(filterByPrice === "none"){
+        setVisibleBooks(allBooks.current)
+    }
+}
+*/
