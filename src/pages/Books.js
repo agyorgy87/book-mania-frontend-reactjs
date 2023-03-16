@@ -51,10 +51,23 @@ const Books = () => {
         axios.get(`http://localhost:4000/get-all-by-price/${fromPrice}/${toPrice}`)
             .then((response) => {
             setVisibleBooks(response.data);
-            })
+        })
+    }
+
+    const callReleaseDate = (e) => {
+        let allDate = e.currentTarget.id;
+        let twoDateInArray = allDate.split("-");
+        let fromDate = twoDateInArray[0];
+        let toDate = twoDateInArray[1]
+
+        axios.get(`http://localhost:4000/get-all-by-release-date/${fromDate}/${toDate}`)
+            .then((response) => {
+            setVisibleBooks(response.data);
+        })
     }
 
 
+    
     return(
         <div>
             <div>
@@ -73,18 +86,18 @@ const Books = () => {
                     </ul>
                     <ul className="list-group mt-4">
                         <li className="list-group-item active border-0 rounded">Price</li>
-                        <li className="list-group-item list-group-item-action border-0" id="0-2000"onClick={callPrice}>Under 10$</li>
-                        <li className="list-group-item list-group-item-action border-0" id="2001-2010" onClick={callPrice}>Between 11$ and 20$</li>
-                        <li className="list-group-item list-group-item-action border-0" id="2011-2020" onClick={callPrice}>Between 21$ and 30$</li>
-                        <li className="list-group-item list-group-item-action border-0" id="2021-9999" onClick={callPrice}>Over 31$</li>
+                        <li className="list-group-item list-group-item-action border-0" id="0-10"onClick={callPrice}>Under 10$</li>
+                        <li className="list-group-item list-group-item-action border-0" id="11-20" onClick={callPrice}>Between 11$ and 20$</li>
+                        <li className="list-group-item list-group-item-action border-0" id="21-30" onClick={callPrice}>Between 21$ and 30$</li>
+                        <li className="list-group-item list-group-item-action border-0" id="31-9999" onClick={callPrice}>Over 31$</li>
                                               
                     </ul>
                     <ul className="list-group mt-4">
                         <li className="list-group-item active border-0 rounded">Release Date</li>
-                        <li className="list-group-item list-group-item-action border-0">Before 2000</li>
-                        <li className="list-group-item list-group-item-action border-0">Between 2001 and 2010</li>
-                        <li className="list-group-item list-group-item-action border-0">Between 2011 and 2020</li>
-                        <li className="list-group-item list-group-item-action border-0">After 2020</li>                       
+                        <li className="list-group-item list-group-item-action border-0" id="0-2000" onClick={callReleaseDate}>Before 2000</li>
+                        <li className="list-group-item list-group-item-action border-0" id="2001-2010" onClick={callReleaseDate}>Between 2001 and 2010</li>
+                        <li className="list-group-item list-group-item-action border-0" id="2011-2020" onClick={callReleaseDate}>Between 2011 and 2020</li>
+                        <li className="list-group-item list-group-item-action border-0" id="2020-9999" onClick={callReleaseDate}>After 2020</li>                       
                     </ul>
                     <ul className="list-group mt-4">
                         <li className="list-group-item active border-0 rounded">Special</li>
