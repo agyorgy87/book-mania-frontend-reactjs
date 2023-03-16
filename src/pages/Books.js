@@ -5,7 +5,7 @@ import axios from "axios";
 
 const Books = () => {
 
-    //const allBooks = useRef([]);
+    const allBooks = useRef([]);
     const [visibleBooks, setVisibleBooks] = useState([]);
 
     //const [filterByPrice, setFilterByPrice] = useState("none");
@@ -20,14 +20,15 @@ const Books = () => {
                 setVisibleBooks(parsedData);
             })
         */
-        allBooks();     
+        getAllBooks();     
     }, [])
 
-    const allBooks = () => {
+    const getAllBooks = () => {
         axios.get("http://localhost:4000/get-all-books")
             .then((response) => {
-            setVisibleBooks(response.data);
-          });
+                setVisibleBooks(response.data);
+                allBooks.current = response.data;
+        });
     }
 
 
@@ -41,6 +42,19 @@ const Books = () => {
     }
 
 
+    const callPrice = (e) => {
+        let priceAmount = e.currentTarget.id;
+        let twoPriceInArray = priceAmount.split("-");
+        let fromPrice = twoPriceInArray[0];
+        let toPrice = twoPriceInArray[1]
+
+        axios.get(`http://localhost:4000/get-all-by-price/${fromPrice}/${toPrice}`)
+            .then((response) => {
+            setVisibleBooks(response.data);
+            })
+    }
+
+
     return(
         <div>
             <div>
@@ -48,49 +62,49 @@ const Books = () => {
             </div>
             <div className="search-site row">
                 <div className="search-lists-container w-25 h-100 ps-5">
-                    <ul class="list-group mt-4">
-                        <li class="list-group-item active border-0 rounded">Categories</li>
-                        <li class="list-group-item list-group-item-action border-0" onClick={allBooks}>All</li>
-                        <li class="list-group-item list-group-item-action border-0" id="Cooking" onClick={callGenre}>Cooking</li>
-                        <li class="list-group-item list-group-item-action border-0" id="Fantasy" onClick={callGenre}>Fantasy</li>
-                        <li class="list-group-item list-group-item-action border-0" id="History" onClick={callGenre}>History</li>
-                        <li class="list-group-item list-group-item-action border-0" id="Horror" onClick={callGenre}>Horror</li>
-                        <li class="list-group-item list-group-item-action border-0" id="IT" onClick={callGenre}>IT</li>                       
+                    <ul className="list-group mt-4">
+                        <li className="list-group-item active border-0 rounded">Categories</li>
+                        <li className="list-group-item list-group-item-action border-0" onClick={getAllBooks}>All</li>
+                        <li className="list-group-item list-group-item-action border-0" id="Cooking" onClick={callGenre}>Cooking</li>
+                        <li className="list-group-item list-group-item-action border-0" id="Fantasy" onClick={callGenre}>Fantasy</li>
+                        <li className="list-group-item list-group-item-action border-0" id="History" onClick={callGenre}>History</li>
+                        <li className="list-group-item list-group-item-action border-0" id="Horror" onClick={callGenre}>Horror</li>
+                        <li className="list-group-item list-group-item-action border-0" id="IT" onClick={callGenre}>IT</li>                       
                     </ul>
-                    <ul class="list-group mt-4">
-                        <li class="list-group-item active border-0 rounded">Price</li>
-                        <li class="list-group-item list-group-item-action border-0">Under 10$</li>
-                        <li class="list-group-item list-group-item-action border-0">Between 11$ and 20$</li>
-                        <li class="list-group-item list-group-item-action border-0">Between 21$ and 30$</li>
-                        <li class="list-group-item list-group-item-action border-0">Between 31$ and 40$</li>
-                        <li class="list-group-item list-group-item-action border-0">Over 40$</li>                       
+                    <ul className="list-group mt-4">
+                        <li className="list-group-item active border-0 rounded">Price</li>
+                        <li className="list-group-item list-group-item-action border-0" id="0-2000"onClick={callPrice}>Under 10$</li>
+                        <li className="list-group-item list-group-item-action border-0" id="2001-2010" onClick={callPrice}>Between 11$ and 20$</li>
+                        <li className="list-group-item list-group-item-action border-0" id="2011-2020" onClick={callPrice}>Between 21$ and 30$</li>
+                        <li className="list-group-item list-group-item-action border-0" id="2021-9999" onClick={callPrice}>Over 31$</li>
+                                              
                     </ul>
-                    <ul class="list-group mt-4">
-                        <li class="list-group-item active border-0 rounded">Release Date</li>
-                        <li class="list-group-item list-group-item-action border-0">Before 2000</li>
-                        <li class="list-group-item list-group-item-action border-0">Between 2001 and 2010</li>
-                        <li class="list-group-item list-group-item-action border-0">Between 2011 and 2020</li>
-                        <li class="list-group-item list-group-item-action border-0">After 2020</li>                       
+                    <ul className="list-group mt-4">
+                        <li className="list-group-item active border-0 rounded">Release Date</li>
+                        <li className="list-group-item list-group-item-action border-0">Before 2000</li>
+                        <li className="list-group-item list-group-item-action border-0">Between 2001 and 2010</li>
+                        <li className="list-group-item list-group-item-action border-0">Between 2011 and 2020</li>
+                        <li className="list-group-item list-group-item-action border-0">After 2020</li>                       
                     </ul>
-                    <ul class="list-group mt-4">
-                        <li class="list-group-item active border-0 rounded">Special</li>
-                        <li class="list-group-item list-group-item-action border-0">ABC order</li>
-                        <li class="list-group-item list-group-item-action border-0">Number of pages in ascending order</li>                       
-                        <li class="list-group-item list-group-item-action border-0">From the cheapest book</li>
-                        <li class="list-group-item list-group-item-action border-0">From the most expensive book</li>
+                    <ul className="list-group mt-4">
+                        <li className="list-group-item active border-0 rounded">Special</li>
+                        <li className="list-group-item list-group-item-action border-0">ABC order</li>
+                        <li className="list-group-item list-group-item-action border-0">Number of pages in ascending order</li>                       
+                        <li className="list-group-item list-group-item-action border-0">From the cheapest book</li>
+                        <li className="list-group-item list-group-item-action border-0">From the most expensive book</li>
                     </ul>
-                    <ul class="list-group mt-4">
-                        <li class="list-group-item active border-0 rounded">Publishers</li>
-                        <li class="list-group-item list-group-item-action border-0">Ad Astra</li>
-                        <li class="list-group-item list-group-item-action border-0">Bestline</li>                       
-                        <li class="list-group-item list-group-item-action border-0">Disciplina</li>
-                        <li class="list-group-item list-group-item-action border-0">ComputerPanorama</li>
-                        <li class="list-group-item list-group-item-action border-0">ComputerComplex</li>
+                    <ul className="list-group mt-4">
+                        <li className="list-group-item active border-0 rounded">Publishers</li>
+                        <li className="list-group-item list-group-item-action border-0">Ad Astra</li>
+                        <li className="list-group-item list-group-item-action border-0">Bestline</li>                       
+                        <li className="list-group-item list-group-item-action border-0">Disciplina</li>
+                        <li className="list-group-item list-group-item-action border-0">ComputerPanorama</li>
+                        <li className="list-group-item list-group-item-action border-0">ComputerComplex</li>
                     </ul>
                 </div>
                 <div className="w-75 h-100">
                     <div>
-                    <select class="form-select" aria-label="Default select example">{/*onChange={(e) => setSelectedBooksGenre(e.target.value)}*/}
+                    <select className="form-select" aria-label="Default select example">{/*onChange={(e) => setSelectedBooksGenre(e.target.value)}*/}
                         <option selected>Categories</option>
                         <option value="All">All Books</option>
                         <option value="Cooking">Cooking</option>
@@ -99,7 +113,7 @@ const Books = () => {
                         <option value="Horror">Horrror</option>
                         <option value="IT">IT</option>
                     </select> 
-                    <select class="form-select" aria-label="Default select example">{/*onChange={(e) => setFilterByPrice(e.target.value)}*/}
+                    <select className="form-select" aria-label="Default select example">{/*onChange={(e) => setFilterByPrice(e.target.value)}*/}
                         <option selected>Price</option>
                         <option value="under10">Under 10$</option>
                         <option value="11-20">Between 11$ and 20$</option>
@@ -107,7 +121,7 @@ const Books = () => {
                         <option value="31-40">Between 31$ and 40$</option> 
                         <option value="over40">Over 40$</option> 
                     </select>
-                    <select class="form-select" aria-label="Default select example">
+                    <select className="form-select" aria-label="Default select example">
                         <option selected>Release Date</option>
                         <option value="before2000">Before 2000</option>
                         <option value="between2001and2010">Between 2001 and 2010</option>
@@ -115,11 +129,11 @@ const Books = () => {
                         <option value="after2020">After 2020</option>
                     </select>
                     </div>
-                    <div class="row">
-                        <div class="input-group col-md-4">
-                            <input class="form-control py-2 border-right-0 border" type="search" id="example-search-input"/>
-                                <button class="btn btn-outline-secondary border rounded-right" type="button">
-                                    <i class="bi bi-search"></i>
+                    <div className="row">
+                        <div className="input-group col-md-4">
+                            <input className="form-control py-2 border-right-0 border" type="search" id="example-search-input"/>
+                                <button className="btn btn-outline-secondary border rounded-right" type="button">
+                                    <i className="bi bi-search"></i>
                                 </button>
                         </div>
                     </div>            
@@ -129,19 +143,19 @@ const Books = () => {
                     </div> 
                         {
                             visibleBooks.map((book, index) => (
-                                <div class="card mb-3 me-1 border-0 " style={{maxWidth: "400px"}}>
-                                    <div class="row g-0">
-                                        <div class="col-md-5">
-                                            <img src={"http://localhost:4000/books_img/" + book.img_directory + "/" + book.image} class="img-fluid rounded-0" alt="..." style={{maxHeight: "100%"}}/>
+                                <div className="card mb-3 me-1 border-0 " style={{maxWidth: "400px"}}>
+                                    <div className="row g-0">
+                                        <div className="col-md-5">
+                                            <img src={"http://localhost:4000/books_img/" + book.img_directory + "/" + book.image} className="img-fluid rounded-0" alt="..." style={{maxHeight: "100%"}}/>
                                         </div>
-                                        <div class="col-md-7">
-                                            <div class="card-body pt-0">
-                                                <h5 class="card-text ">{book.title}</h5>
-                                                <p class="card-text">{book.author_name}</p>
-                                                <h4 class="card-text">{book.price} $</h4>
+                                        <div className="col-md-7">
+                                            <div className="card-body pt-0">
+                                                <h5 className="card-text ">{book.title}</h5>
+                                                <p className="card-text">{book.author_name}</p>
+                                                <h4 className="card-text">{book.price} $</h4>
                                             </div>
                                             <div className="card-body">
-                                            <p><i class="bi bi-heart me-1"></i>Add To Wishlist</p>
+                                            <p><i className="bi bi-heart me-1"></i>Add To Wishlist</p>
                                             {/*<i class="bi bi-heart"></i> -> filled heart icon*/}
                                             <button type="button" className="add-to-cart-buttons">Add To Cart</button>
                                             </div>
