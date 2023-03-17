@@ -72,19 +72,19 @@ const Home = () => {
                     <div className="d-flex justify-content-around ps-5 col-xl-">
                         {
                             newness.map((book, index) => (
-                                <div class="card mb-3 border-0 " style={{maxWidth: "100vh"}}>
-                                    <div class="row g-0">
-                                        <div class="col-md-5">
-                                            <img src={"http://localhost:4000/books_img/" + book.img_directory + "/" + book.image} class="img-fluid rounded-0" alt="..." style={{maxHeight: "100%"}}/>
+                                <div className="card mb-3 border-0 " style={{maxWidth: "100vh"}}>
+                                    <div className="row g-0">
+                                        <div className="col-md-5">
+                                            <img src={"http://localhost:4000/books_img/" + book.img_directory + "/" + book.image} className="img-fluid rounded-0" alt="..." style={{maxHeight: "100%"}}/>
                                         </div>
-                                        <div class="col-md-7">
-                                            <div class="card-body pt-0">
-                                                <h5 class="card-text ">{book.title}</h5>
-                                                <p class="card-text">{book.author_name}</p>
-                                                <h4 class="card-text">{book.price} $</h4>
+                                        <div className="col-md-7">
+                                            <div className="card-body pt-0">
+                                                <h5 className="card-text ">{book.title}</h5>
+                                                <p className="card-text">{book.author_name}</p>
+                                                <h4 className="card-text">{book.price} $</h4>
                                             </div>
                                             <div className="card-body">
-                                            <p><i class="bi bi-heart me-1"></i>Add To Wishlist</p>
+                                            <p><i className="bi bi-heart me-1"></i>Add To Wishlist</p>
                                             {/*<i class="bi bi-heart"></i> -> filled heart icon*/}
                                             <button type="button" className="add-to-cart-buttons">Add To Cart</button>
                                             </div>
@@ -102,19 +102,19 @@ const Home = () => {
                     <div className="d-flex justify-content-around ps-5 col-xl-">
                         {
                             onlyTolkien.map((book, index) => (
-                                <div class="card mb-3 border-0 " style={{maxWidth: "100vh"}}>
-                                    <div class="row g-0">
-                                        <div class="col-md-5">
-                                            <img src={"http://localhost:4000/books_img/" + book.img_directory + "/" + book.image} class="img-fluid rounded-0" alt="..." style={{maxHeight: "100%"}}/>
+                                <div className="card mb-3 border-0 " style={{maxWidth: "100vh"}}>
+                                    <div className="row g-0">
+                                        <div className="col-md-5">
+                                            <img src={"http://localhost:4000/books_img/" + book.img_directory + "/" + book.image} className="img-fluid rounded-0" alt="..." style={{maxHeight: "100%"}}/>
                                         </div>
-                                        <div class="col-md-7">
-                                            <div class="card-body pt-0">
-                                                <h5 class="card-text ">{book.title}</h5>
-                                                <p class="card-text">{book.author_name}</p>
-                                                <h4 class="card-text">{book.price} $</h4>
+                                        <div className="col-md-7">
+                                            <div className="card-body pt-0">
+                                                <h5 className="card-text ">{book.title}</h5>
+                                                <p className="card-text">{book.author_name}</p>
+                                                <h4 className="card-text">{book.price} $</h4>Name
                                             </div>
                                             <div className="card-body">
-                                            <p><i class="bi bi-heart me-1"></i>Add To Wishlist</p>
+                                            <p><i className="bi bi-heart me-1"></i>Add To Wishlist</p>
                                             {/*<i class="bi bi-heart"></i> -> filled heart icon*/}
                                             <button type="button" className="add-to-cart-buttons">Add To Cart</button>
                                             </div>
@@ -132,19 +132,19 @@ const Home = () => {
                     <div className="d-flex justify-content-around ps-5 col-xl-">
                         {
                             onlyComputerComplex.map((book, index) => (
-                                <div class="card mb-3 border-0 " style={{maxWidth: "100vh"}}>
-                                    <div class="row g-0">
-                                        <div class="col-md-5">
-                                            <img src={"http://localhost:4000/books_img/" + book.img_directory + "/" + book.image} class="img-fluid rounded-0" alt="..." style={{maxHeight: "100%"}}/>
+                                <div className="card mb-3 border-0 " style={{maxWidth: "100vh"}}>
+                                    <div className="row g-0">
+                                        <div className="col-md-5">
+                                            <img src={"http://localhost:4000/books_img/" + book.img_directory + "/" + book.image} className="img-fluid rounded-0" alt="..." style={{maxHeight: "100%"}}/>
                                         </div>
-                                        <div class="col-md-7">
-                                            <div class="card-body pt-0">
-                                                <h5 class="card-text ">{book.title}</h5>
-                                                <p class="card-text">{book.author_name}</p>
-                                                <h4 class="card-text">{book.price} $</h4>
+                                        <div className="col-md-7">
+                                            <div className="card-body pt-0">
+                                                <h5 className="card-text ">{book.title}</h5>
+                                                <p className="card-text">{book.author_name}</p>
+                                                <h4 className="card-text">{book.price} $</h4>
                                             </div>
                                             <div className="card-body">
-                                            <p><i class="bi bi-heart me-1"></i>Add To Wishlist</p>
+                                            <p><i className="bi bi-heart me-1"></i>Add To Wishlist</p>
                                             {/*<i class="bi bi-heart"></i> -> filled heart icon*/}
                                             <button type="button" className="add-to-cart-buttons">Add To Cart</button>
                                             </div>
