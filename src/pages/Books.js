@@ -75,6 +75,30 @@ const Books = () => {
         })
     }
 
+    const publisherSearch = (e) => {
+        let selectedPublisher = e.currentTarget.id;
+
+        axios.get(`http://localhost:4000/get-all-by-publishers/${selectedPublisher}`)
+            .then((response) => {
+            setVisibleBooks(response.data);
+            })
+
+            /*
+        let booleanWithSpaceOrWithout = selectedPublisher.indexOf(" ") >= 0;
+
+        if(booleanWithSpaceOrWithout === true){
+            
+        }
+        if( booleanWithSpaceOrWithout === false){
+            axios.get(`http://localhost:4000/get-all-by-publishers/${selectedPublisher}`)
+            .then((response) => {
+            setVisibleBooks(response.data);
+        })
+        }
+        */
+    }
+
+    
     
     return(
         <div>
@@ -116,11 +140,11 @@ const Books = () => {
                     </ul>
                     <ul className="list-group mt-4">
                         <li className="list-group-item active border-0 rounded">Publishers</li>
-                        <li className="list-group-item list-group-item-action border-0">Ad Astra</li>
-                        <li className="list-group-item list-group-item-action border-0">Bestline</li>                       
-                        <li className="list-group-item list-group-item-action border-0">Disciplina</li>
-                        <li className="list-group-item list-group-item-action border-0">ComputerPanorama</li>
-                        <li className="list-group-item list-group-item-action border-0">ComputerComplex</li>
+                        <li className="list-group-item list-group-item-action border-0" id="Ad Astra" onClick={publisherSearch}>Ad Astra</li>
+                        <li className="list-group-item list-group-item-action border-0" id="Bestline" onClick={publisherSearch}>Bestline</li>                       
+                        <li className="list-group-item list-group-item-action border-0" id="Disciplina" onClick={publisherSearch}>Disciplina</li>
+                        <li className="list-group-item list-group-item-action border-0" id="ComputerPanorama" onClick={publisherSearch}>ComputerPanorama</li>
+                        <li className="list-group-item list-group-item-action border-0" id="ComputerComplex" onClick={publisherSearch}>ComputerComplex</li>
                     </ul>
                 </div>
                 <div className="w-75 h-100">
