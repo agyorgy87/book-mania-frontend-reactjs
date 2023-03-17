@@ -82,20 +82,6 @@ const Books = () => {
             .then((response) => {
             setVisibleBooks(response.data);
             })
-
-            /*
-        let booleanWithSpaceOrWithout = selectedPublisher.indexOf(" ") >= 0;
-
-        if(booleanWithSpaceOrWithout === true){
-            
-        }
-        if( booleanWithSpaceOrWithout === false){
-            axios.get(`http://localhost:4000/get-all-by-publishers/${selectedPublisher}`)
-            .then((response) => {
-            setVisibleBooks(response.data);
-        })
-        }
-        */
     }
 
     
