@@ -40,21 +40,17 @@ export default function Validate (values) {
         errors.error = true
     }
 
-    /*
-    if(!values.password1) {
-        errors.password1 = 'Password is required'
-    } else if(!/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/i.test(values.password1)) {
-        errors.password1 = 'The password must contain 8 characters and 1 number'
+    if(!values.password) {
+        errors.password = 'Password is required'
+    } else if(!/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/i.test(values.password)) {
+        errors.password = 'The password must contain 8 characters and 1 number'
     }
     
-    if(!values.password2) {
-        errors.password2 = 'Password is required'
-    } else if(values.password2 !== values.password1) {
-        errors.password2 = 'Passwords do not match'
+    if(!values.passwordAgain) {
+        errors.passwordAgain = 'Password is required'
+    } else if(values.passwordAgain !== values.password) {
+        errors.passwordAgain = 'Passwords do not match'
     }
-    */
-
-   
-
+    
     return errors;
 }
