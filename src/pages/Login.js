@@ -1,3 +1,4 @@
+import '../css/Login.css';
 import React from 'react';
 import NavigationBar from '../components/NavigationBar.js';
 import { useNavigate } from "react-router-dom";
@@ -6,34 +7,37 @@ const Login = () => {
 
     let navigate = useNavigate();
 
-  return (
-    <div>
+    return (
         <div>
-            <NavigationBar/>
-        </div>
-        <div>
-            <div className=" h-100 w-75 d-flex justify-content-center text-align-center">
-            <form>
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Email address</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"/>
-                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputPassword1">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"/>
-                </div>
-                <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1"/>
-                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                </div>
-                <button type="submit" class="btn btn-primary d-inline">Submit</button>
-                <a href="#" onClick={() => {navigate("/createaccount")}}>Create Account</a>
-                </form>
+            <div>
+                <NavigationBar/>
+            </div> 
+            <section>
+            <div className="container mt-5 pt-5">
+                <div className="row">
+                    <div className="col-12 col-sm-8 col-md-6 m-auto">
+                        <div className="card border-0 shadow">
+                            <div className="card-body">
+                                <div className="d-flex justify-content-center">
+                                    <i className="bi bi-person"></i>
+                                </div>                                
+                                <form action="">
+                                    <input type="text" name="" id="" className="form-control my-2 py-2" placeholder="Username"/>
+                                    <input type="text" name="" id="" className="form-control my-4 py-2" placeholder="Password"/>
+                                        <div className="text-center mt-3">
+                                            <button className="btn btn-primary">Login</button>
+                                                <a href="#" className="nav-link link-primary my-2">Already have an account?</a>
+                                        </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>       
             </div>
+            </section>
         </div>
-    </div>
-  )
+        
+    )
 }
 
 export default Login
