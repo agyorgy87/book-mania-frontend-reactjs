@@ -69,10 +69,43 @@ const Home = () => {
                 <div> 
                     <h1 className="d-flex flex-row ps-5">Newness</h1>    
                 </div> 
+                
+                
+                    <div className="container here-to-all">
+                        {newness.map((book, index) => (
+                        <div className="row g-5 justify-content-evenly">
+                            <div className="col-lg-6">
+                                <div className="card">
+                                    <div className="row g-0">
+                                        <div className="col-6 col-md-5">
+                                            <img src={"http://localhost:4000/books_img/" + book.img_directory + "/" + book.image} className="card-img img-fluid rounded-start" alt="book"/>
+                                        </div>
+                                        <div className="col-6 col-md-7">
+                                            <div className="card-body d-flex flex-column">
+                                                <div className="h-100">
+                                                    <h2 className="card-title">{book.title}</h2>
+                                                    <h4 className="card-title">{book.author_name}</h4>
+                                                    <h4 className="card-title"><strong>{book.price}</strong>$</h4>
+                                                </div>
+                                                <div>
+                                                    <button type="button" className="btn btn-dark">Add To Chart</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        ))}  
+                    </div>
+                 
+                
+            </div> 
+            {/*
                     <div className="d-flex justify-content-around ps-5 col-xl-">
                         {
                             newness.map((book, index) => (
-                                <div className="card mb-3 border-0 " style={{maxWidth: "100vh"}}>
+                                <div className="card mb-3 border-0">
                                     <div className="row g-0">
                                         <div className="col-md-5">
                                             <img src={"http://localhost:4000/books_img/" + book.img_directory + "/" + book.image} className="img-fluid rounded-0" alt="..." style={{maxHeight: "100%"}}/>
@@ -85,7 +118,7 @@ const Home = () => {
                                             </div>
                                             <div className="card-body">
                                             <p><i className="bi bi-heart me-1"></i>Add To Wishlist</p>
-                                            {/*<i class="bi bi-heart"></i> -> filled heart icon*/}
+                                            {/*<i class="bi bi-heart"></i> -> filled heart icon
                                             <button type="button" className="add-to-cart-buttons">Add To Cart</button>
                                             </div>
                                         </div>
@@ -93,8 +126,9 @@ const Home = () => {
                                 </div>
                             ))
                         }
-                    </div>
-            </div> 
+                        
+                    </div>  
+                        */}
             <div className="row"> 
                 <div> 
                     <h1 className="d-flex flex-row ps-5">From Tolkien's Pen</h1>    
@@ -160,3 +194,4 @@ const Home = () => {
 }
 
 export default Home;
+

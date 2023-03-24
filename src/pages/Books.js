@@ -8,6 +8,8 @@ const Books = () => {
     const allBooks = useRef([]);
     const [visibleBooks, setVisibleBooks] = useState([]);
 
+    const [allGenre, setAllGenre] = useState([]);
+
     //const [filterByPrice, setFilterByPrice] = useState("none");
     //const [filterByReleaseDate, setFilterByReleaseDate] = useState("none");
 
@@ -20,33 +22,36 @@ const Books = () => {
                 setVisibleBooks(parsedData);
             })
         */
-        getAllBooks();     
+        getAllBooks();  
+        getAllGenre();
     }, [])
 
     const getAllBooks = () => {
         axios.get("http://localhost:4000/get-all-books")
-            .then((response) => {
+             .then((response) => {
                 setVisibleBooks(response.data);
                 allBooks.current = response.data;
         });
     }
 
 
-    const callGenre = (e) => {
-        let genreName = e.currentTarget.id;
+    const getAllGenre = () => {
+        axios.get(`http://localhost:4000/get-all-genre`)
+            .then((response) => {
+            setAllGenre(response.data);
+            console.log(response);
+            })
+    }
 
+    
+    const callGenre = (genreName) => {
         axios.get(`http://localhost:4000/get-all-by-genre/"${genreName}"`)
             .then((response) => {
             setVisibleBooks(response.data);
             }) 
     }
 
-
-    const callPrice = (e) => {
-        let priceAmount = e.currentTarget.id;
-        let twoPriceInArray = priceAmount.split("-");
-        let fromPrice = twoPriceInArray[0];
-        let toPrice = twoPriceInArray[1]
+    const callPrice = (fromPrice, toPrice) => {
 
         axios.get(`http://localhost:4000/get-all-by-price/${fromPrice}/${toPrice}`)
             .then((response) => {
@@ -66,10 +71,10 @@ const Books = () => {
         })
     }
 
-    const specialSearch = (e) => {
-        let selectedSpecialSearch = e.currentTarget.id;
+    const specialSearch = (selectedSpecialSearch, selectedSpecialOrder) => {
+        
 
-        axios.get(`http://localhost:4000/get-all-by-special/${selectedSpecialSearch}`)
+        axios.get(`http://localhost:4000/get-all-by-special/${selectedSpecialSearch}/${selectedSpecialOrder}`)
             .then((response) => {
             setVisibleBooks(response.data);
         })
@@ -95,19 +100,20 @@ const Books = () => {
                 <div className="search-lists-container w-25 h-100 ps-5">
                     <ul className="list-group mt-4">
                         <li className="list-group-item active border-0 rounded">Categories</li>
-                        <li className="list-group-item list-group-item-action border-0" onClick={getAllBooks}>All</li>
-                        <li className="list-group-item list-group-item-action border-0" id="Cooking" onClick={callGenre}>Cooking</li>
-                        <li className="list-group-item list-group-item-action border-0" id="Fantasy" onClick={callGenre}>Fantasy</li>
-                        <li className="list-group-item list-group-item-action border-0" id="History" onClick={callGenre}>History</li>
-                        <li className="list-group-item list-group-item-action border-0" id="Horror" onClick={callGenre}>Horror</li>
-                        <li className="list-group-item list-group-item-action border-0" id="IT" onClick={callGenre}>IT</li>                       
+                        <li className="list-group-item list-group-item-action border-0" onClick={getAllBooks}>All</li> 
+                        {
+                            allGenre.map((genre, index) => (
+                                <li className="list-group-item list-group-item-action border-0" onClick={() => callGenre(genre.genre_type)}>{genre.genre_type}</li>
+                            ))
+                        }
+                                             
                     </ul>
                     <ul className="list-group mt-4">
                         <li className="list-group-item active border-0 rounded">Price</li>
-                        <li className="list-group-item list-group-item-action border-0" id="0-10" onClick={callPrice}>Under 10$</li>
-                        <li className="list-group-item list-group-item-action border-0" id="11-20" onClick={callPrice}>Between 11$ and 20$</li>
-                        <li className="list-group-item list-group-item-action border-0" id="21-30" onClick={callPrice}>Between 21$ and 30$</li>
-                        <li className="list-group-item list-group-item-action border-0" id="31,-9999" onClick={callPrice}>Over 31$</li>
+                        <li className="list-group-item list-group-item-action border-0" onClick={() => callPrice(0, 10)}>Under 10$</li>
+                        <li className="list-group-item list-group-item-action border-0" onClick={() => callPrice(11, 20)}>Between 11$ and 20$</li>
+                        <li className="list-group-item list-group-item-action border-0" onClick={() => callPrice(21, 30)}>Between 21$ and 30$</li>
+                        <li className="list-group-item list-group-item-action border-0" onClick={() => callPrice(31, 9999)}>Over 31$</li>{/*külön apit csinálni*/}
                                               
                     </ul>
                     <ul className="list-group mt-4">
@@ -119,10 +125,11 @@ const Books = () => {
                     </ul>
                     <ul className="list-group mt-4">
                         <li className="list-group-item active border-0 rounded">Special</li>
-                        <li className="list-group-item list-group-item-action border-0" id="title" onClick={specialSearch}>ABC order</li>
-                        <li className="list-group-item list-group-item-action border-0" id="number_of_page" onClick={specialSearch}>Number of pages in ascending order</li>                       
-                        <li className="list-group-item list-group-item-action border-0" id="price" onClick={specialSearch}>From the cheapest book</li>
+                        <li className="list-group-item list-group-item-action border-0" onClick={() => specialSearch("title_name", "asc")}>ABC order</li>
+                        <li className="list-group-item list-group-item-action border-0" id="number_of_page_name" onClick={specialSearch}>Number of pages in ascending order</li>                       
+                        <li className="list-group-item list-group-item-action border-0" id="price_name" onClick={specialSearch}>From the cheapest book</li>
                         <li className="list-group-item list-group-item-action border-0">From the most expensive book</li>
+                        
                     </ul>
                     <ul className="list-group mt-4">
                         <li className="list-group-item active border-0 rounded">Publishers</li>

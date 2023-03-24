@@ -9,6 +9,19 @@
     user-select: none;
 }
 
+.cream-bg {
+    background-color: #F3EAE3;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.card-img {
+    /*width: 100%;
+    height: 100%;*/
+    /*object-fit: cover;*/
+    border-bottom-right-radius: 0px;
+}
+
 .discount-font {
     font-family: 'Rubik', sans-serif;
 }
