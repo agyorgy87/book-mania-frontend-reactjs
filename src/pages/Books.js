@@ -10,6 +10,7 @@ const Books = () => {
 
     const [allGenre, setAllGenre] = useState([]);
     const [allPublisher, setAllPublisher] = useState([]);
+    
 
     useEffect(() => { 
         getAllBooks();  
@@ -139,18 +140,18 @@ const Books = () => {
                 </div>
                 <div className="w-75 h-100">
                     <div>
-                    <select className="form-select" aria-label="Default select example">{/*onChange={(e) => setSelectedBooksGenre(e.target.value)}*/}
+                    <select className="form-select" aria-label="Default select example" onChange={(e) => callGenre(e.target.value)}>
                         <option selected>Categories</option>
                         <option value="All">All Books</option>
-                        <option value="Cooking">Cooking</option>
-                        <option value="Fantasy">Fantasy</option>
-                        <option value="History">History</option>
-                        <option value="Horror">Horrror</option>
-                        <option value="IT">IT</option>
+                        {
+                            allGenre.map((genre, index) => (
+                                <option onClick={() => callGenre(genre.genre_type)}>{genre.genre_type}</option>
+                            ))
+                        }
                     </select> 
-                    <select className="form-select" aria-label="Default select example">{/*onChange={(e) => setFilterByPrice(e.target.value)}*/}
+                    <select className="form-select" aria-label="Default select example" onChange={(e) => callPrice(e.target.value)}>
                         <option selected>Price</option>
-                        <option value="under10">Under 10$</option>
+                        <option >Under 10$</option>
                         <option value="11-20">Between 11$ and 20$</option>
                         <option value="21-30">Between 21$ and 30$</option>
                         <option value="31-40">Between 31$ and 40$</option> 
