@@ -9,22 +9,17 @@ const Books = () => {
     const [visibleBooks, setVisibleBooks] = useState([]);
 
     const [allGenre, setAllGenre] = useState([]);
-
-    //const [filterByPrice, setFilterByPrice] = useState("none");
-    //const [filterByReleaseDate, setFilterByReleaseDate] = useState("none");
+    const [allPublisher, setAllPublisher] = useState([]);
 
     useEffect(() => { 
-        /*
-        fetch("http://localhost:4000/get-all-books")
-            .then(data => data.json())
-            .then(parsedData => {
-                allBooks.current = parsedData;
-                setVisibleBooks(parsedData);
-            })
-        */
         getAllBooks();  
         getAllGenre();
+        getAllPublisher();
     }, [])
+
+    const scrollToUp = () => {
+        window.scrollTo(0, 0)
+      }
 
     const getAllBooks = () => {
         axios.get("http://localhost:4000/get-all-books")
@@ -38,15 +33,24 @@ const Books = () => {
         axios.get(`http://localhost:4000/get-all-genre`)
             .then((response) => {
             setAllGenre(response.data);
-            console.log(response);
-            })
+        })
+        scrollToUp();
+    }
+
+    const getAllPublisher = () => {
+        axios.get(`http://localhost:4000/get-all-publisher`)
+            .then((response) => {
+            setAllPublisher(response.data);
+        })
+        scrollToUp();
     }
 
     const callGenre = (genreName) => {
         axios.get(`http://localhost:4000/get-all-by-genre/"${genreName}"`)
             .then((response) => {
             setVisibleBooks(response.data);
-            }) 
+        }) 
+        scrollToUp();
     }
 
     const callPrice = (fromPrice, toPrice) => {
@@ -54,6 +58,7 @@ const Books = () => {
             .then((response) => {
             setVisibleBooks(response.data);
         })
+        scrollToUp();
     }
 
     const callReleaseDate = (fromDate, toDate) => {
@@ -61,6 +66,7 @@ const Books = () => {
             .then((response) => {
             setVisibleBooks(response.data);
         })
+        scrollToUp();
     }
 
     const specialSearch = (selectedSpecialSearch, selectedSpecialOrder) => {
@@ -68,16 +74,18 @@ const Books = () => {
             .then((response) => {
             setVisibleBooks(response.data);
         })
+        scrollToUp();
     }
 
-    const publisherSearch = (e) => {
-        let selectedPublisher = e.currentTarget.id;
-        axios.get(`http://localhost:4000/get-all-by-publishers/${selectedPublisher}`)
+    const callPublisher = (publisherName) => {
+        axios.get(`http://localhost:4000/get-all-by-publishers/${publisherName}`)
             .then((response) => {
             setVisibleBooks(response.data);
-            })
+        })
+        scrollToUp();
     }
 
+    
     
     
     return(
@@ -122,11 +130,11 @@ const Books = () => {
                     </ul>
                     <ul className="list-group mt-4">
                         <li className="list-group-item active border-0 rounded">Publishers</li>
-                        <li className="list-group-item list-group-item-action border-0" id="Ad Astra" onClick={publisherSearch}>Ad Astra</li>
-                        <li className="list-group-item list-group-item-action border-0" id="Bestline" onClick={publisherSearch}>Bestline</li>                       
-                        <li className="list-group-item list-group-item-action border-0" id="Disciplina" onClick={publisherSearch}>Disciplina</li>
-                        <li className="list-group-item list-group-item-action border-0" id="ComputerPanorama" onClick={publisherSearch}>ComputerPanorama</li>
-                        <li className="list-group-item list-group-item-action border-0" id="ComputerComplex" onClick={publisherSearch}>ComputerComplex</li>
+                        {
+                            allPublisher.map((publisher, index) => (
+                                <li className="list-group-item list-group-item-action border-0" onClick={() => callPublisher(publisher.publisher_name)}>{publisher.publisher_name}</li>
+                            ))
+                        }
                     </ul>
                 </div>
                 <div className="w-75 h-100">
