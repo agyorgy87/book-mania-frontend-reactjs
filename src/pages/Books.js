@@ -34,7 +34,6 @@ const Books = () => {
         });
     }
 
-
     const getAllGenre = () => {
         axios.get(`http://localhost:4000/get-all-genre`)
             .then((response) => {
@@ -43,7 +42,6 @@ const Books = () => {
             })
     }
 
-    
     const callGenre = (genreName) => {
         axios.get(`http://localhost:4000/get-all-by-genre/"${genreName}"`)
             .then((response) => {
@@ -52,19 +50,13 @@ const Books = () => {
     }
 
     const callPrice = (fromPrice, toPrice) => {
-
         axios.get(`http://localhost:4000/get-all-by-price/${fromPrice}/${toPrice}`)
             .then((response) => {
             setVisibleBooks(response.data);
         })
     }
 
-    const callReleaseDate = (e) => {
-        let allDate = e.currentTarget.id;
-        let twoDateInArray = allDate.split("-");
-        let fromDate = twoDateInArray[0];
-        let toDate = twoDateInArray[1]
-
+    const callReleaseDate = (fromDate, toDate) => {
         axios.get(`http://localhost:4000/get-all-by-release-date/${fromDate}/${toDate}`)
             .then((response) => {
             setVisibleBooks(response.data);
@@ -72,8 +64,6 @@ const Books = () => {
     }
 
     const specialSearch = (selectedSpecialSearch, selectedSpecialOrder) => {
-        
-
         axios.get(`http://localhost:4000/get-all-by-special/${selectedSpecialSearch}/${selectedSpecialOrder}`)
             .then((response) => {
             setVisibleBooks(response.data);
@@ -82,7 +72,6 @@ const Books = () => {
 
     const publisherSearch = (e) => {
         let selectedPublisher = e.currentTarget.id;
-
         axios.get(`http://localhost:4000/get-all-by-publishers/${selectedPublisher}`)
             .then((response) => {
             setVisibleBooks(response.data);
@@ -118,17 +107,17 @@ const Books = () => {
                     </ul>
                     <ul className="list-group mt-4">
                         <li className="list-group-item active border-0 rounded">Release Date</li>
-                        <li className="list-group-item list-group-item-action border-0" id="0-2000" onClick={callReleaseDate}>Before 2000</li>
-                        <li className="list-group-item list-group-item-action border-0" id="2001-2010" onClick={callReleaseDate}>Between 2001 and 2010</li>
-                        <li className="list-group-item list-group-item-action border-0" id="2011-2020" onClick={callReleaseDate}>Between 2011 and 2020</li>
-                        <li className="list-group-item list-group-item-action border-0" id="2020-9999" onClick={callReleaseDate}>After 2020</li>                       
+                        <li className="list-group-item list-group-item-action border-0" onClick={() => callReleaseDate(0, 2000)}>Before 2000</li>
+                        <li className="list-group-item list-group-item-action border-0" onClick={() => callReleaseDate(2001, 2010)}>Between 2001 and 2010</li>
+                        <li className="list-group-item list-group-item-action border-0" onClick={() => callReleaseDate(2011, 2020)}>Between 2011 and 2020</li>
+                        <li className="list-group-item list-group-item-action border-0" onClick={() => callReleaseDate(2020, 9999)}>After 2020</li>                       
                     </ul>
                     <ul className="list-group mt-4">
                         <li className="list-group-item active border-0 rounded">Special</li>
                         <li className="list-group-item list-group-item-action border-0" onClick={() => specialSearch("title_name", "asc")}>ABC order</li>
-                        <li className="list-group-item list-group-item-action border-0" id="number_of_page_name" onClick={specialSearch}>Number of pages in ascending order</li>                       
-                        <li className="list-group-item list-group-item-action border-0" id="price_name" onClick={specialSearch}>From the cheapest book</li>
-                        <li className="list-group-item list-group-item-action border-0">From the most expensive book</li>
+                        <li className="list-group-item list-group-item-action border-0" onClick={() => specialSearch("number_of_page_name", "asc")}>Number of pages in ascending order</li>                       
+                        <li className="list-group-item list-group-item-action border-0" onClick={() => specialSearch("price_name", "asc")}>From the cheapest book</li>
+                        <li className="list-group-item list-group-item-action border-0" onClick={() => specialSearch("price_name", "desc")}>From the most expensive book</li>
                         
                     </ul>
                     <ul className="list-group mt-4">
