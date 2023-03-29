@@ -47,10 +47,14 @@ const Books = () => {
     }
 
     const callGenre = (genreName) => {
-        axios.get(`http://localhost:4000/get-all-by-genre/"${genreName}"`)
+        if(genreName === "allBooks"){
+            getAllBooks();
+        }else{
+            axios.get(`http://localhost:4000/get-all-by-genre/"${genreName}"`)
             .then((response) => {
             setVisibleBooks(response.data);
-        }) 
+        })
+        }    
         scrollToUp();
     }
 
@@ -60,6 +64,16 @@ const Books = () => {
             setVisibleBooks(response.data);
         })
         scrollToUp();
+    }
+
+    const callSelectedPrice = (value) => {
+        console.log(value["min"],value["max"]);
+        /*
+        axios.get(`http://localhost:4000/get-all-by-price/${fromPrice}/${toPrice}`)
+            .then((response) => {
+            setVisibleBooks(response.data);
+        })
+        */
     }
 
     const callReleaseDate = (fromDate, toDate) => {
@@ -142,20 +156,20 @@ const Books = () => {
                     <div>
                     <select className="form-select" aria-label="Default select example" onChange={(e) => callGenre(e.target.value)}>
                         <option selected>Categories</option>
-                        <option value="All">All Books</option>
+                        <option value="allBooks">All Books</option>
                         {
                             allGenre.map((genre, index) => (
-                                <option onClick={() => callGenre(genre.genre_type)}>{genre.genre_type}</option>
+                                <option>{genre.genre_type}</option>
                             ))
                         }
                     </select> 
-                    <select className="form-select" aria-label="Default select example" onChange={(e) => callPrice(e.target.value)}>
+                    <select className="form-select" aria-label="Default select example" onClick={(e) => callSelectedPrice(e.target.dataset)}>
                         <option selected>Price</option>
-                        <option >Under 10$</option>
-                        <option value="11-20">Between 11$ and 20$</option>
-                        <option value="21-30">Between 21$ and 30$</option>
-                        <option value="31-40">Between 31$ and 40$</option> 
-                        <option value="over40">Over 40$</option> 
+                        <option data-min="0" data-max="10">Under 10$</option>
+                        <option data-min="11" data-max="20">Between 11$ and 20$</option>
+                        <option data-min="21" data-max="30">Between 21$ and 30$</option>
+                        <option data-min="31" data-max="40">Between 31$ and 40$</option> 
+                        <option data-min="41" data-max="99">Over 40$</option> 
                     </select>
                     <select className="form-select" aria-label="Default select example">
                         <option selected>Release Date</option>
@@ -164,7 +178,22 @@ const Books = () => {
                         <option value="between2011and2020">Between 2011 and 2020</option>
                         <option value="after2020">After 2020</option>
                     </select>
+                    <select className="form-select" aria-label="Default select example">
+                        <option selected>Special</option>
+                        <option value="before2000">Before 2000</option>
+                        <option value="between2001and2010">Between 2001 and 2010</option>
+                        <option value="between2011and2020">Between 2011 and 2020</option>
+                        <option value="after2020">After 2020</option>
+                    </select>
+                    <select className="form-select" aria-label="Default select example">
+                        <option selected>Publishers</option>
+                        <option value="before2000">Before 2000</option>
+                        <option value="between2001and2010">Between 2001 and 2010</option>
+                        <option value="between2011and2020">Between 2011 and 2020</option>
+                        <option value="after2020">After 2020</option>
+                    </select>
                     </div>
+                    
                     <div className="row">
                         <div className="input-group col-md-4">
                             <input className="form-control py-2 border-right-0 border" type="search" id="example-search-input"/>
@@ -176,6 +205,7 @@ const Books = () => {
                 <div className="d-flex justify-content-center ms-5 mt-5">   
                 <div className="row"> 
                 <div>    
+                    Search result:
                     </div> 
                         {
                             visibleBooks.map((book, index) => (
@@ -210,43 +240,3 @@ const Books = () => {
 }
 
 export default Books;
-
-/*
-    useEffect(() => { 
-        bookGenreSelection();
-    },[selectedBooksGenre])
-
-    useEffect(() => { 
-        bookPriceSelection();
-    },[filterByPrice])
-      
-    const bookGenreSelection = () => {
-
-        let filterBooksGenre = allBooks.current
-
-        if(selectedBooksGenre !== "none"){   
-            filterBooksGenre = filterBooksGenre.filter(book => book.genre === selectedBooksGenre);
-            setVisibleBooks(filterBooksGenre); 
-        }
-        setVisibleBooks(filterBooksGenre);    
-    }
-
-const bookPriceSelection = () => {
-
-    if(filterByPrice === "0-20"){
-        const priceBetweenZeroAndTwenty = allBooks.current.filter(book => book.price >= 0 && book.price <= 20);
-        setVisibleBooks(priceBetweenZeroAndTwenty);
-    }
-    else if(filterByPrice === "21-40"){
-        const priceBetweenTwentyOneAndFourty = allBooks.current.filter(book => book.price >= 21 && book.price <= 40);
-        setVisibleBooks(priceBetweenTwentyOneAndFourty);
-    }
-    else if(filterByPrice === "41-60"){
-        const priceBetweenFourtyOneAndSixty = allBooks.current.filter(book => book.price >= 41 && book.price <= 60);
-        setVisibleBooks(priceBetweenFourtyOneAndSixty);
-    }
-    else if(filterByPrice === "none"){
-        setVisibleBooks(allBooks.current)
-    }
-}
-*/

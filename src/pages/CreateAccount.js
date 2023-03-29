@@ -40,7 +40,7 @@ const CreateAccount = () => {
                                         <div className="mb-4">
                                             <div class="form-group">
                                                 <input 
-                                                className={`form-control ${errors.firstName ? 'danger' : ''}`}
+                                                className={`form-control ${errors.firstName ? 'border-danger' : ''}`}
                                                 name="firstName"
                                                 id="firstName"
                                                 value={values.firstName}
