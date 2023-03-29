@@ -4,6 +4,7 @@ import NavigationBar from '../components/NavigationBar.js';
 //import { useNavigate } from "react-router-dom";
 import validate from '../ValidateInfo';
 import useForm from '../useForm';
+import axios from "axios";
 
 const CreateAccount = () => {
     const {handleChange, values, handleSubmit, errors} = useForm(validate);
@@ -15,6 +16,20 @@ const CreateAccount = () => {
     useEffect(() => {
         nameInput.current.focus();
     }, [])
+
+    const createUser = () => {
+        let user = {
+            firstName: values.firstName,
+            lastName: values.lastName,
+            gender: (values.gender === "female" ? 0 : 1),
+            address: values.address,
+            city: values.city,
+            zipCode: values.zip,
+            email: values.email,
+            pass: values.password
+        }
+        axios.post("http://localhost:4000/register", user)
+    }
 
     return (
         <div>
@@ -180,7 +195,7 @@ const CreateAccount = () => {
                                             </div>
                                         </div>
                                         <div className="d-flex justify-content-center my-3">
-                                            <button type="submit" className="btn btn-primary">Registration</button>
+                                            <button type="submit" className="btn btn-primary" onClick={createUser}>Registration</button>
                                         </div>                                           
                                     </div>
                                 </form>

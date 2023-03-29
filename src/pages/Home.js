@@ -65,67 +65,32 @@ const Home = () => {
                     </div>
                 </div>
             </div> 
-            <div class="container mt-5">
-                <div class="row">
-                    <div class="col d-flex justify-content-around align-items-stretch">
-                        {newness.map((book, index) => (            
-                            <div className="card">
-                                <div className="d-flex justify-content-center align-items-center">
-                                    <img src={"http://localhost:4000/books_img/" + book.img_directory + "/" + book.image} className="img-fluid" alt="..."/>
-                                </div>
-                                <div className="card-body d-flex flex-column justify-content-center">
-                                    <div className="d-flex justify-content-center mb-3">
-                                        <h5 className="card-title">{book.title}</h5>
-                                    </div>
-                                    <div className="d-flex justify-content-center mb-3">
-                                        <p className="card-title">{book.author_name}</p>
-                                    </div>
-                                    <div className="d-flex justify-content-center mb-2">
-                                        <h4 className="card-title"><strong>{book.price}</strong>$</h4>
-                                    </div>
-                                    <div className="d-flex justify-content-center">
-                                        <button type="button" className="btn btn-primary">Add To Chart</button>
-                                    </div>                                 
-                                </div>        
-                            </div>
-                        ))}
+            <div>
+                <div className="d-flex flex-row"> 
+                    <h1 className="ps-5">Newness</h1>    
+                </div> 
+                <div className="row"> 
+                {
+                            newness.map((book, index) => (       
+                <div class="card mb-3" >
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                        <img src={"http://localhost:4000/books_img/" + book.img_directory + "/" + book.image} class="img-fluid rounded-start" alt="..."/>
+                        </div>
+                        <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                            <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+                        </div>
+                        </div>
                     </div>
+                    </div>
+                    ))
+                }
                 </div>
             </div>
-            <div className="row"> 
-                <div> 
-                    <h1 className="d-flex flex-row ps-5">Newness</h1>    
-                </div>                
-                    <div className="container here-to-all">
-                        {newness.map((book, index) => (
-                        <div className="row g-5 justify-content-evenly">
-                            <div className="col-lg-6">
-                                <div className="card">
-                                    <div className="row g-0">
-                                        <div className="col-6 col-md-5">
-                                            <img src={"http://localhost:4000/books_img/" + book.img_directory + "/" + book.image} className="card-img img-fluid rounded" alt="book"/>
-                                        </div>
-                                        <div className="col-6 col-md-7">
-                                            <div className="card-body d-flex flex-column">
-                                                <div className="h-100">
-                                                    <h2 className="card-title">{book.title}</h2>
-                                                    <h4 className="card-title">{book.author_name}</h4>
-                                                    <h4 className="card-title"><strong>{book.price}</strong>$</h4>
-                                                </div>
-                                                <div>
-                                                    <button type="button" className="btn btn-dark">Add To Chart</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        ))}  
-                    </div>
-                 
-                
-            </div> 
+            
             {/*
                     <div className="d-flex justify-content-around ps-5 col-xl-">
                         {

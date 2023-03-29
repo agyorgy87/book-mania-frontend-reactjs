@@ -180,20 +180,20 @@ const Books = () => {
                     </select>
                     <select className="form-select" aria-label="Default select example">
                         <option selected>Special</option>
-                        <option value="before2000">Before 2000</option>
-                        <option value="between2001and2010">Between 2001 and 2010</option>
-                        <option value="between2011and2020">Between 2011 and 2020</option>
-                        <option value="after2020">After 2020</option>
+                        <option >ABC order</option>
+                        <option >Number of pages in ascending order</option>
+                        <option >From the cheapest book0</option>
+                        <option >From the most expensive book</option>
                     </select>
                     <select className="form-select" aria-label="Default select example">
                         <option selected>Publishers</option>
-                        <option value="before2000">Before 2000</option>
-                        <option value="between2001and2010">Between 2001 and 2010</option>
-                        <option value="between2011and2020">Between 2011 and 2020</option>
-                        <option value="after2020">After 2020</option>
+                        <option >Ad Astra</option>
+                        <option >Bestline</option>
+                        <option >Disciplina</option>
+                        <option >ComputerPanorama</option>
+                        <option >ComputerComplex</option>
                     </select>
                     </div>
-                    
                     <div className="row">
                         <div className="input-group col-md-4">
                             <input className="form-control py-2 border-right-0 border" type="search" id="example-search-input"/>
@@ -202,37 +202,36 @@ const Books = () => {
                                 </button>
                         </div>
                     </div>            
-                <div className="d-flex justify-content-center ms-5 mt-5">   
-                <div className="row"> 
-                <div>    
-                    Search result:
-                    </div> 
-                        {
-                            visibleBooks.map((book, index) => (
-                                <div className="card mb-3 me-1 border-0 " style={{maxWidth: "400px"}}>
-                                    <div className="row g-0">
-                                        <div className="col-md-5">
-                                            <img src={"http://localhost:4000/books_img/" + book.img_directory + "/" + book.image} className="img-fluid rounded-0" alt="..." style={{maxHeight: "100%"}}/>
-                                        </div>
-                                        <div className="col-md-7">
-                                            <div className="card-body pt-0">
-                                                <h5 className="card-text ">{book.title}</h5>
-                                                <p className="card-text">{book.author_name}</p>
-                                                <h4 className="card-text">{book.price} $</h4>
+                    <div className="d-flex justify-content-center ms-5 mt-5">   
+                        <div className="row"> 
+                            <div>    
+                            Search result:
+                            </div> 
+                                {
+                                    visibleBooks.map((book, index) => (
+                                        <div className="card mb-3 me-1 border-0 " style={{maxWidth: "400px"}}>
+                                            <div className="row g-0">
+                                                <div className="col-md-5">
+                                                    <img src={"http://localhost:4000/books_img/" + book.img_directory + "/" + book.image} className="img-fluid rounded-0" alt="..." style={{maxHeight: "100%"}}/>
+                                                </div>
+                                                <div className="col-md-7">
+                                                    <div className="card-body pt-0">
+                                                        <h5 className="card-text ">{book.title}</h5>
+                                                        <p className="card-text">{book.author_name}</p>
+                                                        <h4 className="card-text">{book.price} $</h4>
+                                                    </div>
+                                                    <div className="card-body">
+                                                        <p><i className="bi bi-heart me-1"></i>Add To Wishlist</p>
+                                                        {/*<i class="bi bi-heart"></i> -> filled heart icon*/}
+                                                        <button type="button" className="add-to-cart-buttons">Add To Cart</button>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div className="card-body">
-                                            <p><i className="bi bi-heart me-1"></i>Add To Wishlist</p>
-                                            {/*<i class="bi bi-heart"></i> -> filled heart icon*/}
-                                            <button type="button" className="add-to-cart-buttons">Add To Cart</button>
-                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-                            ))
-                        }
-                    </div> 
-                </div>
-                        
+                                    ))
+                                }
+                        </div> 
+                    </div>                       
                 </div>
             </div>         
     </div>   
