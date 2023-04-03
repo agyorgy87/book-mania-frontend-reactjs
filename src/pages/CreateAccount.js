@@ -1,7 +1,7 @@
 import '../css/CreateAccount.css';
 import React, {useState, useEffect, useRef} from 'react';
 import NavigationBar from '../components/NavigationBar.js';
-//import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import validate from '../ValidateInfo';
 import useForm from '../useForm';
 import axios from "axios";
@@ -9,7 +9,7 @@ import axios from "axios";
 const CreateAccount = () => {
     const {handleChange, values, handleSubmit, errors} = useForm(validate);
 
-    //let navigate = useNavigate();
+    let navigate = useNavigate();
 
     let nameInput = useRef(null);
 
@@ -17,19 +17,21 @@ const CreateAccount = () => {
         nameInput.current.focus();
     }, [])
 
-    const createUser = () => {
-        let user = {
-            firstName: values.firstName,
-            lastName: values.lastName,
-            gender: (values.gender === "female" ? 0 : 1),
-            address: values.address,
-            city: values.city,
-            zipCode: values.zip,
-            email: values.email,
-            pass: values.password
-        }
-        axios.post("http://localhost:4000/register", user)
-    }
+    useEffect(() => {
+            if(errors.error === false){
+            let user = {
+                firstName: values.firstName,
+                lastName: values.lastName,
+                gender: (values.gender === "female" ? 0 : 1),
+                address: values.address,
+                city: values.city,
+                zipCode: values.zip,
+                email: values.email,
+                pass: values.password
+            }
+            axios.post("http://localhost:4000/register", user)
+        }     
+    },[errors])
 
     return (
         <div>
@@ -188,14 +190,20 @@ const CreateAccount = () => {
                                         </div>
                                         <div className="form-group d-flex justify-content-center">
                                             <div className="form-check">
-                                                <input className="form-check-input" type="checkbox" id="gridCheck"/>
+                                                        <input 
+                                                        className="form-check-input" 
+                                                        type="checkbox" 
+                                                        name="dataProtection"
+                                                        id="dataProtection"
+                                                        value={values.dataProtection === "true" ? "false" : "true"}
+                                                        onChange={handleChange} />
                                                     <label className="form-check-label" for="gridCheck">
                                                         I accept the data protection regulations
                                                     </label>
                                             </div>
                                         </div>
                                         <div className="d-flex justify-content-center my-3">
-                                            <button type="submit" className="btn btn-primary" onClick={createUser}>Registration</button>
+                                            <button type="submit" className="btn btn-primary" >Registration</button>
                                         </div>                                           
                                     </div>
                                 </form>

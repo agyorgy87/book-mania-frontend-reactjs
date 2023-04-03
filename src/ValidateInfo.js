@@ -42,14 +42,18 @@ export default function Validate (values) {
 
     if(!values.password) {
         errors.password = 'Password is required'
+        errors.error = true
     } else if(!/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/i.test(values.password)) {
         errors.password = 'The password must contain 8 characters and 1 number'
+        errors.error = true
     }
     
     if(!values.passwordAgain) {
         errors.passwordAgain = 'Password is required'
+        errors.error = true
     } else if(values.passwordAgain !== values.password) {
         errors.passwordAgain = 'Passwords do not match'
+        errors.error = true
     }
     
     return errors;

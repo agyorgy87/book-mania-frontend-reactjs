@@ -11,7 +11,8 @@ const useForm = validate => {
         zip: '',
         email: '',
         password: '',
-        passwordAgain: ''
+        passwordAgain: '',
+        dataProtection: "false"
     })
     
     const [errors, setErrors] = useState({});
@@ -28,6 +29,8 @@ const useForm = validate => {
         e.preventDefault();
         setErrors(validate(values));
     };
+
+    console.log(values);
 
     return {handleChange, values, handleSubmit, errors};
 };
