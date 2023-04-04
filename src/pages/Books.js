@@ -67,13 +67,17 @@ const Books = () => {
     }
 
     const callSelectedPrice = (value) => {
-        console.log(value["min"],value["max"]);
-        /*
-        axios.get(`http://localhost:4000/get-all-by-price/${fromPrice}/${toPrice}`)
+        
+        let selectedOption = value.target.options[value.target.selectedIndex]
+        let selectedOptionMin = selectedOption.dataset.min
+        let selectedOptionMax = selectedOption.dataset.max
+        
+        if(selectedOptionMin !== undefined && selectedOptionMax !== undefined){
+            axios.get(`http://localhost:4000/get-all-by-price/${selectedOptionMin}/${selectedOptionMax}`)
             .then((response) => {
-            setVisibleBooks(response.data);
-        })
-        */
+            setVisibleBooks(response.data);     
+            })    
+        }
     }
 
     const callReleaseDate = (fromDate, toDate) => {
@@ -92,6 +96,20 @@ const Books = () => {
         scrollToUp();
     }
 
+    const selectedSpecialSearch = (e) => {
+
+        let selectedOption = e.target.options[e.target.selectedIndex]
+        let selectedOptionOrderBy = selectedOption.dataset.orderBy
+        let selectedOptionOrder = selectedOption.dataset.order
+        
+        if(selectedOptionOrderBy !== undefined && selectedOptionOrder !== undefined){
+            axios.get(`http://localhost:4000/get-all-by-special/${selectedOptionOrderBy}/${selectedOptionOrder}`)
+            .then((response) => {
+            setVisibleBooks(response.data);     
+            })    
+        }
+    }
+
     const callPublisher = (publisherName) => {
         axios.get(`http://localhost:4000/get-all-by-publishers/${publisherName}`)
             .then((response) => {
@@ -100,7 +118,13 @@ const Books = () => {
         scrollToUp();
     }
 
-    
+    const callAllTitlesAndAuthors = (e) => {
+
+        axios.get(`http://localhost:4000/get-book-title/${e}`)
+            .then((response) => {
+            setVisibleBooks(response.data);
+        })
+    }
     
     
     return(
@@ -163,7 +187,7 @@ const Books = () => {
                             ))
                         }
                     </select> 
-                    <select className="form-select" aria-label="Default select example" onClick={(e) => callSelectedPrice(e.target.dataset)}>
+                    <select className="form-select" aria-label="Default select example" onChange={(e) => callSelectedPrice(e)}>
                         <option selected>Price</option>
                         <option data-min="0" data-max="10">Under 10$</option>
                         <option data-min="11" data-max="20">Between 11$ and 20$</option>
@@ -178,12 +202,12 @@ const Books = () => {
                         <option value="between2011and2020">Between 2011 and 2020</option>
                         <option value="after2020">After 2020</option>
                     </select>
-                    <select className="form-select" aria-label="Default select example">
+                    <select className="form-select" aria-label="Default select example" onChange={(e) => selectedSpecialSearch(e)}>
                         <option selected>Special</option>
-                        <option >ABC order</option>
-                        <option >Number of pages in ascending order</option>
-                        <option >From the cheapest book0</option>
-                        <option >From the most expensive book</option>
+                        <option data-order-by="title_name" data-order="asc">ABC order</option>
+                        <option data-order-by="number_of_page_name" data-order="asc">Number of pages in ascending order</option>
+                        <option data-order-by="price_name" data-order="asc">From the cheapest book0</option>
+                        <option data-order-by="price_name" data-order="desc">From the most expensive book</option>
                     </select>
                     <select className="form-select" aria-label="Default select example">
                         <option selected>Publishers</option>
@@ -196,7 +220,12 @@ const Books = () => {
                     </div>
                     <div className="row">
                         <div className="input-group col-md-4">
-                            <input className="form-control py-2 border-right-0 border" type="search" id="example-search-input"/>
+                            <input 
+                            className="form-control py-2 border-right-0 border" 
+                            type="search" 
+                            id="example-search-input"
+                            onChange={(e) => callAllTitlesAndAuthors(e.target.value)}
+                            />
                                 <button className="btn btn-outline-secondary border rounded-right" type="button">
                                     <i className="bi bi-search"></i>
                                 </button>

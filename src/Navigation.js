@@ -5,6 +5,7 @@ import Books from "./pages/Books.js";
 import Contact from "./pages/Contact.js";
 import Login from "./pages/Login.js";
 import CreateAccount from "./pages/CreateAccount.js";
+import SuccessfulRegistration from "./pages/SuccessfulRegistration.js"
 import { BookContext } from "./context/BookContext.js";
 
 const Navigation = () => {
@@ -21,6 +22,7 @@ const Navigation = () => {
                         <Route path="/contact" element={<Contact/>} />
                         <Route path="/login" element={<Login/>} />
                         <Route path="/createaccount" element={<CreateAccount/>} />
+                        <Route path="/successfulregistration" element={<SuccessfulRegistration/>} />
                     </Routes>
                 </BrowserRouter>
             </BookContext.Provider>
