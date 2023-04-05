@@ -11,36 +11,40 @@ const NavigationBar = () => {
 
     return (  
         <div>
-            <nav class="navbar navbar-expand-lg">
-                <div class="container-fluid">
-                    <a class="navbar-brand pt-3 ps-3" href="#">                    
-                        <p className="fs-1 name-of-the-website" onClick={() => {navigate("/")}}>BOOK MANIA</p> 
-                        <ImBooks className="ms-2 fs-1 icon" onClick={() => {navigate("/")}}/>
+            <nav className="navbar navbar-expand-lg">
+                <div className="container-fluid w-100">  
+                
+                    <a className="navbar-brand pt-3 ps-3" href="#">                    
+                        <p className="name-of-the-website" onClick={() => {navigate("/")}}>BOOK MANIA</p> 
+                        <ImBooks className="ms-2 icon" onClick={() => {navigate("/")}}/>
                     </a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
+                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span className="navbar-toggler-icon"></span>
                     </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav">
-                        <li class="nav-item navigation-menus">
-                            <a class="nav-link active fs-3" aria-current="page" href="#" style={{ color: "#EEE9DA"}} onClick={() => {navigate("/")}}>Home</a>
+                
+                <div className="collapse navbar-collapse" id="navbarNav">
+                    <ul className="navbar-nav ms-auto">
+                        <li className="nav-item navigation-menus">
+                            <a className="nav-link active fs-4" aria-current="page" href="#" style={{ color: "#EEE9DA"}} onClick={() => {navigate("/")}}>HOME</a>
                         </li>
-                        <li class="nav-item navigation-menus">
-                            <a class="nav-link fs-3" href="#" style={{ color: "#EEE9DA"}} onClick={() => {navigate("/books")}}>Books</a>
+                        <li className="nav-item navigation-menus">
+                            <a className="nav-link fs-4" href="#" style={{ color: "#EEE9DA"}} onClick={() => {navigate("/books")}}>BOOKS</a>
                         </li>
-                        <li class="nav-item navigation-menus">
-                            <a class="nav-link fs-3" href="#" style={{ color: "#EEE9DA"}} onClick={() => {navigate("/contact")}}>Contacts</a>
+                        <li className="nav-item navigation-menus">
+                            <a className="nav-link fs-4" href="#" style={{ color: "#EEE9DA"}} onClick={() => {navigate("/contact")}}>CONTACTS</a>
                         </li>
                     </ul>
                 </div>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item navigation-menus">
-                            <a class="nav-link fs-3" href="#" style={{ color: "#EEE9DA"}} onClick={() => {navigate("/login")}}>+name no login</a>
-                            <a class="nav-link fs-3" href="#" style={{ color: "#EEE9DA"}} onClick={() => {navigate("/login")}}>Login</a>
+                <div className="collapse navbar-collapse" id="navbarNav">
+                    <ul className="navbar-nav ms-auto">
+                        <li className="nav-item navigation-menus">
+                            <a className="nav-link fs-4" href="#" style={{ color: "#EEE9DA"}}>Hi, Name </a>       
                         </li>
-                        <li class="nav-item navigation-menus">
-                            <a class="nav-link" href="#" style={{ color: "#EEE9DA"}}>< CgShoppingCart className="fs-1"/></a>
+                        <li className="nav-item navigation-menus">
+                            <a className="nav-link fs-4" href="#" style={{ color: "#EEE9DA"}} onClick={() => {navigate("/login")}}>LOGIN</a>
+                        </li>
+                        <li className="nav-item navigation-menus">
+                            <a className="nav-link" href="#" style={{ color: "#EEE9DA"}}>< CgShoppingCart className="fs-2"/></a>
                         </li>
                     </ul>
                 </div>

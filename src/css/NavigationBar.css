@@ -2,19 +2,42 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
 
 .navbar {
-    background-color: #6096B4;
+    /*background-color: #6096B4;*/
+    background-color: #2b2f3c;
 }
 
 .name-of-the-website {
     font-family: 'Cinzel', serif;
     display: inline-block;
-}
-
-.icon {
-    transform: translateY(-7px);
+    font-size: 1.5rem;
+    color: #D6D5A8;
 }
 
 .navigation-menus {  
+    color: #EEE9DA;
     padding: 5px 10px 0px 10px;
     font-family: 'Open Sans', sans-serif;
+    text-decoration: underline 0.2em rgba(0, 0, 0, 0);
+    transition: text-decoration-color 300ms;
 }
+
+.navigation-menus:hover {
+    text-decoration-color: #EEE9DA; 
+}
+
+.icon {
+    transform: translateY(-3px);
+    font-size: 1.5rem;  
+    color: #D6D5A8;
+}
+
+.login-button {
+    background-color:#2b2f3c;
+    border: 2px solid #EEE9DA;
+    border-radius: 3px;
+    width: 6rem;
+    transform: translateY(5px);
+    font-size: 1.5rem; 
+}
+
+

@@ -9,6 +9,10 @@
     user-select: none;
 }
 
+.home-page {
+    background-color: #f4f4f4;
+}
+
 
 .discount-font {
     font-family: 'Rubik', sans-serif;

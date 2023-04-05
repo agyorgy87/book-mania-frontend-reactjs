@@ -135,7 +135,7 @@ const Books = () => {
             <div className="search-site row">
                 <div className="search-lists-container w-25 h-100 ps-5">
                     <ul className="list-group mt-4">
-                        <li className="list-group-item active border-0 rounded">Categories</li>
+                        <li className="list-group-item active border-0 rounded name-of-the-list">Categories</li>
                         <li className="list-group-item list-group-item-action border-0" onClick={getAllBooks}>All</li> 
                         {
                             allGenre.map((genre, index) => (
