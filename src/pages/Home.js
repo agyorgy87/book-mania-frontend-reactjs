@@ -38,8 +38,8 @@ const Home = () => {
             <div>
                 <NavigationBar/>
             </div>          
-            <div className="container mt-5">
-                <div className="coupon-card w-75">
+            <div className="container mt-5 d-flex justify-content-center align-items-center">
+                <div className="coupon-card w-75 p-5 text-center shadow">
                     <h1>50% COUPON DISCOUNT</h1>
                         <div>
                             <p className="card-text discount-font">If you have a coupon code, you can buy books at half price!</p>
