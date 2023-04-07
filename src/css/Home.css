@@ -14,6 +14,13 @@
 }
 
 
+.card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-bottom-right-radius: 0px;
+}
+
 .discount-font {
     font-family: 'Rubik', sans-serif;
 }
@@ -21,6 +28,11 @@
 .heart-icon {
     transform: translateY(-2px);
 }
+
+.cart-icon {
+    transform: translateY(-2px);
+}
+
 
 .add-to-cart-buttons {
     width: 50%;
@@ -40,7 +52,7 @@
 
 .coupon-card{
     background: linear-gradient(135deg, #e2ec60, #b9b413);
-    color: #FFFF;
+    color: #2b2f3c;
     border-radius: 15px;
     position: relative;
 }
@@ -61,4 +73,9 @@
 
 .circle2{
     right: -25px;
+}
+
+.text-of-recommended-books {
+    color: #2b2f3c;
+    font-family: 'Open Sans', sans-serif;
 }

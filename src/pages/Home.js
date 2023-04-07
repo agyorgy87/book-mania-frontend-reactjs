@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { useContext } from 'react';
 import { BookContext } from "../context/BookContext.js";
 import { AiOutlineHeart } from "react-icons/ai";
+import { CgShoppingCart } from "react-icons/cg";
 import axios from "axios";
 
 const Home = () => {
@@ -49,9 +50,48 @@ const Home = () => {
                     <div className="circle2"></div>
                 </div>
             </div>
+          
+            <div className="cream-bg mt-5">
+                <div className="container">
+                    <div className="row g-3 justify-content-evenly">
+                        <div>
+                        <h1 className="ps-5 text-of-recommended-books">Newness</h1> 
+                        </div>
+                            { newness.map((book, index) => (
+                        <div className="col-lg-3">
+                            <div className="card">
+                                <div className="row g-0">
+                                    <div className="col-6 col-md-5">
+                                        <img 
+                                        src={"http://localhost:4000/books_img/" + book.img_directory + "/" + book.image} 
+                                        className="card-img img-fluid rounded-left" 
+                                        alt="book"/>
+                                    </div>
+                                    <div className="col-6 col-md-7">
+                                        <div className="card-body d-flex flex-column">
+                                            <div className="h-100">
+                                                <h6 className="card-title">{book.title}</h6>
+                                                <p className="card-text">{book.author_name}</p>
+                                                <h6 className="card-text"><strong>{book.price} $</strong></h6>
+                                            </div>
+                                            <div>
+                                                <button type="button" className="btn btn-primary">
+                                                < CgShoppingCart className="fs-5 me-2 cart-icon"/>
+                                                    Add To Cart</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                                ))
+                            }
+                    </div>
+                </div>
+            </div>                  
             <div>
                 <div className="d-flex flex-row"> 
-                    <h1 className="ps-5">Newness</h1>    
+                    <h1 className="ps-5 text-of-recommended-books">Newness</h1>    
                 </div> 
                 <div className="row"> 
                 {
@@ -107,10 +147,10 @@ const Home = () => {
                 <div> 
                     <h1 className="d-flex flex-row ps-5">From Tolkien's Pen</h1>    
                 </div> 
-                    <div className="d-flex justify-content-around ps-5 col-xl-">
+                    <div className="d-flex justify-content-around">
                         {
                             onlyTolkien.map((book, index) => (
-                                <div className="card mb-3 border-0 " style={{maxWidth: "100vh"}}>
+                                <div className="card mb-3 border-0 w-25" style={{maxWidth: "100vh"}}>
                                     <div className="row g-0">
                                         <div className="col-md-5">
                                             <img src={"http://localhost:4000/books_img/" + book.img_directory + "/" + book.image} className="img-fluid rounded-0" alt="..." style={{maxHeight: "100%"}}/>
