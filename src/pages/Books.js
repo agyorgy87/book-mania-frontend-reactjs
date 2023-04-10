@@ -88,6 +88,20 @@ const Books = () => {
         scrollToUp();
     }
 
+    const callSelectedReleaseDate = (value) => {
+        
+        let selectedOption = value.target.options[value.target.selectedIndex]
+        let selectedOptionMin = selectedOption.dataset.min
+        let selectedOptionMax = selectedOption.dataset.max
+        
+        if(selectedOptionMin !== undefined && selectedOptionMax !== undefined){
+            axios.get(`http://localhost:4000/get-all-by-release-date/${selectedOptionMin}/${selectedOptionMax}`)
+            .then((response) => {
+            setVisibleBooks(response.data);     
+            })    
+        }
+    }
+
     const specialSearch = (selectedSpecialSearch, selectedSpecialOrder) => {
         axios.get(`http://localhost:4000/get-all-by-special/${selectedSpecialSearch}/${selectedSpecialOrder}`)
             .then((response) => {
@@ -195,12 +209,12 @@ const Books = () => {
                         <option data-min="31" data-max="40">Between 31$ and 40$</option> 
                         <option data-min="41" data-max="99">Over 40$</option> 
                     </select>
-                    <select className="form-select" aria-label="Default select example">
+                    <select className="form-select" aria-label="Default select example" onChange={(e) => callSelectedReleaseDate(e)}>
                         <option selected>Release Date</option>
-                        <option value="before2000">Before 2000</option>
-                        <option value="between2001and2010">Between 2001 and 2010</option>
-                        <option value="between2011and2020">Between 2011 and 2020</option>
-                        <option value="after2020">After 2020</option>
+                        <option data-min="0" data-max="2000">Before 2000</option>
+                        <option data-min="2000" data-max="2010">Between 2000 and 2010</option>
+                        <option data-min="2010" data-max="2020">Between 2010 and 2020</option>
+                        <option data-min="2020" data-max="9999">After 2020</option>
                     </select>
                     <select className="form-select" aria-label="Default select example" onChange={(e) => selectedSpecialSearch(e)}>
                         <option selected>Special</option>
