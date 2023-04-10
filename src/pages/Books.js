@@ -125,10 +125,14 @@ const Books = () => {
     }
 
     const callPublisher = (publisherName) => {
+        if(publisherName === "allBooks"){
+            getAllBooks();
+        }else{
         axios.get(`http://localhost:4000/get-all-by-publishers/${publisherName}`)
             .then((response) => {
             setVisibleBooks(response.data);
-        })
+            })
+        }
         scrollToUp();
     }
 
@@ -220,17 +224,18 @@ const Books = () => {
                         <option selected>Special</option>
                         <option data-order-by="title_name" data-order="asc">ABC order</option>
                         <option data-order-by="number_of_page_name" data-order="asc">Number of pages in ascending order</option>
-                        <option data-order-by="price_name" data-order="asc">From the cheapest book0</option>
+                        <option data-order-by="price_name" data-order="asc">From the cheapest book</option>
                         <option data-order-by="price_name" data-order="desc">From the most expensive book</option>
                     </select>
-                    <select className="form-select" aria-label="Default select example">
-                        <option selected>Publishers</option>
-                        <option >Ad Astra</option>
-                        <option >Bestline</option>
-                        <option >Disciplina</option>
-                        <option >ComputerPanorama</option>
-                        <option >ComputerComplex</option>
-                    </select>
+                    <select className="form-select" aria-label="Default select example" onChange={(e) => callPublisher(e.target.value)}>
+                        <option selected>Categories</option>
+                        <option value="allBooks">All Books</option>
+                        {
+                            allPublisher.map((publisher, index) => (
+                                <option>{publisher.publisher_name}</option>
+                            ))
+                        }
+                    </select> 
                     </div>
                     <div className="row">
                         <div className="input-group col-md-4">
