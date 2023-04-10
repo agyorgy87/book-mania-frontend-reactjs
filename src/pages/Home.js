@@ -1,6 +1,7 @@
 import '../css/Home.css';
 import NavigationBar from '../components/NavigationBar.js';
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { useContext } from 'react';
 import { BookContext } from "../context/BookContext.js";
 import { AiOutlineHeart } from "react-icons/ai";
@@ -8,6 +9,8 @@ import { CgShoppingCart } from "react-icons/cg";
 import axios from "axios";
 
 const Home = () => {
+
+    let navigate = useNavigate();
 
     const bookDetails = useContext(BookContext);
 
@@ -56,25 +59,27 @@ const Home = () => {
                         <div>
                         <h1 className="ps-5 text-of-recommended-books">Newness</h1> 
                         </div>
-                            { newness.map((book, index) => (
+                            { newness.map((books, index) => (
                                 <div className="col-lg-3">
                                         {/*the cards are not same size*/}
                                         <div className="card">
                                             <div className="row g-0">
                                                 <div className="col-6 col-md-5">
                                                     <img 
-                                                    src={"http://localhost:4000/books_img/" + book.img_directory + "/" + book.image} 
+                                                    src={"http://localhost:4000/books_img/" + books.img_directory + "/" + books.image} 
                                                     className="card-img img-fluid" 
-                                                    alt="book"/>
+                                                    alt="book"
+                                                    onClick={() => {bookDetails.setValue(books); navigate("/selectedbook")}}
+                                                    />
                                                     {/*rounded-left - not working*/} 
                                                 </div>
                                                 <div className="col-6 col-md-7">
                                                     <div className="card-body d-flex flex-column">
                                                         {/*justify-content-between - not working*/}
                                                         <div className="h-100">
-                                                            <h6 className="card-title">{book.title}</h6>
-                                                            <p className="card-text">{book.author_name}</p>
-                                                            <h6 className="card-text"><strong>{book.price} $</strong></h6>
+                                                            <h6 className="card-title">{books.title}</h6>
+                                                            <p className="card-text">{books.author_name}</p>
+                                                            <h6 className="card-text"><strong>{books.price} $</strong></h6>
                                                         </div>
                                                         <div>
                                                             <button type="button" className="btn btn-primary">

@@ -19,6 +19,7 @@
     height: 100%;
     object-fit: cover;
     border-bottom-right-radius: 0px;
+    cursor: pointer;
 }
 
 .discount-font {
