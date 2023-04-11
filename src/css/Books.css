@@ -1,5 +1,5 @@
-.name-of-the-list {
-    color: #D6D5A8;
+.name-of-the-list .list-group-item.active {
+    background-color: black ;
 }
 
 .heart-icon {

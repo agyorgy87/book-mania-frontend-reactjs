@@ -151,9 +151,9 @@ const Books = () => {
                 <NavigationBar/>
             </div>
             <div className="search-site row">
-                <div className="search-lists-container w-25 h-100 ps-5">
+                <div className="search-lists-container w-25 h-100 ps-5 d-none d-sm-block">
                     <ul className="list-group mt-4">
-                        <li className="list-group-item active border-0 rounded name-of-the-list">Categories</li>
+                        <li className="list-group-item name-of-the-list active border-0 rounded ">Categories</li>
                         <li className="list-group-item list-group-item-action border-0" onClick={getAllBooks}>All</li> 
                         {
                             allGenre.map((genre, index) => (
@@ -195,52 +195,52 @@ const Books = () => {
                     </ul>
                 </div>
                 <div className="w-75 h-100">
-                    <div>
-                    <select className="form-select" aria-label="Default select example" onChange={(e) => callGenre(e.target.value)}>
-                        <option selected>Categories</option>
-                        <option value="allBooks">All Books</option>
-                        {
-                            allGenre.map((genre, index) => (
-                                <option>{genre.genre_type}</option>
-                            ))
-                        }
-                    </select> 
-                    <select className="form-select" aria-label="Default select example" onChange={(e) => callSelectedPrice(e)}>
-                        <option selected>Price</option>
-                        <option data-min="0" data-max="10">Under 10$</option>
-                        <option data-min="11" data-max="20">Between 11$ and 20$</option>
-                        <option data-min="21" data-max="30">Between 21$ and 30$</option>
-                        <option data-min="31" data-max="40">Between 31$ and 40$</option> 
-                        <option data-min="41" data-max="99">Over 40$</option> 
-                    </select>
-                    <select className="form-select" aria-label="Default select example" onChange={(e) => callSelectedReleaseDate(e)}>
-                        <option selected>Release Date</option>
-                        <option data-min="0" data-max="2000">Before 2000</option>
-                        <option data-min="2000" data-max="2010">Between 2000 and 2010</option>
-                        <option data-min="2010" data-max="2020">Between 2010 and 2020</option>
-                        <option data-min="2020" data-max="9999">After 2020</option>
-                    </select>
-                    <select className="form-select" aria-label="Default select example" onChange={(e) => selectedSpecialSearch(e)}>
-                        <option selected>Special</option>
-                        <option data-order-by="title_name" data-order="asc">ABC order</option>
-                        <option data-order-by="number_of_page_name" data-order="asc">Number of pages in ascending order</option>
-                        <option data-order-by="price_name" data-order="asc">From the cheapest book</option>
-                        <option data-order-by="price_name" data-order="desc">From the most expensive book</option>
-                    </select>
-                    <select className="form-select" aria-label="Default select example" onChange={(e) => callPublisher(e.target.value)}>
-                        <option selected>Categories</option>
-                        <option value="allBooks">All Books</option>
-                        {
-                            allPublisher.map((publisher, index) => (
-                                <option>{publisher.publisher_name}</option>
-                            ))
-                        }
-                    </select> 
+                    <div className="d-block d-sm-none">
+                        <select className="form-select" aria-label="Default select example" onChange={(e) => callGenre(e.target.value)}>
+                            <option selected>Categories</option>
+                            <option value="allBooks">All Books</option>
+                            {
+                                allGenre.map((genre, index) => (
+                                    <option>{genre.genre_type}</option>
+                                ))
+                            }
+                        </select> 
+                        <select className="form-select" aria-label="Default select example" onChange={(e) => callSelectedPrice(e)}>
+                            <option selected>Price</option>
+                            <option data-min="0" data-max="10">Under 10$</option>
+                            <option data-min="11" data-max="20">Between 11$ and 20$</option>
+                            <option data-min="21" data-max="30">Between 21$ and 30$</option>
+                            <option data-min="31" data-max="40">Between 31$ and 40$</option> 
+                            <option data-min="41" data-max="99">Over 40$</option> 
+                        </select>
+                        <select className="form-select" aria-label="Default select example" onChange={(e) => callSelectedReleaseDate(e)}>
+                            <option selected>Release Date</option>
+                            <option data-min="0" data-max="2000">Before 2000</option>
+                            <option data-min="2000" data-max="2010">Between 2000 and 2010</option>
+                            <option data-min="2010" data-max="2020">Between 2010 and 2020</option>
+                            <option data-min="2020" data-max="9999">After 2020</option>
+                        </select>
+                        <select className="form-select" aria-label="Default select example" onChange={(e) => selectedSpecialSearch(e)}>
+                            <option selected>Special</option>
+                            <option data-order-by="title_name" data-order="asc">ABC order</option>
+                            <option data-order-by="number_of_page_name" data-order="asc">Number of pages in ascending order</option>
+                            <option data-order-by="price_name" data-order="asc">From the cheapest book</option>
+                            <option data-order-by="price_name" data-order="desc">From the most expensive book</option>
+                        </select>
+                        <select className="form-select" aria-label="Default select example" onChange={(e) => callPublisher(e.target.value)}>
+                            <option selected>Categories</option>
+                            <option value="allBooks">All Books</option>
+                            {
+                                allPublisher.map((publisher, index) => (
+                                    <option>{publisher.publisher_name}</option>
+                                ))
+                            }
+                        </select> 
                     </div>
-                    <div className="row">
-                        <div className="input-group col-md-4">
+                    <div className="row d-flex">
+                        <div className="input-group mt-4 w-75">
                             <input 
-                            className="form-control py-2 border-right-0 border" 
+                            className="form-control" 
                             type="search" 
                             id="example-search-input"
                             onChange={(e) => callAllTitlesAndAuthors(e.target.value)}
@@ -248,6 +248,17 @@ const Books = () => {
                                 <button className="btn btn-outline-secondary border rounded-right" type="button">
                                     <i className="bi bi-search"></i>
                                 </button>
+                        </div>
+                        <div className="mt-4 w-25">
+                            <nav aria-label="Page navigation example">
+                                <ul class="pagination">
+                                    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                                </ul>
+                            </nav>
                         </div>
                     </div>            
                     <div className="d-flex justify-content-center ms-5 mt-5">   

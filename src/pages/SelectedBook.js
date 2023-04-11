@@ -1,3 +1,4 @@
+import "../css/SelectedBook.css";
 import React from 'react';
 import { useContext } from 'react';
 import { BookContext } from "../context/BookContext.js";
@@ -15,10 +16,14 @@ const SelectedBook = () => {
                 <NavigationBar/>
             </div> 
             <div>
-                <div className="mw-100" src={`${bookDetails.value.image_big}`}>
-                    
-                </div>
+                <img src={"http://localhost:4000/books_img" + bookDetails.value.image_big} alt="..." />          
             </div>
+            {bookDetails.value.title}<br></br>
+            {bookDetails.value.author_name}<br></br>
+            {bookDetails.value.publisher_name}<br></br>
+            {bookDetails.value.price}<br></br>
+            {bookDetails.value.release_date}<br></br>
+            {bookDetails.value.book_description}
         </div>
     )
 }
