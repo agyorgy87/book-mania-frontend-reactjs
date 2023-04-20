@@ -5,19 +5,3 @@
 .heart-icon {
     transform: translateY(-2px);
 }
-
-.add-to-cart-buttons {
-    width: 50%;
-    height: 2rem;
-    background-color: #7fc3e8;
-    border: none;
-    border-radius: 3px;
-    font-family: 'Open Sans', sans-serif;
-    font-weight: bold;
-}
-
-.add-to-cart-buttons:hover {
-    background-color: #27a2e4;;
-    transition: delay 0.3em;
-    font-family: 'Open Sans', sans-serif;
-}

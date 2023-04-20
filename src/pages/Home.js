@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useContext } from 'react';
 import { BookContext } from "../context/BookContext.js";
-import { AiOutlineHeart } from "react-icons/ai";
+//import { AiOutlineHeart } from "react-icons/ai";{/*<i class="bi bi-heart"></i> -> filled heart icon*/}  
 import { CgShoppingCart } from "react-icons/cg";
 import axios from "axios";
 
@@ -70,21 +70,20 @@ const Home = () => {
                                             </div>
                                             <div className="d-flex flex-column">                     
                                                 <div className="book-title-container">
-                                                    <h6 className="book-title">{books.title}</h6>
+                                                    <h6 className="book-title w-75">{books.title}</h6>
                                                 </div>
                                                 <div>
                                                     <div>
                                                         <p className="author-name">{books.author_name}</p>
                                                     </div>
                                                     <div>
-                                                        <h6 className="value-of-the-book">{books.price} $</h6>
+                                                        <h5 className="value-of-the-book">{books.price} $</h5>
                                                     </div>                                                     
                                                     <div>
-                                                        <button type="button" className="btn btn-primary">
-                                                            
-                                                                Add To Cart
+                                                        <button type="button" className="add-to-cart-buttons">                                                           
+                                                            Add To Cart
                                                                 <CgShoppingCart className="fs-5 ms-2 cart-icon"/>
-                                                                </button>
+                                                        </button>
                                                     </div>
                                                 </div>                                                                                              
                                             </div>           
@@ -92,10 +91,10 @@ const Home = () => {
                         ))
                     }
                 </div>
-            </div>{/*<i class="bi bi-heart"></i> -> filled heart icon*/}                 
+            </div>               
             <div className="container">
                 <div className="mb-3">
-                    <h1 className="text-of-recommended-books">From Tolkien's Pen</h1> 
+                    <h1 className="text-of-recommended-books">Tolkien's Pen</h1> 
                 </div>
                 <div className="row">
                     { onlyTolkien.map((books, index) => (
@@ -109,7 +108,7 @@ const Home = () => {
                                                 />                                        
                                             </div>
                                             <div className="d-flex flex-column">                     
-                                                <div className="book-title-container">
+                                                <div className="book-title-container w-75">
                                                     <h6 className="book-title">{books.title}</h6>
                                                 </div>
                                                 <div>
@@ -117,14 +116,13 @@ const Home = () => {
                                                         <p className="author-name">{books.author_name}</p>
                                                     </div>
                                                     <div>
-                                                        <h6 className="value-of-the-book">{books.price} $</h6>
+                                                        <h5 className="value-of-the-book">{books.price} $</h5>
                                                     </div>                                                     
                                                     <div>
-                                                        <button type="button" className="btn btn-primary">
-                                                            
+                                                        <button type="button" className="add-to-cart-buttons">                   
                                                                 Add To Cart
-                                                                <CgShoppingCart className="fs-5 ms-2 cart-icon"/>
-                                                                </button>
+                                                                    <CgShoppingCart className="fs-5 ms-2 cart-icon"/>
+                                                        </button>
                                                     </div>
                                                 </div>                                                                                              
                                             </div>           
@@ -135,7 +133,7 @@ const Home = () => {
             </div>
             <div className="container">
                 <div className="mb-3">
-                    <h1 className="text-of-recommended-books">From Computer Complex Publisher</h1> 
+                    <h1 className="text-of-recommended-books">Computer Complex Publisher</h1> 
                 </div>
                 <div className="row">
                     { onlyComputerComplex.map((books, index) => (
@@ -157,14 +155,13 @@ const Home = () => {
                                                         <p className="author-name">{books.author_name}</p>
                                                     </div>
                                                     <div>
-                                                        <h6 className="value-of-the-book">{books.price} $</h6>
+                                                        <h5 className="value-of-the-book">{books.price} $</h5>
                                                     </div>                                                     
                                                     <div>
-                                                        <button type="button" className="btn btn-primary">
-                                                            
-                                                                Add To Cart
+                                                        <button type="button" className="add-to-cart-buttons">                                        
+                                                            Add To Cart
                                                                 <CgShoppingCart className="fs-5 ms-2 cart-icon"/>
-                                                                </button>
+                                                        </button>
                                                     </div>
                                                 </div>                                                                                              
                                             </div>           
