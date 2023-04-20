@@ -42,7 +42,7 @@ const Home = () => {
             <div>
                 <NavigationBar/>
             </div>          
-            <div className="container mt-5 d-flex justify-content-center align-items-center">
+            <div className="container mt-5 mb-5 d-flex justify-content-center align-items-center">
                 <div className="coupon-card w-75 p-5 text-center shadow-sm">
                     <h1>50% COUPON DISCOUNT</h1>
                         <div>
@@ -52,109 +52,126 @@ const Home = () => {
                     <div className="circle1"></div>
                     <div className="circle2"></div>
                 </div>
-            </div> 
-            <div className="cream-bg mt-5">
-                <div className="container">
-                    <div className="row g-3 justify-content-evenly">
-                        <div>
-                        <h1 className="ps-5 text-of-recommended-books">Newness</h1> 
-                        </div>
-                            { newness.map((books, index) => (
-                                <div className="col-lg-3">
-                                        {/*the cards are not same size*/}
-                                        <div className="card">
-                                            <div className="row g-0">
-                                                <div className="col-6 col-md-5">
-                                                    <img 
-                                                    src={"http://localhost:4000/books_img/" + books.img_directory + "/" + books.image} 
-                                                    className="card-img img-fluid" 
-                                                    alt="book"
-                                                    onClick={() => {bookDetails.setValue(books); navigate("/selectedbook")}}
-                                                    />
-                                                    {/*rounded-left - not working*/} 
-                                                </div>
-                                                <div className="col-6 col-md-7">
-                                                    <div className="card-body d-flex flex-column">
-                                                        {/*justify-content-between - not working*/}
-                                                        <div className="h-100">
-                                                            <h6 className="card-title">{books.title}</h6>
-                                                            <p className="card-text">{books.author_name}</p>
-                                                            <h6 className="card-text"><strong>{books.price} $</strong></h6>
-                                                        </div>
-                                                        <div>
-                                                            <button type="button" className="btn btn-primary">
-                                                            < CgShoppingCart className="fs-5 me-2 cart-icon"/>
-                                                                Add To Cart</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                ))
-                            }
-                    </div>
-                </div>
-            </div>                  
-            <div className="row"> 
-                <div> 
-                    <h1 className="d-flex flex-row ps-5">From Tolkien's Pen</h1>    
-                </div> 
-                    <div className="d-flex justify-content-around">
-                        {
-                            onlyTolkien.map((book, index) => (
-                                <div className="card mb-3 border-0 w-25" style={{maxWidth: "100vh"}}>
-                                    <div className="row g-0">
-                                        <div className="col-md-5">
-                                            <img src={"http://localhost:4000/books_img/" + book.img_directory + "/" + book.image} className="img-fluid rounded-0" alt="..." style={{maxHeight: "100%"}}/>
-                                        </div>
-                                        <div className="col-md-7">
-                                            <div className="card-body pt-0">
-                                                <h5 className="card-text ">{book.title}</h5>
-                                                <p className="card-text">{book.author_name}</p>
-                                                <h4 className="card-text">{book.price} $</h4>Name
-                                            </div>
-                                            <div className="card-body">
-                                            <p><i className="bi bi-heart me-1"></i>Add To Wishlist</p>
-                                            {/*<i class="bi bi-heart"></i> -> filled heart icon*/}
-                                            <button type="button" className="add-to-cart-buttons">Add To Cart</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            ))
-                        }
-                    </div>
             </div>
-            <div className="row"> 
-                <div> 
-                    <h1 className="d-flex flex-row ps-5">From Computer Complex Publisher</h1>    
-                </div> 
-                    <div className="d-flex justify-content-around ps-5 col-xl-">
-                        {
-                            onlyComputerComplex.map((book, index) => (
-                                <div className="card mb-3 border-0 " style={{maxWidth: "100vh"}}>
-                                    <div className="row g-0">
-                                        <div className="col-md-5">
-                                            <img src={"http://localhost:4000/books_img/" + book.img_directory + "/" + book.image} className="img-fluid rounded-0" alt="..." style={{maxHeight: "100%"}}/>
-                                        </div>
-                                        <div className="col-md-7">
-                                            <div className="card-body pt-0">
-                                                <h5 className="card-text ">{book.title}</h5>
-                                                <p className="card-text">{book.author_name}</p>
-                                                <h4 className="card-text">{book.price} $</h4>
+            <div className="container">
+                <div className="mb-3">
+                    <h1 className="text-of-recommended-books">Newness</h1> 
+                </div>
+                <div className="row">
+                    { newness.map((books, index) => (
+                                        <div className="col-sm-6 col-md-6 col-lg-3 mb-5">{/*need a fix height*/}
+                                            <div className="mb-2">
+                                                <img 
+                                                src={"http://localhost:4000/books_img/" + books.img_directory + "/" + books.image}
+                                                className="img-fluid"                                             
+                                                onClick={() => {bookDetails.setValue(books); navigate("/selectedbook")}}
+                                                alt="book"
+                                                />                                        
                                             </div>
-                                            <div className="card-body">
-                                            <p><i className="bi bi-heart me-1"></i>Add To Wishlist</p>
-                                            {/*<i class="bi bi-heart"></i> -> filled heart icon*/}
-                                            <button type="button" className="add-to-cart-buttons">Add To Cart</button>
+                                            <div className="d-flex flex-column">                     
+                                                <div className="book-title-container">
+                                                    <h6 className="book-title">{books.title}</h6>
+                                                </div>
+                                                <div>
+                                                    <div>
+                                                        <p className="author-name">{books.author_name}</p>
+                                                    </div>
+                                                    <div>
+                                                        <h6 className="value-of-the-book">{books.price} $</h6>
+                                                    </div>                                                     
+                                                    <div>
+                                                        <button type="button" className="btn btn-primary">
+                                                            
+                                                                Add To Cart
+                                                                <CgShoppingCart className="fs-5 ms-2 cart-icon"/>
+                                                                </button>
+                                                    </div>
+                                                </div>                                                                                              
+                                            </div>           
+                                        </div>                                        
+                        ))
+                    }
+                </div>
+            </div>{/*<i class="bi bi-heart"></i> -> filled heart icon*/}                 
+            <div className="container">
+                <div className="mb-3">
+                    <h1 className="text-of-recommended-books">From Tolkien's Pen</h1> 
+                </div>
+                <div className="row">
+                    { onlyTolkien.map((books, index) => (
+                                        <div className="col-sm-6 col-md-6 col-lg-3 mb-5">{/*need a fix height*/}
+                                            <div className="mb-2">
+                                                <img 
+                                                src={"http://localhost:4000/books_img/" + books.img_directory + "/" + books.image}
+                                                className="img-fluid"                                             
+                                                onClick={() => {bookDetails.setValue(books); navigate("/selectedbook")}}
+                                                alt="book"
+                                                />                                        
                                             </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            ))
-                        }
-                    </div>
+                                            <div className="d-flex flex-column">                     
+                                                <div className="book-title-container">
+                                                    <h6 className="book-title">{books.title}</h6>
+                                                </div>
+                                                <div>
+                                                    <div>
+                                                        <p className="author-name">{books.author_name}</p>
+                                                    </div>
+                                                    <div>
+                                                        <h6 className="value-of-the-book">{books.price} $</h6>
+                                                    </div>                                                     
+                                                    <div>
+                                                        <button type="button" className="btn btn-primary">
+                                                            
+                                                                Add To Cart
+                                                                <CgShoppingCart className="fs-5 ms-2 cart-icon"/>
+                                                                </button>
+                                                    </div>
+                                                </div>                                                                                              
+                                            </div>           
+                                        </div>                                        
+                        ))
+                    }
+                </div>
+            </div>
+            <div className="container">
+                <div className="mb-3">
+                    <h1 className="text-of-recommended-books">From Computer Complex Publisher</h1> 
+                </div>
+                <div className="row">
+                    { onlyComputerComplex.map((books, index) => (
+                                        <div className="col-sm-6 col-md-6 col-lg-3 mb-5">{/*need a fix height*/}
+                                            <div className="mb-2 book-image-container">
+                                                <img 
+                                                src={"http://localhost:4000/books_img/" + books.img_directory + "/" + books.image}
+                                                className="img-fluid"                                             
+                                                onClick={() => {bookDetails.setValue(books); navigate("/selectedbook")}}
+                                                alt="book"
+                                                />                                        
+                                            </div>
+                                            <div className="d-flex flex-column">                     
+                                                <div className="book-title-container">
+                                                    <h6 className="book-title">{books.title}</h6>
+                                                </div>
+                                                <div>
+                                                    <div>
+                                                        <p className="author-name">{books.author_name}</p>
+                                                    </div>
+                                                    <div>
+                                                        <h6 className="value-of-the-book">{books.price} $</h6>
+                                                    </div>                                                     
+                                                    <div>
+                                                        <button type="button" className="btn btn-primary">
+                                                            
+                                                                Add To Cart
+                                                                <CgShoppingCart className="fs-5 ms-2 cart-icon"/>
+                                                                </button>
+                                                    </div>
+                                                </div>                                                                                              
+                                            </div>           
+                                        </div>                                        
+                        ))
+                    }
+                </div>
             </div>
         </div>
     );
@@ -162,3 +179,4 @@ const Home = () => {
 
 export default Home;
 
+//style={{ backgroundImage: `url('${"http://localhost:4000/books_img/" + books.img_directory + "/" + books.image}')`}}

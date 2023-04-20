@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+/*@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');*/
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Open+Sans:wght@300;400;500;600&display=swap');
+
 
 
 * {
@@ -10,45 +12,11 @@
 }
 
 .home-page {
-    background-color: #f4f4f4;
-}
-
-
-.card-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-bottom-right-radius: 0px;
-    cursor: pointer;
+    background-color: #e4e4e4;
 }
 
 .discount-font {
     font-family: 'Rubik', sans-serif;
-}
-
-.heart-icon {
-    transform: translateY(-2px);
-}
-
-.cart-icon {
-    transform: translateY(-2px);
-}
-
-
-.add-to-cart-buttons {
-    width: 50%;
-    height: 2rem;
-    background-color: #7fc3e8;
-    border: none;
-    border-radius: 3px;
-    font-family: 'Open Sans', sans-serif;
-    font-weight: bold;
-}
-
-.add-to-cart-buttons:hover {
-    background-color: #27a2e4;;
-    transition: delay 0.3em;
-    font-family: 'Open Sans', sans-serif;
 }
 
 .coupon-card{
@@ -59,7 +27,7 @@
 }
 
 .circle1, .circle2{
-    background: #f4f4f4;
+    background: #e4e4e4;
     width: 50px;
     height: 50px;
     border-radius: 50%;
@@ -78,5 +46,46 @@
 
 .text-of-recommended-books {
     color: #2b2f3c;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+}
+
+.book-title-container {
+    height: 70px;
+}
+
+.book-title {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 500;
+}
+
+.author-name {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    font-size: small;
+}
+
+.value-of-the-book {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+}
+
+.cart-icon {
+    transform: translateY(-2px);
+}
+
+.add-to-cart-buttons {
+    width: 50%;
+    height: 2rem;
+    background-color: #7fc3e8;
+    border: none;
+    border-radius: 3px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+}
+
+.add-to-cart-buttons:hover {
+    background-color: #27a2e4;;
+    transition: delay 0.3em;
     font-family: 'Open Sans', sans-serif;
 }
