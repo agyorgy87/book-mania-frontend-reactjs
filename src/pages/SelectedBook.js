@@ -15,7 +15,7 @@ const SelectedBook = () => {
             <div>
                 <NavigationBar/>
             </div> 
-            <div>
+            <div style={{}}>
                 <img src={"http://localhost:4000/books_img" + bookDetails.value.image_big} alt="..." />          
             </div>
             {bookDetails.value.title}<br></br>

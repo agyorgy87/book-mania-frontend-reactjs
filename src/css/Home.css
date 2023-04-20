@@ -51,7 +51,8 @@
 }
 
 .book-title-container {
-    height: 70px;
+    height: 55px;
+    width: 80%;
 }
 
 .book-title {
@@ -74,8 +75,8 @@
     transform: translateY(-2px);
 }
 
-.add-to-cart-buttons {
-    width: 60%;
+.home-add-to-cart-buttons {
+    width: 50%;
     height: 2.5rem;
     border: none;
     border-radius: 6px;
@@ -88,3 +89,27 @@
 .add-to-cart-buttons:hover {
     background-color: #4b4f5b;
 }
+
+
+@media (max-width:1400px) {
+    .home-add-to-cart-buttons {
+        width: 50%;
+    }
+}
+
+ 
+ @media (max-width:576px) {
+    .home-add-to-cart-buttons {
+        width: 80%;
+    }
+
+    .book-title-container {
+        height: 75px;
+        width: 90%;
+    }
+
+    .text-of-recommended-books {
+        font-size: 40px;
+    }
+}
+ 

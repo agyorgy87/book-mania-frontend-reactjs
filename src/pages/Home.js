@@ -59,7 +59,7 @@ const Home = () => {
                 </div>
                 <div className="row">
                     { newness.map((books, index) => (
-                                        <div className="col-sm-6 col-md-6 col-lg-3 mb-5">{/*need a fix height*/}
+                                        <div className="col-6 col-sm-6 col-md-6 col-lg-3 mb-5">{/*need a fix height*/}
                                             <div className="mb-2">
                                                 <img 
                                                 src={"http://localhost:4000/books_img/" + books.img_directory + "/" + books.image}
@@ -70,7 +70,7 @@ const Home = () => {
                                             </div>
                                             <div className="d-flex flex-column">                     
                                                 <div className="book-title-container">
-                                                    <h6 className="book-title w-75">{books.title}</h6>
+                                                    <h6 className="book-title">{books.title}</h6>
                                                 </div>
                                                 <div>
                                                     <div>
@@ -80,7 +80,7 @@ const Home = () => {
                                                         <h5 className="value-of-the-book">{books.price} $</h5>
                                                     </div>                                                     
                                                     <div>
-                                                        <button type="button" className="add-to-cart-buttons">                                                           
+                                                        <button type="button" className="home-add-to-cart-buttons">                                                           
                                                             Add To Cart
                                                                 <CgShoppingCart className="fs-5 ms-2 cart-icon"/>
                                                         </button>
@@ -98,7 +98,7 @@ const Home = () => {
                 </div>
                 <div className="row">
                     { onlyTolkien.map((books, index) => (
-                                        <div className="col-sm-6 col-md-6 col-lg-3 mb-5">{/*need a fix height*/}
+                                        <div className="col-6 col-sm-6 col-md-6 col-lg-3 mb-5">{/*need a fix height*/}
                                             <div className="mb-2">
                                                 <img 
                                                 src={"http://localhost:4000/books_img/" + books.img_directory + "/" + books.image}
@@ -108,7 +108,7 @@ const Home = () => {
                                                 />                                        
                                             </div>
                                             <div className="d-flex flex-column">                     
-                                                <div className="book-title-container w-75">
+                                                <div className="book-title-container">
                                                     <h6 className="book-title">{books.title}</h6>
                                                 </div>
                                                 <div>
@@ -119,7 +119,7 @@ const Home = () => {
                                                         <h5 className="value-of-the-book">{books.price} $</h5>
                                                     </div>                                                     
                                                     <div>
-                                                        <button type="button" className="add-to-cart-buttons">                   
+                                                        <button type="button" className="home-add-to-cart-buttons">                   
                                                                 Add To Cart
                                                                     <CgShoppingCart className="fs-5 ms-2 cart-icon"/>
                                                         </button>
@@ -137,7 +137,7 @@ const Home = () => {
                 </div>
                 <div className="row">
                     { onlyComputerComplex.map((books, index) => (
-                                        <div className="col-sm-6 col-md-6 col-lg-3 mb-5">{/*need a fix height*/}
+                                        <div className="col-6 col-sm-6 col-md-6 col-lg-3 mb-5">{/*need a fix height*/}
                                             <div className="mb-2 book-image-container">
                                                 <img 
                                                 src={"http://localhost:4000/books_img/" + books.img_directory + "/" + books.image}
@@ -158,7 +158,7 @@ const Home = () => {
                                                         <h5 className="value-of-the-book">{books.price} $</h5>
                                                     </div>                                                     
                                                     <div>
-                                                        <button type="button" className="add-to-cart-buttons">                                        
+                                                        <button type="button" className="home-add-to-cart-buttons">                                        
                                                             Add To Cart
                                                                 <CgShoppingCart className="fs-5 ms-2 cart-icon"/>
                                                         </button>
