@@ -151,7 +151,7 @@ const Books = () => {
                 <NavigationBar/>
             </div>
             <div className="search-site row">
-                <div className="search-lists-container w-25 h-100 ps-5 d-none d-sm-block">
+                <div className="search-lists-container w-25 h-100 ps-5 d-none d-sm-none d-md-none d-lg-block">
                     <ul className="list-group mt-4">
                         <li className="list-group-item name-of-the-list active border-0 rounded ">Categories</li>
                         <li className="list-group-item list-group-item-action border-0" onClick={getAllBooks}>All</li> 
@@ -163,7 +163,7 @@ const Books = () => {
                                              
                     </ul>
                     <ul className="list-group mt-4">
-                        <li className="list-group-item active border-0 rounded">Price</li>
+                        <li className="list-group-item name-of-the-list active border-0 rounded">Price</li>
                         <li className="list-group-item list-group-item-action border-0" onClick={() => callPrice(0, 10)}>Under 10$</li>
                         <li className="list-group-item list-group-item-action border-0" onClick={() => callPrice(11, 20)}>Between 11$ and 20$</li>
                         <li className="list-group-item list-group-item-action border-0" onClick={() => callPrice(21, 30)}>Between 21$ and 30$</li>
@@ -171,14 +171,14 @@ const Books = () => {
                                               
                     </ul>
                     <ul className="list-group mt-4">
-                        <li className="list-group-item active border-0 rounded">Release Date</li>
+                        <li className="list-group-item name-of-the-list active border-0 rounded">Release Date</li>
                         <li className="list-group-item list-group-item-action border-0" onClick={() => callReleaseDate(0, 2000)}>Before 2000</li>
                         <li className="list-group-item list-group-item-action border-0" onClick={() => callReleaseDate(2001, 2010)}>Between 2001 and 2010</li>
                         <li className="list-group-item list-group-item-action border-0" onClick={() => callReleaseDate(2011, 2020)}>Between 2011 and 2020</li>
                         <li className="list-group-item list-group-item-action border-0" onClick={() => callReleaseDate(2020, 9999)}>After 2020</li>                       
                     </ul>
                     <ul className="list-group mt-4">
-                        <li className="list-group-item active border-0 rounded">Special</li>
+                        <li className="list-group-item name-of-the-list active border-0 rounded">Special</li>
                         <li className="list-group-item list-group-item-action border-0" onClick={() => specialSearch("title_name", "asc")}>ABC order</li>
                         <li className="list-group-item list-group-item-action border-0" onClick={() => specialSearch("number_of_page_name", "asc")}>Number of pages in ascending order</li>                       
                         <li className="list-group-item list-group-item-action border-0" onClick={() => specialSearch("price_name", "asc")}>From the cheapest book</li>
@@ -186,7 +186,7 @@ const Books = () => {
                         
                     </ul>
                     <ul className="list-group mt-4">
-                        <li className="list-group-item active border-0 rounded">Publishers</li>
+                        <li className="list-group-item name-of-the-list active border-0 rounded">Publishers</li>
                         {
                             allPublisher.map((publisher, index) => (
                                 <li className="list-group-item list-group-item-action border-0" onClick={() => callPublisher(publisher.publisher_name)}>{publisher.publisher_name}</li>
@@ -195,15 +195,15 @@ const Books = () => {
                     </ul>
                 </div>
                 <div className="w-75 h-100">
-                    <div className="d-block d-sm-none">
+                    <div className="d-block d-lg-none">
                         <select className="form-select" aria-label="Default select example" onChange={(e) => callGenre(e.target.value)}>
                             <option selected>Categories</option>
                             <option value="allBooks">All Books</option>
-                            {
-                                allGenre.map((genre, index) => (
-                                    <option>{genre.genre_type}</option>
-                                ))
-                            }
+                                {
+                                    allGenre.map((genre, index) => (
+                                        <option>{genre.genre_type}</option>
+                                    ))
+                                }
                         </select> 
                         <select className="form-select" aria-label="Default select example" onChange={(e) => callSelectedPrice(e)}>
                             <option selected>Price</option>
@@ -249,6 +249,7 @@ const Books = () => {
                                     <i className="bi bi-search"></i>
                                 </button>
                         </div>
+                        {/*
                         <div className="mt-4 w-25">
                             <nav aria-label="Page navigation example">
                                 <ul class="pagination">
@@ -260,6 +261,7 @@ const Books = () => {
                                 </ul>
                             </nav>
                         </div>
+                        */}
                     </div>            
                     <div className="d-flex justify-content-center ms-5 mt-5">   
                         <div className="row"> 

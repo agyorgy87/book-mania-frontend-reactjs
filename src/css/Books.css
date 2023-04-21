@@ -1,5 +1,11 @@
-.name-of-the-list .list-group-item.active {
-    background-color: black ;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Open+Sans:wght@300;400;500;600&display=swap');
+
+.name-of-the-list {
+    background-color: #2b2f3c !important;
+}
+
+.list-group-item {
+    font-family: 'Open Sans', sans-serif;
 }
 
 .heart-icon {
