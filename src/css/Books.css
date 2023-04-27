@@ -1,13 +1,78 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Open+Sans:wght@300;400;500;600&display=swap');
 
+.book-page {
+    background-color: #e4e4e4;
+}
+
+.search-input {
+    background-color: #fbfbfb !important;
+}
+
+.search-input:focus {
+    box-shadow: none !important;
+    outline: none !important;
+    border-color: #ced4da !important;
+}
+
+.search-button {
+    background-color: #2b2f3c !important;
+}
+
+.bi {
+    color: #EEE9DA;
+}
+
+.search-button:hover {
+    background-color: #4b4f5b !important;
+}
+
 .name-of-the-list {
     background-color: #2b2f3c !important;
+}
+
+.options-for-filtering {
+    background-color: #e4e4e4 !important;
+}
+
+.options-for-filtering:hover{
+    color: #ffff !important;
+    background-color: #92939c !important;
+    border-radius: 5px;
 }
 
 .list-group-item {
     font-family: 'Open Sans', sans-serif;
 }
 
+.search-result-books {
+    color: #2b2f3c;
+    font-family: 'Open Sans', sans-serif; 
+}
+
+.book-add-to-cart-buttons {
+    width: 50%;
+    height: 2.5rem;
+    border: none;
+    border-radius: 6px;
+    background-color: #2b2f3c;
+    color: #EEE9DA;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+}
+
+.book-add-to-cart-buttons:hover {
+    background-color: #4b4f5b;
+}
+
+@media (max-width:992px) {
+    .book-add-to-cart-buttons {
+        width: 70%;
+    }
+}
+ 
+
+/*
 .heart-icon {
     transform: translateY(-2px);
 }
+*/

@@ -1,9 +1,17 @@
 import '../css/Books.css';
-import React, { useState, useEffect, useRef } from "react";
 import NavigationBar from '../components/NavigationBar.js';
+import React, { useState, useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
+import { useContext } from 'react';
+import { BookContext } from "../context/BookContext.js";
+import { CgShoppingCart } from "react-icons/cg";
 import axios from "axios";
 
 const Books = () => {
+
+    let navigate = useNavigate();
+
+    const bookDetails = useContext(BookContext);
 
     const allBooks = useRef([]);
     const [visibleBooks, setVisibleBooks] = useState([]);
@@ -146,7 +154,7 @@ const Books = () => {
     
     
     return(
-        <div>
+        <div className="book-page">
             <div>
                 <NavigationBar/>
             </div>
@@ -154,42 +162,42 @@ const Books = () => {
                 <div className="search-lists-container w-25 h-100 ps-5 d-none d-sm-none d-md-none d-lg-block">
                     <ul className="list-group mt-4">
                         <li className="list-group-item name-of-the-list active border-0 rounded ">Categories</li>
-                        <li className="list-group-item list-group-item-action border-0" onClick={getAllBooks}>All</li> 
+                        <li className="list-group-item list-group-item-action border-0 options-for-filtering" onClick={getAllBooks}>All</li> 
                         {
                             allGenre.map((genre, index) => (
-                                <li className="list-group-item list-group-item-action border-0" onClick={() => callGenre(genre.genre_type)}>{genre.genre_type}</li>
+                                <li className="list-group-item list-group-item-action border-0 options-for-filtering" onClick={() => callGenre(genre.genre_type)}>{genre.genre_type}</li>
                             ))
                         }
                                              
                     </ul>
                     <ul className="list-group mt-4">
                         <li className="list-group-item name-of-the-list active border-0 rounded">Price</li>
-                        <li className="list-group-item list-group-item-action border-0" onClick={() => callPrice(0, 10)}>Under 10$</li>
-                        <li className="list-group-item list-group-item-action border-0" onClick={() => callPrice(11, 20)}>Between 11$ and 20$</li>
-                        <li className="list-group-item list-group-item-action border-0" onClick={() => callPrice(21, 30)}>Between 21$ and 30$</li>
-                        <li className="list-group-item list-group-item-action border-0" onClick={() => callPrice(31, 9999)}>Over 31$</li>{/*külön apit csinálni*/}
+                        <li className="list-group-item list-group-item-action border-0 options-for-filtering" onClick={() => callPrice(0, 10)}>Under 10$</li>
+                        <li className="list-group-item list-group-item-action border-0 options-for-filtering" onClick={() => callPrice(11, 20)}>Between 11$ and 20$</li>
+                        <li className="list-group-item list-group-item-action border-0 options-for-filtering" onClick={() => callPrice(21, 30)}>Between 21$ and 30$</li>
+                        <li className="list-group-item list-group-item-action border-0 options-for-filtering" onClick={() => callPrice(31, 9999)}>Over 31$</li>{/*külön apit csinálni*/}
                                               
                     </ul>
                     <ul className="list-group mt-4">
                         <li className="list-group-item name-of-the-list active border-0 rounded">Release Date</li>
-                        <li className="list-group-item list-group-item-action border-0" onClick={() => callReleaseDate(0, 2000)}>Before 2000</li>
-                        <li className="list-group-item list-group-item-action border-0" onClick={() => callReleaseDate(2001, 2010)}>Between 2001 and 2010</li>
-                        <li className="list-group-item list-group-item-action border-0" onClick={() => callReleaseDate(2011, 2020)}>Between 2011 and 2020</li>
-                        <li className="list-group-item list-group-item-action border-0" onClick={() => callReleaseDate(2020, 9999)}>After 2020</li>                       
+                        <li className="list-group-item list-group-item-action border-0 options-for-filtering" onClick={() => callReleaseDate(0, 2000)}>Before 2000</li>
+                        <li className="list-group-item list-group-item-action border-0 options-for-filtering" onClick={() => callReleaseDate(2001, 2010)}>Between 2001 and 2010</li>
+                        <li className="list-group-item list-group-item-action border-0 options-for-filtering" onClick={() => callReleaseDate(2011, 2020)}>Between 2011 and 2020</li>
+                        <li className="list-group-item list-group-item-action border-0 options-for-filtering" onClick={() => callReleaseDate(2020, 9999)}>After 2020</li>                       
                     </ul>
                     <ul className="list-group mt-4">
                         <li className="list-group-item name-of-the-list active border-0 rounded">Special</li>
-                        <li className="list-group-item list-group-item-action border-0" onClick={() => specialSearch("title_name", "asc")}>ABC order</li>
-                        <li className="list-group-item list-group-item-action border-0" onClick={() => specialSearch("number_of_page_name", "asc")}>Number of pages in ascending order</li>                       
-                        <li className="list-group-item list-group-item-action border-0" onClick={() => specialSearch("price_name", "asc")}>From the cheapest book</li>
-                        <li className="list-group-item list-group-item-action border-0" onClick={() => specialSearch("price_name", "desc")}>From the most expensive book</li>
+                        <li className="list-group-item list-group-item-action border-0 options-for-filtering" onClick={() => specialSearch("title_name", "asc")}>ABC order</li>
+                        <li className="list-group-item list-group-item-action border-0 options-for-filtering" onClick={() => specialSearch("number_of_page_name", "asc")}>Number of pages in ascending order</li>                       
+                        <li className="list-group-item list-group-item-action border-0 options-for-filtering" onClick={() => specialSearch("price_name", "asc")}>From the cheapest book</li>
+                        <li className="list-group-item list-group-item-action border-0 options-for-filtering" onClick={() => specialSearch("price_name", "desc")}>From the most expensive book</li>
                         
                     </ul>
                     <ul className="list-group mt-4">
                         <li className="list-group-item name-of-the-list active border-0 rounded">Publishers</li>
                         {
                             allPublisher.map((publisher, index) => (
-                                <li className="list-group-item list-group-item-action border-0" onClick={() => callPublisher(publisher.publisher_name)}>{publisher.publisher_name}</li>
+                                <li className="list-group-item list-group-item-action border-0 options-for-filtering" onClick={() => callPublisher(publisher.publisher_name)}>{publisher.publisher_name}</li>
                             ))
                         }
                     </ul>
@@ -237,15 +245,15 @@ const Books = () => {
                             }
                         </select> 
                     </div>
-                    <div className="row d-flex">
+                    <div className="row d-flex justify-content-center mb-5">
                         <div className="input-group mt-4 w-75">
                             <input 
-                            className="form-control" 
+                            className="form-control search-input" 
                             type="search" 
                             id="example-search-input"
                             onChange={(e) => callAllTitlesAndAuthors(e.target.value)}
                             />
-                                <button className="btn btn-outline-secondary border rounded-right" type="button">
+                                <button className="btn btn-lg btn-outline-secondary border rounded-right outline-none search-button" type="button">
                                     <i className="bi bi-search"></i>
                                 </button>
                         </div>
@@ -263,34 +271,45 @@ const Books = () => {
                         </div>
                         */}
                     </div>            
-                    <div className="d-flex justify-content-center ms-5 mt-5">   
+                    <div className="container">   
                         <div className="row"> 
-                            <div>    
-                            Search result:
+                            <div className="mb-3">    
+                                <h1 className="search-result-books display-6 d-flex">Search result:</h1>             
                             </div> 
-                                {
-                                    visibleBooks.map((book, index) => (
-                                        <div className="card mb-3 me-1 border-0 " style={{maxWidth: "400px"}}>
-                                            <div className="row g-0">
-                                                <div className="col-md-5">
-                                                    <img src={"http://localhost:4000/books_img/" + book.img_directory + "/" + book.image} className="img-fluid rounded-0" alt="..." style={{maxHeight: "100%"}}/>
-                                                </div>
-                                                <div className="col-md-7">
-                                                    <div className="card-body pt-0">
-                                                        <h5 className="card-text ">{book.title}</h5>
-                                                        <p className="card-text">{book.author_name}</p>
-                                                        <h4 className="card-text">{book.price} $</h4>
-                                                    </div>
-                                                    <div className="card-body">
-                                                        <p><i className="bi bi-heart me-1"></i>Add To Wishlist</p>
-                                                        {/*<i class="bi bi-heart"></i> -> filled heart icon*/}
-                                                        <button type="button" className="add-to-cart-buttons">Add To Cart</button>
-                                                    </div>
-                                                </div>
-                                            </div>
+                            <div className="row">
+                                { visibleBooks.map((books, index) => (
+                                    <div className="col-6 col-sm-6 col-md-4 col-lg-4 col-xl-3 mb-5">{/*need a fix height*/}
+                                        <div className="mb-2">
+                                            <img 
+                                                src={"http://localhost:4000/books_img/" + books.img_directory + "/" + books.image}
+                                                className="img-fluid"                                             
+                                                onClick={() => {bookDetails.setValue(books); navigate("/selectedbook")}}
+                                                alt="book"
+                                                />                                        
                                         </div>
-                                    ))
+                                        <div className="d-flex flex-column">                     
+                                            <div className="book-title-container">
+                                                <h6 className="book-title">{books.title}</h6>
+                                            </div>
+                                            <div>
+                                                <div>
+                                                    <p className="author-name">{books.author_name}</p>
+                                                </div>
+                                                <div>
+                                                    <h5 className="value-of-the-book">{books.price} $</h5>
+                                                </div>                                                     
+                                                <div>
+                                                    <button type="button" className="book-add-to-cart-buttons">                                                           
+                                                        Add To Cart
+                                                            <CgShoppingCart className="fs-5 ms-2 cart-icon"/>
+                                                    </button>
+                                                </div>
+                                            </div>                                                                                              
+                                        </div>           
+                                    </div>                                        
+                                ))
                                 }
+                            </div>
                         </div> 
                     </div>                       
                 </div>
@@ -300,3 +319,4 @@ const Books = () => {
 }
 
 export default Books;
+{/*d-flex justify-content-center ms-5 mt-5*/}
