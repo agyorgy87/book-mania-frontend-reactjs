@@ -3,7 +3,11 @@
 .book-page {
     background-color: #e4e4e4;
 }
-
+/*
+.side-bar {
+    margin
+}
+*/
 .search-input {
     background-color: #fbfbfb !important;
 }
@@ -50,7 +54,7 @@
 }
 
 .book-add-to-cart-buttons {
-    width: 50%;
+    width: 70%;
     height: 2.5rem;
     border: none;
     border-radius: 6px;
@@ -62,6 +66,12 @@
 
 .book-add-to-cart-buttons:hover {
     background-color: #4b4f5b;
+}
+
+@media (max-width:1400px) {
+    .book-add-to-cart-buttons {
+        width: 80%;
+    }
 }
 
 @media (max-width:992px) {

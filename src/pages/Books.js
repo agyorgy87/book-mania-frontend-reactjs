@@ -158,51 +158,52 @@ const Books = () => {
             <div>
                 <NavigationBar/>
             </div>
-            <div className="search-site row">
-                <div className="search-lists-container w-25 h-100 ps-5 d-none d-sm-none d-md-none d-lg-block">
-                    <ul className="list-group mt-4">
-                        <li className="list-group-item name-of-the-list active border-0 rounded ">Categories</li>
-                        <li className="list-group-item list-group-item-action border-0 options-for-filtering" onClick={getAllBooks}>All</li> 
-                        {
-                            allGenre.map((genre, index) => (
-                                <li className="list-group-item list-group-item-action border-0 options-for-filtering" onClick={() => callGenre(genre.genre_type)}>{genre.genre_type}</li>
-                            ))
-                        }
-                                             
-                    </ul>
-                    <ul className="list-group mt-4">
-                        <li className="list-group-item name-of-the-list active border-0 rounded">Price</li>
-                        <li className="list-group-item list-group-item-action border-0 options-for-filtering" onClick={() => callPrice(0, 10)}>Under 10$</li>
-                        <li className="list-group-item list-group-item-action border-0 options-for-filtering" onClick={() => callPrice(11, 20)}>Between 11$ and 20$</li>
-                        <li className="list-group-item list-group-item-action border-0 options-for-filtering" onClick={() => callPrice(21, 30)}>Between 21$ and 30$</li>
-                        <li className="list-group-item list-group-item-action border-0 options-for-filtering" onClick={() => callPrice(31, 9999)}>Over 31$</li>{/*külön apit csinálni*/}
-                                              
-                    </ul>
-                    <ul className="list-group mt-4">
-                        <li className="list-group-item name-of-the-list active border-0 rounded">Release Date</li>
-                        <li className="list-group-item list-group-item-action border-0 options-for-filtering" onClick={() => callReleaseDate(0, 2000)}>Before 2000</li>
-                        <li className="list-group-item list-group-item-action border-0 options-for-filtering" onClick={() => callReleaseDate(2001, 2010)}>Between 2001 and 2010</li>
-                        <li className="list-group-item list-group-item-action border-0 options-for-filtering" onClick={() => callReleaseDate(2011, 2020)}>Between 2011 and 2020</li>
-                        <li className="list-group-item list-group-item-action border-0 options-for-filtering" onClick={() => callReleaseDate(2020, 9999)}>After 2020</li>                       
-                    </ul>
-                    <ul className="list-group mt-4">
-                        <li className="list-group-item name-of-the-list active border-0 rounded">Special</li>
-                        <li className="list-group-item list-group-item-action border-0 options-for-filtering" onClick={() => specialSearch("title_name", "asc")}>ABC order</li>
-                        <li className="list-group-item list-group-item-action border-0 options-for-filtering" onClick={() => specialSearch("number_of_page_name", "asc")}>Number of pages in ascending order</li>                       
-                        <li className="list-group-item list-group-item-action border-0 options-for-filtering" onClick={() => specialSearch("price_name", "asc")}>From the cheapest book</li>
-                        <li className="list-group-item list-group-item-action border-0 options-for-filtering" onClick={() => specialSearch("price_name", "desc")}>From the most expensive book</li>
-                        
-                    </ul>
-                    <ul className="list-group mt-4">
-                        <li className="list-group-item name-of-the-list active border-0 rounded">Publishers</li>
-                        {
-                            allPublisher.map((publisher, index) => (
-                                <li className="list-group-item list-group-item-action border-0 options-for-filtering" onClick={() => callPublisher(publisher.publisher_name)}>{publisher.publisher_name}</li>
-                            ))
-                        }
-                    </ul>
-                </div>
-                <div className="w-75 h-100">
+            <div className="container-fluid">
+            <div className="row">
+                    <div className="col-lg-3 col-xl-3 col-xxl-2 side-bar d-none d-sm-none d-md-none d-lg-block">
+                        <ul className="list-group mt-4">
+                            <li className="list-group-item name-of-the-list active border-0 rounded ">Categories</li>
+                            <li className="list-group-item list-group-item-action border-0 options-for-filtering" onClick={getAllBooks}>All</li> 
+                            {
+                                allGenre.map((genre, index) => (
+                                    <li className="list-group-item list-group-item-action border-0 options-for-filtering" onClick={() => callGenre(genre.genre_type)}>{genre.genre_type}</li>
+                                ))
+                            }
+                                                
+                        </ul>
+                        <ul className="list-group mt-4">
+                            <li className="list-group-item name-of-the-list active border-0 rounded">Price</li>
+                            <li className="list-group-item list-group-item-action border-0 options-for-filtering" onClick={() => callPrice(0, 10)}>Under 10$</li>
+                            <li className="list-group-item list-group-item-action border-0 options-for-filtering" onClick={() => callPrice(11, 20)}>Between 11$ and 20$</li>
+                            <li className="list-group-item list-group-item-action border-0 options-for-filtering" onClick={() => callPrice(21, 30)}>Between 21$ and 30$</li>
+                            <li className="list-group-item list-group-item-action border-0 options-for-filtering" onClick={() => callPrice(31, 9999)}>Over 31$</li>{/*külön apit csinálni*/}
+                                                
+                        </ul>
+                        <ul className="list-group mt-4">
+                            <li className="list-group-item name-of-the-list active border-0 rounded">Release Date</li>
+                            <li className="list-group-item list-group-item-action border-0 options-for-filtering" onClick={() => callReleaseDate(0, 2000)}>Before 2000</li>
+                            <li className="list-group-item list-group-item-action border-0 options-for-filtering" onClick={() => callReleaseDate(2001, 2010)}>Between 2001 and 2010</li>
+                            <li className="list-group-item list-group-item-action border-0 options-for-filtering" onClick={() => callReleaseDate(2011, 2020)}>Between 2011 and 2020</li>
+                            <li className="list-group-item list-group-item-action border-0 options-for-filtering" onClick={() => callReleaseDate(2020, 9999)}>After 2020</li>                       
+                        </ul>
+                        <ul className="list-group mt-4">
+                            <li className="list-group-item name-of-the-list active border-0 rounded">Special</li>
+                            <li className="list-group-item list-group-item-action border-0 options-for-filtering" onClick={() => specialSearch("title_name", "asc")}>ABC order</li>
+                            <li className="list-group-item list-group-item-action border-0 options-for-filtering" onClick={() => specialSearch("number_of_page_name", "asc")}>Number of pages in ascending order</li>                       
+                            <li className="list-group-item list-group-item-action border-0 options-for-filtering" onClick={() => specialSearch("price_name", "asc")}>From the cheapest book</li>
+                            <li className="list-group-item list-group-item-action border-0 options-for-filtering" onClick={() => specialSearch("price_name", "desc")}>From the most expensive book</li>
+                            
+                        </ul>
+                        <ul className="list-group mt-4">
+                            <li className="list-group-item name-of-the-list active border-0 rounded">Publishers</li>
+                            {
+                                allPublisher.map((publisher, index) => (
+                                    <li className="list-group-item list-group-item-action border-0 options-for-filtering" onClick={() => callPublisher(publisher.publisher_name)}>{publisher.publisher_name}</li>
+                                ))
+                            }
+                        </ul>
+                    </div>
+                <div className="col-lg-9 col-xl-9 col-xxl-10">
                     <div className="d-block d-lg-none">
                         <select className="form-select" aria-label="Default select example" onChange={(e) => callGenre(e.target.value)}>
                             <option selected>Categories</option>
@@ -245,8 +246,8 @@ const Books = () => {
                             }
                         </select> 
                     </div>
-                    <div className="row d-flex justify-content-center mb-5">
-                        <div className="input-group mt-4 w-75">
+                    <div className="row d-flex justify-content-center mb-5 mt-4">
+                        <div className="input-group mt-4 w-75 search-input-container">
                             <input 
                             className="form-control search-input" 
                             type="search" 
@@ -256,20 +257,7 @@ const Books = () => {
                                 <button className="btn btn-lg btn-outline-secondary border rounded-right outline-none search-button" type="button">
                                     <i className="bi bi-search"></i>
                                 </button>
-                        </div>
-                        {/*
-                        <div className="mt-4 w-25">
-                            <nav aria-label="Page navigation example">
-                                <ul class="pagination">
-                                    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                                </ul>
-                            </nav>
-                        </div>
-                        */}
+                        </div>                       
                     </div>            
                     <div className="container">   
                         <div className="row"> 
@@ -278,7 +266,7 @@ const Books = () => {
                             </div> 
                             <div className="row">
                                 { visibleBooks.map((books, index) => (
-                                    <div className="col-6 col-sm-6 col-md-4 col-lg-4 col-xl-3 mb-5">{/*need a fix height*/}
+                                    <div className="col-6 col-sm-6 col-md-4 col-lg-4 col-xl-3 mb-5 col-xl-ps-5">{/*need a fix height*/}
                                         <div className="mb-2">
                                             <img 
                                                 src={"http://localhost:4000/books_img/" + books.img_directory + "/" + books.image}
@@ -313,10 +301,25 @@ const Books = () => {
                         </div> 
                     </div>                       
                 </div>
-            </div>         
+            </div> 
+        </div>     
     </div>   
     )
 }
 
 export default Books;
 {/*d-flex justify-content-center ms-5 mt-5*/}
+
+{/*
+                        <div className="mt-4 w-25">
+                            <nav aria-label="Page navigation example">
+                                <ul class="pagination">
+                                    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                        */}
