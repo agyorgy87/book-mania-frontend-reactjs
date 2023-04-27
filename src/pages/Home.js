@@ -14,7 +14,7 @@ const Home = () => {
 
     const bookDetails = useContext(BookContext);
 
-    const [newness, setNewness] = useState([]);
+    const [newness, setNewness] = useState([]); 
     const [onlyTolkien, setOnlyTolkien] = useState([]);
     const [onlyComputerComplex, setOnlyComputerComplex] = useState([]);
 
