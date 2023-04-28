@@ -8,14 +8,32 @@ import CreateAccount from "./pages/CreateAccount.js";
 import SuccessfulRegistration from "./pages/SuccessfulRegistration.js"
 import SelectedBook from "./pages/SelectedBook.js"
 import { BookContext } from "./context/BookContext.js";
+import { UserContext } from "./context/UserContext.js"
 
 const Navigation = () => {
 
-    const [bookData, setBookData] = useState([])
+    let userDetails = localStorage.getItem("token")
+    console.log(userDetails);
+
+    let obj;
+
+    if(userDetails === null) {
+        obj = {};
+    }else{
+        obj = JSON.parse(userDetails);
+        let currentDate = Math.floor(Date.now() / 1000)
+        if(currentDate < obj.expireDate === false) {
+            obj = {};
+        }
+    }
+
+    const [bookData, setBookData] = useState([]);
+    const [userData, setUserData] = useState(obj);
 
     return(
         <div>
             <BookContext.Provider value={{value:bookData, setValue:setBookData}}>
+                <UserContext.Provider value={{value:userData, setValue:setUserData}}>
                 <BrowserRouter>
                     <Routes>
                         <Route path="/" element={<Home/>} />
@@ -27,6 +45,7 @@ const Navigation = () => {
                         <Route path="/selectedbook" element={<SelectedBook/>} />
                     </Routes>
                 </BrowserRouter>
+                </UserContext.Provider>
             </BookContext.Provider>
         </div>
     )

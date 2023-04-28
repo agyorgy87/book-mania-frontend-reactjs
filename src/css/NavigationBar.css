@@ -4,6 +4,8 @@
 .navbar {
     /*background-color: #6096B4;*/
     background-color: #2b2f3c;
+    position: sticky !important;
+    top: 0 !important;
 }
 
 .name-of-the-website {

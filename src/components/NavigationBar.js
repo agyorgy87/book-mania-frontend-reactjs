@@ -3,11 +3,20 @@ import "../css/NavigationBar.css";
 import { useNavigate } from "react-router-dom";
 import {ImBooks} from "react-icons/im";
 import { CgShoppingCart } from "react-icons/cg";
+import { useContext } from 'react';
+import { UserContext } from "../context/UserContext.js";
 
 
 const NavigationBar = () => {
 
     let navigate = useNavigate();
+
+    const userData = useContext(UserContext);
+
+    const logout = () => {
+        userData.setValue({});
+        localStorage.removeItem("token")
+    }
 
     return (  
         <div>
@@ -37,12 +46,24 @@ const NavigationBar = () => {
                 </div>
                 <div className="collapse navbar-collapse" id="navbarNav">
                     <ul className="navbar-nav ms-auto">
-                        <li className="nav-item navigation-menus">
-                            <a className="nav-link fs-4" href="#" style={{ color: "#EEE9DA"}}>Hi, Name </a>       
-                        </li>
-                        <li className="nav-item navigation-menus">
-                            <a className="nav-link fs-4" href="#" style={{ color: "#EEE9DA"}} onClick={() => {navigate("/login")}}>LOGIN</a>
-                        </li>
+                        {
+                            userData.value.jwt ? 
+                            <li className="nav-item navigation-menus">
+                                <a className="nav-link fs-4" href="#" style={{ color: "#EEE9DA"}}>Hi, {userData.value.firstName} </a>      
+                            </li>
+                            :
+                            null
+                        }
+                        {
+                            userData.value.jwt ?
+                            <li className="nav-item navigation-menus">
+                                <a className="nav-link fs-4" href="#" style={{ color: "#EEE9DA"}} onClick={logout}>LOG OUT</a>
+                            </li>
+                            :
+                            <li className="nav-item navigation-menus">
+                                <a className="nav-link fs-4" href="#" style={{ color: "#EEE9DA"}} onClick={() => {navigate("/login")}}>LOGIN</a>
+                            </li>
+                        }
                         <li className="nav-item navigation-menus">
                             <a className="nav-link" href="#" style={{ color: "#EEE9DA"}}>< CgShoppingCart className="fs-2"/></a>
                         </li>

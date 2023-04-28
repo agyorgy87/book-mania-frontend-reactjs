@@ -2,11 +2,15 @@ import '../css/Login.css';
 import React, {useState}  from 'react';
 import NavigationBar from '../components/NavigationBar.js';
 import { useNavigate } from "react-router-dom";
+import { useContext } from 'react';
+import { UserContext } from "../context/UserContext.js";
 import axios from "axios";
 
 const Login = () => {
 
     let navigate = useNavigate();
+
+    const userData = useContext(UserContext);
 
     const [userEmail, setUserEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -18,13 +22,13 @@ const Login = () => {
         }
         axios.post("http://localhost:4000/auth", userObj)
             .then(response => {
-                let stringifiedUser = JSON.stringify(response.data.jwt);
-                localStorage.setItem("token", stringifiedUser);
-                console.log(response);
+                let stringifiedToken = JSON.stringify(response.data);
+                localStorage.setItem("token", stringifiedToken);
+                //console.log(response.data)
+                userData.setValue(response.data)
                 /*navigate("/")*/
-        })
-     
-    }
+            })
+        }
 
     return (
         <div>
