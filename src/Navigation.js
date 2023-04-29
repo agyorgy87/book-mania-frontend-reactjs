@@ -6,9 +6,11 @@ import Contact from "./pages/Contact.js";
 import Login from "./pages/Login.js";
 import CreateAccount from "./pages/CreateAccount.js";
 import SuccessfulRegistration from "./pages/SuccessfulRegistration.js"
-import SelectedBook from "./pages/SelectedBook.js"
+import SelectedBook from "./pages/SelectedBook.js";
+import WishList from "./pages/WishList.js";
+import Cart from "./pages/Cart.js";
 import { BookContext } from "./context/BookContext.js";
-import { UserContext } from "./context/UserContext.js"
+import { UserContext } from "./context/UserContext.js";
 
 const Navigation = () => {
 
@@ -43,6 +45,8 @@ const Navigation = () => {
                         <Route path="/createaccount" element={<CreateAccount/>} />
                         <Route path="/successfulregistration" element={<SuccessfulRegistration/>} />
                         <Route path="/selectedbook" element={<SelectedBook/>} />
+                        <Route path="/wishlist" element={<WishList/>} />
+                        <Route path="/cart" element={<Cart/>} />
                     </Routes>
                 </BrowserRouter>
                 </UserContext.Provider>

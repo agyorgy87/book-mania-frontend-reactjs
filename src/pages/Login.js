@@ -26,7 +26,7 @@ const Login = () => {
                 localStorage.setItem("token", stringifiedToken);
                 //console.log(response.data)
                 userData.setValue(response.data)
-                /*navigate("/")*/
+                navigate("/")
             })
         }
 

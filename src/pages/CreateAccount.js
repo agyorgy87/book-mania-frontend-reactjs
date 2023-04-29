@@ -204,7 +204,7 @@ const CreateAccount = () => {
                                             </div>
                                         </div>
                                         <div className="d-flex justify-content-center my-3">
-                                            <button type="submit" className="btn btn-primary" >Registration</button>
+                                            <button type="submit" className="btn btn-primary">Registration</button>
                                         </div>                                           
                                     </div>
                                 </form>
