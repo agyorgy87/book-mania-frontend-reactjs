@@ -1,10 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import "../css/NavigationBar.css";
 import {ImBooks} from "react-icons/im";
 import { CgShoppingCart } from "react-icons/cg";
 import { useContext } from 'react';
 import { UserContext } from "../context/UserContext.js";
-import { Link } from "react-router-dom";
 
 
 const NavigationBar = () => {
@@ -23,7 +23,10 @@ const NavigationBar = () => {
                     <Link to={"/"} className="navbar-brand pt-3 ps-3">                    
                         <p className="name-of-the-website">BOOK MANIA</p> 
                         <ImBooks className="ms-2 icon"/>
-                    </Link>            
+                    </Link>  
+                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span className="navbar-toggler-icon"></span>
+                    </button>          
                     <div className="collapse navbar-collapse" id="navbarNav">
                         <ul className="navbar-nav ms-auto">
                             <li className="nav-item navigation-menus">
@@ -66,6 +69,5 @@ const NavigationBar = () => {
             </nav>
         </div>
     )
-}
-
+    }
 export default NavigationBar;

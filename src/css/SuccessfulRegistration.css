@@ -1,4 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;&display=swap');
+
+.successful-registration-page {
+  height: 100vh;
+  background-color: #e4e4e4
+}
 
 .svg {
   display: block;
@@ -25,18 +30,5 @@
 
 .registration-text {
     font-family: 'Raleway', sans-serif;
+    font-weight: 300;
 }
-/*
-.login-button {
-    
-}
-*/
-
-/*
-body {
-  background-color: #64DFDF;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-}*/

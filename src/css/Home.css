@@ -12,7 +12,7 @@
 }
 
 .home-page {
-    background-color: #e4e4e4;
+    background-color: #F1F6F9;
 }
 
 .discount-font {
@@ -20,14 +20,14 @@
 }
 
 .coupon-card{
-    background: linear-gradient(135deg, #e2ec60, #b9b413);
+    background: linear-gradient(135deg, #eef767, #CAC531);
     color: #2b2f3c;
     border-radius: 15px;
     position: relative;
 }
 
 .circle1, .circle2{
-    background: #e4e4e4;
+    background: #F1F6F9;
     width: 50px;
     height: 50px;
     border-radius: 50%;
@@ -76,24 +76,24 @@
 }
 
 .home-add-to-cart-buttons {
-    width: 50%;
+    width: 55%;
     height: 2.5rem;
     border: none;
     border-radius: 6px;
-    background-color: #2b2f3c;
+    background-color: #30475f;
     color: #EEE9DA;
     font-family: 'Open Sans', sans-serif;
     font-weight: 400;
 }
 
 .home-add-to-cart-buttons:hover {
-    background-color: #4b4f5b;
+    background-color: #212A3E;
 }
 
 
-@media (max-width:1400px) {
+@media (max-width:1200px) {
     .home-add-to-cart-buttons {
-        width: 70%;
+        width: 65%;
     }
 }
 
@@ -102,10 +102,16 @@
         width: 45%;
     }
 }
- 
- @media (max-width:576px) {
+
+@media (max-width:786px) {
     .home-add-to-cart-buttons {
-        width: 80%;
+        width: 60%;
+    }
+}
+ 
+@media (max-width:576px) {
+    .home-add-to-cart-buttons {
+        width: 70%;
     }
 
     .book-title-container {
@@ -115,6 +121,18 @@
 
     .text-of-recommended-books {
         font-size: 40px;
+    }
+}
+
+@media (max-width:465px) {
+    .home-add-to-cart-buttons {
+        width: 80%;
+    }
+}
+
+@media (max-width:365px) {
+    .home-add-to-cart-buttons {
+        width: 90%;
     }
 }
  

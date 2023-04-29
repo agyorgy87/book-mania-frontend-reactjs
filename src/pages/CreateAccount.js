@@ -30,7 +30,7 @@ const CreateAccount = () => {
                 pass: values.password
             }
             axios.post("http://localhost:4000/register", user)
-            navigate("/succesfulregistration")
+            navigate("/successfulregistration")
         }     
     },[errors])
 
