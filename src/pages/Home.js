@@ -39,7 +39,7 @@ const Home = () => {
 
     return (
         <div className="home-page">
-            <div>
+            <div className="fixed-top">
                 <NavigationBar/>
             </div>          
             <div className="container mt-5 mb-5 d-flex justify-content-center align-items-center">

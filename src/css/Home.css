@@ -12,7 +12,8 @@
 }
 
 .home-page {
-    background-color: #F1F6F9;
+    padding-top: 100px;
+    background-color: #F1F6F9 !important;
 }
 
 .discount-font {

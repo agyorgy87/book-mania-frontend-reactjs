@@ -155,7 +155,7 @@ const Books = () => {
     
     return(
         <div className="book-page">
-            <div>
+            <div className="fixed-top">
                 <NavigationBar/>
             </div>
             <div className="container-fluid">
@@ -204,8 +204,8 @@ const Books = () => {
                         </ul>
                     </div>
                 <div className="col-lg-9 col-xl-9 col-xxl-10">
-                    <div className="d-block d-lg-none">
-                        <select className="form-select" aria-label="Default select example" onChange={(e) => callGenre(e.target.value)}>
+                    <div className="d-block d-lg-none d-flex flex-column align-items-center">
+                        <select className="form-select mb-3" aria-label="Default select example" onChange={(e) => callGenre(e.target.value)}>
                             <option selected>Categories</option>
                             <option value="allBooks">All Books</option>
                                 {
@@ -214,7 +214,7 @@ const Books = () => {
                                     ))
                                 }
                         </select> 
-                        <select className="form-select" aria-label="Default select example" onChange={(e) => callSelectedPrice(e)}>
+                        <select className="form-select mb-3" aria-label="Default select example" onChange={(e) => callSelectedPrice(e)}>
                             <option selected>Price</option>
                             <option data-min="0" data-max="10">Under 10$</option>
                             <option data-min="11" data-max="20">Between 11$ and 20$</option>
@@ -222,14 +222,14 @@ const Books = () => {
                             <option data-min="31" data-max="40">Between 31$ and 40$</option> 
                             <option data-min="41" data-max="99">Over 40$</option> 
                         </select>
-                        <select className="form-select" aria-label="Default select example" onChange={(e) => callSelectedReleaseDate(e)}>
+                        <select className="form-select mb-3" aria-label="Default select example" onChange={(e) => callSelectedReleaseDate(e)}>
                             <option selected>Release Date</option>
                             <option data-min="0" data-max="2000">Before 2000</option>
                             <option data-min="2000" data-max="2010">Between 2000 and 2010</option>
                             <option data-min="2010" data-max="2020">Between 2010 and 2020</option>
                             <option data-min="2020" data-max="9999">After 2020</option>
                         </select>
-                        <select className="form-select" aria-label="Default select example" onChange={(e) => selectedSpecialSearch(e)}>
+                        <select className="form-select mb-3" aria-label="Default select example" onChange={(e) => selectedSpecialSearch(e)}>
                             <option selected>Special</option>
                             <option data-order-by="title_name" data-order="asc">ABC order</option>
                             <option data-order-by="number_of_page_name" data-order="asc">Number of pages in ascending order</option>
@@ -246,8 +246,8 @@ const Books = () => {
                             }
                         </select> 
                     </div>
-                    <div className="row d-flex justify-content-center mb-5 mt-4">
-                        <div className="input-group mt-4 w-75 search-input-container">
+                    <div className="row d-flex justify-content-center mb-5 mt-4 ">
+                        <div className="input-group mt-3 search-input-container">
                             <input 
                             className="form-control search-input" 
                             type="search" 
@@ -259,14 +259,14 @@ const Books = () => {
                                 </button>
                         </div>                       
                     </div>            
-                    <div className="container">   
+                    <div className="container search-result-container">   
                         <div className="row"> 
                             <div className="mb-3">    
                                 <h1 className="search-result-books display-6 d-flex">Search result:</h1>             
                             </div> 
                             <div className="row">
                                 { visibleBooks.map((books, index) => (
-                                    <div className="col-6 col-sm-6 col-md-4 col-lg-4 col-xl-3 mb-5 col-xl-ps-5">{/*need a fix height*/}
+                                    <div className="col-6 col-sm-6 col-md-4 col-lg-4 col-xl-3 mb-5 col-xl-ps-5">
                                         <div className="mb-2">
                                             <img 
                                                 src={"http://localhost:4000/books_img/" + books.img_directory + "/" + books.image}

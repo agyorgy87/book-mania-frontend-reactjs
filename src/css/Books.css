@@ -1,13 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Open+Sans:wght@300;400;500;600&display=swap');
 
 .book-page {
-    background-color: #e4e4e4;
+    padding-top: 100px;
+    background-color: #F1F6F9 !important;
+    height: 100vh;
 }
-/*
-.side-bar {
-    margin
+
+.search-input-container {
+    width: 80% !important;
 }
-*/
+
 .search-input {
     background-color: #fbfbfb !important;
 }
@@ -15,11 +17,11 @@
 .search-input:focus {
     box-shadow: none !important;
     outline: none !important;
-    border-color: #ced4da !important;
+    border-color: #212A3E !important;
 }
 
 .search-button {
-    background-color: #2b2f3c !important;
+    background-color: #30475f !important;
 }
 
 .bi {
@@ -27,20 +29,19 @@
 }
 
 .search-button:hover {
-    background-color: #4b4f5b !important;
+    background-color: #212A3E !important;
 }
 
 .name-of-the-list {
-    background-color: #2b2f3c !important;
+    background-color: #212A3E !important;
 }
 
 .options-for-filtering {
-    background-color: #e4e4e4 !important;
+    background-color: #F1F6F9 !important;
 }
 
 .options-for-filtering:hover{
-    color: #ffff !important;
-    background-color: #92939c !important;
+    background-color: #f2f2f2 !important;
     border-radius: 5px;
 }
 
@@ -54,32 +55,54 @@
 }
 
 .book-add-to-cart-buttons {
-    width: 70%;
+    width: 60%;
     height: 2.5rem;
     border: none;
     border-radius: 6px;
-    background-color: #2b2f3c;
+    background-color: #30475f ;
     color: #EEE9DA;
     font-family: 'Open Sans', sans-serif;
     font-weight: 400;
 }
 
 .book-add-to-cart-buttons:hover {
-    background-color: #4b4f5b;
+    background-color: #212A3E;
 }
 
 @media (max-width:1400px) {
     .book-add-to-cart-buttons {
-        width: 80%;
+        width: 75%;
     }
 }
 
 @media (max-width:992px) {
+
+    .search-input-container {
+        width: 90% !important;
+    }
+
+    .form-select {
+        width: 90% !important;
+    }
+
     .book-add-to-cart-buttons {
         width: 70%;
     }
 }
- 
+
+@media (max-width:576px) {
+
+    .book-add-to-cart-buttons {
+        width: 85%;
+    }
+}
+
+@media (max-width:476px) {
+
+    .book-add-to-cart-buttons {
+        width: 90%;
+    }
+}
 
 /*
 .heart-icon {
