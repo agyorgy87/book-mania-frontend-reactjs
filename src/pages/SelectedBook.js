@@ -1,29 +1,42 @@
 import "../css/SelectedBook.css";
-import React from 'react';
-import { useContext } from 'react';
-import { BookContext } from "../context/BookContext.js";
+import { useState, useEffect } from 'react';
+import { useParams } from "react-router-dom";
 import NavigationBar from '../components/NavigationBar.js';
+import axios from "axios";
 
 const SelectedBook = () => {
 
-    const bookDetails = useContext(BookContext);
+      let params = useParams();
 
-    console.log(bookDetails);
+      const [bookDetails, setBookDetails] = useState({});
+
+      useEffect(() => {
+        axios.get("http://localhost:4000/get-book-by-id/" + params.id)
+            .then(response => {
+                setBookDetails(response.data);
+            })
+      }, [])
 
     return (
         <div>
             <div>
                 <NavigationBar/>
             </div> 
-            <div style={{}}>
-                <img src={"http://localhost:4000/books_img" + bookDetails.value.image_big} alt="..." />          
+            {/*style={{ background: `url("http://localhost:4000/books_img/${bookDetails.img_directory}/${bookDetails.image_big}")` }}*/}
+            <div>
+            <img 
+                src={"http://localhost:4000/books_img/" + bookDetails.img_directory + "/" + bookDetails.image_big}
+                className="img-fluid"                                             
+                alt="book"
+                />    
             </div>
-            {bookDetails.value.title}<br></br>
-            {bookDetails.value.author_name}<br></br>
-            {bookDetails.value.publisher_name}<br></br>
-            {bookDetails.value.price}<br></br>
-            {bookDetails.value.release_date}<br></br>
-            {bookDetails.value.book_description}
+            {bookDetails.title}<br></br>
+            {bookDetails.author_name}<br></br>
+            {bookDetails.publisher_name}<br></br>
+            {bookDetails.price}<br></br>
+            {bookDetails.release_date}<br></br>
+            {bookDetails.book_description}
+    
         </div>
     )
 }
