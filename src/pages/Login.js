@@ -11,24 +11,35 @@ const Login = () => {
     let navigate = useNavigate();
 
     const userData = useContext(UserContext);
-
+    
     const [userEmail, setUserEmail] = useState("");
     const [password, setPassword] = useState("");
+    
+    const [errorMessage, setErrorMessage] = useState("");
+    const [success, setSuccess] = useState("")
 
     const login = () => {
+
         let userObj = {
             email: userEmail,
             pass: password
         }
+
         axios.post("http://localhost:4000/auth", userObj)
             .then(response => {
-                let stringifiedToken = JSON.stringify(response.data);
-                localStorage.setItem("token", stringifiedToken);
-                //console.log(response.data)
-                userData.setValue(response.data)
-                navigate("/")
-            })
-        }
+                if(response.data.error) {
+                    setErrorMessage("Invalid Email address or Password");                  
+                }else{
+                    setSuccess("Successful Login")
+                    let stringifiedToken = JSON.stringify(response.data);
+                    localStorage.setItem("token", stringifiedToken);
+                    userData.setValue(response.data)
+                    setTimeout(() => {
+                        navigate("/");
+                    }, "3000");
+                }
+            })       
+    }
 
     return (
         <div>
@@ -43,8 +54,28 @@ const Login = () => {
                                 <div className="card-body">
                                     <div className="d-flex justify-content-center">
                                         <i className="bi bi-person" style={{fontSize: "3rem"}}></i>
-                                    </div>                                
+                                    </div> 
                                     <div>
+                                            {
+                                                success ? 
+                                                <div class="alert alert-success" role="alert">
+                                                    {success}
+                                                </div>
+                                                :
+                                                null
+                                            }
+
+                                        </div>                
+                                        <div>
+                                            {
+                                                errorMessage ? 
+                                                <div class="alert alert-danger" role="alert">
+                                                    {errorMessage}
+                                                </div>
+                                                :
+                                                null
+                                            }
+                                        </div>
                                         <input type="text" name="" id="" className="form-control my-2 py-2" placeholder="Username" onChange={(e) => setUserEmail(e.target.value)}/>
                                         <input type="text" name="" id="" className="form-control my-4 py-2" placeholder="Password" onChange={(e) => setPassword(e.target.value)}/>
                                             <div className="text-center mt-3">
@@ -56,7 +87,6 @@ const Login = () => {
                             </div>
                         </div>
                     </div>       
-                </div>
             </section>
         </div>
         
