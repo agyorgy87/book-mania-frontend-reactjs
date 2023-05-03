@@ -1,4 +1,4 @@
-import {Routes, Route, BrowserRouter } from "react-router-dom";
+import {Routes, Route, BrowserRouter} from "react-router-dom";
 import React, { useState } from "react";
 import Home from "./pages/Home.js";
 import Books from "./pages/Books.js";
@@ -32,6 +32,8 @@ const Navigation = () => {
     const [bookData, setBookData] = useState([]);
     const [userData, setUserData] = useState(obj);
 
+
+
     return(
         <div>
             <BookContext.Provider value={{value:bookData, setValue:setBookData}}>
@@ -44,7 +46,7 @@ const Navigation = () => {
                         <Route path="/login" element={<Login/>} />
                         <Route path="/createaccount" element={<CreateAccount/>} />
                         <Route path="/successfulregistration" element={<SuccessfulRegistration/>} />
-                        <Route path="/selectedbook" element={<SelectedBook/>} />
+                        <Route path="/selectedbook/:id" element={<SelectedBook/>} />
                         <Route path="/wishlist" element={<WishList/>} />
                         <Route path="/cart" element={<Cart/>} />
                     </Routes>
