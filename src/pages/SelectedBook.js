@@ -5,10 +5,14 @@ import NavigationBar from '../components/NavigationBar.js';
 import axios from "axios";
 import { AiOutlineHeart } from "react-icons/ai";
 import { AiFillHeart } from "react-icons/ai";
+import { useContext } from 'react';
+import { UserContext } from "../context/UserContext.js";
 
 const SelectedBook = () => {
 
     let params = useParams();
+
+    const userData = useContext(UserContext);
 
     const [bookDetails, setBookDetails] = useState({});
     const [heartIconFull, setHeartIconFull] = useState(false);
@@ -21,14 +25,27 @@ const SelectedBook = () => {
     }, [])
 
     const addToWishList = () => {
-        if(heartIconFull) {
-            setHeartIconFull(false);
+
+        if(!userData.value.jwt){
+            alert("login!")
         }else{
-            setHeartIconFull(true);
+            if(heartIconFull) {
+                setHeartIconFull(false);
+            }else{
+                let body = {userId: 0, bookId: 0};
+                axios.post("http://localhost:4000/add-wishlist", body)
+                    .then(response => {
+                        if(response.data.success === true) {
+                        setHeartIconFull(true);
+
+                        }
+                    })
+            } 
         }
         
+            
     }
-
+    console.log(userData);
     return (
         <div>
             <div>
@@ -68,7 +85,7 @@ const SelectedBook = () => {
                         </div>
                         <div>
                             { heartIconFull ?
-                            <button onClick={addToWishList}><AiFillHeart/> This book is in your wishlist</button>
+                            <button onClick={addToWishList}><AiFillHeart/>This book is in your wishlist</button>
                             :
                             <button onClick={addToWishList}><AiOutlineHeart/> Add To Wishlist</button>
                             }

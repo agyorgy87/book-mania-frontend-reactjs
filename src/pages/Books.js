@@ -177,7 +177,7 @@ const Books = () => {
                             <li className="list-group-item list-group-item-action border-0 options-for-filtering" onClick={getAllBooks}>All</li> 
                             {
                                 allGenre.map((genre, index) => (
-                                    <li className="list-group-item list-group-item-action border-0 options-for-filtering" onClick={() => callGenre(genre.genre_type)}>{genre.genre_type}</li>
+                                    <li key={"allgenre-list-div" + index} className="list-group-item list-group-item-action border-0 options-for-filtering" onClick={() => callGenre(genre.genre_type)}>{genre.genre_type}</li>
                                 ))
                             }
                                                 
@@ -209,7 +209,7 @@ const Books = () => {
                             <li className="list-group-item name-of-the-list active border-0 rounded">Publishers</li>
                             {
                                 allPublisher.map((publisher, index) => (
-                                    <li className="list-group-item list-group-item-action border-0 options-for-filtering" onClick={() => callPublisher(publisher.publisher_name)}>{publisher.publisher_name}</li>
+                                    <li key={"all-publisher-div" + index} className="list-group-item list-group-item-action border-0 options-for-filtering" onClick={() => callPublisher(publisher.publisher_name)}>{publisher.publisher_name}</li>
                                 ))
                             }
                         </ul>
@@ -217,16 +217,16 @@ const Books = () => {
                 <div className="col-lg-9 col-xl-9 col-xxl-10">
                     <div className="d-block d-lg-none d-flex flex-column align-items-center">
                         <select className="form-select mb-3 all-select" aria-label="Default select example" onChange={(e) => callGenre(e.target.value)}>
-                            <option selected>Categories</option>
+                            <option>Categories</option>
                             <option value="allBooks">All Books</option>
                                 {
                                     allGenre.map((genre, index) => (
-                                        <option>{genre.genre_type}</option>
+                                        <option key={"allgenre-select" + index}>{genre.genre_type}</option>
                                     ))
                                 }
                         </select> 
                         <select className="form-select mb-3" aria-label="Default select example" onChange={(e) => callSelectedPrice(e)}>
-                            <option selected>Price</option>
+                            <option>Price</option>
                             <option data-min="0" data-max="10">Under 10$</option>
                             <option data-min="11" data-max="20">Between 11$ and 20$</option>
                             <option data-min="21" data-max="30">Between 21$ and 30$</option>
@@ -234,25 +234,25 @@ const Books = () => {
                             <option data-min="41" data-max="99">Over 40$</option> 
                         </select>
                         <select className="form-select mb-3" aria-label="Default select example" onChange={(e) => callSelectedReleaseDate(e)}>
-                            <option selected>Release Date</option>
+                            <option>Release Date</option>
                             <option data-min="0" data-max="2000">Before 2000</option>
                             <option data-min="2000" data-max="2010">Between 2000 and 2010</option>
                             <option data-min="2010" data-max="2020">Between 2010 and 2020</option>
                             <option data-min="2020" data-max="9999">After 2020</option>
                         </select>
                         <select className="form-select mb-3" aria-label="Default select example" onChange={(e) => selectedSpecialSearch(e)}>
-                            <option selected>Special</option>
+                            <option>Special</option>
                             <option data-order-by="title_name" data-order="asc">ABC order</option>
                             <option data-order-by="number_of_page_name" data-order="asc">Number of pages in ascending order</option>
                             <option data-order-by="price_name" data-order="asc">From the cheapest book</option>
                             <option data-order-by="price_name" data-order="desc">From the most expensive book</option>
                         </select>
                         <select className="form-select" aria-label="Default select example" onChange={(e) => callPublisher(e.target.value)}>
-                            <option selected>Categories</option>
+                            <option>Categories</option>
                             <option value="allBooks">All Books</option>
                             {
                                 allPublisher.map((publisher, index) => (
-                                    <option>{publisher.publisher_name}</option>
+                                    <option key={"publisherdiv" + index}>{publisher.publisher_name}</option>
                                 ))
                             }
                         </select> 
@@ -282,7 +282,7 @@ const Books = () => {
                             
                             <div className="row">
                                 { visibleBooks.map((book, index) => (
-                                    <div className="col-6 col-sm-6 col-md-4 col-lg-4 col-xl-3 mb-5 col-xl-ps-5">
+                                    <div className="col-6 col-sm-6 col-md-4 col-lg-4 col-xl-3 mb-5 col-xl-ps-5" key={"visiblediv" + index}>
                                         <div className="mb-2">
                                             <img 
                                                 src={"http://localhost:4000/books_img/" + book.img_directory + "/" + book.image}
