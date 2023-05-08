@@ -2,22 +2,22 @@ import '../css/Books.css';
 import NavigationBar from '../components/NavigationBar.js';
 import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import { useContext } from 'react';
-import { BookContext } from "../context/BookContext.js";
 import { CgShoppingCart } from "react-icons/cg";
 import axios from "axios";
 
 const Books = () => {
 
-    let navigate = useNavigate();
 
-    const bookDetails = useContext(BookContext);
+    let navigate = useNavigate();
 
     const allBooks = useRef([]);
     const [visibleBooks, setVisibleBooks] = useState([]);
 
     const [allGenre, setAllGenre] = useState([]);
     const [allPublisher, setAllPublisher] = useState([]);
+
+    const [showResult, setShowResult] = useState(false);
+    const [searchResult, setSearchResult] = useState("");
     
 
     useEffect(() => { 
@@ -36,6 +36,7 @@ const Books = () => {
                 setVisibleBooks(response.data);
                 allBooks.current = response.data;
         });
+        setShowResult(false);
     }
 
     const getAllGenre = () => {
@@ -43,6 +44,7 @@ const Books = () => {
             .then((response) => {
             setAllGenre(response.data);
         })
+        setShowResult(false);
         scrollToUp();
     }
 
@@ -51,6 +53,7 @@ const Books = () => {
             .then((response) => {
             setAllPublisher(response.data);
         })
+        setShowResult(false);
         scrollToUp();
     }
 
@@ -62,7 +65,8 @@ const Books = () => {
             .then((response) => {
             setVisibleBooks(response.data);
         })
-        }    
+        }  
+        setShowResult(false);  
         scrollToUp();
     }
 
@@ -71,6 +75,7 @@ const Books = () => {
             .then((response) => {
             setVisibleBooks(response.data);
         })
+        setShowResult(false);
         scrollToUp();
     }
 
@@ -86,6 +91,7 @@ const Books = () => {
             setVisibleBooks(response.data);     
             })    
         }
+        setShowResult(false);
     }
 
     const callReleaseDate = (fromDate, toDate) => {
@@ -93,6 +99,7 @@ const Books = () => {
             .then((response) => {
             setVisibleBooks(response.data);
         })
+        setShowResult(false);
         scrollToUp();
     }
 
@@ -108,6 +115,7 @@ const Books = () => {
             setVisibleBooks(response.data);     
             })    
         }
+        setShowResult(false);
     }
 
     const specialSearch = (selectedSpecialSearch, selectedSpecialOrder) => {
@@ -115,6 +123,7 @@ const Books = () => {
             .then((response) => {
             setVisibleBooks(response.data);
         })
+        setShowResult(false);
         scrollToUp();
     }
 
@@ -130,6 +139,7 @@ const Books = () => {
             setVisibleBooks(response.data);     
             })    
         }
+        setShowResult(false);
     }
 
     const callPublisher = (publisherName) => {
@@ -141,17 +151,18 @@ const Books = () => {
             setVisibleBooks(response.data);
             })
         }
+        setShowResult(false);
         scrollToUp();
     }
 
     const callAllTitlesAndAuthors = (e) => {
-
         axios.get(`http://localhost:4000/get-book-title/${e}`)
             .then((response) => {
             setVisibleBooks(response.data);
         })
+        setShowResult(true);
+        setSearchResult(e);
     }
-    
     
     return(
         <div className="book-page">
@@ -260,31 +271,36 @@ const Books = () => {
                         </div>                       
                     </div>            
                     <div className="container search-result-container">   
-                        <div className="row"> 
-                            <div className="mb-3">    
-                                <h1 className="search-result-books display-6 d-flex">Search result:</h1>             
-                            </div> 
+                        <div className="row">
+                            {   showResult ?
+                                <div className="mb-3">    
+                                    <h1 className="search-result-books d-flex">Results for "{searchResult}"</h1>             
+                                </div> 
+                                :
+                                null
+                            }
+                            
                             <div className="row">
-                                { visibleBooks.map((books, index) => (
+                                { visibleBooks.map((book, index) => (
                                     <div className="col-6 col-sm-6 col-md-4 col-lg-4 col-xl-3 mb-5 col-xl-ps-5">
                                         <div className="mb-2">
                                             <img 
-                                                src={"http://localhost:4000/books_img/" + books.img_directory + "/" + books.image}
+                                                src={"http://localhost:4000/books_img/" + book.img_directory + "/" + book.image}
                                                 className="img-fluid"                                             
-                                                onClick={() => {bookDetails.setValue(books); navigate("/selectedbook")}}
                                                 alt="book"
+                                                onClick={() => {navigate("/selectedbook/" + book.id)}}
                                                 />                                        
                                         </div>
                                         <div className="d-flex flex-column">                     
                                             <div className="book-title-container">
-                                                <h6 className="book-title">{books.title}</h6>
+                                                <h6 className="book-title">{book.title}</h6>
                                             </div>
                                             <div>
                                                 <div>
-                                                    <p className="author-name">{books.author_name}</p>
+                                                    <p className="author-name">{book.author_name}</p>
                                                 </div>
                                                 <div>
-                                                    <h5 className="value-of-the-book">{books.price} $</h5>
+                                                    <h5 className="value-of-the-book">{book.price} $</h5>
                                                 </div>                                                     
                                                 <div>
                                                     <button type="button" className="book-add-to-cart-buttons">                                                           
@@ -308,18 +324,3 @@ const Books = () => {
 }
 
 export default Books;
-{/*d-flex justify-content-center ms-5 mt-5*/}
-
-{/*
-                        <div className="mt-4 w-25">
-                            <nav aria-label="Page navigation example">
-                                <ul class="pagination">
-                                    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                                </ul>
-                            </nav>
-                        </div>
-                        */}

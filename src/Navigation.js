@@ -9,7 +9,6 @@ import SuccessfulRegistration from "./pages/SuccessfulRegistration.js"
 import SelectedBook from "./pages/SelectedBook.js";
 import WishList from "./pages/WishList.js";
 import Cart from "./pages/Cart.js";
-import { BookContext } from "./context/BookContext.js";
 import { UserContext } from "./context/UserContext.js";
 
 const Navigation = () => {
@@ -29,30 +28,25 @@ const Navigation = () => {
         }
     }
 
-    const [bookData, setBookData] = useState([]);
     const [userData, setUserData] = useState(obj);
-
-
 
     return(
         <div>
-            <BookContext.Provider value={{value:bookData, setValue:setBookData}}>
                 <UserContext.Provider value={{value:userData, setValue:setUserData}}>
-                <BrowserRouter>
-                    <Routes>
-                        <Route path="/" element={<Home/>} />
-                        <Route path="/books" element={<Books/>} />
-                        <Route path="/contact" element={<Contact/>} />
-                        <Route path="/login" element={<Login/>} />
-                        <Route path="/createaccount" element={<CreateAccount/>} />
-                        <Route path="/successfulregistration" element={<SuccessfulRegistration/>} />
-                        <Route path="/selectedbook/:id" element={<SelectedBook/>} />
-                        <Route path="/wishlist" element={<WishList/>} />
-                        <Route path="/cart" element={<Cart/>} />
-                    </Routes>
-                </BrowserRouter>
+                    <BrowserRouter>
+                        <Routes>
+                            <Route path="/" element={<Home/>} />
+                            <Route path="/books" element={<Books/>} />
+                            <Route path="/contact" element={<Contact/>} />
+                            <Route path="/login" element={<Login/>} />
+                            <Route path="/createaccount" element={<CreateAccount/>} />
+                            <Route path="/successfulregistration" element={<SuccessfulRegistration/>} />
+                            <Route path="/selectedbook/:id" element={<SelectedBook/>} />
+                            <Route path="/wishlist" element={<WishList/>} />
+                            <Route path="/cart" element={<Cart/>} />
+                        </Routes>
+                    </BrowserRouter>
                 </UserContext.Provider>
-            </BookContext.Provider>
         </div>
     )
 }

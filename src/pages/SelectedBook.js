@@ -6,16 +6,16 @@ import axios from "axios";
 
 const SelectedBook = () => {
 
-      let params = useParams();
+    let params = useParams();
 
-      const [bookDetails, setBookDetails] = useState({});
+    const [bookDetails, setBookDetails] = useState({});
 
-      useEffect(() => {
+    useEffect(() => {
         axios.get("http://localhost:4000/get-book-by-id/" + params.id)
             .then(response => {
                 setBookDetails(response.data);
             })
-      }, [])
+    }, [])
 
     return (
         <div>
@@ -36,7 +36,6 @@ const SelectedBook = () => {
             {bookDetails.price}<br></br>
             {bookDetails.release_date}<br></br>
             {bookDetails.book_description}
-    
         </div>
     )
 }

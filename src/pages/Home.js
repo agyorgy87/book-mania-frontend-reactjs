@@ -2,8 +2,6 @@ import '../css/Home.css';
 import NavigationBar from '../components/NavigationBar.js';
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useContext } from 'react';
-import { BookContext } from "../context/BookContext.js";
 //import { AiOutlineHeart } from "react-icons/ai";{/*<i class="bi bi-heart"></i> -> filled heart icon*/}  
 import { CgShoppingCart } from "react-icons/cg";
 import axios from "axios";
@@ -11,8 +9,6 @@ import axios from "axios";
 const Home = () => {
 
     let navigate = useNavigate();
-
-    const bookDetails = useContext(BookContext);
 
     const [newness, setNewness] = useState([]); 
     const [onlyTolkien, setOnlyTolkien] = useState([]);
