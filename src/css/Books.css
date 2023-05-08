@@ -3,7 +3,7 @@
 .book-page {
     padding-top: 100px;
     background-color: #F1F6F9 !important;
-    height: 100vh;
+    height: 100%;
 }
 
 .search-input-container {
@@ -102,6 +102,10 @@
     .book-add-to-cart-buttons {
         width: 90%;
     }
+}
+
+.all-select {
+    width: 200px !important;
 }
 
 /*

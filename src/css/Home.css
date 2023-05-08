@@ -56,9 +56,14 @@
     width: 80%;
 }
 
+.book-pics {
+    cursor: pointer;
+}
+
 .book-title {
     font-family: 'Open Sans', sans-serif;
     font-weight: 500;
+    cursor: pointer;
 }
 
 .author-name {

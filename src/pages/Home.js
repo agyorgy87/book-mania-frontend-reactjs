@@ -58,36 +58,41 @@ const Home = () => {
                     <h1 className="text-of-recommended-books">Newness</h1> 
                 </div>
                 <div className="row">
-                    { newness.map((books, index) => (
-                                        <div className="col-6 col-sm-6 col-md-6 col-lg-3 mb-5">{/*need a fix height*/}
-                                            <div className="mb-2">
-                                                <img 
-                                                src={"http://localhost:4000/books_img/" + books.img_directory + "/" + books.image}
-                                                className="img-fluid"                                             
-                                                onClick={() => {bookDetails.setValue(books); navigate("/selectedbook")}}
-                                                alt="book"
-                                                />                                        
-                                            </div>
-                                            <div className="d-flex flex-column">                     
-                                                <div className="book-title-container">
-                                                    <h6 className="book-title">{books.title}</h6>
-                                                </div>
-                                                <div>
-                                                    <div>
-                                                        <p className="author-name">{books.author_name}</p>
-                                                    </div>
-                                                    <div>
-                                                        <h5 className="value-of-the-book">{books.price} $</h5>
-                                                    </div>                                                     
-                                                    <div>
-                                                        <button type="button" className="home-add-to-cart-buttons">                                                           
-                                                            Add To Cart
-                                                                <CgShoppingCart className="fs-5 ms-2 cart-icon"/>
-                                                        </button>
-                                                    </div>
-                                                </div>                                                                                              
-                                            </div>           
-                                        </div>                                        
+                    { newness.map((book, index) => (
+                        <div className="col-6 col-sm-6 col-md-6 col-lg-3 mb-5">
+                            <div className="mb-2">
+                                <img 
+                                src={"http://localhost:4000/books_img/" + book.img_directory + "/" + book.image}
+                                className="img-fluid book-pics"                                             
+                                onClick={() => {navigate("/selectedbook/" + book.id)}}
+                                alt="book"
+                                />                                        
+                            </div>
+                            <div className="d-flex flex-column">                     
+                                <div className="book-title-container">
+                                    <h6 
+                                    className="book-title"
+                                    onClick={() => {navigate("/selectedbook/" + book.id)}}
+                                    >                                      
+                                    {book.title}
+                                    </h6>
+                                </div>
+                                <div>
+                                    <div>
+                                        <p className="author-name">{book.author_name}</p>
+                                    </div>
+                                    <div>
+                                        <h5 className="value-of-the-book">{book.price} $</h5>
+                                    </div>                                                     
+                                    <div>
+                                        <button type="button" className="home-add-to-cart-buttons">                                                           
+                                            Add To Cart
+                                                <CgShoppingCart className="fs-5 ms-2 cart-icon"/>
+                                        </button>
+                                    </div>
+                                </div>                                                                                              
+                            </div>           
+                        </div>                                        
                         ))
                     }
                 </div>
@@ -97,36 +102,41 @@ const Home = () => {
                     <h1 className="text-of-recommended-books">Tolkien's Pen</h1> 
                 </div>
                 <div className="row">
-                    { onlyTolkien.map((books, index) => (
-                                        <div className="col-6 col-sm-6 col-md-6 col-lg-3 mb-5">{/*need a fix height*/}
-                                            <div className="mb-2">
-                                                <img 
-                                                src={"http://localhost:4000/books_img/" + books.img_directory + "/" + books.image}
-                                                className="img-fluid"                                             
-                                                onClick={() => {bookDetails.setValue(books); navigate("/selectedbook")}}
-                                                alt="book"
-                                                />                                        
-                                            </div>
-                                            <div className="d-flex flex-column">                     
-                                                <div className="book-title-container">
-                                                    <h6 className="book-title">{books.title}</h6>
-                                                </div>
-                                                <div>
-                                                    <div>
-                                                        <p className="author-name">{books.author_name}</p>
-                                                    </div>
-                                                    <div>
-                                                        <h5 className="value-of-the-book">{books.price} $</h5>
-                                                    </div>                                                     
-                                                    <div>
-                                                        <button type="button" className="home-add-to-cart-buttons">                   
-                                                                Add To Cart
-                                                                    <CgShoppingCart className="fs-5 ms-2 cart-icon"/>
-                                                        </button>
-                                                    </div>
-                                                </div>                                                                                              
-                                            </div>           
-                                        </div>                                        
+                    { onlyTolkien.map((book, index) => (
+                        <div className="col-6 col-sm-6 col-md-6 col-lg-3 mb-5">
+                            <div className="mb-2">
+                                <img 
+                                src={"http://localhost:4000/books_img/" + book.img_directory + "/" + book.image}
+                                className="img-fluid book-pics"                                             
+                                onClick={() => {navigate("/selectedbook/" + book.id)}}
+                                alt="book"
+                                />                                        
+                            </div>
+                            <div className="d-flex flex-column">                     
+                                <div className="book-title-container">
+                                    <h6 
+                                    className="book-title"
+                                    onClick={() => {navigate("/selectedbook/" + book.id)}}
+                                    >                                      
+                                    {book.title}
+                                    </h6>
+                                </div>
+                                <div>
+                                    <div>
+                                        <p className="author-name">{book.author_name}</p>
+                                    </div>
+                                    <div>
+                                        <h5 className="value-of-the-book">{book.price} $</h5>
+                                    </div>                                                     
+                                    <div>
+                                        <button type="button" className="home-add-to-cart-buttons">                   
+                                            Add To Cart
+                                                <CgShoppingCart className="fs-5 ms-2 cart-icon"/>
+                                        </button>
+                                    </div>
+                                </div>                                                                                              
+                            </div>           
+                        </div>                                        
                         ))
                     }
                 </div>
@@ -136,36 +146,41 @@ const Home = () => {
                     <h1 className="text-of-recommended-books">Computer Complex Publisher</h1> 
                 </div>
                 <div className="row">
-                    { onlyComputerComplex.map((books, index) => (
-                                        <div className="col-6 col-sm-6 col-md-6 col-lg-3 mb-5">{/*need a fix height*/}
-                                            <div className="mb-2 book-image-container">
-                                                <img 
-                                                src={"http://localhost:4000/books_img/" + books.img_directory + "/" + books.image}
-                                                className="img-fluid"                                             
-                                                onClick={() => {bookDetails.setValue(books); navigate("/selectedbook")}}
-                                                alt="book"
-                                                />                                        
-                                            </div>
-                                            <div className="d-flex flex-column">                     
-                                                <div className="book-title-container">
-                                                    <h6 className="book-title">{books.title}</h6>
-                                                </div>
-                                                <div>
-                                                    <div>
-                                                        <p className="author-name">{books.author_name}</p>
-                                                    </div>
-                                                    <div>
-                                                        <h5 className="value-of-the-book">{books.price} $</h5>
-                                                    </div>                                                     
-                                                    <div>
-                                                        <button type="button" className="home-add-to-cart-buttons">                                        
-                                                            Add To Cart
-                                                                <CgShoppingCart className="fs-5 ms-2 cart-icon"/>
-                                                        </button>
-                                                    </div>
-                                                </div>                                                                                              
-                                            </div>           
-                                        </div>                                        
+                    { onlyComputerComplex.map((book, index) => (
+                        <div className="col-6 col-sm-6 col-md-6 col-lg-3 mb-5">{/*need a fix height*/}
+                            <div className="mb-2 book-image-container">
+                                <img 
+                                src={"http://localhost:4000/books_img/" + book.img_directory + "/" + book.image}
+                                className="img-fluid book-pics"                                             
+                                onClick={() => {navigate("/selectedbook/" + book.id)}}
+                                alt="book"
+                                />                                        
+                            </div>
+                            <div className="d-flex flex-column">                     
+                                <div className="book-title-container">
+                                    <h6 
+                                    className="book-title"
+                                    onClick={() => {navigate("/selectedbook/" + book.id)}}
+                                    >                                      
+                                    {book.title}
+                                    </h6>
+                                </div>
+                                <div>
+                                    <div>
+                                        <p className="author-name">{book.author_name}</p>
+                                    </div>
+                                    <div>
+                                        <h5 className="value-of-the-book">{book.price} $</h5>
+                                    </div>                                                     
+                                    <div>
+                                        <button type="button" className="home-add-to-cart-buttons">                                        
+                                            Add To Cart
+                                                <CgShoppingCart className="fs-5 ms-2 cart-icon"/>
+                                        </button>
+                                    </div>
+                                </div>                                                                                              
+                            </div>           
+                        </div>                                        
                         ))
                     }
                 </div>

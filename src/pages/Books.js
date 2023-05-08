@@ -205,7 +205,7 @@ const Books = () => {
                     </div>
                 <div className="col-lg-9 col-xl-9 col-xxl-10">
                     <div className="d-block d-lg-none d-flex flex-column align-items-center">
-                        <select className="form-select mb-3" aria-label="Default select example" onChange={(e) => callGenre(e.target.value)}>
+                        <select className="form-select mb-3 all-select" aria-label="Default select example" onChange={(e) => callGenre(e.target.value)}>
                             <option selected>Categories</option>
                             <option value="allBooks">All Books</option>
                                 {
