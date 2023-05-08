@@ -286,14 +286,17 @@ const Books = () => {
                                         <div className="mb-2">
                                             <img 
                                                 src={"http://localhost:4000/books_img/" + book.img_directory + "/" + book.image}
-                                                className="img-fluid"                                             
+                                                className="img-fluid book-pics"                                             
                                                 alt="book"
                                                 onClick={() => {navigate("/selectedbook/" + book.id)}}
                                                 />                                        
                                         </div>
                                         <div className="d-flex flex-column">                     
                                             <div className="book-title-container">
-                                                <h6 className="book-title">{book.title}</h6>
+                                                <h6 
+                                                className="book-title"
+                                                onClick={() => {navigate("/selectedbook/" + book.id)}}
+                                                >{book.title}</h6>
                                             </div>
                                             <div>
                                                 <div>

@@ -56,6 +56,10 @@
     font-weight: 100;
 }
 
+.book-pics {
+    cursor: pointer;
+}
+
 .book-add-to-cart-buttons {
     width: 60%;
     height: 2.5rem;

@@ -2,7 +2,6 @@ import '../css/Home.css';
 import NavigationBar from '../components/NavigationBar.js';
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-//import { AiOutlineHeart } from "react-icons/ai";{/*<i class="bi bi-heart"></i> -> filled heart icon*/}  
 import { CgShoppingCart } from "react-icons/cg";
 import axios from "axios";
 
@@ -143,7 +142,7 @@ const Home = () => {
                 </div>
                 <div className="row">
                     { onlyComputerComplex.map((book, index) => (
-                        <div className="col-6 col-sm-6 col-md-6 col-lg-3 mb-5">{/*need a fix height*/}
+                        <div className="col-6 col-sm-6 col-md-6 col-lg-3 mb-5">
                             <div className="mb-2 book-image-container">
                                 <img 
                                 src={"http://localhost:4000/books_img/" + book.img_directory + "/" + book.image}
