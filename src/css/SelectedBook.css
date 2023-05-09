@@ -1,3 +1,92 @@
-.selected-image{
-    background-size: cover
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Open+Sans:wght@300;400;500;600&display=swap');
+
+.selected-book-page {
+    background-color: #F1F6F9 !important;
+    height: 100vh;
+}
+
+.selected-book-title {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    font-size: 30px;
+}
+
+.selected-book-author-name {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+}
+
+.share-text {
+    display: inline;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+}
+
+.social-icons {
+    height: 28px;
+    cursor: pointer;
+}
+
+.social-hover-text {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+}
+
+.selected-book-price-container {
+    height: 55px; 
+    width: 80%;
+}
+
+.coupon-code-input {
+    width: 70%;
+}
+
+.coupon-code-input:focus {
+    box-shadow: none !important;
+    outline: none !important;
+    border-color: #212A3E !important;
+}
+
+.selected-book-add-coupon-code-button, .selected-book-add-to-cart-button {
+    width: 70%;
+    height: 2.5rem;
+    border: none;
+    border-radius: 6px;
+    background-color: #30475f;
+    color: #EEE9DA;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+}
+
+.coupon-icon {
+    transform: translateY(-2px);
+}
+
+.cart-icon {
+    transform: translateY(-2px);
+}
+
+.selected-book-add-to-wishlist-button {
+    width: 70%;
+    height: 2.5rem;
+    border: none;
+    border-radius: 6px;
+    background-color: #30475f;
+    color: #D6D5A8;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+}
+
+.heart-icon {
+    transform: translateY(-2px);
+    color: #D6D5A8;
+}
+
+.selected-book-add-coupon-code-button:hover, 
+.selected-book-add-to-cart-button:hover, 
+.selected-book-add-to-wishlist-button:hover {
+    background-color: #212A3E;
 }

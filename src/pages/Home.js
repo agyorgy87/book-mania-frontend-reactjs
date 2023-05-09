@@ -54,7 +54,7 @@ const Home = () => {
                 </div>
                 <div className="row">
                     { newness.map((book, index) => (
-                        <div className="col-6 col-sm-6 col-md-6 col-lg-3 mb-5" key={"newnessdiv" + index}>
+                        <div className="col-6 col-sm-6 col-md-6 col-lg-3 mb-5" key={"newness-div" + index}>
                             <div className="mb-2">
                                 <img 
                                 src={"http://localhost:4000/books_img/" + book.img_directory + "/" + book.image}
@@ -63,7 +63,7 @@ const Home = () => {
                                 alt="book"
                                 />                                        
                             </div>
-                            <div className="d-flex flex-column">                     
+                            <div className="d-flex flex-column">                      
                                 <div className="book-title-container">
                                     <h6 
                                     className="book-title"
@@ -98,7 +98,7 @@ const Home = () => {
                 </div>
                 <div className="row">
                     { onlyTolkien.map((book, index) => (
-                        <div className="col-6 col-sm-6 col-md-6 col-lg-3 mb-5" key={"tolkiendiv" + index}>
+                        <div className="col-6 col-sm-6 col-md-6 col-lg-3 mb-5" key={"tolkien-div" + index}>
                             <div className="mb-2">
                                 <img 
                                 src={"http://localhost:4000/books_img/" + book.img_directory + "/" + book.image}
