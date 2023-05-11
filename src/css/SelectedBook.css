@@ -35,13 +35,14 @@
     font-size: 15px;
 }
 
+
 .selected-book-price-container {
     height: 55px; 
     width: 80%;
 }
 
 .coupon-code-input {
-    width: 70%;
+    width: 70% !important;
 }
 
 .coupon-code-input:focus {
@@ -69,7 +70,7 @@
     transform: translateY(-2px);
 }
 
-.selected-book-add-to-wishlist-button {
+.selected-book-add-to-wishlist-button { 
     width: 70%;
     height: 2.5rem;
     border: none;
@@ -89,4 +90,12 @@
 .selected-book-add-to-cart-button:hover, 
 .selected-book-add-to-wishlist-button:hover {
     background-color: #212A3E;
+}
+
+.nav-tabs {
+    background-color: red !important;
+}
+
+.overview-tab, .about-the-author-tab {
+    background-color: green !important;
 }

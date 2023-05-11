@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import "../css/NavigationBar.css";
 import {ImBooks} from "react-icons/im";
@@ -10,6 +10,8 @@ import { UserContext } from "../context/UserContext.js";
 const NavigationBar = () => {
 
     const userData = useContext(UserContext);
+
+    const [cartContent, setCartContent] = useState(1)
 
     const logout = () => {
         userData.setValue({});
@@ -61,7 +63,18 @@ const NavigationBar = () => {
                                 </li>
                             }
                             <li className="nav-item navigation-menus">
-                                <Link to={"/cart"} className="nav-link" style={{color: "#EEE9DA"}}>< CgShoppingCart className="fs-2"/></Link>
+                                <Link className="nav-link" style={{color: "#EEE9DA"}}>
+                                    <CgShoppingCart className="fs-2"/>
+                                    {
+                                        cartContent ?
+                                        <span className="position-absolute translate-middle badge rounded-pill bg-danger">
+                                            {cartContent}
+                                        </span>
+                                        :
+                                        null
+                                    }
+                                    
+                                </Link>
                             </li>
                         </ul>
                     </div>
