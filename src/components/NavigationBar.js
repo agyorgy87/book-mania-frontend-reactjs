@@ -5,13 +5,13 @@ import {ImBooks} from "react-icons/im";
 import { CgShoppingCart } from "react-icons/cg";
 import { useContext } from 'react';
 import { UserContext } from "../context/UserContext.js";
+import { CartContext } from "../context/CartContext.js";
 
 
 const NavigationBar = () => {
 
     const userData = useContext(UserContext);
-
-    const [cartContent, setCartContent] = useState(1)
+    const cartData = useContext(CartContext);
 
     const logout = () => {
         userData.setValue({});
@@ -63,12 +63,12 @@ const NavigationBar = () => {
                                 </li>
                             }
                             <li className="nav-item navigation-menus">
-                                <Link className="nav-link" style={{color: "#EEE9DA"}}>
+                                <Link to={"/cart"} className="nav-link" style={{color: "#EEE9DA"}}>
                                     <CgShoppingCart className="fs-2"/>
                                     {
-                                        cartContent ?
+                                        cartData.value.length > 0 ?
                                         <span className="position-absolute translate-middle badge rounded-pill bg-danger">
-                                            {cartContent}
+                                            {cartData.value.length}
                                         </span>
                                         :
                                         null

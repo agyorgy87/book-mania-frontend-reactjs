@@ -7,10 +7,11 @@ import { AiOutlineHeart } from "react-icons/ai";
 import { AiFillHeart } from "react-icons/ai";
 import { useContext } from 'react';
 import { UserContext } from "../context/UserContext.js";
+import { CartContext } from "../context/CartContext";
 import facebookLogo from "../img/facebook.png";
 import twitterLogo from "../img/twitter.png";
 import { CgShoppingCart } from "react-icons/cg";
-import { RiCouponLine } from "react-icons/ri";
+
 
 
 const SelectedBook = () => {
@@ -18,8 +19,8 @@ const SelectedBook = () => {
     let params = useParams();
 
     const userData = useContext(UserContext);
-    
-    const couponCodeInputRef = useRef(null);
+    const cartData = useContext(CartContext);
+
     const [inputValue, setInputValue] = useState("");
 
 
@@ -28,6 +29,7 @@ const SelectedBook = () => {
 
     const [twitterHover, setTwitterHover] = useState(false);
     const [facebookHover, setFacebookHover] = useState(false);
+
 
     const twitterText = "Share on Twitter"
     const facebookText = "Share on Facebook"
@@ -57,7 +59,16 @@ const SelectedBook = () => {
             .then(response => {
                 setBookDetails(response.data);
             })
+        if(userData.value.jwt){       
+            axios.get("http://localhost:4000/display-wishlist/" + userData.value.id + "/" + params.id)
+            .then(response => {
+                if(response.data.length > 0) {
+                    setHeartIconFull(true);
+                }
+            })
+        }
     }, [])
+
 
     const addToWishList = () => {
 
@@ -72,8 +83,7 @@ const SelectedBook = () => {
                         console.log(response.data)
                         setHeartIconFull(false);
                         }
-                    })
-                
+                    })              
             }else{
                 let body = {userId: userData.value.id, bookId: params.id};
                 axios.post("http://localhost:4000/add-wishlist", body)
@@ -87,12 +97,14 @@ const SelectedBook = () => {
         }           
     }
 
-    const couponCodeClick = () => {
-        setInputValue(couponCodeInputRef.current.value);
-
+    const addToCart = () => {
+        const bookDetailsCopy = {...bookDetails}
+        bookDetailsCopy.quantity = 1
+        const cartDataCopy = [...cartData.value, bookDetailsCopy]
+        cartData.setValue(cartDataCopy);
+        localStorage.setItem("cart", JSON.stringify(cartDataCopy));
     }
-
-    console.log(inputValue);
+    
 
     return (
         <div className="selected-book-page">
@@ -147,24 +159,9 @@ const SelectedBook = () => {
                             <div className="d-flex flex-column">
                                 <div>
                                     <p className="mb-5 display-6">{bookDetails.price} $</p>
-                                </div>
-                                <div className="form-group mb-3">
-                                    <label htmlFor="coupon-code">Coupon Code:</label>
-                                    <input 
-                                    ref={couponCodeInputRef}
-                                    type="text" 
-                                    className="form-control coupon-code-input" 
-                                    id="coupon-code" 
-                                    />
-                                </div>
+                                </div>                              
                                 <div className="d-flex mb-5">
-                                    <button type="button" className="selected-book-add-coupon-code-button" onClick={couponCodeClick}>                                                           
-                                        Add Coupon Code
-                                            <RiCouponLine className="fs-5 ms-2 coupon-icon"/>
-                                    </button>
-                                </div>
-                                <div className="d-flex mb-5">
-                                    <button type="button" className="selected-book-add-to-cart-button">                                                           
+                                    <button type="button" className="selected-book-add-to-cart-button" onClick={addToCart}>                                                           
                                         Add To Cart
                                             <CgShoppingCart className="fs-5 ms-2 cart-icon"/>
                                     </button>

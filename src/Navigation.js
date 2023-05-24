@@ -10,11 +10,11 @@ import SelectedBook from "./pages/SelectedBook.js";
 import WishList from "./pages/WishList.js";
 import Cart from "./pages/Cart.js";
 import { UserContext } from "./context/UserContext.js";
+import { CartContext } from "./context/CartContext.js";
 
 const Navigation = () => {
 
     let userDetails = localStorage.getItem("token")
-    console.log(userDetails);
 
     let obj;
 
@@ -28,11 +28,26 @@ const Navigation = () => {
         }
     }
 
+    let cartDetails = localStorage.getItem("cart")
+
+    let cartObj;
+     
+    if(cartDetails === null){
+        cartObj = [];
+    }else{
+        cartObj = JSON.parse(cartDetails);
+    }
+
     const [userData, setUserData] = useState(obj);
+
+    const [cartData, setCartData] = useState(cartObj);
+
+    
 
     return(
         <div>
                 <UserContext.Provider value={{value:userData, setValue:setUserData}}>
+                    <CartContext.Provider value={{value:cartData, setValue:setCartData}}>
                     <BrowserRouter>
                         <Routes>
                             <Route path="/" element={<Home/>} />
@@ -46,6 +61,7 @@ const Navigation = () => {
                             <Route path="/cart" element={<Cart/>} />
                         </Routes>
                     </BrowserRouter>
+                    </CartContext.Provider>
                 </UserContext.Provider>
         </div>
     )
