@@ -17,6 +17,8 @@ const Cart = () => {
 
     const cartData = useContext(CartContext);
 
+    console.log(cartData);
+
   return (
     <div>
         <div>

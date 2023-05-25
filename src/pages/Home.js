@@ -4,14 +4,19 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { CgShoppingCart } from "react-icons/cg";
 import axios from "axios";
+import { useContext } from 'react';
+import { CartContext } from "../context/CartContext";
+import { Link } from 'react-router-dom';
 
-const Home = () => {
+const Home = () => { 
 
     let navigate = useNavigate();
 
+    const cartData = useContext(CartContext);
+
     const [newness, setNewness] = useState([]); 
     const [onlyTolkien, setOnlyTolkien] = useState([]);
-    const [onlyComputerComplex, setOnlyComputerComplex] = useState([]);
+    const [onlyComputerComplex, setOnlyComputerComplex] = useState([]);  
 
     useEffect(() => {  
 
@@ -31,6 +36,30 @@ const Home = () => {
         })
 
     }, [])
+
+    const NewnessAddToCart = (book) => { 
+        const bookDetailsCopy = {...book}
+        bookDetailsCopy.quantity = 1
+        const cartDataCopy = [...cartData.value, bookDetailsCopy]
+        cartData.setValue(cartDataCopy);
+        localStorage.setItem("cart", JSON.stringify(cartDataCopy));
+    }
+
+    const onlyTolkienAddToCart = (book) => { 
+        const bookDetailsCopy = {...book}
+        bookDetailsCopy.quantity = 1
+        const cartDataCopy = [...cartData.value, bookDetailsCopy]
+        cartData.setValue(cartDataCopy);
+        localStorage.setItem("cart", JSON.stringify(cartDataCopy));
+    }
+
+    const onlyComputerComplexAddToCart = (book) => { 
+        const bookDetailsCopy = {...book}
+        bookDetailsCopy.quantity = 1
+        const cartDataCopy = [...cartData.value, bookDetailsCopy]
+        cartData.setValue(cartDataCopy);
+        localStorage.setItem("cart", JSON.stringify(cartDataCopy));
+    }
 
     return (
         <div className="home-page">
@@ -54,7 +83,7 @@ const Home = () => {
                 </div>
                 <div className="row">
                     { newness.map((book, index) => (
-                        <div className="col-6 col-sm-6 col-md-6 col-lg-3 mb-5" key={"newness-div" + index}>
+                        <div className="col-6 col-sm-6 col-md-6 col-lg-3 mb-5 d-flex flex-column" key={"newness-div" + index}>
                             <div className="mb-2">
                                 <img 
                                 src={"http://localhost:4000/books_img/" + book.img_directory + "/" + book.image}
@@ -65,12 +94,12 @@ const Home = () => {
                             </div>
                             <div className="d-flex flex-column">                      
                                 <div className="book-title-container">
-                                    <h6 
+                                    <Link 
                                     className="book-title"
-                                    onClick={() => {navigate("/selectedbook/" + book.id)}}
+                                    to={"/selectedbook/" + book.id}
                                     >                                      
-                                    {book.title}
-                                    </h6>
+                                        {book.title}
+                                    </Link>
                                 </div>
                                 <div>
                                     <div>
@@ -80,8 +109,8 @@ const Home = () => {
                                         <h5 className="value-of-the-book">{book.price} $</h5>
                                     </div>                                                     
                                     <div>
-                                        <button type="button" className="home-add-to-cart-buttons">                                                           
-                                            Add To Cart
+                                        <button type="button" className="home-add-to-cart-buttons" onClick={() => NewnessAddToCart(book)}>                                                           
+                                            Add To Cart 
                                                 <CgShoppingCart className="fs-5 ms-2 cart-icon"/>
                                         </button>
                                     </div>
@@ -109,12 +138,12 @@ const Home = () => {
                             </div>
                             <div className="d-flex flex-column">                     
                                 <div className="book-title-container">
-                                    <h6 
+                                    <Link 
                                     className="book-title"
-                                    onClick={() => {navigate("/selectedbook/" + book.id)}}
+                                    to={"/selectedbook/" + book.id}
                                     >                                      
-                                    {book.title}
-                                    </h6>
+                                        {book.title}
+                                    </Link>
                                 </div>
                                 <div>
                                     <div>
@@ -124,7 +153,7 @@ const Home = () => {
                                         <h5 className="value-of-the-book">{book.price} $</h5>
                                     </div>                                                     
                                     <div>
-                                        <button type="button" className="home-add-to-cart-buttons">                   
+                                        <button type="button" className="home-add-to-cart-buttons" onClick={() => onlyTolkienAddToCart(book)}>                   
                                             Add To Cart
                                                 <CgShoppingCart className="fs-5 ms-2 cart-icon"/>
                                         </button>
@@ -152,14 +181,13 @@ const Home = () => {
                                 />                                        
                             </div>
                             <div className="d-flex flex-column">                     
-                                <div className="book-title-container">
-                                    {/*Link*/}
-                                    <h6 
+                                <div className="book-title-container">                                  
+                                    <Link 
                                     className="book-title"
-                                    onClick={() => {navigate("/selectedbook/" + book.id)}}
+                                    to={"/selectedbook/" + book.id}
                                     >                                      
-                                    {book.title}
-                                    </h6>
+                                        {book.title}
+                                    </Link>
                                 </div>
                                 <div>
                                     <div>
@@ -169,7 +197,7 @@ const Home = () => {
                                         <h5 className="value-of-the-book">{book.price} $</h5>
                                     </div>                                                     
                                     <div>
-                                        <button type="button" className="home-add-to-cart-buttons">                                        
+                                        <button type="button" className="home-add-to-cart-buttons" onClick={() => onlyComputerComplexAddToCart(book)}>                                        
                                             Add To Cart
                                                 <CgShoppingCart className="fs-5 ms-2 cart-icon"/>
                                         </button>

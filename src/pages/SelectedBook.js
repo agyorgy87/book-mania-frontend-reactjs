@@ -21,9 +21,6 @@ const SelectedBook = () => {
     const userData = useContext(UserContext);
     const cartData = useContext(CartContext);
 
-    const [inputValue, setInputValue] = useState("");
-
-
     const [bookDetails, setBookDetails] = useState({});
     const [heartIconFull, setHeartIconFull] = useState(false);
 
@@ -97,15 +94,16 @@ const SelectedBook = () => {
         }           
     }
 
-    const addToCart = () => {
+    const SelectedBookAddToCart = () => {
         const bookDetailsCopy = {...bookDetails}
         bookDetailsCopy.quantity = 1
         const cartDataCopy = [...cartData.value, bookDetailsCopy]
         cartData.setValue(cartDataCopy);
         localStorage.setItem("cart", JSON.stringify(cartDataCopy));
     }
-    
 
+    console.log(bookDetails);
+    
     return (
         <div className="selected-book-page">
             <div>
@@ -161,7 +159,7 @@ const SelectedBook = () => {
                                     <p className="mb-5 display-6">{bookDetails.price} $</p>
                                 </div>                              
                                 <div className="d-flex mb-5">
-                                    <button type="button" className="selected-book-add-to-cart-button" onClick={addToCart}>                                                           
+                                    <button type="button" className="selected-book-add-to-cart-button" onClick={SelectedBookAddToCart}>                                                           
                                         Add To Cart
                                             <CgShoppingCart className="fs-5 ms-2 cart-icon"/>
                                     </button>

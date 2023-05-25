@@ -7,7 +7,6 @@ import { useContext } from 'react';
 import { UserContext } from "../context/UserContext.js";
 import { CartContext } from "../context/CartContext.js";
 
-
 const NavigationBar = () => {
 
     const userData = useContext(UserContext);
