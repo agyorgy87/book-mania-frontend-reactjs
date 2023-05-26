@@ -4,11 +4,15 @@ import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { CgShoppingCart } from "react-icons/cg";
 import axios from "axios";
+import { useContext } from 'react';
+import { CartContext } from "../context/CartContext";
+import { Link } from 'react-router-dom';
 
 const Books = () => {
 
-
     let navigate = useNavigate();
+
+    const cartData = useContext(CartContext);
 
     const allBooks = useRef([]);
     const [visibleBooks, setVisibleBooks] = useState([]);
@@ -19,7 +23,6 @@ const Books = () => {
     const [showResult, setShowResult] = useState(false);
     const [searchResult, setSearchResult] = useState("");
     
-
     useEffect(() => { 
         getAllBooks();  
         getAllGenre();
@@ -163,6 +166,14 @@ const Books = () => {
         setShowResult(true);
         setSearchResult(e);
     }
+
+    const visibleBooksAddToCart = (book) => { 
+        const bookDetailsCopy = {...book}
+        bookDetailsCopy.quantity = 1
+        const cartDataCopy = [...cartData.value, bookDetailsCopy]
+        cartData.setValue(cartDataCopy);
+        localStorage.setItem("cart", JSON.stringify(cartDataCopy));
+    }
     
     return(
         <div className="book-page">
@@ -252,7 +263,7 @@ const Books = () => {
                             <option value="allBooks">All Books</option>
                             {
                                 allPublisher.map((publisher, index) => (
-                                    <option key={"publisherdiv" + index}>{publisher.publisher_name}</option>
+                                    <option key={"publisher-div" + index}>{publisher.publisher_name}</option>
                                 ))
                             }
                         </select> 
@@ -293,10 +304,12 @@ const Books = () => {
                                         </div>
                                         <div className="d-flex flex-column">                     
                                             <div className="book-title-container">
-                                                <h6 
-                                                className="book-title"
-                                                onClick={() => {navigate("/selectedbook/" + book.id)}}
-                                                >{book.title}</h6>
+                                            <Link 
+                                            className="book-title"
+                                            to={"/selectedbook/" + book.id}
+                                            >                                      
+                                                {book.title}
+                                            </Link>
                                             </div>
                                             <div>
                                                 <div>
@@ -306,7 +319,7 @@ const Books = () => {
                                                     <h5 className="value-of-the-book">{book.price} $</h5>
                                                 </div>                                                     
                                                 <div>
-                                                    <button type="button" className="book-add-to-cart-buttons">                                                           
+                                                    <button type="button" className="book-add-to-cart-buttons" onClick={() => visibleBooksAddToCart(book)}>                                                           
                                                         Add To Cart
                                                             <CgShoppingCart className="fs-5 ms-2 cart-icon"/>
                                                     </button>

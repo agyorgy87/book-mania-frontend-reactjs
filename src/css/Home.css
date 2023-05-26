@@ -50,16 +50,16 @@
     font-weight: 300;
 }
  
-.book-title-container {
+.home-book-title-container {
     height: 55px; 
     width: 80%;
 }
 
-.book-pics {
+.home-book-pics {
     cursor: pointer;
 }
 
-.book-title {
+.home-book-title { 
     font-family: 'Open Sans', sans-serif;
     font-weight: 700;
     cursor: pointer;
@@ -68,22 +68,22 @@
     text-decoration: none;
 }
 
-.book-title:hover {
+.home-book-title:hover {
     color: #337ab7;
 }
 
-.author-name {
+.home-author-name {
     font-family: 'Open Sans', sans-serif;
     font-weight: 400;
     font-size: small;
 }
 
-.value-of-the-book {
+.home-value-of-the-book {
     font-family: 'Open Sans', sans-serif;
     font-weight: 600;
 }
 
-.cart-icon {
+.home-cart-icon {
     transform: translateY(-2px);
 }
 

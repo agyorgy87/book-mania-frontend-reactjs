@@ -87,15 +87,15 @@ const Home = () => {
                             <div className="mb-2">
                                 <img 
                                 src={"http://localhost:4000/books_img/" + book.img_directory + "/" + book.image}
-                                className="img-fluid book-pics"                                             
+                                className="img-fluid home-book-pics"                                             
                                 onClick={() => {navigate("/selectedbook/" + book.id)}}
                                 alt="book"
                                 />                                        
                             </div>
                             <div className="d-flex flex-column">                      
-                                <div className="book-title-container">
+                                <div className="home-book-title-container">
                                     <Link 
-                                    className="book-title"
+                                    className="home-book-title"
                                     to={"/selectedbook/" + book.id}
                                     >                                      
                                         {book.title}
@@ -103,15 +103,15 @@ const Home = () => {
                                 </div>
                                 <div>
                                     <div>
-                                        <p className="author-name">{book.author_name}</p>
+                                        <p className="home-author-name">{book.author_name}</p>
                                     </div>
                                     <div>
-                                        <h5 className="value-of-the-book">{book.price} $</h5>
+                                        <h5 className="home-value-of-the-book">{book.price} $</h5>
                                     </div>                                                     
                                     <div>
                                         <button type="button" className="home-add-to-cart-buttons" onClick={() => NewnessAddToCart(book)}>                                                           
                                             Add To Cart 
-                                                <CgShoppingCart className="fs-5 ms-2 cart-icon"/>
+                                                <CgShoppingCart className="fs-5 ms-2 home-cart-icon"/>
                                         </button>
                                     </div>
                                 </div>                                                                                              
@@ -131,15 +131,15 @@ const Home = () => {
                             <div className="mb-2">
                                 <img 
                                 src={"http://localhost:4000/books_img/" + book.img_directory + "/" + book.image}
-                                className="img-fluid book-pics"                                             
+                                className="img-fluid home-book-pics"                                             
                                 onClick={() => {navigate("/selectedbook/" + book.id)}}
                                 alt="book"
                                 />                                        
                             </div>
                             <div className="d-flex flex-column">                     
-                                <div className="book-title-container">
+                                <div className="home-book-title-container">
                                     <Link 
-                                    className="book-title"
+                                    className="home-book-title"
                                     to={"/selectedbook/" + book.id}
                                     >                                      
                                         {book.title}
@@ -147,15 +147,15 @@ const Home = () => {
                                 </div>
                                 <div>
                                     <div>
-                                        <p className="author-name">{book.author_name}</p>
+                                        <p className="home-author-name">{book.author_name}</p>
                                     </div>
                                     <div>
-                                        <h5 className="value-of-the-book">{book.price} $</h5>
+                                        <h5 className="home-value-of-the-book">{book.price} $</h5>
                                     </div>                                                     
                                     <div>
                                         <button type="button" className="home-add-to-cart-buttons" onClick={() => onlyTolkienAddToCart(book)}>                   
                                             Add To Cart
-                                                <CgShoppingCart className="fs-5 ms-2 cart-icon"/>
+                                                <CgShoppingCart className="fs-5 ms-2 home-cart-icon"/>
                                         </button>
                                     </div>
                                 </div>                                                                                              
@@ -175,15 +175,15 @@ const Home = () => {
                             <div className="mb-2 book-image-container">
                                 <img 
                                 src={"http://localhost:4000/books_img/" + book.img_directory + "/" + book.image}
-                                className="img-fluid book-pics"                                             
+                                className="img-fluid home-book-pics"                                             
                                 onClick={() => {navigate("/selectedbook/" + book.id)}}
                                 alt="book"
                                 />                                        
                             </div>
                             <div className="d-flex flex-column">                     
-                                <div className="book-title-container">                                  
+                                <div className="home-book-title-container">                                  
                                     <Link 
-                                    className="book-title"
+                                    className="home-book-title"
                                     to={"/selectedbook/" + book.id}
                                     >                                      
                                         {book.title}
@@ -191,15 +191,15 @@ const Home = () => {
                                 </div>
                                 <div>
                                     <div>
-                                        <p className="author-name">{book.author_name}</p>
+                                        <p className="home-author-name">{book.author_name}</p>
                                     </div>
                                     <div>
-                                        <h5 className="value-of-the-book">{book.price} $</h5>
+                                        <h5 className="home-value-of-the-book">{book.price} $</h5>
                                     </div>                                                     
                                     <div>
                                         <button type="button" className="home-add-to-cart-buttons" onClick={() => onlyComputerComplexAddToCart(book)}>                                        
                                             Add To Cart
-                                                <CgShoppingCart className="fs-5 ms-2 cart-icon"/>
+                                                <CgShoppingCart className="fs-5 ms-2 home-cart-icon"/>
                                         </button>
                                     </div>
                                 </div>                                                                                              
