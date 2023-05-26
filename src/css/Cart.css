@@ -1,0 +1,25 @@
+* { 
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none;
+}
+
+.cart-page {
+    padding-top: 100px;
+    background-color: #F1F6F9 !important;
+}
+
+.selected-book-for-purchase {
+    height: 170px;
+    width: 95%;
+    border: 1px solid rgb(178, 178, 178);
+    border-radius: 5px;
+
+}
+
+.cart-book-pics {
+    border: 1px solid rgb(178, 178, 178);
+    height: 150px !important;
+    filter: drop-shadow(2px 2px 2px );
+}
