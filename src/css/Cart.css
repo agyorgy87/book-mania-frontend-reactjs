@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Open+Sans:wght@300;400;600;700&display=swap');
+
 * { 
     margin: 0;
     padding: 0;
@@ -6,6 +8,7 @@
 }
 
 .cart-page {
+    height: 100%;
     padding-top: 100px;
     background-color: #F1F6F9 !important;
 }
@@ -15,7 +18,10 @@
     width: 95%;
     border: 1px solid rgb(178, 178, 178);
     border-radius: 5px;
+}
 
+.book-title-author-publisher-container {
+    width: 60%;
 }
 
 .cart-book-pics {
@@ -23,3 +29,46 @@
     height: 150px !important;
     filter: drop-shadow(2px 2px 2px );
 }
+
+.price-count-remove-container {
+    width: 20%;
+}
+
+.plus-minus-button {
+    height: 2rem;
+    width: 2rem;
+    border-radius: 6px;
+    border: none;
+    background-color: #30475f;
+    color: #EEE9DA;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+}
+
+.plus-minus-icon {
+    transform: translateY(-2px);
+    font-size: 20px;
+}
+
+.remove-button {
+    height: 2rem;
+    width: 2rem;
+    border-radius: 6px;
+    border: none;
+    background-color: #30475f;
+    color: #EEE9DA;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+}
+
+.delete-all-cart-data-button {
+    height: 2rem;
+    width: 8rem;
+    border-radius: 6px;
+    border: none;
+    background-color: #30475f;
+    color: #EEE9DA;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+}
+

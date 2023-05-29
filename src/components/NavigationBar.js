@@ -1,6 +1,6 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import "../css/NavigationBar.css";
+import React from 'react';
+import { Link } from 'react-router-dom';
 import {ImBooks} from "react-icons/im";
 import { CgShoppingCart } from "react-icons/cg";
 import { useContext } from 'react';
