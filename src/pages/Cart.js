@@ -1,7 +1,7 @@
 import '../css/Cart.css';
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import NavigationBar from '../components/NavigationBar.js';
-import { RiCouponLine } from "react-icons/ri";
+
 import { BiPlus } from "react-icons/bi";
 import { BiMinus } from "react-icons/bi";
 import { RiDeleteBin7Line } from "react-icons/ri";
@@ -10,15 +10,27 @@ import { CartContext } from "../context/CartContext";
 
 const Cart = () => {
 
-    /*
-        const couponCodeInputRef = useRef(null);
+    
+    const couponCodeInputRef = useRef(null);
 
-        const couponCodeClick = () => {
-        setInputValue(couponCodeInputRef.current.value);
+     const [couponCodeInput, setCouponCodeInput] = useState("")
+
+    const couponCodeInputValue = () => {
+        setCouponCodeInput(couponCodeInputRef.current.value);
     }
-    */
+    
+   const cartData = useContext(CartContext);
+   const [totatPriceInOrderSummary, setTotalPriceInOrderSummary] = useState(0);
 
-    const cartData = useContext(CartContext);
+    useEffect(() => {
+        let allData = cartData.value;
+        let allPrice = allData.map(obj => obj.price);
+        let sumPrice = 0; 
+        allPrice.forEach(num => {sumPrice += num;})
+        let priceFixed = sumPrice.toFixed(2)
+        setTotalPriceInOrderSummary(priceFixed);
+    }, [totatPriceInOrderSummary])
+
 
     const deleteSelectedBook = (book) => {
         let searchedBookID = book.id;
@@ -38,16 +50,21 @@ const Cart = () => {
         window.location.reload();
     }
 
+    console.log(couponCodeInput)
+
     return (
         <div className="cart-page">
             <div className="fixed-top">
                 <NavigationBar/>
             </div>
             <div className="container">
-                <h1>My Cart {/*(x book)*/}</h1>
+                <div>
+                    <h1 className="top-my-cart-text me-2">My Cart</h1>
+                    <h4 className="my-cart-items-text">({cartData.value.length} items)</h4>
+                </div>
                 <div>
                     <div className="row">
-                        <div className="col-8">                           
+                        <div className="col-9">                           
                             {
                                 cartData.value.map((book, index) => (
                                     <div className="selected-book-for-purchase mb-3 d-flex justify-content-between" key={"cart-data-div" + index}>
@@ -71,15 +88,15 @@ const Cart = () => {
                                                         <h4>{book.price} $</h4>
                                                     </div>                                                 
                                                 </div> 
-                                                <div className="d-flex justify-content-between mb-4">                                                                           
+                                                <div className="d-flex mb-4">                                                                           
                                                         <div>
                                                             <button className="plus-minus-button"><BiMinus className="plus-minus-icon" /></button>
                                                         </div>
-                                                        <div>
+                                                        <div className="ms-2">
                                                             <p>{book.quantity}</p>
                                                         </div>
                                                         <div>
-                                                            <button className="plus-minus-button"><BiPlus className="plus-minus-icon"/></button>
+                                                            <button className="plus-minus-button ms-2"><BiPlus className="plus-minus-icon"/></button>
                                                         </div>
                                                 </div>                                         
                                                 <div className="d-flex flex-row-reverse">
@@ -102,25 +119,35 @@ const Cart = () => {
                             null
                         }
                         </div>                       
-                        <div className="col-4 paying-container">
-                            <div>
-                                Price:
+                        <div className="col-3 paying-container ps-4">
+                            <div className="mt-2">
+                                <p className="h3">Order Summary</p>
                             </div>
-                            <div className="mb-3">
-                                <label htmlFor="coupon-code">Coupon Code:</label>
-                                    <input 
-                                    //ref={couponCodeInputRef}
-                                    type="text" 
-                                    className="form-control coupon-code-input" 
-                                    id="coupon-code" 
-                                    />
+                            <div className="mt-3">
+                                <p className="subtotal-items-text">{cartData.value.length} items Subtotal</p>
                             </div>
-                            <div className="d-flex mb-5">
-                                <button type="button" className="selected-book-add-coupon-code-button">                                                           
-                                    Add Coupon Code
-                                        <RiCouponLine className="fs-5 ms-2 coupon-icon"/>
-                                    </button>
+                            <div className="d-flex justify-content-between">
+                                <div>
+                                    <h5 className="total-text">Total</h5>
                                 </div>
+                                <div className="pe-4">
+                                    <h5>{totatPriceInOrderSummary}</h5>
+                                </div>
+                            </div>
+                            <div className="mt-3 coupon-code-container ">
+                                <div>
+                                    <p>Have a coupon code?</p>
+                                </div>
+                                <div className="input-group mb-3">
+                                    <input type="text" className="form-control" placeholder="Enter coupon code" ref={couponCodeInputRef}/>
+                                        <div className="input-group-append">
+                                            <button className="btn btn-outline-secondary" type="button" onClick={couponCodeInputValue}>Add</button>
+                                        </div>
+                                </div>
+                            </div>
+                            <div>
+                                <button className="payment-button">payment</button>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -8,20 +8,32 @@
 }
 
 .cart-page {
-    height: 100%;
+    min-height: 100vh;
     padding-top: 100px;
     background-color: #F1F6F9 !important;
 }
 
+.top-my-cart-text {
+    display: inline;
+    font-family: 'Open Sans', sans-serif;
+
+}
+
+.my-cart-items-text {
+    color: rgb(93, 93, 93);
+    display: inline;
+}
+
 .selected-book-for-purchase {
-    height: 170px;
+    height: 175px;
     width: 95%;
     border: 1px solid rgb(178, 178, 178);
     border-radius: 5px;
+    background-color: #FFF;
 }
 
 .book-title-author-publisher-container {
-    width: 60%;
+    width: 80%;
 }
 
 .cart-book-pics {
@@ -29,11 +41,11 @@
     height: 150px !important;
     filter: drop-shadow(2px 2px 2px );
 }
-
+/*
 .price-count-remove-container {
-    width: 20%;
+    
 }
-
+*/
 .plus-minus-button {
     height: 2rem;
     width: 2rem;
@@ -72,3 +84,33 @@
     font-weight: 400;
 }
 
+.plus-minus-button:hover, .remove-button:hover, .delete-all-cart-data-button:hover {
+    background-color: #212A3E;
+}
+
+.paying-container {
+    border: 1px solid rgb(178, 178, 178);
+    background-color: #FFF;
+    border-radius: 5px;
+    height: 20rem;
+}
+
+.subtotal-items-text {
+    font-family: 'Open Sans', sans-serif;
+}
+
+.total-text {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+}
+
+/*
+*/
+
+.payment-button {
+    width: 100%;
+    border: none;
+    color: #EEE9DA;
+    background-color: #212A3E;
+    font-family: 'Open Sans', sans-serif;
+}

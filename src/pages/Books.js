@@ -267,7 +267,7 @@ const Books = () => {
                                 ))
                             }
                         </select> 
-                    </div>
+                    </div> 
                     <div className="row d-flex justify-content-center mb-5 mt-4 ">
                         <div className="input-group mt-3 search-input-container">
                             <input 

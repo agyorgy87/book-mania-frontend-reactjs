@@ -14,6 +14,8 @@ const Home = () => {
 
     const cartData = useContext(CartContext);
 
+    const [currentlyDate, setCurrentlyDate] = useState(new Date())
+
     const [newness, setNewness] = useState([]); 
     const [onlyTolkien, setOnlyTolkien] = useState([]);
     const [onlyComputerComplex, setOnlyComputerComplex] = useState([]);  
@@ -38,11 +40,20 @@ const Home = () => {
     }, [])
 
     const NewnessAddToCart = (book) => { 
+
+        let allData = cartData.value;
+        let allId = allData.map(obj => obj.id);
+        console.log(allId);
+
+        /*
         const bookDetailsCopy = {...book}
         bookDetailsCopy.quantity = 1
         const cartDataCopy = [...cartData.value, bookDetailsCopy]
         cartData.setValue(cartDataCopy);
         localStorage.setItem("cart", JSON.stringify(cartDataCopy));
+
+        console.log(book.id);
+        /*cartContentControl();*/
     }
 
     const onlyTolkienAddToCart = (book) => { 
@@ -59,6 +70,11 @@ const Home = () => {
         const cartDataCopy = [...cartData.value, bookDetailsCopy]
         cartData.setValue(cartDataCopy);
         localStorage.setItem("cart", JSON.stringify(cartDataCopy));
+    }
+
+    const cartContentControl = () => {
+        setCurrentlyDate(new Date());
+        console.log(cartData.value);
     }
 
     return (
