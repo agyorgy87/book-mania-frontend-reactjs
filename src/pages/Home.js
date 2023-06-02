@@ -40,12 +40,11 @@ const Home = () => {
     }, [])
 
     const NewnessAddToCart = (book) => { 
-
+/*
         let allData = cartData.value;
         let allId = allData.map(obj => obj.id);
         console.log(allId);
-
-        /*
+*/
         const bookDetailsCopy = {...book}
         bookDetailsCopy.quantity = 1
         const cartDataCopy = [...cartData.value, bookDetailsCopy]

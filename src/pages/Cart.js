@@ -1,7 +1,7 @@
 import '../css/Cart.css';
 import { useState, useEffect, useRef } from 'react';
 import NavigationBar from '../components/NavigationBar.js';
-
+import axios from "axios";
 import { BiPlus } from "react-icons/bi";
 import { BiMinus } from "react-icons/bi";
 import { RiDeleteBin7Line } from "react-icons/ri";
@@ -10,17 +10,36 @@ import { CartContext } from "../context/CartContext";
 
 const Cart = () => {
 
-    
+    const cartData = useContext(CartContext);
+   
+   const [totatPriceInOrderSummary, setTotalPriceInOrderSummary] = useState(0);
+
     const couponCodeInputRef = useRef(null);
 
-     const [couponCodeInput, setCouponCodeInput] = useState("")
+     const [couponCodeInput, setCouponCodeInput] = useState("");
 
-    const couponCodeInputValue = () => {
-        setCouponCodeInput(couponCodeInputRef.current.value);
+     const [discountedSummary, setDiscountedSummary] = useState(0);
+
+    const couponCodeCheck = () => {
+        axios.get(`http://localhost:4000/get-coupon-code/${couponCodeInput}`)
+            .then(response => {
+                console.log(response);
+                if(response.data.success === true) {
+                    setDiscountedSummary(response.data.bookMultiple * totatPriceInOrderSummary)
+                }else{
+                    alert("not good")
+                }
+        })
+    }
+
+    const sendCouponCode = () => {
+        axios.get(`http://localhost:4000/set-coupon-used/${couponCodeInput}`)
+            .then(response => {
+                console.log(response);
+        })
     }
     
-   const cartData = useContext(CartContext);
-   const [totatPriceInOrderSummary, setTotalPriceInOrderSummary] = useState(0);
+   
 
     useEffect(() => {
         let allData = cartData.value;
@@ -50,7 +69,7 @@ const Cart = () => {
         window.location.reload();
     }
 
-    console.log(couponCodeInput)
+    console.log(couponCodeInput);
 
     return (
         <div className="cart-page">
@@ -125,7 +144,7 @@ const Cart = () => {
                             </div>
                             <div className="mt-3">
                                 <p className="subtotal-items-text">{cartData.value.length} items Subtotal</p>
-                            </div>
+                            </div>                           
                             <div className="d-flex justify-content-between">
                                 <div>
                                     <h5 className="total-text">Total</h5>
@@ -134,19 +153,31 @@ const Cart = () => {
                                     <h5>{totatPriceInOrderSummary}</h5>
                                 </div>
                             </div>
+                            { discountedSummary !== 0 ?
+                                <div className="d-flex justify-content-between">
+                                <div>
+                                    <h5 className="total-text">discountedSummary</h5>
+                                </div>
+                                <div className="pe-4">
+                                    <h5>{discountedSummary}</h5>
+                                </div>
+                            </div>
+                            :
+                            null
+                            }
                             <div className="mt-3 coupon-code-container ">
                                 <div>
                                     <p>Have a coupon code?</p>
                                 </div>
                                 <div className="input-group mb-3">
-                                    <input type="text" className="form-control" placeholder="Enter coupon code" ref={couponCodeInputRef}/>
+                                    <input type="text" className="form-control" placeholder="Enter coupon code" ref={couponCodeInputRef} onChange={(e) => setCouponCodeInput(e.target.value)}/>
                                         <div className="input-group-append">
-                                            <button className="btn btn-outline-secondary" type="button" onClick={couponCodeInputValue}>Add</button>
+                                            <button className="btn btn-outline-secondary" type="button" onClick={couponCodeCheck}>Add</button>
                                         </div>
                                 </div>
                             </div>
                             <div>
-                                <button className="payment-button">payment</button>
+                                <button className="payment-button" onClick={sendCouponCode}>payment</button>
                             </div>
                         </div>
                     </div>
