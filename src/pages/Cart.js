@@ -12,13 +12,15 @@ const Cart = () => {
 
     const cartData = useContext(CartContext);
    
-   const [totatPriceInOrderSummary, setTotalPriceInOrderSummary] = useState(0);
+    const [totatPriceInOrderSummary, setTotalPriceInOrderSummary] = useState(0);
 
     const couponCodeInputRef = useRef(null);
 
-     const [couponCodeInput, setCouponCodeInput] = useState("");
+    const [couponCodeInput, setCouponCodeInput] = useState("");
 
-     const [discountedSummary, setDiscountedSummary] = useState(0);
+    const [discountedSummary, setDiscountedSummary] = useState(0);
+
+
 
     const couponCodeCheck = () => {
         axios.get(`http://localhost:4000/get-coupon-code/${couponCodeInput}`)
@@ -39,8 +41,6 @@ const Cart = () => {
         })
     }
     
-   
-
     useEffect(() => {
         let allData = cartData.value;
         let allPrice = allData.map(obj => obj.price);
@@ -51,14 +51,13 @@ const Cart = () => {
     }, [totatPriceInOrderSummary])
 
 
+
+
     const deleteSelectedBook = (book) => {
         let searchedBookID = book.id;
-        let bookDetails = cartData.value
-        console.log(bookDetails);
         let cartDatas = localStorage.getItem("cart");
         let parsedCartDatas = JSON.parse(cartDatas);
         let newListWithoutSearchedBook = parsedCartDatas.filter(book => book.id !== searchedBookID);
-        console.log(newListWithoutSearchedBook);
         let stringifiedCartData = JSON.stringify(newListWithoutSearchedBook);
         localStorage.setItem("cart", stringifiedCartData);
         window.location.reload();//better solution?
@@ -69,7 +68,26 @@ const Cart = () => {
         window.location.reload();
     }
 
-    console.log(couponCodeInput);
+    const plusOneBook = (book) => {   
+
+        let newList;
+        let cartDatas = localStorage.getItem("cart");
+        let parsedCartDatas = JSON.parse(cartDatas);
+        let foundIndex = parsedCartDatas.findIndex(x => x.id === book.id);
+        console.log(parsedCartDatas[foundIndex]);
+        /*
+        let searchedBookObj = searchedBook[0]
+        searchedBookObj.quantity += 1
+        let stringifiedCartData = JSON.stringify(searchedBook)
+        localStorage.setItem("cart", stringifiedCartData);   
+        window.location.reload(); 
+        */
+    }
+
+    const minusOneBook = (book) => {
+        //console.log(cartData.value);
+    }
+
 
     return (
         <div className="cart-page">
@@ -109,13 +127,21 @@ const Cart = () => {
                                                 </div> 
                                                 <div className="d-flex mb-4">                                                                           
                                                         <div>
-                                                            <button className="plus-minus-button"><BiMinus className="plus-minus-icon" /></button>
+                                                            <button 
+                                                            className="plus-minus-button" 
+                                                            onClick={() => minusOneBook(book)}>
+                                                                <BiMinus className="plus-minus-icon"/>
+                                                            </button>
                                                         </div>
                                                         <div className="ms-2">
                                                             <p>{book.quantity}</p>
                                                         </div>
                                                         <div>
-                                                            <button className="plus-minus-button ms-2"><BiPlus className="plus-minus-icon"/></button>
+                                                            <button 
+                                                            className="plus-minus-button ms-2" 
+                                                            onClick={() => plusOneBook(book)}>
+                                                                <BiPlus className="plus-minus-icon"/>
+                                                            </button>
                                                         </div>
                                                 </div>                                         
                                                 <div className="d-flex flex-row-reverse">

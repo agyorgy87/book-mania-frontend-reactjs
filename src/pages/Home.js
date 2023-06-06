@@ -14,8 +14,6 @@ const Home = () => {
 
     const cartData = useContext(CartContext);
 
-    const [currentlyDate, setCurrentlyDate] = useState(new Date())
-
     const [newness, setNewness] = useState([]); 
     const [onlyTolkien, setOnlyTolkien] = useState([]);
     const [onlyComputerComplex, setOnlyComputerComplex] = useState([]);  
@@ -38,43 +36,23 @@ const Home = () => {
         })
 
     }, [])
-
-    const NewnessAddToCart = (book) => { 
-/*
+    
+    const homePageBookAddToCart = (book) => {
+        
         let allData = cartData.value;
-        let allId = allData.map(obj => obj.id);
-        console.log(allId);
-*/
-        const bookDetailsCopy = {...book}
-        bookDetailsCopy.quantity = 1
-        const cartDataCopy = [...cartData.value, bookDetailsCopy]
-        cartData.setValue(cartDataCopy);
-        localStorage.setItem("cart", JSON.stringify(cartDataCopy));
+        let allCartDataId = allData.map(obj => obj.id);
 
-        console.log(book.id);
-        /*cartContentControl();*/
+        if(allCartDataId.includes(book.id) === true) {
+            alert("this book is already in the cart")
+        }else{
+            const bookDetailsCopy = {...book}
+            bookDetailsCopy.quantity = 1
+            const cartDataCopy = [...cartData.value, bookDetailsCopy]
+            cartData.setValue(cartDataCopy);
+            localStorage.setItem("cart", JSON.stringify(cartDataCopy));
+        }
     }
 
-    const onlyTolkienAddToCart = (book) => { 
-        const bookDetailsCopy = {...book}
-        bookDetailsCopy.quantity = 1
-        const cartDataCopy = [...cartData.value, bookDetailsCopy]
-        cartData.setValue(cartDataCopy);
-        localStorage.setItem("cart", JSON.stringify(cartDataCopy));
-    }
-
-    const onlyComputerComplexAddToCart = (book) => { 
-        const bookDetailsCopy = {...book}
-        bookDetailsCopy.quantity = 1
-        const cartDataCopy = [...cartData.value, bookDetailsCopy]
-        cartData.setValue(cartDataCopy);
-        localStorage.setItem("cart", JSON.stringify(cartDataCopy));
-    }
-
-    const cartContentControl = () => {
-        setCurrentlyDate(new Date());
-        console.log(cartData.value);
-    }
 
     return (
         <div className="home-page">
@@ -124,7 +102,7 @@ const Home = () => {
                                         <h5 className="home-value-of-the-book">{book.price} $</h5>
                                     </div>                                                     
                                     <div>
-                                        <button type="button" className="home-add-to-cart-buttons" onClick={() => NewnessAddToCart(book)}>                                                           
+                                        <button type="button" className="home-add-to-cart-buttons" onClick={() => homePageBookAddToCart(book)}>                                                           
                                             Add To Cart 
                                                 <CgShoppingCart className="fs-5 ms-2 home-cart-icon"/>
                                         </button>
@@ -168,7 +146,7 @@ const Home = () => {
                                         <h5 className="home-value-of-the-book">{book.price} $</h5>
                                     </div>                                                     
                                     <div>
-                                        <button type="button" className="home-add-to-cart-buttons" onClick={() => onlyTolkienAddToCart(book)}>                   
+                                        <button type="button" className="home-add-to-cart-buttons" onClick={() => homePageBookAddToCart (book)}>                   
                                             Add To Cart
                                                 <CgShoppingCart className="fs-5 ms-2 home-cart-icon"/>
                                         </button>
@@ -212,7 +190,7 @@ const Home = () => {
                                         <h5 className="home-value-of-the-book">{book.price} $</h5>
                                     </div>                                                     
                                     <div>
-                                        <button type="button" className="home-add-to-cart-buttons" onClick={() => onlyComputerComplexAddToCart(book)}>                                        
+                                        <button type="button" className="home-add-to-cart-buttons" onClick={() => homePageBookAddToCart (book)}>                                        
                                             Add To Cart
                                                 <CgShoppingCart className="fs-5 ms-2 home-cart-icon"/>
                                         </button>
