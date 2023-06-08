@@ -13,26 +13,41 @@ const CreateAccount = () => {
 
     let nameInput = useRef(null);
 
+    const firstRun = useRef(true);
+
     useEffect(() => {
         nameInput.current.focus();
     }, [])
 
     useEffect(() => {
-            if(errors.error === false){
-            let user = {
-                firstName: values.firstName,
-                lastName: values.lastName,
-                gender: (values.gender === "female" ? 0 : 1),
-                address: values.address,
-                city: values.city,
-                zipCode: values.zip,
-                email: values.email,
-                pass: values.password
+        if(!firstRun.current){
+            if(errors.error === true){
+                alert("hibás form")
             }
-            axios.post("http://localhost:4000/register", user)
-            navigate("/successfulregistration")
-        }     
+            else if( values.dataProtection === "false"){
+                alert("nem fogadtad el az adatvédelmi tájékoztatót")
+            }else{
+                let user = {
+                    firstName: values.firstName,
+                    lastName: values.lastName,
+                    gender: (values.gender === "female" ? 0 : 1),
+                    address: values.address,
+                    city: values.city,
+                    zipCode: values.zip,
+                    email: values.email,
+                    pass: values.password
+                }
+                axios.post("http://localhost:4000/register", user)
+                navigate("/successfulregistration")
+            }  
+        }else{
+            firstRun.current = false;
+        }
+         
+   
     },[errors])
+
+    console.log(values.dataProtection);
 
     return (
         <div>

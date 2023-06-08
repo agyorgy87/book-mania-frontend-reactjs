@@ -7,8 +7,11 @@ import { BiMinus } from "react-icons/bi";
 import { RiDeleteBin7Line } from "react-icons/ri";
 import { useContext } from 'react';
 import { CartContext } from "../context/CartContext";
+import { UserContext } from "../context/UserContext";
 
 const Cart = () => {
+
+    const userData = useContext(UserContext)
 
     const cartData = useContext(CartContext);
    
@@ -18,16 +21,14 @@ const Cart = () => {
 
     const [couponCodeInput, setCouponCodeInput] = useState("");
 
-    const [discountedSummary, setDiscountedSummary] = useState(0);
-
-
+    const [bookMultiple, setBookMultiple] = useState(1)
 
     const couponCodeCheck = () => {
         axios.get(`http://localhost:4000/get-coupon-code/${couponCodeInput}`)
             .then(response => {
                 console.log(response);
                 if(response.data.success === true) {
-                    setDiscountedSummary(response.data.bookMultiple * totatPriceInOrderSummary)
+                    setBookMultiple(response.data.bookMultiple)
                 }else{
                     alert("not good")
                 }
@@ -35,23 +36,38 @@ const Cart = () => {
     }
 
     const sendCouponCode = () => {
-        axios.get(`http://localhost:4000/set-coupon-used/${couponCodeInput}`)
+        if(userData.value.jwt){
+            axios.get(`http://localhost:4000/set-coupon-used/${couponCodeInput}`)
             .then(response => {
-                console.log(response);
+                console.log(response);               
+                alert("sikeres fizetés");
         })
+        }else{
+            alert("a kuponokat csak bejelentkezve tudod használni")
+        }    
     }
     
     useEffect(() => {
-        let allData = cartData.value;
-        let allPrice = allData.map(obj => obj.price);
-        let sumPrice = 0; 
-        allPrice.forEach(num => {sumPrice += num;})
-        let priceFixed = sumPrice.toFixed(2)
-        setTotalPriceInOrderSummary(priceFixed);
-    }, [totatPriceInOrderSummary])
+        sumPriceCalculator();
+    }, [cartData.value]);
 
+    const sumPriceCalculator = () => {
+        let allData = cartData.value
+        let sum = 0;
+        for(let book of allData) {
+            sum += book.price * book.quantity
+        }
+        setTotalPriceInOrderSummary(sum.toFixed(2));   
+    }
 
-
+    const allItems = () => {
+        let allData = cartData.value
+        let sum = 0;
+        for(let book of allData) {
+            sum += book.quantity
+        }
+        return sum;
+    }
 
     const deleteSelectedBook = (book) => {
         let searchedBookID = book.id;
@@ -68,26 +84,31 @@ const Cart = () => {
         window.location.reload();
     }
 
-    const plusOneBook = (book) => {   
-
-        let newList;
-        let cartDatas = localStorage.getItem("cart");
-        let parsedCartDatas = JSON.parse(cartDatas);
-        let foundIndex = parsedCartDatas.findIndex(x => x.id === book.id);
-        console.log(parsedCartDatas[foundIndex]);
-        /*
-        let searchedBookObj = searchedBook[0]
-        searchedBookObj.quantity += 1
-        let stringifiedCartData = JSON.stringify(searchedBook)
+    const plusOneBook = (book) => {      
+        let allCartData = [...cartData.value]
+        let foundIndex = allCartData.findIndex(x => x.id === book.id);
+        let bookForModification = allCartData[foundIndex];
+        allCartData.splice(foundIndex, 1);
+        bookForModification["quantity"] = bookForModification["quantity"] + 1;
+        allCartData.splice(foundIndex, 0, bookForModification)
+        let stringifiedCartData = JSON.stringify(allCartData)
         localStorage.setItem("cart", stringifiedCartData);   
-        window.location.reload(); 
-        */
+        cartData.setValue(allCartData);    
     }
 
     const minusOneBook = (book) => {
-        //console.log(cartData.value);
+        let allCartData = [...cartData.value]
+        let foundIndex = allCartData.findIndex(x => x.id === book.id);
+        let bookForModification = allCartData[foundIndex];
+        allCartData.splice(foundIndex, 1);
+        bookForModification["quantity"] = bookForModification["quantity"] - 1;
+        allCartData.splice(foundIndex, 0, bookForModification)
+        let stringifiedCartData = JSON.stringify(allCartData)
+        localStorage.setItem("cart", stringifiedCartData);   
+        cartData.setValue(allCartData);  
     }
 
+    let allQuantity = allItems();
 
     return (
         <div className="cart-page">
@@ -97,7 +118,7 @@ const Cart = () => {
             <div className="container">
                 <div>
                     <h1 className="top-my-cart-text me-2">My Cart</h1>
-                    <h4 className="my-cart-items-text">({cartData.value.length} items)</h4>
+                    <h4 className="my-cart-items-text">({allQuantity} items)</h4>
                 </div>
                 <div>
                     <div className="row">
@@ -122,7 +143,7 @@ const Cart = () => {
                                             <div className="price-count-remove-container d-flex flex-column pt-2 pe-3">
                                                 <div className="d-flex flex-row-reverse mb-2">
                                                     <div>
-                                                        <h4>{book.price} $</h4>
+                                                        <h4>{(book.price * book.quantity).toFixed(2)} $</h4>
                                                     </div>                                                 
                                                 </div> 
                                                 <div className="d-flex mb-4">                                                                           
@@ -169,7 +190,7 @@ const Cart = () => {
                                 <p className="h3">Order Summary</p>
                             </div>
                             <div className="mt-3">
-                                <p className="subtotal-items-text">{cartData.value.length} items Subtotal</p>
+                                <p className="subtotal-items-text">{allQuantity} items Subtotal</p>
                             </div>                           
                             <div className="d-flex justify-content-between">
                                 <div>
@@ -179,13 +200,13 @@ const Cart = () => {
                                     <h5>{totatPriceInOrderSummary}</h5>
                                 </div>
                             </div>
-                            { discountedSummary !== 0 ?
+                            { bookMultiple !== 1 ?
                                 <div className="d-flex justify-content-between">
                                 <div>
                                     <h5 className="total-text">discountedSummary</h5>
                                 </div>
                                 <div className="pe-4">
-                                    <h5>{discountedSummary}</h5>
+                                    <h5>{bookMultiple * totatPriceInOrderSummary}</h5>
                                 </div>
                             </div>
                             :
