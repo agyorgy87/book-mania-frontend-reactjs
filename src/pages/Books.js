@@ -174,7 +174,7 @@ const Books = () => {
         cartData.setValue(cartDataCopy);
         localStorage.setItem("cart", JSON.stringify(cartDataCopy));
     }
-    
+    /*d-lg-block*/
     return(
         <div className="book-page">
             <div className="fixed-top">
@@ -182,7 +182,7 @@ const Books = () => {
             </div>
             <div className="container-fluid">
             <div className="row">
-                    <div className="col-lg-3 col-xl-3 col-xxl-2 side-bar d-none d-sm-none d-md-none d-lg-block">
+                    <div className="col-md-3 col-lg-3 col-xl-3 col-xxl-2 side-bar d-none d-sm-none d-md-block">
                         <ul className="list-group mt-4">
                             <li className="list-group-item name-of-the-list active border-0 rounded ">Categories</li>
                             <li className="list-group-item list-group-item-action border-0 options-for-filtering" onClick={getAllBooks}>All</li> 
@@ -225,8 +225,8 @@ const Books = () => {
                             }
                         </ul>
                     </div>
-                <div className="col-lg-9 col-xl-9 col-xxl-10">
-                    <div className="d-block d-lg-none d-flex flex-column align-items-center">
+                <div className="col-md-9 col-lg-9 col-xl-9 col-xxl-10">
+                    <div className="d-block d-md-none d-flex flex-column align-items-center">
                         <select className="form-select mb-3 all-select" aria-label="Default select example" onChange={(e) => callGenre(e.target.value)}>
                             <option>Categories</option>
                             <option value="allBooks">All Books</option>
