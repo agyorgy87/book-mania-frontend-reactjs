@@ -107,6 +107,10 @@
     .home-add-to-cart-buttons {
         width: 65%;
     }
+
+    .home-book-title-container {
+        height: 75px;
+    }
 }
 
 @media (max-width:992px) {
@@ -126,7 +130,7 @@
         width: 70%;
     }
 
-    .book-title-container {
+    .home-book-title-container {
         height: 75px;
         width: 90%;
     }
