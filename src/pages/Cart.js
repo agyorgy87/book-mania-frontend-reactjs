@@ -4,7 +4,7 @@ import NavigationBar from '../components/NavigationBar.js';
 import axios from "axios";
 import { BiPlus } from "react-icons/bi";
 import { BiMinus } from "react-icons/bi";
-import { RiDeleteBin7Line } from "react-icons/ri";
+import { MdOutlineRemoveShoppingCart } from "react-icons/md";
 import { useContext } from 'react';
 import { CartContext } from "../context/CartContext";
 import { UserContext } from "../context/UserContext";
@@ -21,7 +21,11 @@ const Cart = () => {
 
     const [couponCodeInput, setCouponCodeInput] = useState("");
 
-    const [bookMultiple, setBookMultiple] = useState(1)
+    const [bookMultiple, setBookMultiple] = useState(1);
+
+    const [showinDiscount, setShowingDiscount] = useState(0);
+
+    const [couponCodeValidation, setCouponCodeValidation] = useState(2);
 
     const couponCodeCheck = () => {
         axios.get(`http://localhost:4000/get-coupon-code/${couponCodeInput}`)
@@ -29,8 +33,9 @@ const Cart = () => {
                 console.log(response);
                 if(response.data.success === true) {
                     setBookMultiple(response.data.bookMultiple)
+                    setCouponCodeValidation(true)
                 }else{
-                    alert("not good")
+                    setCouponCodeValidation(false)
                 }
         })
     }
@@ -50,6 +55,16 @@ const Cart = () => {
     useEffect(() => {
         sumPriceCalculator();
     }, [cartData.value]);
+
+    useEffect(() => {
+        if(bookMultiple === 0.8) {
+            setShowingDiscount(20)
+        }else if(bookMultiple === 0.7){
+            setShowingDiscount(30)
+        }else if(bookMultiple === 0.5){
+            setShowingDiscount(50)
+        }
+    }, [bookMultiple])
 
     const sumPriceCalculator = () => {
         let allData = cartData.value
@@ -116,7 +131,7 @@ const Cart = () => {
                 <NavigationBar/>
             </div>
             <div className="container">
-                <div>
+                <div className="mb-3">
                     <h1 className="top-my-cart-text me-2">My Cart</h1>
                     <h4 className="my-cart-items-text">({allQuantity} items)</h4>
                 </div>
@@ -135,9 +150,10 @@ const Cart = () => {
                                                 /> 
                                             </div>
                                             <div className="mt-2 ms-4">
-                                                <p>{book.title}</p>
-                                                <p>{book.author_name}</p>
-                                                <p>{book.publisher_name}</p>
+                                                <p className="cart-book-title">{book.title}</p>
+                                                <p className="cart-book-author-name mb-4">{book.author_name}</p>
+                                                <p className="cart-book-release-date mb-1">{book.release_date}</p>
+                                                <p className="cart-book-publisher-name">{book.publisher_name}</p>
                                             </div>
                                         </div>                                       
                                             <div className="price-count-remove-container d-flex flex-column pt-2 pe-3">
@@ -151,10 +167,10 @@ const Cart = () => {
                                                             <button 
                                                             className="plus-minus-button" 
                                                             onClick={() => minusOneBook(book)}>
-                                                                <BiMinus className="plus-minus-icon"/>
+                                                                <BiMinus className="plus-minus-icon"/> 
                                                             </button>
                                                         </div>
-                                                        <div className="ms-2">
+                                                        <div className="ms-2 current-book-number">
                                                             <p>{book.quantity}</p>
                                                         </div>
                                                         <div>
@@ -167,7 +183,7 @@ const Cart = () => {
                                                 </div>                                         
                                                 <div className="d-flex flex-row-reverse">
                                                     <div>
-                                                        <button className="remove-button" onClick={() => deleteSelectedBook(book)}><RiDeleteBin7Line className="plus-minus-icon"/></button>
+                                                        <button className="remove-button" onClick={() => deleteSelectedBook(book)}><MdOutlineRemoveShoppingCart className="plus-minus-icon"/></button>
                                                     </div>
                                                 </div>
                                             </div>                                                                            
@@ -176,16 +192,16 @@ const Cart = () => {
                             }
                             {
                             cartData.value.length > 0 ?
-                            <div className="d-flex justify-content-center mb-5">
-                                <div>
-                                    <button className="delete-all-cart-data-button" onClick={deleteAllBooksFromLocal}>Clear Your Cart</button>
+                            <div className="d-flex flex-row-reverse me-5">
+                                <div className="float-right">
+                                    <button className="delete-cart-button" onClick={deleteAllBooksFromLocal}>Clear Your Cart</button>
                                 </div>
                             </div>
                             : 
                             null
                         }
-                        </div>                       
-                        <div className="col-3 paying-container ps-4">
+                        </div>                      
+                        <div className="col-3 ps-4 container-fluid paying-container">
                             <div className="mt-2">
                                 <p className="h3">Order Summary</p>
                             </div>
@@ -196,35 +212,45 @@ const Cart = () => {
                                 <div>
                                     <h5 className="total-text">Total</h5>
                                 </div>
-                                <div className="pe-4">
-                                    <h5>{totatPriceInOrderSummary}</h5>
+                                <div className="pe-4 mb-3">                               
+                                    <h5>{totatPriceInOrderSummary} $</h5>                               
                                 </div>
                             </div>
                             { bookMultiple !== 1 ?
-                                <div className="d-flex justify-content-between">
-                                <div>
-                                    <h5 className="total-text">discountedSummary</h5>
+                                <div className="d-flex flex-column">
+                                    <div className="d-flex flex-row-reverse me-4">
+                                        <h5>-{showinDiscount}%</h5>
+                                    </div>
+                                    <div className="d-flex justify-content-between">
+                                        <div>
+                                            <h5 className="total-text">Discounted Price</h5>
+                                        </div>
+                                        <div className="pe-4">
+                                            <h5>{(bookMultiple * totatPriceInOrderSummary).toFixed(2)} $</h5>
+                                        </div>
+                                    </div>                                  
                                 </div>
-                                <div className="pe-4">
-                                    <h5>{bookMultiple * totatPriceInOrderSummary}</h5>
-                                </div>
-                            </div>
                             :
                             null
                             }
-                            <div className="mt-3 coupon-code-container ">
-                                <div>
-                                    <p>Have a coupon code?</p>
-                                </div>
-                                <div className="input-group mb-3">
-                                    <input type="text" className="form-control" placeholder="Enter coupon code" ref={couponCodeInputRef} onChange={(e) => setCouponCodeInput(e.target.value)}/>
-                                        <div className="input-group-append">
-                                            <button className="btn btn-outline-secondary" type="button" onClick={couponCodeCheck}>Add</button>
-                                        </div>
-                                </div>
-                            </div>
                             <div>
-                                <button className="payment-button" onClick={sendCouponCode}>payment</button>
+                                <p className="coupon-question">Have a coupon code?</p>
+                            </div>
+                            <div className="input-group mb-4">
+                                <input type="text" className="form-control coupon-code-input" placeholder="Enter coupon code" ref={couponCodeInputRef} onChange={(e) => setCouponCodeInput(e.target.value)}/>                             
+                                    <button className="btn add-coupon-code-button" type="button" onClick={couponCodeCheck}>Add</button>                              
+                            </div> 
+                            { couponCodeValidation === true ?
+                                <div class="alert alert-success" role="alert">
+                                    Coupon Code Correct.
+                                </div>
+                                :
+                                <div class="alert alert-danger" role="alert">
+                                    Coupon Code Invalid.
+                                </div>
+                            }
+                            <div>
+                                <button className="payment-button mb-4" onClick={sendCouponCode}>Payment</button>
                             </div>
                         </div>
                     </div>

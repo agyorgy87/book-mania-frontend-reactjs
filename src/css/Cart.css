@@ -16,18 +16,17 @@
 .top-my-cart-text {
     display: inline;
     font-family: 'Open Sans', sans-serif;
-
 }
 
 .my-cart-items-text {
-    color: rgb(93, 93, 93);
+    color: #5d5d5d;
     display: inline;
 }
 
 .selected-book-for-purchase {
     height: 175px;
     width: 95%;
-    border: 1px solid rgb(178, 178, 178);
+    border: 1px solid #b2b2b2;
     border-radius: 5px;
     background-color: #FFF;
 }
@@ -41,18 +40,41 @@
     height: 150px !important;
     filter: drop-shadow(2px 2px 2px );
 }
-/*
-.price-count-remove-container {
-    
+
+.cart-book-title { 
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 18px;
+    color: black;
+    text-decoration: none;
 }
-*/
+
+.cart-book-author-name {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+}
+
+.cart-book-release-date {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+}
+
+.cart-book-publisher-name {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+}
+
 .plus-minus-button {
     height: 2rem;
     width: 2rem;
     border-radius: 6px;
-    border: none;
-    background-color: #30475f;
-    color: #EEE9DA;
+    border: 1px solid #b2b2b2;
+    background-color: #FFF;
+    color: #353535;
     font-family: 'Open Sans', sans-serif;
     font-weight: 400;
 }
@@ -62,37 +84,44 @@
     font-size: 20px;
 }
 
+.current-book-number {
+    transform: translateY(+3px);
+}
+
+.plus-minus-button:hover, .remove-button:hover {
+    background-color: #e0e0e0;
+}
+
 .remove-button {
     height: 2rem;
     width: 2rem;
     border-radius: 6px;
-    border: none;
-    background-color: #30475f;
-    color: #EEE9DA;
+    border: 1px solid #b2b2b2;
+    background-color: #FFF;
+    color: #353535;
     font-family: 'Open Sans', sans-serif;
     font-weight: 400;
 }
 
-.delete-all-cart-data-button {
+.delete-cart-button {
     height: 2rem;
     width: 8rem;
-    border-radius: 6px;
     border: none;
-    background-color: #30475f;
-    color: #EEE9DA;
+    background-color: #F1F6F9;
+    color: black;
     font-family: 'Open Sans', sans-serif;
-    font-weight: 400;
+    font-weight: 600;
 }
 
-.plus-minus-button:hover, .remove-button:hover, .delete-all-cart-data-button:hover {
-    background-color: #212A3E;
+.delete-cart-button:hover {
+    text-decoration: underline;
 }
 
 .paying-container {
-    border: 1px solid rgb(178, 178, 178);
+    height: 100%;
+    border: 1px solid #b2b2b2;
     background-color: #FFF;
     border-radius: 5px;
-    height: 20rem;
 }
 
 .subtotal-items-text {
@@ -104,13 +133,46 @@
     font-weight: 700;
 }
 
-/*
-*/
+.coupon-code-input {
+    outline: none !important;
+    border-color: #b2b2b2 !important;
+}
+
+.coupon-code-input:hover {
+    outline: none !important;
+    border-color: #b2b2b2 !important;
+}
+
+.coupon-question {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 15px;
+}
+
+.add-coupon-code-button {
+    font-family: 'Open Sans', sans-serif !important;
+    color: black;
+    border-color: #b2b2b2 !important;
+}
+
+.add-coupon-code-button:hover {
+    background-color: #e0e0e0 !important;
+}
 
 .payment-button {
+    height: 2.5rem;
     width: 100%;
+    border-radius: 6px;
     border: none;
+    background-color: #30475f;
     color: #EEE9DA;
-    background-color: #212A3E;
     font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
 }
+
+.payment-button:hover {
+    background-color: #212A3E;
+}
+
+
+    
+
