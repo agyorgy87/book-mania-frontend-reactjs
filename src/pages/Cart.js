@@ -8,6 +8,7 @@ import { MdOutlineRemoveShoppingCart } from "react-icons/md";
 import { useContext } from 'react';
 import { CartContext } from "../context/CartContext";
 import { UserContext } from "../context/UserContext";
+import LoginModal from "../components/LoginModal.js";
 
 const Cart = () => {
 
@@ -25,30 +26,36 @@ const Cart = () => {
 
     const [showinDiscount, setShowingDiscount] = useState(0);
 
-    const [couponCodeValidation, setCouponCodeValidation] = useState(2);
+    const [couponCodeValidationMessage, setCouponCodeValidationMessage] = useState(false);
+
+    const [couponCodeIsCorrectOrIncorrect, setCouponCodeIsCorrectOrIncorrect] = useState(true);
+
+    const [showLoginModal, setShowLoginModal] = useState(false);
 
     const couponCodeCheck = () => {
         axios.get(`http://localhost:4000/get-coupon-code/${couponCodeInput}`)
             .then(response => {
                 console.log(response);
                 if(response.data.success === true) {
-                    setBookMultiple(response.data.bookMultiple)
-                    setCouponCodeValidation(true)
+                    setBookMultiple(response.data.bookMultiple);
+                    setCouponCodeValidationMessage(true);
+                    setCouponCodeIsCorrectOrIncorrect(true);
                 }else{
-                    setCouponCodeValidation(false)
+                    setCouponCodeValidationMessage(true);
+                    setCouponCodeIsCorrectOrIncorrect(false);
                 }
         })
     }
 
-    const sendCouponCode = () => {
+    const proceedToCheckout = () => {
         if(userData.value.jwt){
             axios.get(`http://localhost:4000/set-coupon-used/${couponCodeInput}`)
             .then(response => {
                 console.log(response);               
-                alert("sikeres fizetés");
+                //navigate to payment page
         })
         }else{
-            alert("a kuponokat csak bejelentkezve tudod használni")
+            setShowLoginModal(true);
         }    
     }
     
@@ -64,7 +71,13 @@ const Cart = () => {
         }else if(bookMultiple === 0.5){
             setShowingDiscount(50)
         }
-    }, [bookMultiple])
+    }, [bookMultiple]);
+
+    useEffect(() => {
+        if(couponCodeInput.length === 0) {
+            setCouponCodeValidationMessage(false)
+        }
+    }, [couponCodeInput]);
 
     const sumPriceCalculator = () => {
         let allData = cartData.value
@@ -124,20 +137,26 @@ const Cart = () => {
     }
 
     let allQuantity = allItems();
-
-    return (
-        <div className="cart-page">
+    //{ showLoginModal && <LoginModal closeModal={setShowLoginModal}/> }  
+    return (      
+        <div className="cart-page"> 
             <div className="fixed-top">
                 <NavigationBar/>
             </div>
+            { showLoginModal ? 
+                <LoginModal closeModal={setShowLoginModal}/>               
+                :
+                
+            
             <div className="container">
                 <div className="mb-3">
                     <h1 className="top-my-cart-text me-2">My Cart</h1>
                     <h4 className="my-cart-items-text">({allQuantity} items)</h4>
-                </div>
+                </div>              
+                            
                 <div>
                     <div className="row">
-                        <div className="col-9">                           
+                        <div className="col-md-8 col-lg-8 continer-fluid">                           
                             {
                                 cartData.value.map((book, index) => (
                                     <div className="selected-book-for-purchase mb-3 d-flex justify-content-between" key={"cart-data-div" + index}>
@@ -145,21 +164,19 @@ const Cart = () => {
                                             <div>
                                                 <img 
                                                 src={"http://localhost:4000/books_img/" + book.img_directory + "/" + book.image}
-                                                className="cart-book-pics mt-2 ms-4"                                             
+                                                className="cart-book-pics mt-2"                                             
                                                 alt="book"
                                                 /> 
                                             </div>
                                             <div className="mt-2 ms-4">
                                                 <p className="cart-book-title">{book.title}</p>
                                                 <p className="cart-book-author-name mb-4">{book.author_name}</p>
-                                                <p className="cart-book-release-date mb-1">{book.release_date}</p>
-                                                <p className="cart-book-publisher-name">{book.publisher_name}</p>
                                             </div>
                                         </div>                                       
-                                            <div className="price-count-remove-container d-flex flex-column pt-2 pe-3">
+                                            <div className="d-flex flex-column pt-2 pe-3">
                                                 <div className="d-flex flex-row-reverse mb-2">
                                                     <div>
-                                                        <h4>{(book.price * book.quantity).toFixed(2)} $</h4>
+                                                        <h4 className="cart-book-price">{(book.price * book.quantity).toFixed(2)} $</h4>
                                                     </div>                                                 
                                                 </div> 
                                                 <div className="d-flex mb-4">                                                                           
@@ -194,14 +211,14 @@ const Cart = () => {
                             cartData.value.length > 0 ?
                             <div className="d-flex flex-row-reverse me-5">
                                 <div className="float-right">
-                                    <button className="delete-cart-button" onClick={deleteAllBooksFromLocal}>Clear Your Cart</button>
+                                    <button className="delete-cart-button mb-5" onClick={deleteAllBooksFromLocal}>Clear Your Cart</button>
                                 </div>
                             </div>
                             : 
                             null
-                        }
-                        </div>                      
-                        <div className="col-3 ps-4 container-fluid paying-container">
+                            }
+                        </div>                       
+                        <div className="col-md-4 col-lg-4 container-fluid paying-container">
                             <div className="mt-2">
                                 <p className="h3">Order Summary</p>
                             </div>
@@ -240,22 +257,25 @@ const Cart = () => {
                                 <input type="text" className="form-control coupon-code-input" placeholder="Enter coupon code" ref={couponCodeInputRef} onChange={(e) => setCouponCodeInput(e.target.value)}/>                             
                                     <button className="btn add-coupon-code-button" type="button" onClick={couponCodeCheck}>Add</button>                              
                             </div> 
-                            { couponCodeValidation === true ?
-                                <div class="alert alert-success" role="alert">
-                                    Coupon Code Correct.
+                            { couponCodeValidationMessage ?
+                                <div className={`${couponCodeIsCorrectOrIncorrect ? "alert alert-success" : "alert alert-danger"}`} role="alert">
+                                    { couponCodeIsCorrectOrIncorrect ?
+                                        "Coupon Code Correct."
+                                        :
+                                        "Coupon Code Incorrect."
+                                    }                                   
                                 </div>
                                 :
-                                <div class="alert alert-danger" role="alert">
-                                    Coupon Code Invalid.
-                                </div>
+                                null
                             }
                             <div>
-                                <button className="payment-button mb-4" onClick={sendCouponCode}>Payment</button>
+                                <button className="payment-button mb-4" onClick={proceedToCheckout}>Procced To Checkout</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            }
         </div>
     )
 }

@@ -25,7 +25,7 @@
 
 .selected-book-for-purchase {
     height: 175px;
-    width: 95%;
+    width: 100%;
     border: 1px solid #b2b2b2;
     border-radius: 5px;
     background-color: #FFF;
@@ -36,8 +36,9 @@
 }
 
 .cart-book-pics {
-    border: 1px solid rgb(178, 178, 178);
-    height: 150px !important;
+    margin-left: 20px;
+    border: 1px solid #b2b2b2;
+    height: 150px;
     filter: drop-shadow(2px 2px 2px );
 }
 
@@ -56,21 +57,9 @@
     font-size: 14px;
 }
 
-.cart-book-release-date {
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 400;
-    font-size: 14px;
-}
-
-.cart-book-publisher-name {
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 400;
-    font-size: 14px;
-}
-
 .plus-minus-button {
-    height: 2rem;
-    width: 2rem;
+    height: 32px;
+    width: 32px;
     border-radius: 6px;
     border: 1px solid #b2b2b2;
     background-color: #FFF;
@@ -119,6 +108,7 @@
 
 .paying-container {
     height: 100%;
+    /*width: 95% !important;*/
     border: 1px solid #b2b2b2;
     background-color: #FFF;
     border-radius: 5px;
@@ -172,6 +162,62 @@
 .payment-button:hover {
     background-color: #212A3E;
 }
+
+@media (max-width:992px) {
+    .cart-book-title {
+        font-size: 15px;
+    }
+    .cart-book-author-name {
+        font-size: 12px;
+    }
+}
+
+@media (max-width:768px) {
+    .paying-container {
+        width: 95% !important;
+    }
+}
+
+@media (max-width:576px) {
+    .cart-book-title {
+        font-size: 14px;
+    }
+}
+
+@media (max-width:476px) {
+    .cart-book-title {
+        font-size: 14px;
+    }
+
+    .cart-book-price {
+        font-size: 19px;
+    }  
+
+    .cart-book-pics {
+        margin-right: -10px !important;
+        margin-left: 10px;
+    }
+}
+
+@media (max-width:376px) {
+    .cart-book-title {
+        font-size: 12px;
+    }
+
+    .cart-book-author-name {
+        font-size: 10px;
+    }
+
+    .cart-book-price {
+        font-size: 19px;
+    }  
+
+    .cart-book-pics {
+        margin-right: -10px !important;
+        margin-left: 10px;
+    }
+}
+
 
 
     
