@@ -276,9 +276,9 @@ const Books = () => {
                             id="example-search-input"
                             onChange={(e) => callAllTitlesAndAuthors(e.target.value)}
                             />
-                                <button className="btn btn-lg btn-outline-secondary border rounded-right outline-none search-button" type="button">
-                                    <i className="bi bi-search"></i>
-                                </button>
+                            <button className="btn btn-lg btn-outline-secondary border rounded-right outline-none search-button" type="button">
+                                <i className="bi bi-search"></i>
+                            </button>
                         </div>                       
                     </div>            
                     <div className="container search-result-container">   
