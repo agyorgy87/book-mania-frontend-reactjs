@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import validate from '../ValidateInfo';
 import useForm from '../useForm';
 import axios from "axios";
+import { Link } from 'react-router-dom';
 
 const CreateAccount = () => {
     const {handleChange, values, handleSubmit, errors} = useForm(validate);
@@ -223,6 +224,9 @@ const CreateAccount = () => {
                                         </div>                                           
                                     </div>
                                 </form>
+                                <div className="d-flex justify-content-center mt-3">
+                                    <p className="terms-and-policy">By signing up, you agree to our <Link>Terms of Service</Link> and<Link> Privacy Policy</Link></p>
+                                </div>
                             </div>
                         </div>
                     </div>
