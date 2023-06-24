@@ -24,6 +24,8 @@ const Login = () => {
 
     const [passwordShow, setPasswordShow] = useState(false);
 
+    const [passwordInfo, setPasswordInfo] = useState(false);
+
     const togglePassword = () => {
         setPasswordShow(!passwordShow); 
     }
@@ -51,8 +53,18 @@ const Login = () => {
         })       
     }
 
-    const isValid = userEmail !== "";
-    //const passwordText = password === "";
+    let emptyEmailInputErrorMessage;
+
+    const emptyInputError = () => {
+        if(userEmail === "" && password === ""){
+            emptyEmailInputErrorMessage = false;
+        }
+        else if(userEmail === "" && password !== ""){
+            emptyEmailInputErrorMessage = true;
+        }
+    }
+
+    emptyInputError();
 
     return (
         <div className="login-page">
@@ -74,29 +86,38 @@ const Login = () => {
                             <input autoFocus type="email" value={userEmail} onBlur={() => setTouched(true)} className="form-control email-input" id="InputEmail" aria-describedby="emailHelp" onChange={(e) => setUserEmail(e.target.value)}/>
                         </div>
                         {touched ? 
-                            (isValid ? 
-                                null 
-                                :
-                                <div class="alert alert-danger ms-5 me-5 ps-4" role="alert">
+                            (emptyEmailInputErrorMessage ? 
+                                <div className="alert alert-danger ms-5 me-5 ps-4" role="alert">
                                     The email address is not filled.
-                                </div>)
+                                </div> 
+                                :
+                                null
+                                )
                         : null}
-                        <div className="mb-3 ms-5 me-5">
-                            <label htmlFor="InputPassword" className="form-label">Password</label>
+                        <div className="ms-5 me-5 mt-4">
+                                <label htmlFor="InputPassword" className="form-label">Password</label>
                             <div className="password-container">                               
-                                <input type={passwordShow ? "text" : "password"} className="form-control password-input" id="InputPassword" onChange={(e) => setPassword(e.target.value)}/>                   
+                                <input type={passwordShow ? "text" : "password"} className="form-control password-input" id="InputPassword" onChange={(e) => {setPassword(e.target.value); setPasswordInfo(true)} }/>                   
+                                    <div className="d-flex flex-row-reverse">
+                                        <Link to={"/forgotpassword"}>Forgot your password?</Link>
+                                    </div>
                                     { passwordShow ?
                                         <i className="eye-icons bi bi-eye text-dark" onClick={togglePassword}></i>                                      
                                         :
                                         <i className="eye-icons bi bi-eye-slash text-dark" onClick={togglePassword}></i>
-                                    } 
-                                <p className="password-help">Your password must be least 8 characters and minimum 1 number.</p>                              
+                                    }
+                                    {
+                                        passwordInfo ?
+                                        <p className="password-help">Your password must be least 8 characters and minimum 1 number.</p>
+                                        :
+                                        null
+                                    }                                               
                             </div>
                         </div>
                         <div>
                             {
                                 success ? 
-                                    <div class="alert alert-success" role="alert">
+                                    <div className="alert alert-success" role="alert">
                                         {success}
                                     </div>
                             :
@@ -106,19 +127,19 @@ const Login = () => {
                         <div>
                             {
                                 errorMessage ? 
-                                    <div class="alert alert-danger" role="alert">
+                                    <div className="alert alert-danger" role="alert">
                                         {errorMessage}
                                     </div>
                             :
                                 null
                             }
                         </div>
-                        <div className="login-button-container mt-5 ms-5 me-5 mb-4">
+                        <div className="login-button-container mt-4 ms-5 me-5 mb-4">
                             <button type="submit" className="btn login-button" onClick={login}>LOGIN</button>
                         </div>
                     </form>
                     <div className="d-flex justify-content-center mt-3">
-                        <p className="terms-and-policy">Have an account? <Link>Create Account</Link></p>
+                        <p className="terms-and-policy">Have an account? <Link to={"/createaccount"}>Create Account</Link></p>
                     </div>
                 </div>       
             </section>
