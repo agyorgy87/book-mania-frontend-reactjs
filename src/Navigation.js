@@ -43,8 +43,6 @@ const Navigation = () => {
 
     const [cartData, setCartData] = useState(cartObj);
 
-    
-
     return(
         <div>
                 <UserContext.Provider value={{value:userData, setValue:setUserData}}>
@@ -60,8 +58,7 @@ const Navigation = () => {
                             <Route path="/successfulregistration" element={<SuccessfulRegistration/>} />
                             <Route path="/selectedbook/:id" element={<SelectedBook/>} />
                             <Route path="/wishlist" element={<WishList/>} />
-                            <Route path="/cart" element={<Cart/>} />
-                            
+                            <Route path="/cart" element={<Cart/>} />                   
                         </Routes>
                     </BrowserRouter>
                     </CartContext.Provider>

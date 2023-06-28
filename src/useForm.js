@@ -11,8 +11,8 @@ const useForm = validate => {
         zip: '',
         email: '',
         password: '',
-        passwordAgain: '',
-        dataProtection: "false"
+        passwordAgain: ''
+        //dataProtection: "false"
     })
     
     const [errors, setErrors] = useState({});

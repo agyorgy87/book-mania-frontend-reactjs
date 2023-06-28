@@ -1,5 +1,5 @@
 import '../css/Login.css';
-import React, {useState, useRef}  from 'react';
+import React, {useState }  from 'react';
 import NavigationBar from '../components/NavigationBar.js';
 import {ImBooks} from "react-icons/im";
 import { useNavigate } from "react-router-dom";
@@ -30,27 +30,31 @@ const Login = () => {
         setPasswordShow(!passwordShow); 
     }
 
-    const login = () => {
+    const login = (e) => {
+
+    e.preventDefault();
 
     let userObj = {
         email: userEmail,
         pass: password
     }
-
-    axios.post("http://localhost:4000/auth", userObj)
+        axios.post("http://localhost:4000/auth", userObj)
         .then(response => {
             if(response.data.error) {
-                setErrorMessage("Invalid Email address or Password."); 
-            }else{
-                setSuccess("Successful Login")
+                if(userEmail === "" && password === ""){
+                    setErrorMessage("");
+                }else{
+                    setErrorMessage("Invalid Email address or Password."); 
+                }   
+            }
+            else{
+                setSuccess("Successful Login");
                 let stringifiedToken = JSON.stringify(response.data);
                 localStorage.setItem("token", stringifiedToken);
-                userData.setValue(response.data)
-                setTimeout(() => {
-                    navigate("/");
-                }, "3000"); 
+                setTimeout(() => { navigate("/") }, 3000);
+                userData.setValue(response.data);               
             }
-        })       
+        })      
     }
 
     let emptyEmailInputErrorMessage;
@@ -77,15 +81,17 @@ const Login = () => {
                         <p className="login-name-of-the-website">BOOK MANIA</p> 
                             <ImBooks className="ms-4 book-mania-icon"/>
                     </div>
-                    <form className="col-12 col-sm-8 col-md-3 m-auto border rounded form-container">
+                    <form className="col-12 col-sm-8 col-md-4 m-auto border rounded form-container" onSubmit={login}>
                         <div className="d-flex justify-content-center mt-4 mb-3">
                             <h2 className="login-text">LOGIN</h2>
                         </div>
                         <div className="mb-3 ps-5 pe-5">
-                            <label htmlFor="InputEmail" className="form-label">Email address</label>
+                            <label htmlFor="InputEmail" className="form-label">Email</label>
                             <input autoFocus type="email" value={userEmail} onBlur={() => setTouched(true)} className="form-control email-input" id="InputEmail" aria-describedby="emailHelp" onChange={(e) => setUserEmail(e.target.value)}/>
-                        </div>
-                        {touched ? 
+                        </div>  
+                                           
+                        {
+                        touched ? 
                             (emptyEmailInputErrorMessage ? 
                                 <div className="alert alert-danger ms-5 me-5 ps-4" role="alert">
                                     The email address is not filled.
@@ -93,24 +99,24 @@ const Login = () => {
                                 :
                                 null
                                 )
-                        : null}
+                        :
+                        null
+                        }                       
                         <div className="ms-5 me-5 mt-4">
                                 <label htmlFor="InputPassword" className="form-label">Password</label>
                             <div className="password-container">                               
                                 <input type={passwordShow ? "text" : "password"} className="form-control password-input" id="InputPassword" onChange={(e) => {setPassword(e.target.value); setPasswordInfo(true)} }/>                   
-                                    <div className="d-flex flex-row-reverse">
-                                        <Link to={"/forgotpassword"}>Forgot your password?</Link>
-                                    </div>
-                                    { passwordShow ?
-                                        <i className="eye-icons bi bi-eye text-dark" onClick={togglePassword}></i>                                      
-                                        :
-                                        <i className="eye-icons bi bi-eye-slash text-dark" onClick={togglePassword}></i>
+                                    { 
+                                    passwordShow ?
+                                    <i className="eye-icons bi bi-eye text-dark" onClick={togglePassword}></i>                                      
+                                    :
+                                    <i className="eye-icons bi bi-eye-slash text-dark" onClick={togglePassword}></i>
                                     }
                                     {
-                                        passwordInfo ?
-                                        <p className="password-help">Your password must be least 8 characters and minimum 1 number.</p>
-                                        :
-                                        null
+                                    passwordInfo ?
+                                    <p className="password-help">Your password must be least 8 characters and minimum 1 number.</p>
+                                    :
+                                    null
                                     }                                               
                             </div>
                         </div>
@@ -135,7 +141,10 @@ const Login = () => {
                             }
                         </div>
                         <div className="login-button-container mt-4 ms-5 me-5 mb-4">
-                            <button type="submit" className="btn login-button" onClick={login}>LOGIN</button>
+                            <button type="submit" className="btn login-button">LOGIN</button>
+                        </div>
+                        <div className="d-flex justify-content-center mb-3">
+                            <Link to={"/forgotpassword"}>Forgot your password?</Link>
                         </div>
                     </form>
                     <div className="d-flex justify-content-center mt-3">

@@ -3,6 +3,9 @@ import React from "react";
 import NavigationBar from '../components/NavigationBar.js';
 
 const Contact = () => {
+
+    
+
     return(
         <div>
             <div>
