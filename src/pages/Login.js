@@ -68,7 +68,7 @@ const Login = () => {
         }
     }
 
-    emptyInputError();
+    emptyInputError(); 
 
     return (
         <div className="login-page">

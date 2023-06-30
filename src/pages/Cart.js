@@ -8,9 +8,9 @@ import { MdOutlineRemoveShoppingCart } from "react-icons/md";
 import { useContext } from 'react';
 import { CartContext } from "../context/CartContext";
 import { UserContext } from "../context/UserContext";
-import LoginModal from "../components/LoginModal.js";
+import LoginModal from "../modal/LoginModal.js";
 
-const Cart = () => {
+const Cart = () => { 
 
     const userData = useContext(UserContext)
 
@@ -30,7 +30,8 @@ const Cart = () => {
 
     const [couponCodeIsCorrectOrIncorrect, setCouponCodeIsCorrectOrIncorrect] = useState(true);
 
-    const [showLoginModal, setShowLoginModal] = useState(false);
+    const [openModal, setOpenModal] = useState(false)
+
 
     const couponCodeCheck = () => {
         axios.get(`http://localhost:4000/get-coupon-code/${couponCodeInput}`)
@@ -53,10 +54,14 @@ const Cart = () => {
             .then(response => {
                 console.log(response);               
                 //navigate to payment page
-        })
+        })  
         }else{
-            setShowLoginModal(true);
-        }    
+            setOpenModal(true);
+        }
+    }
+
+    const closeModal = () => {
+        setOpenModal(true);
     }
     
     useEffect(() => {
@@ -143,17 +148,14 @@ const Cart = () => {
             <div className="fixed-top">
                 <NavigationBar/>
             </div>
-            { showLoginModal ? 
-                <LoginModal closeModal={setShowLoginModal}/>               
-                :
-                
-            
+            <div>
+                {openModal && <LoginModal close={closeModal}/>}  
+            </div>
             <div className="container">
                 <div className="mb-3">
                     <h1 className="top-my-cart-text me-2">My Cart</h1>
                     <h4 className="my-cart-items-text">({allQuantity} items)</h4>
-                </div>              
-                            
+                </div>                
                 <div>
                     <div className="row">
                         <div className="col-md-8 col-lg-8 continer-fluid">                           
@@ -275,7 +277,7 @@ const Cart = () => {
                     </div>
                 </div>
             </div>
-            }
+
         </div>
     )
 }
