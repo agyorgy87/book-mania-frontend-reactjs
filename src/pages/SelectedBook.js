@@ -1,5 +1,5 @@
 import "../css/SelectedBook.css";
-import { useState, useEffect, useRef  } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams } from "react-router-dom";
 import NavigationBar from '../components/NavigationBar.js';
 import axios from "axios";
@@ -11,8 +11,6 @@ import { CartContext } from "../context/CartContext";
 import facebookLogo from "../img/facebook.png";
 import twitterLogo from "../img/twitter.png";
 import { CgShoppingCart } from "react-icons/cg";
-
-
 
 const SelectedBook = () => {
 
@@ -111,9 +109,10 @@ const SelectedBook = () => {
             </div> 
             {/*style={{ background: `url("http://localhost:4000/books_img/${bookDetails.img_directory}/${bookDetails.image_big}")` }}*/}
             <div className="container d-flex flex-column">
-                <div className="d-flex justify-content-between mt-4 mb-5">
-                    <div className="d-flex">
-                        <div className="me-4">
+                <div className="d-flex justify-content-between book-buttons-container mt-4 mb-5">
+                    
+                    <div className="d-flex col-lg-9 col-md-9 col-sm-9 col-12 book-container">
+                        <div className="me-2">
                             <img 
                             src={"http://localhost:4000/books_img/" + bookDetails.img_directory + "/" + bookDetails.image_big}
                             className="img-fluid shadow"                                             
@@ -128,7 +127,7 @@ const SelectedBook = () => {
                                 by {bookDetails.author_name}
                             </div>
                             <div>
-                                <div>
+                                <div className="pt-2">
                                 <p className="share-text pe-2">Share:</p>
                                 <img 
                                     src={twitterLogo} 
@@ -151,14 +150,16 @@ const SelectedBook = () => {
                                 </div>
                             </div>
                         </div>
-                    </div>  
-                    <div>
-                        <div className="payment-container" style={{width: "20rem"}}> 
+                    </div> 
+                    
+                    
+                    <div className="col-lg-3 col-md-3 col-sm-3 col-12 selected-book-price-container">
                             <div className="d-flex flex-column">
                                 <div>
                                     <p className="mb-5 display-6">{bookDetails.price} $</p>
-                                </div>                              
-                                <div className="d-flex mb-5">
+                                </div>
+                                <div className="align-items-center">
+                                <div className="mb-3">
                                     <button type="button" className="selected-book-add-to-cart-button" onClick={SelectedBookAddToCart}>                                                           
                                         Add To Cart
                                             <CgShoppingCart className="fs-5 ms-2 cart-icon"/>
@@ -166,28 +167,58 @@ const SelectedBook = () => {
                                 </div>
                                 <div>
                                     { heartIconFull ?
-                                    <button className="selected-book-add-to-wishlist-button" onClick={addToWishList}><AiFillHeart className="fs-5 ms-2 heart-icon"/>This book is in your wishlist</button>
+                                    <button className="selected-book-add-to-wishlist-button" onClick={addToWishList}>This book is in your wishlist<AiFillHeart className="fs-5 ms-2 heart-icon"/></button>
                                     :
-                                    <button className="selected-book-add-to-wishlist-button" onClick={addToWishList}><AiOutlineHeart className="fs-5 ms-2 heart-icon"/> Add To Wishlist</button>
+                                    <button className="selected-book-add-to-wishlist-button" onClick={addToWishList}>Add To Wishlist<AiOutlineHeart className="fs-5 ms-2 heart-icon"/></button>
                                     }                           
                                 </div>
-                            </div>
-                        </div>                       
-                    </div>               
+                                </div>
+                            </div>                   
+                    </div> 
                 </div>   
                 <div>
-                    <ul className="nav nav-tabs" id="myTab" role="tablist">
-                        <li className="nav-item overview-tab">
-                            <button className="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Overview</button>
-                        </li>
-                        <li className="nav-item about-the-author-tab">
-                            <button className="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">About the Author</button>
-                        </li>
-                    </ul>
-                    <div className="tab-content" id="myTabContent">
-                        <div className="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">ez</div>
-                        <div className="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">az</div>
+                <nav>
+                <div className="nav nav-tabs" id="nav-tab" role="tablist">
+                    <button className="nav-link active tabs-style" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Overview</button>
+                    <button className="nav-link tabs-style" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Book Details</button>
+                </div>
+                </nav>
+                <div className="tab-content" id="nav-tabContent">
+                    <div className="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                        <div className="overview mt-3">
+                            <p className="overview-title">Overview</p>   
+                            <p className="overview-value">{bookDetails.book_description}</p>              
+                        </div> 
                     </div>
+                    <div className="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                    <div className="content d-flex mt-3">
+                            <div>
+                                <p className="content-title">Release date</p>
+                            </div>
+                            <div>
+                                <p className="content-value">{bookDetails.release_date}</p>
+                            </div>                 
+                        </div>
+                            <hr/>
+                        <div className="content d-flex">
+                            <div>
+                                <p className="content-title">Number of page</p>
+                            </div>
+                            <div>
+                                <p className="content-value">{bookDetails.number_of_page}</p>
+                            </div>                 
+                        </div>
+                            <hr/>
+                        <div className="content d-flex">
+                            <div>
+                                <p className="content-title">Genre</p>
+                            </div>
+                            <div>
+                                <p className="content-value">{bookDetails.genre_type}</p>
+                            </div>                 
+                        </div>
+                    </div>
+                </div>
                 </div>
             </div>           
         </div>
@@ -195,10 +226,4 @@ const SelectedBook = () => {
 }
 
 export default SelectedBook;
-
-{/*
-            {bookDetails.publisher_name}<br></br>
-            {bookDetails.release_date}<br></br>
-            {bookDetails.book_description}
-*/}
 
