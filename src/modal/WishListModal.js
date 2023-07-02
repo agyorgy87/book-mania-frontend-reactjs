@@ -3,7 +3,7 @@ import "../css/Modal.css";
 import { GrClose } from "react-icons/gr";
 import { useNavigate } from "react-router-dom";
 
-const LoginModal = (props) => {
+const WishListModal = (props) => {
 
     let navigate = useNavigate();
 
@@ -14,10 +14,9 @@ const LoginModal = (props) => {
                     <button className="modal-close-button" onClick={props.close}><GrClose/></button>
                 </div>
                 <div>
-                    <h4>If you want to buy, please log in. If you don't have an account, register on the site and log in.</h4>
+                    <h4>If you want to add the book to your list, please log in.</h4>
                 </div>
                 <div className="d-flex justify-content-around mt-5">
-                    <button onClick={() => {navigate("/createaccount")}}>Create Account</button>
                     <button onClick={() => {navigate("/login")}}>Login</button>
                 </div>           
             </form>
@@ -25,5 +24,4 @@ const LoginModal = (props) => {
     );
 }
 
-export default LoginModal;
-
+export default WishListModal;

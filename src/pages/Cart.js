@@ -30,7 +30,7 @@ const Cart = () => {
 
     const [couponCodeIsCorrectOrIncorrect, setCouponCodeIsCorrectOrIncorrect] = useState(true);
 
-    const [openModal, setOpenModal] = useState(false)
+    const [openModal, setOpenModal] = useState(false);
 
 
     const couponCodeCheck = () => {
@@ -61,7 +61,7 @@ const Cart = () => {
     }
 
     const closeModal = () => {
-        setOpenModal(true);
+        setOpenModal(false);
     }
     
     useEffect(() => {
@@ -141,8 +141,7 @@ const Cart = () => {
         cartData.setValue(allCartData);  
     }
 
-    let allQuantity = allItems();
-    //{ showLoginModal && <LoginModal closeModal={setShowLoginModal}/> }  
+    let allQuantity = allItems(); 
     return (      
         <div className="cart-page"> 
             <div className="fixed-top">

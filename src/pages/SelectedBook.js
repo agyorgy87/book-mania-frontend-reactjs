@@ -11,6 +11,7 @@ import { CartContext } from "../context/CartContext";
 import facebookLogo from "../img/facebook.png";
 import twitterLogo from "../img/twitter.png";
 import { CgShoppingCart } from "react-icons/cg";
+import WishListModal from "../modal/WishListModal.js";
 
 const SelectedBook = () => {
 
@@ -25,6 +26,7 @@ const SelectedBook = () => {
     const [twitterHover, setTwitterHover] = useState(false);
     const [facebookHover, setFacebookHover] = useState(false);
 
+    const [openModal, setOpenModal] = useState(false);
 
     const twitterText = "Share on Twitter"
     const facebookText = "Share on Facebook"
@@ -68,7 +70,7 @@ const SelectedBook = () => {
     const addToWishList = () => {
 
         if(!userData.value.jwt){
-            alert("login!")
+            setOpenModal(true);
         }else{ 
             if(heartIconFull) {
                 let body = {userId: userData.value.id, bookId: params.id};
@@ -100,6 +102,10 @@ const SelectedBook = () => {
         localStorage.setItem("cart", JSON.stringify(cartDataCopy));
     }
 
+    const closeModal = () => {
+        setOpenModal(false);
+    }
+
     console.log(bookDetails);
     
     return (
@@ -107,6 +113,9 @@ const SelectedBook = () => {
             <div>
                 <NavigationBar/>
             </div> 
+            <div>
+                {openModal && <WishListModal close={closeModal}/>}  
+            </div>
             {/*style={{ background: `url("http://localhost:4000/books_img/${bookDetails.img_directory}/${bookDetails.image_big}")` }}*/}
             <div className="container d-flex flex-column">
                 <div className="d-flex justify-content-between book-buttons-container mt-4 mb-5">
