@@ -1,10 +1,16 @@
+import "../css/WishList.css"
 import {useEffect, useState} from 'react';
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import { useContext } from 'react';
 import { UserContext } from "../context/UserContext.js";
 import NavigationBar from '../components/NavigationBar.js';
+import { Link } from 'react-router-dom'; 
+import { CgShoppingCart } from "react-icons/cg";
 
 const WishList = () => {
+
+  let navigate = useNavigate();
 
   const userData = useContext(UserContext);
 
@@ -21,20 +27,54 @@ const WishList = () => {
 
 
   return (
-    <div>
-        <div>
+    <div className="wishlist-page">
+        <div className="fixed-top">
             <NavigationBar/>
         </div>
-        <div>
-            wishlist:
-            {
-              userWishList.map((book, index) => (
-                <div key={"userwishlist-div" + index}>
-                  {book.title}
+        <div className="container">
+                <div className="mb-3">
+                    <h1>Wishlist</h1> 
                 </div>
-              ))
-            }
-        </div>
+                <div className="row mt-5">
+                    { userWishList.map((book, index) => (
+                        <div className="col-6 col-sm-6 col-md-6 col-lg-3 mb-5 d-flex flex-column" key={"newness-div" + index}>
+                            <div className="mb-2">
+                                <img 
+                                src={"http://localhost:4000/books_img/" + book.img_directory + "/" + book.image}
+                                className="img-fluid wishlist-book-pics"                                             
+                                onClick={() => {navigate("/selectedbook/" + book.id)}}
+                                alt="book"
+                                />                                        
+                            </div>
+                            <div className="d-flex flex-column">                      
+                                <div className="wishlist-book-title-container">
+                                    <Link 
+                                    className="wishlist-book-title"
+                                    to={"/selectedbook/" + book.id}
+                                    >                                      
+                                        {book.title}
+                                    </Link>
+                                </div>
+                                <div>
+                                    <div>
+                                        <p className="wishlist-author-name">{book.author_name}</p>
+                                    </div>
+                                    <div>
+                                        <h5 className="wishlist-value-of-the-book">{book.price} $</h5>
+                                    </div>                                                     
+                                    <div>
+                                        <button type="button" className="wishlist-add-to-cart-buttons">                                                           
+                                            Add To Cart 
+                                                <CgShoppingCart className="fs-5 ms-2 wishlist-cart-icon"/>
+                                        </button>
+                                    </div>
+                                </div>                                                                                              
+                            </div>           
+                        </div>                                        
+                        ))
+                    }
+                </div>
+            </div>  
     </div>
   )
 }
