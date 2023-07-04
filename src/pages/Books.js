@@ -7,6 +7,7 @@ import axios from "axios";
 import { useContext } from 'react';
 import { CartContext } from "../context/CartContext";
 import { Link } from 'react-router-dom';
+import Select from 'react-select';
 
 const Books = () => {
 
@@ -22,6 +23,14 @@ const Books = () => {
 
     const [showResult, setShowResult] = useState(false);
     const [searchResult, setSearchResult] = useState("");
+
+    const [isLoading, setIsLoading] = useState(true);
+
+    useEffect(() => {
+        setTimeout(() => {
+          setIsLoading(false);
+        }, 4000);
+      }, []);
     
     useEffect(() => { 
         getAllBooks();  
@@ -60,7 +69,7 @@ const Books = () => {
         scrollToUp();
     }
 
-    const callGenre = (genreName) => {
+    const callGenreWithList = (genreName) => {
         if(genreName === "allBooks"){
             getAllBooks();
         }else{
@@ -73,7 +82,29 @@ const Books = () => {
         scrollToUp();
     }
 
-    const callPrice = (fromPrice, toPrice) => {
+    const categoriesOptions = [
+        { value: "allBooks", label: "All Books" },
+        { value: "Cooking", label: "Cooking" },
+        { value: "Fantasy", label: "Fantasy" },
+        { value: "History", label: "History" },
+        { value: "Horror", label: "Horror" },
+        { value: "IT", label: "IT" }
+    ];
+
+    const callGenreWithSelect = (selectedOption) => {
+        if(selectedOption.value === "allBooks"){
+            getAllBooks();
+        }else{
+            axios.get(`http://localhost:4000/get-all-by-genre/"${selectedOption.value}"`)
+            .then((response) => {
+            setVisibleBooks(response.data);
+        })
+        }  
+        setShowResult(false);  
+        scrollToUp();
+    }
+
+    const callPriceWithList = (fromPrice, toPrice) => {
         axios.get(`http://localhost:4000/get-all-by-price/${fromPrice}/${toPrice}`)
             .then((response) => {
             setVisibleBooks(response.data);
@@ -82,22 +113,30 @@ const Books = () => {
         scrollToUp();
     }
 
-    const callSelectedPrice = (value) => {
+    const priceOptions = [
+        { value: "0-10", label: "Under 10$" },
+        { value: "11-20", label: "Between 11$ and 20$" },
+        { value: "21-30", label: "Between 21$ and 30$" },
+        { value: "31-40", label: "Between 31$ and 40$" },
+        { value: "40-9999", label: "Over 40$" }
+    ];
+
+    const callPriceWithSelect = (selectedOption) => {
+
+        const twoAmountsLimit = selectedOption.value
+        const numbers = twoAmountsLimit.split("-").map(numStr => parseInt(numStr));
+        const fromPrice = numbers[0];
+        const toPrice = numbers[1];
         
-        let selectedOption = value.target.options[value.target.selectedIndex]
-        let selectedOptionMin = selectedOption.dataset.min
-        let selectedOptionMax = selectedOption.dataset.max
-        
-        if(selectedOptionMin !== undefined && selectedOptionMax !== undefined){
-            axios.get(`http://localhost:4000/get-all-by-price/${selectedOptionMin}/${selectedOptionMax}`)
+        axios.get(`http://localhost:4000/get-all-by-price/${fromPrice}/${toPrice}`)
             .then((response) => {
-            setVisibleBooks(response.data);     
-            })    
-        }
+            setVisibleBooks(response.data);
+        })
         setShowResult(false);
+        scrollToUp();   
     }
 
-    const callReleaseDate = (fromDate, toDate) => {
+    const callReleaseDateWithList = (fromDate, toDate) => {
         axios.get(`http://localhost:4000/get-all-by-release-date/${fromDate}/${toDate}`)
             .then((response) => {
             setVisibleBooks(response.data);
@@ -106,57 +145,90 @@ const Books = () => {
         scrollToUp();
     }
 
-    const callSelectedReleaseDate = (value) => {
+    const releaseDateOptions = [
+        { value: "0-2000", label: "Before 2000" },
+        { value: "2001-2010", label: "Between 2000 and 2010" },
+        { value: "2011-2020", label: "Between 2010 and 2020" },
+        { value: "2000-9999", label: "After 2020" }
+    ]
+
+    const callReleaseDateWithSelect = (selectedOption) => {
         
-        let selectedOption = value.target.options[value.target.selectedIndex]
-        let selectedOptionMin = selectedOption.dataset.min
-        let selectedOptionMax = selectedOption.dataset.max
+        const twoAmountsLimit = selectedOption.value
+        const numbers = twoAmountsLimit.split("-").map(numStr => parseInt(numStr));
+        const fromDate = numbers[0];
+        const toDate = numbers[1];
         
-        if(selectedOptionMin !== undefined && selectedOptionMax !== undefined){
-            axios.get(`http://localhost:4000/get-all-by-release-date/${selectedOptionMin}/${selectedOptionMax}`)
+        axios.get(`http://localhost:4000/get-all-by-release-date/${fromDate}/${toDate}`)
             .then((response) => {
             setVisibleBooks(response.data);     
             })    
-        }
         setShowResult(false);
     }
 
-    const specialSearch = (selectedSpecialSearch, selectedSpecialOrder) => {
+    const callSpecialSearchWithList = (selectedSpecialSearch, selectedSpecialOrder) => {
         axios.get(`http://localhost:4000/get-all-by-special/${selectedSpecialSearch}/${selectedSpecialOrder}`)
             .then((response) => {
             setVisibleBooks(response.data);
+            console.log(response.data) 
         })
         setShowResult(false);
         scrollToUp();
     }
 
-    const selectedSpecialSearch = (e) => {
+    const specialOptions = [
+        { value: "title_name-asc", label: "ABC order" },
+        { value: "number_of_page_name-asc", label: "Number of pages in ascending order" },
+        { value: "price_name-asc", label: "From the cheapest book" },
+        { value: "price_name-desc", label: "From the most expensive book" }
+    ]
 
-        let selectedOption = e.target.options[e.target.selectedIndex]
-        let selectedOptionOrderBy = selectedOption.dataset.orderBy
-        let selectedOptionOrder = selectedOption.dataset.order
+    const callSpecialSearchWithSelect = (selectedOption) => {
+
+        const twoParameters = selectedOption.value;
+        const twoPart = twoParameters.split("-");
+        console.log(twoPart);
+        const selectedOptionOrderBy = twoPart[0];
+        const selectedOptionOrder = twoPart[1];
         
-        if(selectedOptionOrderBy !== undefined && selectedOptionOrder !== undefined){
-            axios.get(`http://localhost:4000/get-all-by-special/${selectedOptionOrderBy}/${selectedOptionOrder}`)
+        axios.get(`http://localhost:4000/get-all-by-special/${selectedOptionOrderBy}/${selectedOptionOrder}`)
             .then((response) => {
-            setVisibleBooks(response.data);     
+            setVisibleBooks(response.data);  
+              
             })    
-        }
         setShowResult(false);
     }
 
-    const callPublisher = (publisherName) => {
-        if(publisherName === "allBooks"){
-            getAllBooks();
-        }else{
+    const callPublisherWithList = (publisherName) => {
+
         axios.get(`http://localhost:4000/get-all-by-publishers/${publisherName}`)
             .then((response) => {
             setVisibleBooks(response.data);
             })
-        }
         setShowResult(false);
         scrollToUp();
     }
+
+
+    const publishersOptions = [
+        { value: "Ad Astra", label: "Ad Astra" },
+        { value: "Bestline", label: "Bestline" },
+        { value: "Disciplina", label: "Disciplina" },
+        { value: "ComputerPanorama", label: "ComputerPanorama" },
+        { value: "ComputerComplex", label: "ComputerComplex" }
+
+    ]
+
+    const callPublishersWithSelect = (selectedOption) => {
+
+        axios.get(`http://localhost:4000/get-all-by-publishers/${selectedOption.value}`)
+            .then((response) => {
+            setVisibleBooks(response.data);
+        }) 
+        setShowResult(false);  
+        scrollToUp();
+    }
+
 
     const callAllTitlesAndAuthors = (e) => {
         axios.get(`http://localhost:4000/get-book-title/${e}`)
@@ -174,12 +246,20 @@ const Books = () => {
         cartData.setValue(cartDataCopy);
         localStorage.setItem("cart", JSON.stringify(cartDataCopy));
     }
-    /*d-lg-block*/
+    
+
+    
+
     return(
         <div className="book-page">
             <div className="fixed-top">
                 <NavigationBar/>
             </div>
+            { isLoading ? (
+                <div>
+                Loading...
+                </div>
+            ) : (
             <div className="container-fluid">
             <div className="row">
                     <div className="col-md-3 col-lg-3 col-xl-3 col-xxl-2 side-bar d-none d-sm-none d-md-block">
@@ -188,85 +268,90 @@ const Books = () => {
                             <li className="list-group-item list-group-item-action border-0 options-for-filtering" onClick={getAllBooks}>All</li> 
                             {
                                 allGenre.map((genre, index) => (
-                                    <li key={"allgenre-list-div" + index} className="list-group-item list-group-item-action border-0 options-for-filtering" onClick={() => callGenre(genre.genre_type)}>{genre.genre_type}</li>
+                                    <li key={"allgenre-list-div" + index} className="list-group-item list-group-item-action border-0 options-for-filtering" onClick={() => callGenreWithList(genre.genre_type)}>{genre.genre_type}</li>
                                 ))
-                            }
-                                                
+                            }                                               
                         </ul>
                         <ul className="list-group mt-4">
                             <li className="list-group-item name-of-the-list active border-0 rounded">Price</li>
-                            <li className="list-group-item list-group-item-action border-0 options-for-filtering" onClick={() => callPrice(0, 10)}>Under 10$</li>
-                            <li className="list-group-item list-group-item-action border-0 options-for-filtering" onClick={() => callPrice(11, 20)}>Between 11$ and 20$</li>
-                            <li className="list-group-item list-group-item-action border-0 options-for-filtering" onClick={() => callPrice(21, 30)}>Between 21$ and 30$</li>
-                            <li className="list-group-item list-group-item-action border-0 options-for-filtering" onClick={() => callPrice(31, 9999)}>Over 31$</li>{/*külön apit csinálni*/}
+                            <li className="list-group-item list-group-item-action border-0 options-for-filtering" onClick={() => callPriceWithList(0, 10)}>Under 10$</li>
+                            <li className="list-group-item list-group-item-action border-0 options-for-filtering" onClick={() => callPriceWithList(11, 20)}>Between 11$ and 20$</li>
+                            <li className="list-group-item list-group-item-action border-0 options-for-filtering" onClick={() => callPriceWithList(21, 30)}>Between 21$ and 30$</li>
+                            <li className="list-group-item list-group-item-action border-0 options-for-filtering" onClick={() => callPriceWithList(31, 40)}>Between 31$ and 40$</li>
+                            <li className="list-group-item list-group-item-action border-0 options-for-filtering" onClick={() => callPriceWithList(40, 9999)}>Over 40$</li>
                                                 
                         </ul>
                         <ul className="list-group mt-4">
                             <li className="list-group-item name-of-the-list active border-0 rounded">Release Date</li>
-                            <li className="list-group-item list-group-item-action border-0 options-for-filtering" onClick={() => callReleaseDate(0, 2000)}>Before 2000</li>
-                            <li className="list-group-item list-group-item-action border-0 options-for-filtering" onClick={() => callReleaseDate(2001, 2010)}>Between 2001 and 2010</li>
-                            <li className="list-group-item list-group-item-action border-0 options-for-filtering" onClick={() => callReleaseDate(2011, 2020)}>Between 2011 and 2020</li>
-                            <li className="list-group-item list-group-item-action border-0 options-for-filtering" onClick={() => callReleaseDate(2020, 9999)}>After 2020</li>                       
+                            <li className="list-group-item list-group-item-action border-0 options-for-filtering" onClick={() => callReleaseDateWithList(0, 2000)}>Before 2000</li>
+                            <li className="list-group-item list-group-item-action border-0 options-for-filtering" onClick={() => callReleaseDateWithList(2001, 2010)}>Between 2001 and 2010</li>
+                            <li className="list-group-item list-group-item-action border-0 options-for-filtering" onClick={() => callReleaseDateWithList(2011, 2020)}>Between 2011 and 2020</li>
+                            <li className="list-group-item list-group-item-action border-0 options-for-filtering" onClick={() => callReleaseDateWithList(2020, 9999)}>After 2020</li>                       
                         </ul>
                         <ul className="list-group mt-4">
                             <li className="list-group-item name-of-the-list active border-0 rounded">Special</li>
-                            <li className="list-group-item list-group-item-action border-0 options-for-filtering" onClick={() => specialSearch("title_name", "asc")}>ABC order</li>
-                            <li className="list-group-item list-group-item-action border-0 options-for-filtering" onClick={() => specialSearch("number_of_page_name", "asc")}>Number of pages in ascending order</li>                       
-                            <li className="list-group-item list-group-item-action border-0 options-for-filtering" onClick={() => specialSearch("price_name", "asc")}>From the cheapest book</li>
-                            <li className="list-group-item list-group-item-action border-0 options-for-filtering" onClick={() => specialSearch("price_name", "desc")}>From the most expensive book</li>
+                            <li className="list-group-item list-group-item-action border-0 options-for-filtering" onClick={() => callSpecialSearchWithList("title_name", "asc")}>ABC order</li>
+                            <li className="list-group-item list-group-item-action border-0 options-for-filtering" onClick={() => callSpecialSearchWithList("number_of_page_name", "asc")}>Number of pages in ascending order</li>                       
+                            <li className="list-group-item list-group-item-action border-0 options-for-filtering" onClick={() => callSpecialSearchWithList("price_name", "asc")}>From the cheapest book</li>
+                            <li className="list-group-item list-group-item-action border-0 options-for-filtering" onClick={() => callSpecialSearchWithList("price_name", "desc")}>From the most expensive book</li>
                             
                         </ul>
                         <ul className="list-group mt-4">
                             <li className="list-group-item name-of-the-list active border-0 rounded">Publishers</li>
                             {
                                 allPublisher.map((publisher, index) => (
-                                    <li key={"all-publisher-div" + index} className="list-group-item list-group-item-action border-0 options-for-filtering" onClick={() => callPublisher(publisher.publisher_name)}>{publisher.publisher_name}</li>
+                                    <li key={"all-publisher-div" + index} className="list-group-item list-group-item-action border-0 options-for-filtering" onClick={() => callPublisherWithList(publisher.publisher_name)}>{publisher.publisher_name}</li>
                                 ))
                             }
                         </ul>
                     </div>
                 <div className="col-md-9 col-lg-9 col-xl-9 col-xxl-10">
-                    <div className="d-block d-md-none d-flex flex-column align-items-center">
-                        <select className="form-select mb-3 all-select" aria-label="Default select example" onChange={(e) => callGenre(e.target.value)}>
-                            <option>Categories</option>
-                            <option value="allBooks">All Books</option>
-                                {
-                                    allGenre.map((genre, index) => (
-                                        <option key={"allgenre-select" + index}>{genre.genre_type}</option>
-                                    ))
-                                }
-                        </select> 
-                        <select className="form-select mb-3" aria-label="Default select example" onChange={(e) => callSelectedPrice(e)}>
-                            <option>Price</option>
-                            <option data-min="0" data-max="10">Under 10$</option>
-                            <option data-min="11" data-max="20">Between 11$ and 20$</option>
-                            <option data-min="21" data-max="30">Between 21$ and 30$</option>
-                            <option data-min="31" data-max="40">Between 31$ and 40$</option> 
-                            <option data-min="41" data-max="99">Over 40$</option> 
-                        </select>
-                        <select className="form-select mb-3" aria-label="Default select example" onChange={(e) => callSelectedReleaseDate(e)}>
-                            <option>Release Date</option>
-                            <option data-min="0" data-max="2000">Before 2000</option>
-                            <option data-min="2000" data-max="2010">Between 2000 and 2010</option>
-                            <option data-min="2010" data-max="2020">Between 2010 and 2020</option>
-                            <option data-min="2020" data-max="9999">After 2020</option>
-                        </select>
-                        <select className="form-select mb-3" aria-label="Default select example" onChange={(e) => selectedSpecialSearch(e)}>
-                            <option>Special</option>
-                            <option data-order-by="title_name" data-order="asc">ABC order</option>
-                            <option data-order-by="number_of_page_name" data-order="asc">Number of pages in ascending order</option>
-                            <option data-order-by="price_name" data-order="asc">From the cheapest book</option>
-                            <option data-order-by="price_name" data-order="desc">From the most expensive book</option>
-                        </select>
-                        <select className="form-select" aria-label="Default select example" onChange={(e) => callPublisher(e.target.value)}>
-                            <option>Categories</option>
-                            <option value="allBooks">All Books</option>
-                            {
-                                allPublisher.map((publisher, index) => (
-                                    <option key={"publisher-div" + index}>{publisher.publisher_name}</option>
-                                ))
-                            }
-                        </select> 
+                    <div className="d-block d-md-none d-flex flex-column align-items-center ">
+                        <div className="select-div mt-3">
+                                <Select 
+                                    className="mb-1"
+                                    style={{ width: "100%" }}
+                                    placeholder="All Categories"                                
+                                    onChange={callGenreWithSelect}
+                                    options={categoriesOptions}
+                                />                                                  
+                        </div>
+                        <div className="select-div mt-3">
+                                <Select 
+                                    className="mb-1"
+                                    style={{ width: "100%" }}
+                                    placeholder="Price"                                
+                                    onChange={callPriceWithSelect}
+                                    options={priceOptions}
+                                />                                                  
+                        </div>
+                        <div className="select-div mt-3">
+                                <Select 
+                                    className="mb-1"
+                                    style={{ width: "100%" }}
+                                    placeholder="Release Date"                                
+                                    onChange={callReleaseDateWithSelect}
+                                    options={releaseDateOptions}
+                                />                                                  
+                        </div>
+                        <div className="select-div mt-3">
+                                <Select 
+                                    className="mb-1"
+                                    style={{ width: "100%"}}
+                                    placeholder="Special"                                
+                                    onChange={callSpecialSearchWithSelect}
+                                    options={specialOptions}
+                                />                                                  
+                        </div>
+                        <div className="select-div mt-3">
+                                <Select 
+                                    className="mb-1"
+                                    style={{ width: "100%"}}
+                                    placeholder="Publishers"                                
+                                    onChange={callPublishersWithSelect}
+                                    options={publishersOptions}
+                                />                                                  
+                        </div>
                     </div> 
                     <div className="row d-flex justify-content-center mb-5 mt-4 ">
                         <div className="input-group mt-3 search-input-container">
@@ -280,7 +365,8 @@ const Books = () => {
                                 <i className="bi bi-search"></i>
                             </button>
                         </div>                       
-                    </div>            
+                    </div>  
+
                     <div className="container search-result-container">   
                         <div className="row">
                             {   showResult ?
@@ -289,8 +375,7 @@ const Books = () => {
                                 </div> 
                                 :
                                 null
-                            }
-                            
+                            } 
                             <div className="row">
                                 { visibleBooks.map((book, index) => (
                                     <div className="col-6 col-sm-6 col-md-4 col-lg-4 col-xl-3 mb-5 col-xl-ps-5" key={"visiblediv" + index}>
@@ -334,9 +419,11 @@ const Books = () => {
                     </div>                       
                 </div>
             </div> 
-        </div>     
+        </div>
+        )}  
     </div>   
     )
 }
 
 export default Books;
+                    

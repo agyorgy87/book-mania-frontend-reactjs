@@ -22,6 +22,7 @@
 
 .search-button {
     background-color: #30475f !important;
+    z-index:0 !important;
 }
 
 .bi {
@@ -93,6 +94,13 @@
 .book-add-to-cart-buttons:hover {
     background-color: #212A3E;
 }
+
+.select-div {
+    width: 90%;
+}
+
+
+
 
 @media (max-width:1400px) {
     .book-add-to-cart-buttons {
