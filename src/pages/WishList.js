@@ -4,15 +4,20 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useContext } from 'react';
 import { UserContext } from "../context/UserContext.js";
+import { CartContext } from "../context/CartContext";
 import NavigationBar from '../components/NavigationBar.js';
 import { Link } from 'react-router-dom'; 
 import { CgShoppingCart } from "react-icons/cg";
 
-const WishList = () => {
+
+
+const WishList = () => { 
 
   let navigate = useNavigate();
 
   const userData = useContext(UserContext);
+
+  const cartData = useContext(CartContext);
 
   const [userWishList, setUserWishList] = useState([])
 
@@ -24,6 +29,21 @@ const WishList = () => {
         })
   }, [])
 
+    const wishListAddToCart = (book) => {
+        
+        let allData = cartData.value;
+        let allCartDataId = allData.map(obj => obj.id);
+
+        if(allCartDataId.includes(book.id) === true) {
+            alert("this book is already in the cart")
+        }else{
+            const bookDetailsCopy = {...book}
+            bookDetailsCopy.quantity = 1
+            const cartDataCopy = [...cartData.value, bookDetailsCopy]
+            cartData.setValue(cartDataCopy);
+            localStorage.setItem("cart", JSON.stringify(cartDataCopy));
+        }
+    }
 
 
   return (
@@ -63,7 +83,7 @@ const WishList = () => {
                                         <h5 className="wishlist-value-of-the-book">{book.price} $</h5>
                                     </div>                                                     
                                     <div>
-                                        <button type="button" className="wishlist-add-to-cart-buttons">                                                           
+                                        <button type="button" className="wishlist-add-to-cart-buttons" onClick={() => wishListAddToCart(book)}>                                                           
                                             Add To Cart 
                                                 <CgShoppingCart className="fs-5 ms-2 wishlist-cart-icon"/>
                                         </button>

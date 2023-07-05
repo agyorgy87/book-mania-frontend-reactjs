@@ -24,14 +24,14 @@ const Books = () => {
     const [showResult, setShowResult] = useState(false);
     const [searchResult, setSearchResult] = useState("");
 
-    const [isLoading, setIsLoading] = useState(true);
-
+    //const [isLoading, setIsLoading] = useState(true);
+/*
     useEffect(() => {
         setTimeout(() => {
           setIsLoading(false);
         }, 4000);
       }, []);
-    
+*/
     useEffect(() => { 
         getAllBooks();  
         getAllGenre();
@@ -255,11 +255,12 @@ const Books = () => {
             <div className="fixed-top">
                 <NavigationBar/>
             </div>
+            {/*
             { isLoading ? (
                 <div>
                 Loading...
                 </div>
-            ) : (
+            ) : (*/}
             <div className="container-fluid">
             <div className="row">
                     <div className="col-md-3 col-lg-3 col-xl-3 col-xxl-2 side-bar d-none d-sm-none d-md-block">
@@ -420,7 +421,7 @@ const Books = () => {
                 </div>
             </div> 
         </div>
-        )}  
+       {/* )}  */}
     </div>   
     )
 }
