@@ -1,6 +1,7 @@
 import '../css/Contact.css';
 import { useState } from "react"; 
 import NavigationBar from '../components/NavigationBar.js';
+import axios from "axios";
 
 const Contact = () => {
 
@@ -21,17 +22,29 @@ const Contact = () => {
 
     const contactFormValidation = (e) => {
         e.preventDefault();
-
         if(name.length === 0) {
             setNameErrorMessage(true);
         }
-        if(email.length === 0 ) {
+        if(email.length === 0 ) {//regex
             setEmailErrorMessage(true);
         }
         if(message.length === 0) {
             setMessageErrorMessage(true);
+        }  
+    }
+
+    const sendMessage = () => {
+
+        let sender = {
+            name: name,
+            email: email,
+            text: message
         }
         
+        axios.post("http://localhost:4000/message-sender", sender)
+            .then(reponse => {
+                alert("üzenet elküldve")
+            })
     }
 
     return(
@@ -93,8 +106,9 @@ const Contact = () => {
                                                     />
                                         </div>
                                         {messageErrorMessage ? <p>{errors.message}</p> : null}
+                                        
                                     </div>  
-                                    <button type="submit" className="btn btn-primary">Send Message</button>
+                                    <button type="submit" className="btn btn-primary" onClick={sendMessage}>Send Message</button>
                                 </form>
                             </div>
                         </div>
