@@ -16,12 +16,13 @@
 .contact-form {
     background-color: #FFF;
     box-shadow: rgba(0,0,0,0.35) 0 5px 15px;
-    padding: 40px 30px; 
+    padding: 20px 30px !important; 
     height: 465px;
+    
 }
 
 .textarea {
-    height: 200px;
+    height: 100px;
 }
 
 .contact-form-btn {
