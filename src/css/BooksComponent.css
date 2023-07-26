@@ -1,45 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500&display=swap');
+
+
 .text-of-recommended-books {
     color: #2b2f3c;
     /*font-family: 'Open Sans', sans-serif;*/
     font-family: 'Roboto', sans-serif;
     font-weight: 300;
+    font-size: 3rem;
 }
 
 .book-card {
-    background-color: blue;
-    width: 250px;
+    height: 450px;
+    width: 16rem !important;
+    border: 1px solid #e6e9f1;
+    background: linear-gradient(180deg, #eaeee7 40%, #ffffff 40%);
+    position: relative;
 }
 
 .home-book-pics {
+    height: 200px;
     cursor: pointer;
-}
-
-.home-book-title-container {
-    height: 55px; 
-    width: 80%;
 }
 
 .home-book-title { 
     color: black;
-    font-size: 90%;/*???*/
-    font-weight: 600;
-    font-family: 'Open Sans', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 500;
+    font-family: 'Noto Sans JP', sans-serif;
     cursor: pointer;
     text-decoration: none;
 }
 
-.home-book-title:hover {
-    color: #4f8ae9;
+.home-author-name {
+    color: #1e7b85;
+    font-size: 1.2rem;
+    font-weight: 600;
+    font-family: 'Source Serif 4', serif;
 }
 
-.home-author-name {
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 400;
-    font-size: small;
+.book-price-heart-container {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
 }
 
 .home-value-of-the-book {
-    font-family: 'Open Sans', sans-serif;
+    color: black;
+    font-size: 1.1rem;
     font-weight: 600;
 }
 

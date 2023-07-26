@@ -4,19 +4,19 @@
 .navbar {
     top: 0 !important;
     position: sticky !important;
-    background-color: #ffffff;
+    background-color: #f9faff;
 }
 
 .name-of-the-website {
     display: inline-block;
-    color: #4f8ae9;
+    color: #1e7b85;
     font-size: 1.7rem;
     font-weight: 600;
     font-family: 'Cinzel', serif;
 }
 
 .icon {
-    color: #4f8ae9;
+    color: #1e7b85;
     transform: translateY(-6px);
     font-size: 2rem;  
 }
@@ -35,7 +35,7 @@
 }
 
 .navigation-menus:hover {
-    text-decoration-color: #000000; 
+    text-decoration-color: #3b3b3b; 
 }
 
 .logout-button {
@@ -43,6 +43,10 @@
     border: none;
     background-color:#212A3E;
     font-family: 'Cinzel', serif;
+}
+
+.cart-content-value {
+    background-color: #1e7b85 !important;
 }
 
 

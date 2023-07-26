@@ -66,7 +66,7 @@ const NavigationBar = () => {
                                     <CgShoppingCart className="fs-2"/>
                                     {
                                         cartData.value.length > 0 ?
-                                        <span className="position-absolute translate-middle badge rounded-pill bg-danger">
+                                        <span className="position-absolute translate-middle badge rounded-pill cart-content-value">
                                             {cartData.value.length}
                                         </span>
                                         :

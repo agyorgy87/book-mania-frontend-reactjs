@@ -90,10 +90,6 @@
     text-decoration: none;
 }
 
-.book-title:hover {
-    color: #337ab7;
-}
-
 .book-add-to-cart-buttons {
     width: 60%;
     height: 2.5rem;
