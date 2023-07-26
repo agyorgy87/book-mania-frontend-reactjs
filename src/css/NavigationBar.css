@@ -1,44 +1,48 @@
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
 
 .navbar {
-    /*background-color: #6096B4;*/
-    background-color: #212A3E;
-    position: sticky !important;
     top: 0 !important;
+    position: sticky !important;
+    background-color: #ffffff;
 }
 
 .name-of-the-website {
-    font-family: 'Cinzel', serif;
     display: inline-block;
-    font-size: 1.5rem;
-    color: #D6D5A8;
-}
-
-.navigation-menus {  
-    color: #EEE9DA;
-    padding: 5px 10px 0px 10px;
-    font-family: 'Open Sans', sans-serif;
-    text-decoration: underline 0.2em rgba(0, 0, 0, 0);
-    transition: text-decoration-color 300ms;
-}
-
-.navigation-menus:hover {
-    text-decoration-color: #EEE9DA; 
+    color: #4f8ae9;
+    font-size: 1.7rem;
+    font-weight: 600;
+    font-family: 'Cinzel', serif;
 }
 
 .icon {
-    transform: translateY(-3px);
-    font-size: 1.5rem;  
-    color: #D6D5A8;
+    color: #4f8ae9;
+    transform: translateY(-6px);
+    font-size: 2rem;  
+}
+
+.navigation-menus {  
+    padding: 5px 10px 0px 10px;
+    font-weight: 300 !important;
+    font-family: 'Poppins', sans-serif;
+    text-decoration: underline 0.1em rgba(0, 0, 0, 0);
+    transition: text-decoration-color 300ms;
+}
+
+.nav-link {
+    color: #3b3b3b !important;
+    font-size: 1rem !important;
+}
+
+.navigation-menus:hover {
+    text-decoration-color: #000000; 
 }
 
 .logout-button {
-    background-color:#212A3E;
-    border: 2px solid #EEE9DA;
-    border: none;
     width: 8rem;
-    font-size: 1rem; 
+    border: none;
+    background-color:#212A3E;
+    font-family: 'Cinzel', serif;
 }
 
 

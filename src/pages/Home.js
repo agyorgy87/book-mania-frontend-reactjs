@@ -1,7 +1,7 @@
 import '../css/Home.css';
-import NavigationBar from '../components/NavigationBar.js';
 import { useState, useEffect } from "react";
 import axios from "axios";
+import NavigationBar from '../components/NavigationBar.js';
 import BooksComponent from "../components/BooksComponent.js";
 
 const Home = () => { 
@@ -33,7 +33,12 @@ const Home = () => {
         <div className="home-page">
             <div className="fixed-top"> 
                 <NavigationBar/>
-            </div>          
+            </div>  
+
+            <div className="container mt-5 mb-5 d-flex justify-content-center align-items-center">
+
+            </div>
+
             <div className="container mt-5 mb-5 d-flex justify-content-center align-items-center">
                 <div className="coupon-card w-75 p-5 text-center shadow-sm">
                     <h1>50% COUPON DISCOUNT</h1>

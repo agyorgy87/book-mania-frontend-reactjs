@@ -1,7 +1,7 @@
-import "../css/NavigationBar.css";
+import "../css/NavigationBar.css"; 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import {ImBooks} from "react-icons/im";
+import { ImBooks } from "react-icons/im";
 import { CgShoppingCart } from "react-icons/cg";
 import { useContext } from 'react';
 import { UserContext } from "../context/UserContext.js";
@@ -20,7 +20,7 @@ const NavigationBar = () => {
     return (  
         <div>
             <nav className="navbar navbar-expand-lg">
-                <div className="container-fluid w-100">  
+                <div className="container-fluid">  
                     <Link to={"/"} className="navbar-brand pt-3 ps-3">                    
                         <p className="name-of-the-website">BOOK MANIA</p> 
                         <ImBooks className="ms-2 icon"/>
@@ -31,13 +31,13 @@ const NavigationBar = () => {
                     <div className="collapse navbar-collapse" id="navbarNav">
                         <ul className="navbar-nav ms-auto">
                             <li className="nav-item navigation-menus">
-                                <Link to={"/"} className="nav-link active fs-4" style={{ color: "#EEE9DA"}}>HOME</Link>
+                                <Link to={"/"} className="nav-link active fs-4">HOME</Link>
                             </li>
                             <li className="nav-item navigation-menus">
-                                <Link to={"/books"} className="nav-link fs-4" style={{ color: "#EEE9DA"}}>BOOKS</Link>
+                                <Link to={"/books"} className="nav-link fs-4">BOOKS</Link>
                             </li>
                             <li className="nav-item navigation-menus">
-                                <Link to={"/contact"} className="nav-link fs-4" style={{ color: "#EEE9DA"}}>CONTACTS</Link>
+                                <Link to={"/contact"} className="nav-link fs-4">CONTACTS</Link>
                             </li>
                         </ul>
                     </div>
@@ -46,7 +46,7 @@ const NavigationBar = () => {
                             {
                                 userData.value.jwt ? 
                                 <li className="nav-item navigation-menus">
-                                    <Link to={"/wishlist"} className="nav-link fs-4" style={{ color: "#EEE9DA"}}>Hi, {userData.value.firstName}</Link>      
+                                    <Link to={"/wishlist"} className="nav-link fs-4">Hi, {userData.value.firstName}</Link>      
                                 </li>
                                 :
                                 null
@@ -54,15 +54,15 @@ const NavigationBar = () => {
                             {
                                 userData.value.jwt ?
                                 <li className="nav-item navigation-menus me-3">
-                                    <button className="nav-link fs-4 logout-button" style={{color: "#EEE9DA"}} onClick={logout}>LOGOUT</button>
+                                    <button className="nav-link login-logout-button" onClick={logout}>LOGOUT</button>
                                 </li>
                                 :
                                 <li className="nav-item navigation-menus me-3">
-                                    <Link to={"/login"} className="nav-link fs-4" style={{ color: "#EEE9DA"}}>LOGIN</Link>
+                                    <Link to={"/login"} className="nav-link fs-4 login-logout-button">LOGIN</Link>
                                 </li>
                             }
                             <li className="nav-item navigation-menus">
-                                <Link to={"/cart"} className="nav-link" style={{color: "#EEE9DA"}}>
+                                <Link to={"/cart"} className="nav-link">
                                     <CgShoppingCart className="fs-2"/>
                                     {
                                         cartData.value.length > 0 ?

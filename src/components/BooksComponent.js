@@ -62,12 +62,7 @@ const RecommendedBooks = (props) => {
                                         <div>
                                             <h5 className="home-value-of-the-book">{book.price} $</h5>
                                         </div>                                                     
-                                        <div>
-                                            <button type="button" className="home-add-to-cart-buttons" onClick={() => homePageBookAddToCart(book)}>                                                        
-                                                Add To Cart 
-                                                    <CgShoppingCart className="fs-5 ms-2 home-cart-icon"/>
-                                            </button>
-                                        </div>
+                                        
                                     </div>                                                                                              
                                 </div>           
                             </div>                                        

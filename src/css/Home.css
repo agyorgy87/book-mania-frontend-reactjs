@@ -1,6 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+/*@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');*/
 /*@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');*/
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Open+Sans:wght@300;400;600;700&display=swap');
+/*@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Open+Sans:wght@300;400;600;700&display=swap');*/
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap');
 
 
 * { 
@@ -12,7 +13,7 @@
 
 .home-page {
     padding-top: 100px;
-    background-color: #F1F6F9 !important;
+    background-color: #ffffff !important;
 }
 
 .discount-font {
@@ -22,7 +23,7 @@
 .coupon-card{
     border-radius: 15px;
     position: relative;
-    background: linear-gradient(135deg, #eef767, #CAC531);
+    background: linear-gradient(135deg, #CAC531, #eef767);
     color: #2b2f3c;
 }
 
@@ -33,7 +34,7 @@
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: #F1F6F9;
+    background: #ffffff;
 }
 
 .circle1{
@@ -46,7 +47,8 @@
 
 .text-of-recommended-books {
     color: #2b2f3c;
-    font-family: 'Open Sans', sans-serif;
+    /*font-family: 'Open Sans', sans-serif;*/
+    font-family: 'Roboto', sans-serif;
     font-weight: 300;
 }
  
