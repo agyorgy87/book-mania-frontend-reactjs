@@ -216,7 +216,6 @@ const Books = () => {
         { value: "Disciplina", label: "Disciplina" },
         { value: "ComputerPanorama", label: "ComputerPanorama" },
         { value: "ComputerComplex", label: "ComputerComplex" }
-
     ]
 
     const callPublishersWithSelect = (selectedOption) => {
@@ -249,7 +248,7 @@ const Books = () => {
     
 
     
-
+    console.log("valami")
     return(
         <div className="book-page">
             <div className="fixed-top">
@@ -279,8 +278,7 @@ const Books = () => {
                             <li className="list-group-item list-group-item-action border-0 options-for-filtering" onClick={() => callPriceWithList(11, 20)}>Between 11$ and 20$</li>
                             <li className="list-group-item list-group-item-action border-0 options-for-filtering" onClick={() => callPriceWithList(21, 30)}>Between 21$ and 30$</li>
                             <li className="list-group-item list-group-item-action border-0 options-for-filtering" onClick={() => callPriceWithList(31, 40)}>Between 31$ and 40$</li>
-                            <li className="list-group-item list-group-item-action border-0 options-for-filtering" onClick={() => callPriceWithList(40, 9999)}>Over 40$</li>
-                                                
+                            <li className="list-group-item list-group-item-action border-0 options-for-filtering" onClick={() => callPriceWithList(40, 9999)}>Over 40$</li>                                              
                         </ul>
                         <ul className="list-group mt-4">
                             <li className="list-group-item name-of-the-list active border-0 rounded">Release Date</li>
@@ -354,19 +352,21 @@ const Books = () => {
                                 />                                                  
                         </div>
                     </div> 
+
                     <div className="row d-flex justify-content-center mb-5 mt-4 ">
                         <div className="input-group mt-3 search-input-container">
+                            <button className="btn btn-lg search-button" type="button">
+                                <i className="bi bi-search"></i>
+                            </button>
                             <input 
+                            placeholder="Search..."
                             className="form-control search-input" 
                             type="search" 
                             id="example-search-input"
                             onChange={(e) => callAllTitlesAndAuthors(e.target.value)}
-                            />
-                            <button className="btn btn-lg btn-outline-secondary border rounded-right outline-none search-button" type="button">
-                                <i className="bi bi-search"></i>
-                            </button>
+                            />                           
                         </div>                       
-                    </div>  
+                    </div>
 
                     <div className="container search-result-container">   
                         <div className="row">

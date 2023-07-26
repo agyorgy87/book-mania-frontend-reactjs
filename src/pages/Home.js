@@ -2,7 +2,7 @@ import '../css/Home.css';
 import NavigationBar from '../components/NavigationBar.js';
 import { useState, useEffect } from "react";
 import axios from "axios";
-import RecommendedBooks from "../components/RecommendedBooks.jsx";
+import BooksComponent from "../components/BooksComponent.js";
 
 const Home = () => { 
 
@@ -47,17 +47,17 @@ const Home = () => {
             </div>
             <div className="container">
                 <div>
-                    <RecommendedBooks text="Newness" list={newness}/>
+                    <BooksComponent text="Newness" list={newness}/>
                 </div>
             </div>
             <div className="container">
                 <div>
-                    <RecommendedBooks text="Tolkien's Pen" list={onlyTolkien}/>
+                    <BooksComponent text="Tolkien's Pen" list={onlyTolkien}/>
                 </div>
             </div>               
             <div className="container">
                 <div>
-                    <RecommendedBooks text="Computer Complex Publisher" list={onlyComputerComplex}/>
+                    <BooksComponent text="Computer Complex Publisher" list={onlyComputerComplex}/>
                 </div>
             </div>
         </div>
@@ -65,7 +65,5 @@ const Home = () => {
 }
 
 export default Home;
-
-//270 line -> 67 line 4x
 
 //style={{ backgroundImage: `url('${"http://localhost:4000/books_img/" + books.img_directory + "/" + books.image}')`}}

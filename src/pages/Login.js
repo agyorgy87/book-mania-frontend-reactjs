@@ -88,8 +88,7 @@ const Login = () => {
                         <div className="mb-3 ps-5 pe-5">
                             <label htmlFor="InputEmail" className="form-label">Email</label>
                             <input autoFocus type="email" value={userEmail} onBlur={() => setTouched(true)} className="form-control email-input" id="InputEmail" aria-describedby="emailHelp" onChange={(e) => setUserEmail(e.target.value)}/>
-                        </div>  
-                                           
+                        </div>                                           
                         {
                         touched ? 
                             (emptyEmailInputErrorMessage ? 

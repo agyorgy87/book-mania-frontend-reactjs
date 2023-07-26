@@ -41,6 +41,7 @@ const Cart = () => {
                     setBookMultiple(response.data.bookMultiple);
                     setCouponCodeValidationMessage(true);
                     setCouponCodeIsCorrectOrIncorrect(true);
+                    //context set coupon code
                 }else{
                     setCouponCodeValidationMessage(true);
                     setCouponCodeIsCorrectOrIncorrect(false);
@@ -109,12 +110,12 @@ const Cart = () => {
         let newListWithoutSearchedBook = parsedCartDatas.filter(book => book.id !== searchedBookID);
         let stringifiedCartData = JSON.stringify(newListWithoutSearchedBook);
         localStorage.setItem("cart", stringifiedCartData);
-        window.location.reload();//better solution?
+        cartData.setValue(newListWithoutSearchedBook);
     }
 
     const deleteAllBooksFromLocal = () => {
         localStorage.removeItem('cart');
-        window.location.reload();
+        cartData.setValue([]);
     }
 
     const plusOneBook = (book) => {      
