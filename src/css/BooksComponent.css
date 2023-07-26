@@ -1,0 +1,95 @@
+.text-of-recommended-books {
+    color: #2b2f3c;
+    /*font-family: 'Open Sans', sans-serif;*/
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+}
+
+.book-card {
+    background-color: blue;
+    width: 250px;
+}
+
+.home-book-pics {
+    cursor: pointer;
+}
+
+.home-book-title-container {
+    height: 55px; 
+    width: 80%;
+}
+
+.home-book-title { 
+    color: black;
+    font-size: 90%;/*???*/
+    font-weight: 600;
+    font-family: 'Open Sans', sans-serif;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.home-book-title:hover {
+    color: #4f8ae9;
+}
+
+.home-author-name {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    font-size: small;
+}
+
+.home-value-of-the-book {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+}
+
+/*
+@media (max-width:1200px) {
+
+    .home-book-title-container {
+        height: 75px;
+    }
+}
+
+@media (max-width:992px) {
+    .home-add-to-cart-buttons {
+        width: 45%;
+    }
+}
+
+@media (max-width:786px) {
+    .home-add-to-cart-buttons {
+        width: 60%;
+    }
+}
+ 
+@media (max-width:576px) {
+    .home-add-to-cart-buttons {
+        width: 70%;
+    }
+
+    .home-book-title-container {
+        height: 75px;
+        width: 90%;
+    }
+
+    .text-of-recommended-books {
+        font-size: 40px;
+    }
+}
+
+@media (max-width:465px) {
+    .home-add-to-cart-buttons {
+        width: 80%;
+    }
+}
+
+@media (max-width:365px) {
+    .home-add-to-cart-buttons {
+        width: 90%;
+    }
+}
+*/
+
+
+ 

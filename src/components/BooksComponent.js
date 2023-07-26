@@ -1,4 +1,4 @@
-import '../css/Home.css';
+import '../css/BooksComponent.css';
 import React from 'react';
 import { Link } from 'react-router-dom'; 
 import { useNavigate } from "react-router-dom";
@@ -37,7 +37,7 @@ const RecommendedBooks = (props) => {
                 </div>
             <div className="row">
                         { list.map((book, index) => (
-                            <div className="col-6 col-sm-6 col-md-6 col-lg-3 mb-5 d-flex flex-column" key={"newness-div" + index}>
+                            <div className="col-6 col-sm-6 col-md-6 col-lg-3 mb-5 d-flex flex-column book-card me-5" key={"newness-div" + index}>
                                 <div className="mb-2">
                                     <img 
                                     src={"http://localhost:4000/books_img/" + book.img_directory + "/" + book.image}

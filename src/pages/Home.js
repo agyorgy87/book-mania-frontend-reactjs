@@ -36,9 +36,8 @@ const Home = () => {
             </div>  
 
             <div className="container mt-5 mb-5 d-flex justify-content-center align-items-center">
-
             </div>
-
+            {/*
             <div className="container mt-5 mb-5 d-flex justify-content-center align-items-center">
                 <div className="coupon-card w-75 p-5 text-center shadow-sm">
                     <h1>50% COUPON DISCOUNT</h1>
@@ -50,6 +49,7 @@ const Home = () => {
                     <div className="circle2"></div>
                 </div>
             </div>
+            */}
             <div className="container">
                 <div>
                     <BooksComponent text="Newness" list={newness}/>
