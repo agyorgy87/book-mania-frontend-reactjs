@@ -68,7 +68,6 @@ const SelectedBook = () => {
 
 
     const addToWishList = () => {
-
         if(!userData.value.jwt){
             setOpenModal(true);
         }else{ 
@@ -180,7 +179,7 @@ const SelectedBook = () => {
                                     :
                                     <button className="selected-book-add-to-wishlist-button" onClick={addToWishList}>Add To Wishlist<AiOutlineHeart className="fs-5 ms-2 heart-icon"/></button>
                                     }                           
-                                </div>
+                                </div> 
                                 </div>
                             </div>                   
                     </div> 

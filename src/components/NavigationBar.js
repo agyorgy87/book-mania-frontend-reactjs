@@ -20,7 +20,7 @@ const NavigationBar = () => {
     return (  
         <div>
             <nav className="navbar navbar-expand-lg">
-                <div className="container-fluid">  
+                <div className="container-fluid">                     
                     <Link to={"/"} className="navbar-brand pt-3 ps-3">                    
                         <p className="name-of-the-website">BOOK MANIA</p> 
                         <ImBooks className="ms-2 icon"/>
@@ -53,15 +53,15 @@ const NavigationBar = () => {
                             }
                             {
                                 userData.value.jwt ?
-                                <li className="nav-item navigation-menus me-3">
-                                    <button className="nav-link login-logout-button" onClick={logout}>LOGOUT</button>
+                                <li className="nav-item navigation-menus">
+                                    <button className="nav-link fs-4 login-logout-button" onClick={logout}>LOGOUT</button>
                                 </li>
                                 :
-                                <li className="nav-item navigation-menus me-3">
+                                <li className="nav-item navigation-menus">
                                     <Link to={"/login"} className="nav-link fs-4 login-logout-button">LOGIN</Link>
                                 </li>
                             }
-                            <li className="nav-item navigation-menus">
+                            <li className="nav-item navigation-menus me-3">
                                 <Link to={"/cart"} className="nav-link">
                                     <CgShoppingCart className="fs-2"/>
                                     {

@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap');
 
 
 .text-of-recommended-books {
@@ -27,7 +27,7 @@
     color: black;
     font-size: 1.3rem;
     font-weight: 500;
-    font-family: 'Noto Sans JP', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     cursor: pointer;
     text-decoration: none;
 }
@@ -36,19 +36,34 @@
     color: #1e7b85;
     font-size: 1.2rem;
     font-weight: 600;
-    font-family: 'Source Serif 4', serif;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .book-price-heart-container {
     position: absolute;
     bottom: 0;
-    width: 100%;
+    width: 85%;
 }
 
 .home-value-of-the-book {
     color: black;
-    font-size: 1.1rem;
+    font-size: 1.4rem;
     font-weight: 600;
+}
+
+.heart-button {
+    border: none;
+    background: #ffffff;
+    font-size: 2rem;
+    transform: translateY(-15px); 
+}
+
+.book-heart-icon {
+    color: #596280;
+}
+
+.book-heart-icon-full {
+    color:#1e7b85
 }
 
 /*

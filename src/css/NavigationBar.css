@@ -38,11 +38,11 @@
     text-decoration-color: #3b3b3b; 
 }
 
-.logout-button {
-    width: 8rem;
-    border: none;
-    background-color:#212A3E;
-    font-family: 'Cinzel', serif;
+.login-logout-button {
+    width: 8rem !important;
+    border: none !important;
+    background-color: #f9faff;
+
 }
 
 .cart-content-value {
