@@ -1,7 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap');
+
 .overlay {
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(171,176,192, 0.7);
     position: fixed;
     top: 0;
     left: 0;
@@ -9,20 +11,143 @@
 }
 
 .form {
-    width: 30%;
-    height: 30%;
+    width: 50%;
+    height: 27%;
     border-radius: 10px;
     background-color: aliceblue;
     margin: auto;
-    margin-top: 200px;
+    margin-top: 12.5rem;
+}
+
+.modal-close-button-container {
+    margin-top: -1rem;
+    margin-bottom: 1.5rem;
 }
 
 .modal-close-button {
     border: none;
     background: transparent;
-    padding: 20px;
     cursor: pointer;
-    color: black;
-    font-size: 36px;
+    color: #3a4357;
+    font-size: 30px;
+    font-weight: 300;
 }
+
+.modal-text-container {
+    margin-bottom: 2rem;
+}
+
+.modal-text {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+}
+
+.navigate-to-login-button {
+    height: 3rem;
+    width: 8rem;
+    border: none;
+    border-radius: 3px;
+    color: #ffffff;
+    background-color: #1e7b85;
+    font-size: 1.2rem;
+}
+
+.navigate-to-login-button:hover {
+    background-color: #19646c;
+}
+
+@media (max-width:1430px) {
+    .form {
+        width: 55%;
+        height: 27%;
+    }
+}
+
+@media (max-width:1430px) {
+    .form {
+        width: 60%;
+        height: 27%;
+    }
+
+    .modal-text {
+        font-family: 'Open Sans', sans-serif;
+    }
+}
+
+@media (max-width:1200px) {
+    .form {
+        width: 60%;
+        height: 25%;
+    }
+
+    .modal-text {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width:1050px) {
+    .form {
+        width: 65%;
+        height: 25%;
+    }
+}
+
+@media (max-width:992px) {
+    .form {
+        width: 70%;
+        height: 23%;
+    }
+
+    .modal-close-button-container {
+        margin-bottom: 1rem;
+    }
+
+    .modal-text {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width:785px) {
+    .form {
+        width: 75%;
+        height: 25%;
+    }
+
+    .modal-text {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 1.1rem;
+    }
+
+    .modal-close-button-container {
+        margin-bottom: 2rem;
+    }
+
+    .navigate-to-login-button {
+        height: 2.5rem;
+        width: 7rem;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width:685px) {
+    .form {
+        width: 90%;
+    }
+
+    .navigate-to-login-button {
+        height: 2.5rem;
+        width: 7rem;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width:585px) {
+    .form {
+        width: 100%;
+        height: 25%;
+    }
+}
+
 

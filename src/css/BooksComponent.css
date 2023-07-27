@@ -3,20 +3,20 @@
 
 
 .text-of-recommended-books {
+    margin-left: -1rem;
     color: #2b2f3c;
     font-family: 'Roboto', sans-serif;
     font-weight: 300;
     font-size: 3rem;
-    margin-left: -1rem;
 }
 
 .book-card {
     height: 29rem;
     width: 18rem !important;
+    margin-right: 3rem !important;
     border: 1px solid #e6e9f1;
     background: linear-gradient(180deg, #eaeee7 40%, #ffffff 40%);
     position: relative;
-    margin-right: 3rem !important;
 }
 
 .home-book-pics {
@@ -41,9 +41,9 @@
 }
 
 .book-price-heart-container {
+    width: 85%;
     position: absolute;
     bottom: 0;
-    width: 85%;
 }
 
 .home-value-of-the-book {

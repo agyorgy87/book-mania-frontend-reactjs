@@ -1,6 +1,6 @@
 import React from "react";
 import "../css/Modal.css";
-import { GrClose } from "react-icons/gr";
+import { IoMdClose } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 
 const WishListModal = (props) => {
@@ -9,15 +9,15 @@ const WishListModal = (props) => {
 
     return (
         <div className="overlay">
-            <form className="form">
-                <div className="d-flex flex-row-reverse">
-                    <button className="modal-close-button" onClick={props.close}><GrClose/></button>
+            <form className="form d-flex flex-column shadow-lg p-3 mb-5 bg-body-tertiary rounded">
+                <div className="d-flex flex-row-reverse modal-close-button-container">
+                    <button className="modal-close-button" onClick={props.close}><IoMdClose/></button>
                 </div>
-                <div>
-                    <h4>If you want to add the book to your list, please log in.</h4>
+                <div className="d-flex justify-content-center modal-text-container">
+                    <h4 className="modal-text">If you want to add this book to your wishlist, please log in.</h4>
                 </div>
-                <div className="d-flex justify-content-around mt-5">
-                    <button onClick={() => {navigate("/login")}}>Login</button>
+                <div className="d-flex justify-content-center">
+                    <button className="navigate-to-login-button" onClick={() => {navigate("/login")}}>Login</button>
                 </div>           
             </form>
         </div>
