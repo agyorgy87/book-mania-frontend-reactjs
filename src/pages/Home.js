@@ -34,9 +34,6 @@ const Home = () => {
             <div className="fixed-top"> 
                 <NavigationBar/>
             </div>  
-
-            <div className="container mt-5 mb-5 d-flex justify-content-center align-items-center">
-            </div>
             {/*
             <div className="container mt-5 mb-5 d-flex justify-content-center align-items-center">
                 <div className="coupon-card w-75 p-5 text-center shadow-sm">
@@ -50,7 +47,7 @@ const Home = () => {
                 </div>
             </div>
             */}
-            <div className="container">
+            <div>
                 <div>
                     <BooksComponent text="Newness" list={newness}/>
                 </div>

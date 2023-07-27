@@ -54,16 +54,16 @@ const RecommendedBooks = (props) => {
     }
     */
     return (
-        <div>
+        <div className="container"> 
             <div>
                 {openModal && <WishListModal close={closeModal}/>}  
             </div>
-            <div className="row d-flex justify-content-between">
+            <div className="row d-flex justify-content-center" >
                 <div className="mb-2">
                     <h1 className="text-of-recommended-books">{props.text}</h1> 
-                </div>
+                </div>   
                         { list.map((book, index) => (
-                            <div className="col-6 col-sm-6 col-md-6 col-lg-3 mb-5 d-flex flex-column book-card me-5" key={"newness-div" + index}>
+                            <div className="row d-flex flex-column book-card mb-5" key={"newness-div" + index}>
                                 <div className="d-flex justify-content-center mt-3 mb-4 mt-4">
                                     <img 
                                     src={"http://localhost:4000/books_img/" + book.img_directory + "/" + book.image}
@@ -85,7 +85,7 @@ const RecommendedBooks = (props) => {
                                         <p className="home-author-name">{book.author_name}</p>
                                     </div>                                                                                                                                                                  
                                 </div> 
-                                <div className="d-flex justify-content-between ps-2 pe-2 book-price-heart-container pb-2">                                       
+                                <div className="d-flex justify-content-between ps-2 pe-5 book-price-heart-container pb-2">                                       
                                         <div>
                                             <h5 className="home-value-of-the-book">{book.price} $</h5>
                                         </div>
