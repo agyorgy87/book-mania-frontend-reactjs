@@ -27,28 +27,7 @@ const RecommendedBooks = (props) => {
         if(!userData.value.jwt){
             setOpenModal(true);
             
-        }/*else{ 
-            if(fullOrEmptyHeart) {
-                let body = {userId: userData.value.id, bookId: params.id};
-                axios.post("http://localhost:4000/delete-wishlist", body)
-                    .then(response => {
-                        if(response.data.success === true) {
-                        console.log(response.data)
-                        setHeartIconFull(false);
-                        }
-                    })              
-            }else{
-                let body = {userId: userData.value.id, bookId: params.id};
-                axios.post("http://localhost:4000/add-wishlist", body)
-                    .then(response => {
-                        if(response.data.success === true) {
-                        console.log(response.data)
-                        setHeartIconFull(true);
-                        }
-                    })
-            } 
-        }  
-        */         
+        }        
     }
 
     const closeModal = () => {
@@ -84,7 +63,7 @@ const RecommendedBooks = (props) => {
                     <h1 className="text-of-recommended-books">{props.text}</h1> 
                 </div>
                         { list.map((book, index) => (
-                            <div className="col-6 col-sm-6 col-md-6 col-lg-3 mb-5 d-flex flex-column book-card me-5" key={"newness-div" + index}>{/*!!!!!!!!! */}
+                            <div className="col-6 col-sm-6 col-md-6 col-lg-3 mb-5 d-flex flex-column book-card me-5" key={"newness-div" + index}>
                                 <div className="d-flex justify-content-center mt-3 mb-4 mt-4">
                                     <img 
                                     src={"http://localhost:4000/books_img/" + book.img_directory + "/" + book.image}
