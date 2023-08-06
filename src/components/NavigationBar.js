@@ -58,7 +58,7 @@ const NavigationBar = () => {
                                 </li>
                                 :
                                 <li className="nav-item navigation-menus">
-                                    <Link to={"/login"} className="nav-link fs-4 login-logout-button">LOGIN</Link>
+                                    <Link to={"/login"} className="nav-link fs-5 login-logout-button">Sign in</Link>
                                 </li>
                             }
                             <li className="nav-item navigation-menus me-3">
@@ -66,7 +66,7 @@ const NavigationBar = () => {
                                     <CgShoppingCart className="fs-2"/>
                                     {
                                         cartData.value.length > 0 ?
-                                        <span className="position-absolute translate-middle badge rounded-pill cart-content-value">
+                                        <span className="translate-middle badge rounded-pill cart-content-value">
                                             {cartData.value.length}
                                         </span>
                                         :

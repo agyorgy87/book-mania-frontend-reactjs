@@ -85,7 +85,7 @@ const RecommendedBooks = (props) => {
                                         <p className="home-author-name">{book.author_name}</p>
                                     </div>                                                                                                                                                                  
                                 </div> 
-                                <div className="d-flex justify-content-between ps-2 pe-5 book-price-heart-container pb-2">                                       
+                                <div className="d-flex justify-content-between ps-4 pe-5 book-price-heart-container pb-2">                                       
                                         <div>
                                             <h5 className="home-value-of-the-book">{book.price} $</h5>
                                         </div>

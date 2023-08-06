@@ -3,7 +3,7 @@ import "../css/Modal.css";
 import { IoMdClose } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 
-const LoginModal = (props) => {
+const LoginWarning = (props) => {
 
     let navigate = useNavigate();
 
@@ -24,5 +24,5 @@ const LoginModal = (props) => {
     );
 }
 
-export default LoginModal;
+export default LoginWarning;
 

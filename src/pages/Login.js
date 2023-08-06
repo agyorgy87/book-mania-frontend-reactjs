@@ -76,18 +76,26 @@ const Login = () => {
                 <NavigationBar/>
             </div> 
             <section>
-                <div className="mt-5">
-                    <div className="d-flex justify-content-center">
-                        <p className="login-name-of-the-website">BOOK MANIA</p> 
-                            <ImBooks className="ms-4 book-mania-icon"/>
-                    </div>
-                    <form className="col-12 col-sm-8 col-md-4 m-auto border rounded form-container" onSubmit={login}>
+                <div className="mt-5">  
+                    <form className="col-12 col-sm-8 col-md-4 m-auto form-container rounded shadow p-3 mb-5" onSubmit={login}>
                         <div className="d-flex justify-content-center mt-4 mb-3">
-                            <h2 className="login-text">LOGIN</h2>
+                            <div className="d-flex justify-content-center">
+                                <p className="fs-2 login-name-of-the-website">BOOK MANIA</p> 
+                                    <ImBooks className="ms-2 fs-2 book-mania-icon"/>
+                            </div>
                         </div>
-                        <div className="mb-3 ps-5 pe-5">
+                        <div className="ps-5 pe-5 email-password-container">
                             <label htmlFor="InputEmail" className="form-label">Email</label>
-                            <input autoFocus type="email" value={userEmail} onBlur={() => setTouched(true)} className="form-control email-input" id="InputEmail" aria-describedby="emailHelp" onChange={(e) => setUserEmail(e.target.value)}/>
+                            <input 
+                                autoFocus 
+                                type="email" 
+                                aria-describedby="emailHelp" 
+                                id="InputEmail" 
+                                className="form-control email-password-input" 
+                                value={userEmail} 
+                                onBlur={() => setTouched(true)} 
+                                onChange={(e) => setUserEmail(e.target.value)}
+                            />
                         </div>                                           
                         {
                         touched ? 
@@ -101,15 +109,20 @@ const Login = () => {
                         :
                         null
                         }                       
-                        <div className="ms-5 me-5 mt-4">
+                        <div className="ms-5 me-5 mt-4 email-password-container">
                                 <label htmlFor="InputPassword" className="form-label">Password</label>
                             <div className="password-container">                               
-                                <input type={passwordShow ? "text" : "password"} className="form-control password-input" id="InputPassword" onChange={(e) => {setPassword(e.target.value); setPasswordInfo(true)} }/>                   
+                                <input 
+                                    type={passwordShow ? "text" : "password"} 
+                                    className="form-control email-password-input" 
+                                    id="InputPassword" 
+                                    onChange={(e) => {setPassword(e.target.value); setPasswordInfo(true)} }
+                                />                   
                                     { 
                                     passwordShow ?
-                                    <i className="eye-icons bi bi-eye text-dark" onClick={togglePassword}></i>                                      
+                                    <i className="eye-icons bi bi-eye fs-4" onClick={togglePassword}></i>                                      
                                     :
-                                    <i className="eye-icons bi bi-eye-slash text-dark" onClick={togglePassword}></i>
+                                    <i className="eye-icons bi bi-eye-slash fs-4" onClick={togglePassword}></i>
                                     }
                                     {
                                     passwordInfo ?
@@ -139,16 +152,17 @@ const Login = () => {
                                 null
                             }
                         </div>
-                        <div className="login-button-container mt-4 ms-5 me-5 mb-4">
-                            <button type="submit" className="btn login-button">LOGIN</button>
+                        <div className="login-button-container mt-5 ms-5 me-5 mb-4">
+                            <button type="submit" className="btn w-100 h-100 login-button">Sign in</button>
                         </div>
-                        <div className="d-flex justify-content-center mb-3">
-                            <Link to={"/forgotpassword"}>Forgot your password?</Link>
+                        <div className="d-flex justify-content-center mb-4">
+                            <button className="forgot-password-button border-0 fw-bold">Forgot your password?</button>
+                        </div>
+                        <hr className="mt-2 mb-3"/>
+                        <div className="d-flex justify-content-center">
+                            <p className="mt-3 me-2 fs-5 fw-normal ask-account">Have an account?</p> <Link className="sign-up-link mt-3 text-decoration-none fs-5 fw-bold" to={"/createaccount"}>Sign up</Link>
                         </div>
                     </form>
-                    <div className="d-flex justify-content-center mt-3">
-                        <p className="terms-and-policy">Have an account? <Link to={"/createaccount"}>Create Account</Link></p>
-                    </div>
                 </div>       
             </section>
         </div>

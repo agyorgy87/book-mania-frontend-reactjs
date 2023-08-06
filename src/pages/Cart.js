@@ -8,7 +8,7 @@ import { MdOutlineRemoveShoppingCart } from "react-icons/md";
 import { useContext } from 'react';
 import { CartContext } from "../context/CartContext";
 import { UserContext } from "../context/UserContext";
-import LoginModal from "../modal/LoginModal.js";
+import LoginWarning from "../modal/LoginWarning.js";
 
 const Cart = () => { 
 
@@ -149,7 +149,7 @@ const Cart = () => {
                 <NavigationBar/>
             </div>
             <div>
-                {openModal && <LoginModal close={closeModal}/>}  
+                {openModal && <LoginWarning close={closeModal}/>}  
             </div>
             <div className="container">
                 <div className="mb-3">
