@@ -85,7 +85,7 @@ const Login = () => {
                             </div>
                         </div>
                         <div className="ps-5 pe-5 email-password-container">
-                            <label htmlFor="InputEmail" className="form-label">Email</label>
+                            <label htmlFor="InputEmail" className="form-label email-password-label">Email</label>
                             <input 
                                 autoFocus 
                                 type="email" 
@@ -110,7 +110,7 @@ const Login = () => {
                         null
                         }                       
                         <div className="ms-5 me-5 mt-4 email-password-container">
-                                <label htmlFor="InputPassword" className="form-label">Password</label>
+                                <label htmlFor="InputPassword" className="form-label email-password-label">Password</label>
                             <div className="password-container">                               
                                 <input 
                                     type={passwordShow ? "text" : "password"} 
@@ -153,14 +153,14 @@ const Login = () => {
                             }
                         </div>
                         <div className="login-button-container mt-5 ms-5 me-5 mb-4">
-                            <button type="submit" className="btn w-100 h-100 login-button">Sign in</button>
+                            <button type="submit" className="btn w-100 fs-5 login-button">Sign in</button>
                         </div>
                         <div className="d-flex justify-content-center mb-4">
                             <button className="forgot-password-button border-0 fw-bold">Forgot your password?</button>
                         </div>
                         <hr className="mt-2 mb-3"/>
                         <div className="d-flex justify-content-center">
-                            <p className="mt-3 me-2 fs-5 fw-normal ask-account">Have an account?</p> <Link className="sign-up-link mt-3 text-decoration-none fs-5 fw-bold" to={"/createaccount"}>Sign up</Link>
+                            <p className="mt-3 me-2 fs-5 fw-lighter ask-account">Have an account?</p> <Link className="sign-up-link mt-3 fs-5 fw-bold" to={"/createaccount"}>Sign up</Link>
                         </div>
                     </form>
                 </div>       
