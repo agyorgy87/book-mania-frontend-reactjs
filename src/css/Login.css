@@ -45,6 +45,19 @@
     outline: none !important;
 }
 
+.alert-mark {
+    transform: translateY(2px);
+    color: #aa1527;
+}
+
+.email-input-alert {
+    border-color: #aa1527 !important;
+}
+
+.email-not-filled-text {
+    color: #aa1527;
+}
+
 .password-container {
     width: 100%;
     position: relative;

@@ -1,5 +1,5 @@
 import '../css/Login.css';
-import React, {useState }  from 'react';
+import React, { useState, useEffect }  from 'react';
 import NavigationBar from '../components/NavigationBar.js';
 import {ImBooks} from "react-icons/im";
 import { useNavigate } from "react-router-dom";
@@ -7,6 +7,7 @@ import { useContext } from 'react';
 import { UserContext } from "../context/UserContext.js";
 import axios from "axios";
 import { Link } from 'react-router-dom';
+import { AiOutlineExclamationCircle } from "react-icons/ai"
 
 const Login = () => {
 
@@ -16,9 +17,11 @@ const Login = () => {
     
     const [userEmail, setUserEmail] = useState("");
     const [password, setPassword] = useState("");
+
+    const [loginMessage, setLoginMessage] = useState("")
     
-    const [errorMessage, setErrorMessage] = useState("");
-    const [success, setSuccess] = useState("");
+    //const [errorMessage, setErrorMessage] = useState("");
+    //const [success, setSuccess] = useState("");
 
     const [touched, setTouched] = useState(false);
 
@@ -26,11 +29,21 @@ const Login = () => {
 
     const [passwordInfo, setPasswordInfo] = useState(false);
 
+    useEffect(() => {
+        if(password === "") {
+            setPasswordInfo(false);
+        }
+    },[password])
+
     const togglePassword = () => {
         setPasswordShow(!passwordShow); 
     }
 
     const login = (e) => {
+
+    if(userEmail === "" && password === ""){
+        setLoginMessage("")
+    }
 
     e.preventDefault();
 
@@ -42,16 +55,16 @@ const Login = () => {
         .then(response => {
             if(response.data.error) {
                 if(userEmail === "" && password === ""){
-                    setErrorMessage("");
+                    setLoginMessage("Fill in the fields to login.");
                 }else{
-                    setErrorMessage("Invalid Email address or Password."); 
+                    setLoginMessage("Invalid Email address or Password. Please try again."); 
                 }   
             }
             else{
-                setSuccess("Successful Login");
+                setLoginMessage("Successful Login.");
                 let stringifiedToken = JSON.stringify(response.data);
                 localStorage.setItem("token", stringifiedToken);
-                setTimeout(() => { navigate("/") }, 3000);
+                setTimeout(() => { navigate("/") }, 2000);
                 userData.setValue(response.data);               
             }
         })      
@@ -91,7 +104,7 @@ const Login = () => {
                                 type="email" 
                                 aria-describedby="emailHelp" 
                                 id="InputEmail" 
-                                className="form-control email-password-input" 
+                                className={`form-control email-password-input ${emptyEmailInputErrorMessage ? 'email-input-alert' : ''}`}
                                 value={userEmail} 
                                 onBlur={() => setTouched(true)} 
                                 onChange={(e) => setUserEmail(e.target.value)}
@@ -100,9 +113,9 @@ const Login = () => {
                         {
                         touched ? 
                             (emptyEmailInputErrorMessage ? 
-                                <div className="alert alert-danger ms-5 me-5 ps-4" role="alert">
-                                    The email address is not filled.
-                                </div> 
+                                <div className="mt-1 ms-5 me-5 d-flex">
+                                    <AiOutlineExclamationCircle className="alert-mark fs-5 me-1"/><p className="email-not-filled-text">The email address is not filled.</p>
+                                </div>  
                                 :
                                 null
                                 )
@@ -124,34 +137,23 @@ const Login = () => {
                                     :
                                     <i className="eye-icons bi bi-eye-slash fs-4" onClick={togglePassword}></i>
                                     }
-                                    {
-                                    passwordInfo ?
-                                    <p className="password-help">Your password must be least 8 characters and minimum 1 number.</p>
+                                    { passwordInfo ?
+                                        <p className="password-help">Your password must be least 8 characters and minimum 1 number.</p>
                                     :
-                                    null
+                                        null
                                     }                                               
                             </div>
                         </div>
-                        <div>
+                        <div className="ms-5 me-5 mt-2">
                             {
-                                success ? 
-                                    <div className="alert alert-success" role="alert">
-                                        {success}
+                                loginMessage ? 
+                                    <div className="">
+                                        {loginMessage}
                                     </div>
                             :
                                 null
                             }
                         </div>                
-                        <div>
-                            {
-                                errorMessage ? 
-                                    <div className="alert alert-danger" role="alert">
-                                        {errorMessage}
-                                    </div>
-                            :
-                                null
-                            }
-                        </div>
                         <div className="login-button-container mt-5 ms-5 me-5 mb-4">
                             <button type="submit" className="btn w-100 fs-5 login-button">Sign in</button>
                         </div>
