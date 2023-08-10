@@ -8,12 +8,15 @@ import { UserContext } from "../context/UserContext.js";
 import axios from "axios";
 import { Link } from 'react-router-dom';
 import { AiOutlineExclamationCircle } from "react-icons/ai"
+import SuccessfulLoginModal from '../modal/SuccessfulLoginModal.js';
 
 const Login = () => {
 
     let navigate = useNavigate();
 
     const userData = useContext(UserContext);
+
+    const [openModal, setOpenModal] = useState(false);
     
     const [userEmail, setUserEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -102,11 +105,11 @@ const Login = () => {
             else{
                 setEmailInputError(false);
                 setPasswordInputError(false);
-                setLoginMessage("Successful Login.");
+                setPasswordInfo(false);     
                 let stringifiedToken = JSON.stringify(response.data);
                 localStorage.setItem("token", stringifiedToken);
-                setTimeout(() => { navigate("/") }, 2000);
-                userData.setValue(response.data);               
+                userData.setValue(response.data);  
+                setOpenModal(true);           
             }
         })      
     }
@@ -116,6 +119,9 @@ const Login = () => {
             <div>
                 <NavigationBar/>
             </div> 
+            <div>
+                {openModal && <SuccessfulLoginModal/>}
+            </div>
             <section>
                 <div className="mt-5">  
                     <form className="col-12 col-sm-8 col-md-4 m-auto form-container rounded shadow p-3 mb-5" onSubmit={login}>
