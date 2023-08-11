@@ -9,6 +9,7 @@ import SuccessfulRegistration from "./pages/SuccessfulRegistration.js"
 import SelectedBook from "./pages/SelectedBook.js";
 import WishList from "./pages/WishList.js";
 import Cart from "./pages/Cart.js";
+import ForgotPassword from "./pages/ForgotPassword.js";
 import { UserContext } from "./context/UserContext.js";
 import { CartContext } from "./context/CartContext.js";
 
@@ -51,7 +52,8 @@ const Navigation = () => {
                             <Route path="/" element={<Home/>} />
                             <Route path="/books" element={<Books/>} />
                             <Route path="/contact" element={<Contact/>} />
-                            <Route path="/login" element={<Login/>} />
+                            <Route path="/login" element={<Login/>} />                           
+                            <Route path="/forgotpassword" element={<ForgotPassword/>} />
                             <Route path="/createaccount" element={<CreateAccount/>} />
                             <Route path="/successfulregistration" element={<SuccessfulRegistration/>} />
                             <Route path="/selectedbook/:id" element={<SelectedBook/>} />

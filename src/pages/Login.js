@@ -2,13 +2,14 @@ import '../css/Login.css';
 import React, { useState, useEffect }  from 'react';
 import NavigationBar from '../components/NavigationBar.js';
 import {ImBooks} from "react-icons/im";
-import { useNavigate } from "react-router-dom";
 import { useContext } from 'react';
 import { UserContext } from "../context/UserContext.js";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import { Link } from 'react-router-dom';
 import { AiOutlineExclamationCircle } from "react-icons/ai"
 import SuccessfulLoginModal from '../modal/SuccessfulLoginModal.js';
+
 
 const Login = () => {
 
@@ -16,7 +17,8 @@ const Login = () => {
 
     const userData = useContext(UserContext);
 
-    const [openModal, setOpenModal] = useState(false);
+    const [openSuccessfulLoginModal, setOpenSuccessfulLoginModal] = useState(false);
+    //const [openForgotPasswordModal, setOpenForgotPasswordModal] = useState(false);
     
     const [userEmail, setUserEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -109,7 +111,7 @@ const Login = () => {
                 let stringifiedToken = JSON.stringify(response.data);
                 localStorage.setItem("token", stringifiedToken);
                 userData.setValue(response.data);  
-                setOpenModal(true);           
+                setOpenSuccessfulLoginModal(true);           
             }
         })      
     }
@@ -119,12 +121,10 @@ const Login = () => {
             <div>
                 <NavigationBar/>
             </div> 
-            <div>
-                {openModal && <SuccessfulLoginModal/>}
-            </div>
-            <section>
-                <div className="mt-5">  
-                    <form className="col-12 col-sm-8 col-md-4 m-auto form-container rounded shadow p-3 mb-5" onSubmit={login}>
+                <div>
+                    {openSuccessfulLoginModal && <SuccessfulLoginModal/>}             
+                </div>
+                    <form className="col-12 col-sm-8 col-md-4 m-auto form-container rounded shadow p-3 mb-5 mt-5" onSubmit={login}>
                         <div className="d-flex justify-content-center mt-4 mb-3">
                             <div className="d-flex justify-content-center">
                                 <p className="fs-2 login-name-of-the-website">BOOK MANIA</p> 
@@ -194,11 +194,14 @@ const Login = () => {
                                     }                                               
                             </div>
                         </div>             
-                        <div className={`login-button-container mt-5 ms-5 me-5 mb-4`}>
+                        <div className="mt-5 ms-5 me-5 mb-4">
                             <button type="submit" className="btn w-100 fs-5 login-button">Sign in</button>
                         </div>
                         <div className="d-flex justify-content-center mb-4">
-                            <button className="forgot-password-button border-0 fw-bold">Forgot your password?</button>
+                            <button 
+                            className="forgot-password-button border-0 fw-bold"
+                            onClick={() => {navigate("/forgotpassword")}}
+                            >Forgot your password?</button>
                         </div>
                         <hr className="mt-2 mb-3"/>
                         <div className="d-flex justify-content-center">
@@ -206,10 +209,7 @@ const Login = () => {
                             <Link className="sign-up-link mt-3 fs-5 fw-bold" to={"/createaccount"}>Sign up</Link>
                         </div>
                     </form>
-                </div>       
-            </section>
-        </div>
-        
+        </div> 
     )
 }
 

@@ -246,9 +246,6 @@ const Books = () => {
         localStorage.setItem("cart", JSON.stringify(cartDataCopy));
     }
     
-
-    
-    console.log("valami")
     return(
         <div className="book-page">
             <div className="fixed-top">
