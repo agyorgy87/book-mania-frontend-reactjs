@@ -2,12 +2,12 @@ import '../css/Login.css';
 import React, { useState, useEffect }  from 'react';
 import NavigationBar from '../components/NavigationBar.js';
 import {ImBooks} from "react-icons/im";
-import { useContext } from 'react';
+import { useContext } from 'react'; 
 import { UserContext } from "../context/UserContext.js";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Link } from 'react-router-dom';
-import { AiOutlineExclamationCircle } from "react-icons/ai"
+import { AiOutlineExclamationCircle } from "react-icons/ai";
 import SuccessfulLoginModal from '../modal/SuccessfulLoginModal.js';
 
 
@@ -18,7 +18,6 @@ const Login = () => {
     const userData = useContext(UserContext);
 
     const [openSuccessfulLoginModal, setOpenSuccessfulLoginModal] = useState(false);
-    //const [openForgotPasswordModal, setOpenForgotPasswordModal] = useState(false);
     
     const [userEmail, setUserEmail] = useState("");
     const [password, setPassword] = useState("");

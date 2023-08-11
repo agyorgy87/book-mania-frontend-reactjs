@@ -5,7 +5,8 @@ import { useNavigate } from "react-router-dom";
 import validate from '../ValidateInfo';
 import useForm from '../useForm';
 import axios from "axios";
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'; 
+import { AiOutlineExclamationCircle } from "react-icons/ai";
 
 const CreateAccount = () => {
     const {handleChange, values, handleSubmit, errors} = useForm(validate);
@@ -37,7 +38,7 @@ const CreateAccount = () => {
                 }
                 axios.post("http://localhost:4000/register", user)
                 console.log(user);
-                navigate("/successfulregistration")
+                //navigate("/successfulregistration")
             } 
         }else{
             firstRun.current += 1;
@@ -47,32 +48,21 @@ const CreateAccount = () => {
     console.log(values.dataProtection);
 
     return (
-        <div>
+        <div className="sign-up-page">
             <div>
-            <NavigationBar/>
+                <NavigationBar/>
             </div>
-            <div className="container mt-4">
-                <div className="row">
-                    <div className="col-12 col-sm-8 col-md-6 m-auto">
-                        <div className="card border-0 shadow">
-                            <div className="card-body">
-                                <div>
-                                    <div className="row">
-                                        <div className="col-md-12 col-sm-12 col-xs-12"> 
-                                            <div className="section-title">
-                                                <h3>Create Account</h3>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <form autoComplete="off" onSubmit={handleSubmit}>
-                                    <div class="form-row">
+                    <div className="col-12 col-sm-8 col-md-4 m-auto rounded shadow sign-up-container pt-3 mt-5 mb-5">                           
+                        <div className="text-center">
+                            <h1 className="sign-up-title fw-bold">Sign up</h1>
+                        </div>                                                               
+                                <form className="form-row ps-5 pe-5" autoComplete="off" onSubmit={handleSubmit}>
                                         <div className="mb-4">
-                                            <div class="form-group">
-                                                <label htmlFor="firstName" className="form-label">First Name</label>
+                                            <div class="form-group label-input-container">      
+                                                <label htmlFor="firstName" className="form-label labels fw-bold">First Name</label>                                               
                                                 <input 
                                                 type="text"
-                                                className={`inputs ${errors.firstName ? 'border-danger' : ''}`}
+                                                className={`form-control inputs ${errors.firstName ? 'invalid' : ''}`}
                                                 name="firstName"
                                                 id="firstName"
                                                 value={values.firstName}
@@ -80,27 +70,37 @@ const CreateAccount = () => {
                                                 ref={nameInput}
                                                 />
                                             </div>
-                                            {errors.firstName ? <p className="invalid-data-text ms-1">{errors.lastName}</p> : null}
+                                            {errors.firstName ?
+                                                <div className="d-flex mt-1">
+                                                    <AiOutlineExclamationCircle className="sign-up-alert-mark fs-5 me-1"/>
+                                                    <p className="invalid-data-text ms-1">{errors.firstName}</p> 
+                                                </div>
+                                            : null}
                                         </div>
                                         <div className="mb-4">
-                                            <div className="form-group">
-                                                <label htmlFor="lastName" className="form-label">Last Name</label>
+                                            <div className="form-group label-input-container">
+                                                <label htmlFor="lastName" className="form-label labels fw-bold">Last Name</label>
                                                 <input
                                                 type="text"
-                                                className={`inputs ${errors.lastName ? 'danger' : ''}`} 
+                                                className={`form-control inputs ${errors.lastName ? 'invalid' : ''}`} 
                                                 name="lastName"
                                                 id="lastName"
                                                 value={values.lastName}
                                                 onChange={handleChange}
                                                 />
                                             </div>
-                                            {errors.lastName ? <p className="invalid-data-text ms-1">{errors.lastName}</p> : null}   
+                                            {errors.lastName ?
+                                                <div className="d-flex mt-1">
+                                                    <AiOutlineExclamationCircle className="sign-up-alert-mark fs-5 me-1"/>
+                                                    <p className="invalid-data-text ms-1">{errors.lastName}</p> 
+                                                </div>
+                                            : null}
                                         </div>
                                         <div className="mb-4">                                                                           
-                                            <div className="form-check form-check-inline">
-                                                <label className="form-check-label" htmlFor="male">Male</label>
+                                            <div className="form-check form-check-inline ">
+                                                <label className="form-check-label labels fw-bold" htmlFor="male">Male</label>
                                                     <input 
-                                                    className="form-check-input" 
+                                                    className="form-check-input custom-radio" 
                                                     id="gender" 
                                                     name="gender" 
                                                     type="radio" 
@@ -110,9 +110,9 @@ const CreateAccount = () => {
                                                     />                                           
                                             </div>
                                             <div className="form-check form-check-inline">
-                                                <label className="form-check-label" for="female">Female</label>
+                                                <label className="form-check-label labels fw-bold" htmlFor="female">Female</label>
                                                     <input 
-                                                    className="form-check-input" 
+                                                    className="form-check-input custom-radio" 
                                                     id="gender" 
                                                     name="gender" 
                                                     type="radio" 
@@ -121,85 +121,114 @@ const CreateAccount = () => {
                                                     onChange={handleChange}
                                                     />
                                             </div>
-                                            {errors.gender ? <p className="invalid-data-text ms-1">{errors.gender}</p> : null}
+                                            {errors.gender ?
+                                                <div className="d-flex mt-1">
+                                                    <AiOutlineExclamationCircle className="sign-up-alert-mark fs-5 me-1"/>
+                                                    <p className="invalid-data-text ms-1">{errors.gender}</p> 
+                                                </div>
+                                            : null}
                                         </div>
                                         <div className="mb-4">
-                                            <div class="form-group">
-                                                <label htmlFor="address" className="form-label">Address</label>
+                                            <div class="form-group label-input-container">
+                                                <label htmlFor="address" className="form-label labels fw-bold">Address</label>
                                                 <input 
                                                 type="text"
-                                                className={`inputs ${errors.address ? 'danger' : ''}`} 
+                                                className={`form-control inputs ${errors.address ? 'invalid' : ''}`} 
                                                 name="address"
                                                 id="address"
                                                 value={values.address}
                                                 onChange={handleChange}
                                                 />
                                             </div>
-                                            {errors.address ? <p className="invalid-data-text ms-1">{errors.address}</p> : null} 
+                                            {errors.address ?
+                                                <div className="d-flex mt-1">
+                                                    <AiOutlineExclamationCircle className="sign-up-alert-mark fs-5 me-1"/>
+                                                    <p className="invalid-data-text ms-1">{errors.address}</p> 
+                                                </div>
+                                            : null}
                                         </div> 
                                         <div className="mb-4">                         
-                                            <div className="form-group">
-                                                <label htmlFor="city" className="form-label">City</label>
+                                            <div className="form-group label-input-container">
+                                                <label htmlFor="city" className="form-label labels fw-bold">City</label>
                                                 <input 
                                                 type="text"
-                                                className={`inputs ${errors.city ? 'danger' : ''}`} 
+                                                className={`form-control inputs ${errors.city ? 'invalid' : ''}`} 
                                                 name="city"
                                                 id="city"
                                                 value={values.city}
                                                 onChange={handleChange}
                                                 />
                                             </div>
-                                            {errors.city ? <p className="invalid-data-text ms-1">{errors.city}</p> : null}
+                                            {errors.city ?
+                                                <div className="d-flex mt-1">
+                                                    <AiOutlineExclamationCircle className="sign-up-alert-mark fs-5 me-1"/>
+                                                    <p className="invalid-data-text ms-1">{errors.city}</p> 
+                                                </div>
+                                            : null}
                                         </div>
                                         <div className="mb-4">
-                                            <div className="form-group">
-                                                <label htmlFor="zip" className="form-label">Zip Code</label>
+                                            <div className="form-group label-input-container">
+                                                <label htmlFor="zip" className="form-label labels fw-bold">Zip Code</label>
                                                 <input 
                                                 type="text"
-                                                className={`inputs ${errors.zip ? 'danger' : ''}`} 
+                                                className={`form-control inputs ${errors.zip ? 'invalid' : ''}`} 
                                                 name="zip"
                                                 id="zip"
                                                 value={values.zip}
                                                 onChange={handleChange}
                                             />
                                             </div>
-                                            {errors.zip ? <p className="invalid-data-text ms-1">{errors.zip}</p> : null}    
+                                            {errors.city ?
+                                                <div className="d-flex mt-1">
+                                                    <AiOutlineExclamationCircle className="sign-up-alert-mark fs-5 me-1"/>
+                                                    <p className="invalid-data-text ms-1">{errors.city}</p> 
+                                                </div>
+                                            : null}   
                                         </div>  
                                         <div className="mb-4">                            
-                                            <div className="form-group">
-                                                <label htmlFor="email" className="form-label">Email</label>
+                                            <div className="form-group label-input-container">
+                                                <label htmlFor="email" className="form-label labels fw-bold">Email</label>
                                                 <input 
                                                 type="email"
-                                                className={`inputs ${errors.email ? 'danger' : ''}`} 
+                                                className={`form-control inputs ${errors.email ? 'invalid' : ''}`} 
                                                 name="email" 
                                                 id="email"
                                                 value={values.email}
                                                 onChange={handleChange} 
                                                 />
                                             </div>
-                                            {errors.email ? <p className="invalid-data-text ms-1">{errors.email}</p> : null}
+                                            {errors.email ?
+                                                <div className="d-flex mt-1">
+                                                    <AiOutlineExclamationCircle className="sign-up-alert-mark fs-5 me-1"/>
+                                                    <p className="invalid-data-text ms-1">{errors.email}</p> 
+                                                </div>
+                                            : null}
                                         </div>
                                         <div className="mb-4">
-                                            <div className="form-group"> 
-                                                <label htmlFor="password" className="form-label">Password</label>                                     
+                                            <div className="form-group label-input-container"> 
+                                                <label htmlFor="password" className="form-label labels fw-bold">Password</label>                                     
                                                 <input
-                                                className={`inputs ${errors.password ? 'danger' : ''}`} 
+                                                className={`form-control inputs ${errors.password ? 'invalid' : ''}`} 
                                                 name="password" 
                                                 id="password"
                                                 type="password"
                                                 value={values.password}
                                                 onChange={handleChange}
-
                                                 />
                                             </div>                                       
-                                            <p className="password-help">Your password must be least 8 characters and minimum 1 number.</p>                                            
-                                            {errors.password ? <p className="invalid-data-text ms-1">{errors.password}</p> : null}
+                                            <p className="password-help">Your password must be least 8 characters and minimum 1 number.</p>
+                                            {errors.password ?
+                                                <div className="d-flex mt-1">
+                                                    <AiOutlineExclamationCircle className="sign-up-alert-mark fs-5 me-1"/>
+                                                    <p className="invalid-data-text ms-1">{errors.password}</p> 
+                                                </div>
+                                            : null}
                                         </div>
                                         <div className="mb-4">
-                                            <div className="form-group">
-                                                <label htmlFor="password" className="form-label">Password Again</label>
+                                            <div className="form-group label-input-container">
+                                                <label htmlFor="password" className="form-label labels fw-bold">Password Again</label>
                                                 <input 
-                                                className={`inputs ${errors.passwordAgain ? 'danger' : ''}`} 
+                                                className={`form-control inputs ${errors.passwordAgain ? 'invalid' : ''}`} 
                                                 name="passwordAgain"
                                                 id="passwordAgain"
                                                 type="password"  
@@ -207,7 +236,12 @@ const CreateAccount = () => {
                                                 onChange={handleChange}
                                                 />
                                             </div>
-                                            {errors.passwordAgain ? <p className="invalid-data-text ms-1">{errors.passwordAgain}</p> : null}
+                                            {errors.passwordAgain ?
+                                                <div className="d-flex mt-1">
+                                                    <AiOutlineExclamationCircle className="sign-up-alert-mark fs-5 me-1"/>
+                                                    <p className="invalid-data-text ms-1">{errors.passwordAgain}</p> 
+                                                </div>
+                                            : null}
                                         </div>
                                         {/*
                                         <div className="form-group d-flex justify-content-center">
@@ -225,22 +259,19 @@ const CreateAccount = () => {
                                             </div>
                                         </div>
                                         */}
-                                        <div className="d-flex justify-content-center my-3">
-                                            <button type="submit" className="btn btn-primary">Create Account</button>
+                                        <div className="d-flex justify-content-center mt-5">
+                                            <button type="submit" className="btn w-100 fs-5 sign-up-button">Sign up</button>
                                         </div>                                           
-                                    </div>
-                                </form>
-                                <div className="d-flex justify-content-center mt-3">
-                                    <p className="terms-and-policy">By signing up, you agree to our <Link>Terms of Service</Link> and<Link> Privacy Policy</Link></p>
-                                </div>
+                                        <div className="d-flex justify-content-center mt-3">
+                                            <p className="text-center">By signing up, you agree to our <Link>Terms of Service</Link> and<Link> Privacy Policy</Link></p>
+                                        </div>
+                                </form> 
+                                <hr className="mt-2 mb-3"/>
                                 <div className="d-flex justify-content-center">
-                                    <p className="terms-and-policy">Have an account? <Link to={"/login"}>Login</Link></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                                    <p className="mt-2 mb-4 me-2 fs-5 fw-lighter sign-up-ask">Have an account?</p> 
+                                    <Link className="mt-2 fs-5 fw-bold sign-up-link" to={"/login"}>Login</Link>
+                                </div>                           
+                        </div>         
         </div>
     )
 }

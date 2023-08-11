@@ -54,7 +54,7 @@ const NavigationBar = () => {
                             {
                                 userData.value.jwt ?
                                 <li className="nav-item navigation-menus">
-                                    <button className="nav-link fs-4 login-logout-button" onClick={logout}>LOGOUT</button>
+                                    <button className="nav-link fs-4 login-logout-button" onClick={logout}>Log out</button>
                                 </li>
                                 :
                                 <li className="nav-item navigation-menus">
