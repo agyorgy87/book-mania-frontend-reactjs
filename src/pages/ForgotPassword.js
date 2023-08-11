@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import axios from "axios";
 import { AiOutlineExclamationCircle } from "react-icons/ai"
 import NavigationBar from '../components/NavigationBar.js';
+import EmailSentSuccessfullyModal from "../modal/EmailSentSuccessfullyModal.js"
 
 const ForgotPassword = () => {
 
@@ -12,6 +13,8 @@ const ForgotPassword = () => {
     const [userEmailInput, setUserEmailInput] = useState("");
 
     const [invalidEmailAddressErrorMessage, setInvalidEmailAddressErrorMessage] = useState(false);
+
+    const [openEmailSentSuccessfully, setOpenEmailSentSuccessfully] = useState(false);
 
     useEffect(() => {
         if(userEmailInput < 1){
@@ -25,10 +28,9 @@ const ForgotPassword = () => {
             .then(response => {
                 console.log(response);
                 if(response.data.success === true) {
-                    console.log("az email cím létezik az adatbázisban")
+                    setOpenEmailSentSuccessfully(true);
                 }else{
                     setInvalidEmailAddressErrorMessage(true);
-                    console.log("az email cím nem létezik az adatbázisban")
                 }
         })  
     }
@@ -38,6 +40,7 @@ const ForgotPassword = () => {
             <div>
                 <NavigationBar/>
             </div>
+            {openEmailSentSuccessfully && <EmailSentSuccessfullyModal/>}
             <div className="col-12 col-sm-8 col-md-4 m-auto forgot-password-container rounded shadow mt-5">
                 <div className="d-flex flex-column justify-content-center mb-3 pt-5 ps-5 pe-5">
                     <h3 className="text-center pb-2">Reset password</h3>

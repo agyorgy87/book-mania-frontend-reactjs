@@ -10,14 +10,14 @@
     z-index: 10;    
 }
 
-.login-modal-container {
-    height: 20rem;
+.reset-password-modal-container {
+    height: 22rem;
     width: 20rem;
-    margin-top: 15rem;
+    margin-top: 10rem;
     background-color: aliceblue;
 }
 
-.successfulLogin-svg {
+.email-sent-successfully-svg {
     height: 8rem;
     width: 8rem;
     display: block;
@@ -44,14 +44,12 @@
     font-family: 'Source Sans 3', sans-serif;
 }
 
-.navigate-to-home {
+.navigate-to-login {
     background-color: #1e7b85 !important;
     color: #ffffff !important;
     width: 100%;
 }
 
-.navigate-to-home:hover {
+.navigate-to-login:hover {
     background-color: #19646c !important;
 }
-
-
