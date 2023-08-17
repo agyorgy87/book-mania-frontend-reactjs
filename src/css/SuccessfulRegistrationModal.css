@@ -7,18 +7,18 @@
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 10;    
+    z-index: 10;     
 }
 
-.login-modal-container {
+.register-modal-container {
     height: 20rem;
     width: 20rem;
     margin-top: 15rem !important;
-    background-color: aliceblue;
     margin: auto;
+    background-color: aliceblue;
 }
 
-.successfulLogin-svg {
+.successfulRegistration-svg {
     height: 8rem;
     width: 8rem;
     display: block;
@@ -37,11 +37,11 @@
     animation: draw 1s forwards 1s;
   }
   
-@keyframes draw { 
+@keyframes draw {  
     to { stroke-dashoffset: 0 } 
 }
 
-.modal-text {
+.successful-registration-modal-text {
     font-family: 'Source Sans 3', sans-serif;
 }
 
@@ -54,5 +54,3 @@
 .navigate-to-home:hover {
     background-color: #19646c !important;
 }
-
-

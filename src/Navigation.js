@@ -5,7 +5,6 @@ import Books from "./pages/Books.js";
 import Contact from "./pages/Contact.js";
 import Login from "./pages/Login.js";
 import CreateAccount from "./pages/CreateAccount.js";
-import SuccessfulRegistration from "./pages/SuccessfulRegistration.js"
 import SelectedBook from "./pages/SelectedBook.js";
 import WishList from "./pages/WishList.js";
 import Cart from "./pages/Cart.js";
@@ -55,7 +54,6 @@ const Navigation = () => {
                             <Route path="/login" element={<Login/>} />                           
                             <Route path="/forgotpassword" element={<ForgotPassword/>} />
                             <Route path="/createaccount" element={<CreateAccount/>} />
-                            <Route path="/successfulregistration" element={<SuccessfulRegistration/>} />
                             <Route path="/selectedbook/:id" element={<SelectedBook/>} />
                             <Route path="/wishlist" element={<WishList/>} />
                             <Route path="/cart" element={<Cart/>} />                   

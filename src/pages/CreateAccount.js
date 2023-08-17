@@ -1,5 +1,5 @@
 import '../css/CreateAccount.css';
-import { useEffect, useRef} from 'react';
+import { useState, useEffect, useRef} from 'react';
 import NavigationBar from '../components/NavigationBar.js';
 import { useNavigate } from "react-router-dom";
 import validate from '../ValidateInfo';
@@ -7,9 +7,13 @@ import useForm from '../useForm';
 import axios from "axios";
 import { Link } from 'react-router-dom'; 
 import { AiOutlineExclamationCircle } from "react-icons/ai";
+import SuccessfulRegistrationModal from "../modal/SuccessfulRegistrationModal.js";
 
 const CreateAccount = () => {
+
     const {handleChange, values, handleSubmit, errors} = useForm(validate);
+
+    const [openSuccessfulRegistrationModal, setOpenSuccessfulRegistrationModal] = useState(false);
 
     let navigate = useNavigate();
 
@@ -38,7 +42,7 @@ const CreateAccount = () => {
                 }
                 axios.post("http://localhost:4000/register", user)
                 console.log(user);
-                //navigate("/successfulregistration")
+                setOpenSuccessfulRegistrationModal(true);      
             } 
         }else{
             firstRun.current += 1;
@@ -47,11 +51,14 @@ const CreateAccount = () => {
 
     console.log(values.dataProtection);
 
-    return (
+    return ( 
         <div className="sign-up-page">
             <div>
                 <NavigationBar/>
             </div>
+                <div>
+                    {openSuccessfulRegistrationModal && <SuccessfulRegistrationModal/>}
+                </div>
                     <div className="col-12 col-sm-8 col-md-4 m-auto rounded shadow sign-up-container pt-3 mt-5 mb-5">                           
                         <div className="text-center">
                             <h1 className="sign-up-title fw-bold">Sign up</h1>

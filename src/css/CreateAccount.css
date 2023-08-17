@@ -22,8 +22,8 @@
 }
 
 .custom-radio:checked {
-    border-color: #1e7b85;
-    background-color: #1e7b85;
+    border-color: #1e7b85 !important;
+    background-color: #1e7b85 !important;
 }
 
 .custom-radio:focus {

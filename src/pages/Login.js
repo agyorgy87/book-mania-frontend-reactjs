@@ -207,7 +207,7 @@ const Login = () => {
                             <p className="mt-3 me-2 fs-5 fw-lighter ask-account">Have an account?</p> 
                             <Link className="sign-up-link mt-3 fs-5 fw-bold" to={"/createaccount"}>Sign up</Link>
                         </div>
-                    </form>
+                    </form> 
         </div> 
     )
 }
