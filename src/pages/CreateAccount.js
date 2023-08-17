@@ -1,13 +1,13 @@
 import '../css/CreateAccount.css';
 import { useState, useEffect, useRef} from 'react';
 import NavigationBar from '../components/NavigationBar.js';
-import { useNavigate } from "react-router-dom";
 import validate from '../ValidateInfo';
 import useForm from '../useForm';
 import axios from "axios";
 import { Link } from 'react-router-dom'; 
 import { AiOutlineExclamationCircle } from "react-icons/ai";
 import SuccessfulRegistrationModal from "../modal/SuccessfulRegistrationModal.js";
+import ExistingEmailAddress from '../popup/ExistingEmailAddress.js';
 
 const CreateAccount = () => {
 
@@ -15,17 +15,18 @@ const CreateAccount = () => {
 
     const [openSuccessfulRegistrationModal, setOpenSuccessfulRegistrationModal] = useState(false);
 
-    let navigate = useNavigate();
+    const [openExistingEmailAddress, setOpenExistingEmailAddress] = useState(false);
 
     let nameInput = useRef(null);
-
-    const firstRun = useRef(0);
 
     useEffect(() => {
         nameInput.current.focus();
     }, [])
 
-                
+    
+    /*            
+    const firstRun = useRef(0);
+
     useEffect(() => {
         console.log(process.env.NODE_ENV);
         if((process.env.NODE_ENV === "development" && firstRun.current >= 2) || (process.env.NODE_ENV === "production" && firstRun.current <= 1)){
@@ -48,9 +49,37 @@ const CreateAccount = () => {
             firstRun.current += 1;
         }
     },[errors])
-
     console.log(values.dataProtection);
+*/
 
+    const sendUserDatas = () => {
+
+        axios.get(`http://localhost:4000/get-user-email/${values.email}`)
+        .then(response => {
+            if(response.data.success === true) {
+                setOpenExistingEmailAddress(true);
+            }else if(response.data.success === false && errors.error !== true){
+                let user = {
+                firstName: values.firstName,
+                lastName: values.lastName,
+                gender: (values.gender === "female" ? 0 : 1),
+                address: values.address,
+                city: values.city,
+                zipCode: values.zip,
+                email: values.email,
+                pass: values.password
+            }
+            axios.post("http://localhost:4000/register", user)
+            console.log(user);
+            setOpenSuccessfulRegistrationModal(true);
+            }
+        })          
+    } 
+
+    const closePopup = () => {
+        setOpenExistingEmailAddress(false);
+    }
+        
     return ( 
         <div className="sign-up-page">
             <div>
@@ -58,6 +87,9 @@ const CreateAccount = () => {
             </div>
                 <div>
                     {openSuccessfulRegistrationModal && <SuccessfulRegistrationModal/>}
+                </div>
+                <div>
+                    {openExistingEmailAddress && <ExistingEmailAddress close={closePopup}/>}  
                 </div>
                     <div className="col-12 col-sm-8 col-md-4 m-auto rounded shadow sign-up-container pt-3 mt-5 mb-5">                           
                         <div className="text-center">
@@ -267,7 +299,7 @@ const CreateAccount = () => {
                                         </div>
                                         */}
                                         <div className="d-flex justify-content-center mt-5">
-                                            <button type="submit" className="btn w-100 fs-5 sign-up-button">Sign up</button>
+                                            <button type="submit" className="btn w-100 fs-5 sign-up-button" onClick={sendUserDatas}>Sign up</button>
                                         </div>                                           
                                         <div className="d-flex justify-content-center mt-3">
                                             <p className="text-center">By signing up, you agree to our <Link>Terms of Service</Link> and<Link> Privacy Policy</Link></p>
