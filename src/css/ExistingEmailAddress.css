@@ -11,11 +11,16 @@
 }
 
 .existing-email-container {
-    height: 10rem;
+    height: 12rem;
     width: 20rem;
     margin-top: 15rem !important;
     margin: auto;
     background-color: aliceblue;
+}
+
+.alert-icon {
+    color: #aa1527;
+
 }
 
 .alert-modal-text {
