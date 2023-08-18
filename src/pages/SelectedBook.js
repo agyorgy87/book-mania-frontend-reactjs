@@ -8,8 +8,8 @@ import { AiFillHeart } from "react-icons/ai";
 import { useContext } from 'react';
 import { UserContext } from "../context/UserContext.js";
 import { CartContext } from "../context/CartContext";
-import facebookLogo from "../img/facebook.png";
-import twitterLogo from "../img/twitter.png";
+import facebookLogo from "../icons/facebook.png";
+import twitterLogo from "../icons/twitter.png";
 import { CgShoppingCart } from "react-icons/cg";
 import WishListModal from "../modal/WishListModal.js";
 

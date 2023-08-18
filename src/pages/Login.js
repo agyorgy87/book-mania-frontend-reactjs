@@ -124,11 +124,9 @@ const Login = () => {
                     {openSuccessfulLoginModal && <SuccessfulLoginModal/>}             
                 </div>
                     <form className="col-12 col-sm-8 col-md-4 m-auto form-container rounded shadow p-3 mb-5 mt-5" onSubmit={login}>
-                        <div className="d-flex justify-content-center mt-4 mb-3">
-                            <div className="d-flex justify-content-center">
-                                <p className="fs-2 login-name-of-the-website">BOOK MANIA</p> 
-                                    <ImBooks className="ms-2 fs-2 book-mania-icon"/>
-                            </div>
+                        <div className="d-flex justify-content-center mt-4 mb-3">                         
+                            <p className="fs-2 login-name-of-the-website">BOOK MANIA</p> 
+                                <ImBooks className="ms-2 fs-2 book-mania-icon"/>   
                         </div>
                         <div className="ps-5 pe-5 email-password-container">
                             <label htmlFor="InputEmail" className="form-label email-password-label">Email</label>

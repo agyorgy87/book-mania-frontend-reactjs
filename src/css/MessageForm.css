@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3&display=swap');
+
+.contact-form {
+    background-color: #ffffff;
+    height: 28rem;
+    width: 35rem;
+}
+
+.form-message-container {
+    width: 60%;
+}
+
+.textarea {
+    height: 100px;
+}
+
+.message-form-button {
+    width: 100%;
+    background-color: #1e7b85 !important;
+    color: #ffffff !important;
+    font-weight: 500 !important;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 20px;
+}
+
+.message-form-button:hover {
+    background-color: #155a62 !important; 
+}
+
+.contact-container {
+    width: 40%;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.phone-icon {
+    color:#1e7b85;
+    font-size: 20px;
+}
+
