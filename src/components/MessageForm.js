@@ -3,8 +3,10 @@ import { useState } from "react";
 import axios from "axios";
 import { BsFillTelephoneFill } from "react-icons/bs";
 import { MdLocationOn } from "react-icons/md";
-import facebookLogo from "../icons/facebook.png";
-import twitterLogo from "../icons/twitter.png";
+import { FaFacebookF } from "react-icons/fa";
+import { FaTwitter } from "react-icons/fa";
+import { FaInstagram } from "react-icons/fa";
+
 
 const MessageForm = () => {
 
@@ -43,78 +45,91 @@ const MessageForm = () => {
             email: email,
             text: message
         }
-        
-        axios.post("http://localhost:4000/message-sender", sender)
+        if(nameErrorMessage === false && emailErrorMessage === false && messageErrorMessage === false) {
+            axios.post("http://localhost:4000/message-sender", sender)
             .then(reponse => {
-                alert("üzenet elküldve")
+                alert("the message is sent");
             })
+        }else{
+            alert("the message was not sent");
+        }  
     }
 
 
     return (
         <div className="d-flex contact-form rounded shadow">
-            <div className="form-message-container ps-4 pt-4 pe-4">
-                <form onSubmit={contactFormValidation}>
-                    <div className="mb-3">
+                <form onSubmit={contactFormValidation} className="form-message-container ps-4 pt-4 pe-4">
                         <div className="form-group">
-                            <label htmlFor="name" className="form-label">Name</label>
+                            <label htmlFor="name" className="form-label contact-labels-name">Name</label>
                                 <input 
                                 autoFocus
                                 value={name}
                                 onChange={(e) => setName(e.target.value)} 
                                 type="text" 
-                                className="form-control" 
+                                className="form-control contact-inputs" 
                                 id="name"
                                 />
-                        </div>
-                        {nameErrorMessage ? <p>{errors.name}</p> : null}                                       
-                    </div>                                  
-                    <div className="mb-3">
+                                {nameErrorMessage ? <p>{errors.name}</p> : null} 
+                        </div>                                                             
                         <div className="form-group">
-                            <label htmlFor="email" className="form-label">Email</label>
+                            <label htmlFor="email" className="form-label contact-labels-name">Email</label>
                                 <input 
                                 value={email} 
                                 onChange={(e) => setEmail(e.target.value)}
                                 type="email" 
-                                className="form-control"
+                                className="form-control contact-inputs"
                                 id="email"
                                 />
+                                {emailErrorMessage ? <p>{errors.email}</p> : null}
+                        </div>                       
+                        <div className="textarea-container">
+                            <div className="form-group textarea-frame">
+                                <label htmlFor="message" className="form-label contact-labels-name">Message</label>
+                                    <textarea 
+                                    value={message} 
+                                    onChange={(e) => setMessage(e.target.value)}
+                                    className="form-control contact-inputs textarea"  
+                                    placeholder="Your Message"
+                                    maxLength={1000}
+                                    />
+                                    {messageErrorMessage ? <p>{errors.message}</p> : null} 
+                            </div>                         
+                        </div>                                    
+                        <div>  
+                            <button type="submit" className="btn message-form-button" onClick={sendMessage}>Send Message</button>
                         </div>
-                        {emailErrorMessage ? <p>{errors.email}</p> : null}
-                    </div>
-                    <div className="mb-4">
-                        <div className="form-group">
-                            <label htmlFor="message" className="form-label">Message</label>
-                                <textarea 
-                                value={message} 
-                                onChange={(e) => setMessage(e.target.value)}
-                                type="text" 
-                                className="form-control textarea" 
-                                cols="" 
-                                rows="" 
-                                placeholder="Your Message"
-                                />
-                        </div>
-                        {messageErrorMessage ? <p>{errors.message}</p> : null}                                       
-                    </div>  
-                    <button type="submit" className="btn message-form-button" onClick={sendMessage}>Send Message</button>
                 </form>
-            </div>
-            <div className="contact-container pt-4">
-                <div className="address-container">
-                    <p><BsFillTelephoneFill className="phone-icon"/>CALL US</p>                   
-                    <p>+36 1 234 5678</p>                  
+
+            <div className="contact-container ps-3">
+                <div className="mb-4">
+                    <div className="phone-container d-flex mb-4">
+                        <div className="phone-icon-container d-flex justify-content-center align-items-center me-2">
+                            <BsFillTelephoneFill className="phone-icon"/>    
+                        </div>
+                        <div className="d-flex flex-column">
+                            <p className="phone-text">Phone:</p> 
+                            <p className="phone-number">+36 1 234 5678</p>
+                        </div>                 
+                    </div>
+                    <div className="location-container d-flex mb-5">
+                        <div className="location-icon-container d-flex justify-content-center align-items-center me-2">
+                            <MdLocationOn className="location-icon"/>    
+                        </div>
+                        <div className="d-flex flex-column">
+                            <p className="location-text">Location:</p> 
+                            <p className="exact-location-line1">Budapest, 1146</p>
+                            <p className="exact-location-line2">Városliget 3.</p>
+                        </div> 
+                    </div>
                 </div>
-                <div className="address-container">
-                    <MdLocationOn/>
-                    <p>LOCATION</p>
-                    <p>Budapest, 1146</p>
-                    <p>Városliget 3.</p>
-                </div>
-                <div>
-                    <img src={facebookLogo}/>
-                    <img src={twitterLogo}/>
-                </div>
+                <div className="social-container mt-auto ps-4">
+                    <p className="follow-us-text fs-4">Follow Us!</p>
+                    <div className="d-flex">
+                        <FaFacebookF className="social-icons fs-4 me-3"/>
+                        <FaTwitter className="social-icons fs-4 me-3"/>
+                        <FaInstagram className="social-icons fs-4"/>
+                    </div>
+                </div>                       
             </div>
         </div>           
     )

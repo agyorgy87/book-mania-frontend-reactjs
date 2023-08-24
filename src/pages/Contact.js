@@ -4,7 +4,7 @@ import MessageForm from "../components/MessageForm.js";
 
 const Contact = () => {
 
-    return(
+    return( 
         <div>
             <div>
                 <NavigationBar/> 
@@ -15,7 +15,7 @@ const Contact = () => {
                             <p className="send-us-message-text">SEND US MESSAGE</p>
                         </div>
                         <div className="row">
-                            <div className="col-xl-6 col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-5 d-flex justify-content-center">
+                            <div className="col-xl-6 col-lg-12 col-md-12 col-sm-12 col-xs-12 d-flex justify-content-center message-form-container">
                                 <MessageForm/>
                             </div>
                             <div className="col-xl-6 col-lg-12 col-md-12 col-sm-12 col-xs-12 d-flex justify-content-center">

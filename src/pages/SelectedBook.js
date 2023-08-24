@@ -13,6 +13,13 @@ import twitterLogo from "../icons/twitter.png";
 import { CgShoppingCart } from "react-icons/cg";
 import WishListModal from "../modal/WishListModal.js";
 
+/*
+import facebookLogo from "../icons/facebook.png";
+import twitterLogo from "../icons/twitter.png";
+<img src={facebookLogo}/>
+<img src={twitterLogo}/>
+*/
+
 const SelectedBook = () => {
 
     let params = useParams();
