@@ -32,7 +32,7 @@
 }
 
 .email-password-label:hover {
-    text-decoration: underline;
+    text-decoration: underline; 
 }
 
 .email-password-input {

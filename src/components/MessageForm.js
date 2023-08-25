@@ -6,16 +6,10 @@ import { MdLocationOn } from "react-icons/md";
 import { FaFacebookF } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
+import { AiOutlineExclamationCircle } from "react-icons/ai";
 
 
 const MessageForm = () => {
-
-    let errors = {
-        name: "Please Enter Your Name",
-        email: "Please Enter Your Email",
-        message: "Please enter Your Message",
-        form: "Please fill the form"
-    }
 
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
@@ -25,7 +19,15 @@ const MessageForm = () => {
     const [emailErrorMessage, setEmailErrorMessage] = useState(false);
     const [messageErrorMessage, setMessageErrorMessage] = useState(false);
 
+    let errors = {
+        name: "Please Enter Your Name",
+        email: "Please Enter Your Email",
+        message: "Please enter Your Message",
+    }
+
+    /*
     const contactFormValidation = (e) => {
+
         e.preventDefault();
         if(name.length === 0) {
             setNameErrorMessage(true);
@@ -37,7 +39,7 @@ const MessageForm = () => {
             setMessageErrorMessage(true);
         }  
     }
-
+    */
     const sendMessage = () => {
 
         let sender = {
@@ -45,55 +47,78 @@ const MessageForm = () => {
             email: email,
             text: message
         }
-        if(nameErrorMessage === false && emailErrorMessage === false && messageErrorMessage === false) {
+
+        if(name.length > 0 && email.length > 0 && message.length > 10){
             axios.post("http://localhost:4000/message-sender", sender)
-            .then(reponse => {
-                alert("the message is sent");
+            .then(response => {
+                console.log(response.data)
             })
         }else{
             alert("the message was not sent");
-        }  
+            setNameErrorMessage(true);
+            setEmailErrorMessage(true);
+            setMessageErrorMessage(true);
+        }
     }
 
 
     return (
         <div className="d-flex contact-form rounded shadow">
-                <form onSubmit={contactFormValidation} className="form-message-container ps-4 pt-4 pe-4">
+                <form  className="form-message-container ps-4 pt-4 pe-4">{/*onSubmit={contactFormValidation}*/}
                         <div className="form-group">
                             <label htmlFor="name" className="form-label contact-labels-name">Name</label>
-                                <input 
-                                autoFocus
-                                value={name}
-                                onChange={(e) => setName(e.target.value)} 
-                                type="text" 
-                                className="form-control contact-inputs" 
-                                id="name"
-                                />
-                                {nameErrorMessage ? <p>{errors.name}</p> : null} 
+                                <div className="input-height">
+                                    <input 
+                                    autoFocus
+                                    value={name}
+                                    onChange={(e) => setName(e.target.value)} 
+                                    type="text" 
+                                    className={`form-control contact-inputs ${nameErrorMessage ? 'input-alert' : ''}`}
+                                    id="name"
+                                    />
+                                </div>
+                                {   nameErrorMessage ?
+                                        <div className="d-flex">
+                                                <AiOutlineExclamationCircle className="alert-mark fs-5 me-1"/>
+                                                    <p className="alert-message">{errors.name}</p>
+                                        </div>
+                                    : null
+                                }
                         </div>                                                             
                         <div className="form-group">
                             <label htmlFor="email" className="form-label contact-labels-name">Email</label>
-                                <input 
-                                value={email} 
-                                onChange={(e) => setEmail(e.target.value)}
-                                type="email" 
-                                className="form-control contact-inputs"
-                                id="email"
-                                />
-                                {emailErrorMessage ? <p>{errors.email}</p> : null}
-                        </div>                       
-                        <div className="textarea-container">
-                            <div className="form-group textarea-frame">
-                                <label htmlFor="message" className="form-label contact-labels-name">Message</label>
-                                    <textarea 
-                                    value={message} 
-                                    onChange={(e) => setMessage(e.target.value)}
-                                    className="form-control contact-inputs textarea"  
-                                    placeholder="Your Message"
-                                    maxLength={1000}
+                                <div className="input-height">
+                                    <input 
+                                    value={email} 
+                                    onChange={(e) => setEmail(e.target.value)}
+                                    type="email" 
+                                    className={`form-control contact-inputs ${emailErrorMessage ? 'input-alert' : ''}`}
+                                    id="email"
                                     />
-                                    {messageErrorMessage ? <p>{errors.message}</p> : null} 
-                            </div>                         
+                                </div>
+                                {   emailErrorMessage ?
+                                        <div className="d-flex">
+                                                <AiOutlineExclamationCircle className="alert-mark fs-5 me-1"/>
+                                                    <p className="alert-message">{errors.email}</p>
+                                        </div>
+                                    : null
+                                }
+                        </div>                       
+                        <div className="textarea-container">                          
+                            <label htmlFor="message" className="form-label contact-labels-name">Message</label>                                  
+                                <textarea 
+                                value={message} 
+                                onChange={(e) => setMessage(e.target.value)}
+                                className={`form-control contact-inputs textarea ${messageErrorMessage ? 'input-alert' : ''}`}                                 
+                                maxLength={1000}
+                                />                                  
+                                {   messageErrorMessage ?
+                                        <div className="d-flex">
+                                                <AiOutlineExclamationCircle className="alert-mark fs-5 me-1"/>
+                                                    <p className="alert-message">{errors.message}</p>
+                                        </div>
+                                    : null
+                                }                                                    
                         </div>                                    
                         <div>  
                             <button type="submit" className="btn message-form-button" onClick={sendMessage}>Send Message</button>
