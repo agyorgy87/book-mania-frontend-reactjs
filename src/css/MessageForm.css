@@ -182,13 +182,35 @@
     }
 
     .contact-container {
+        height: 200px;
+        padding: 30px;
         display: flex !important;
-        justify-content: space-around !important;
+        justify-content: space-between !important;
         flex-direction: row !important;
         width: 100%;
         border-top-left-radius: 5px;
-        border-bottom-left-radius: 5px;
-        padding-top: 1rem !important;
+        border-bottom-left-radius: 5px;     
+    }
+
+    .social-container {
+        position: relative;
+        width: 40%;
+        padding-right: 0px !important; 
+    }
+
+    .social-container-position {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+    }
+
+    .follow-us-text {
+        font-size: 25px !important;
+        padding-left: 10px;
+    }
+
+    .social-icons {
+        font-size: 30px !important;
     }
 }
 

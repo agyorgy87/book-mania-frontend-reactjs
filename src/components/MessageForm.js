@@ -58,7 +58,7 @@ const MessageForm = () => {
                                     onChange={(e) => setName(e.target.value)} 
                                     type="text" 
                                     className={`form-control contact-inputs ${nameErrorMessage ? 'input-alert' : ''}`}
-                                    id="name"
+                                    id="name" 
                                     />
                                 </div>
                                 {   nameErrorMessage ?
@@ -108,38 +108,39 @@ const MessageForm = () => {
                             <button type="submit" className="btn message-form-button" >Send Message</button>
                         </div>
                 </form>
-
-            <div className="contact-container ps-3">
-                <div className="mb-4">
-                    <div className="phone-container d-flex mb-4">
-                        <div className="phone-icon-container d-flex justify-content-center align-items-center me-2">
-                            <BsFillTelephoneFill className="phone-icon"/>    
+                <div className="contact-container ps-3 pe-3">
+                    <div className="mb-4">
+                        <div className="phone-container d-flex mb-4">
+                            <div className="phone-icon-container d-flex justify-content-center align-items-center me-2">
+                                <BsFillTelephoneFill className="phone-icon"/>    
+                            </div>
+                            <div className="d-flex flex-column">
+                                <p className="phone-text">Phone:</p> 
+                                <p className="phone-number">+36 1 234 5678</p>
+                            </div>                 
                         </div>
-                        <div className="d-flex flex-column">
-                            <p className="phone-text">Phone:</p> 
-                            <p className="phone-number">+36 1 234 5678</p>
-                        </div>                 
-                    </div>
-                    <div className="location-container d-flex mb-5">
-                        <div className="location-icon-container d-flex justify-content-center align-items-center me-2">
-                            <MdLocationOn className="location-icon"/>    
+                        <div className="location-container d-flex mb-5">
+                            <div className="location-icon-container d-flex justify-content-center align-items-center me-2">
+                                <MdLocationOn className="location-icon"/>    
+                            </div>
+                            <div className="d-flex flex-column">
+                                <p className="location-text">Location:</p> 
+                                <p className="exact-location-line1">Budapest, 1146</p>
+                                <p className="exact-location-line2">Városliget 3.</p>
+                            </div> 
                         </div>
-                        <div className="d-flex flex-column">
-                            <p className="location-text">Location:</p> 
-                            <p className="exact-location-line1">Budapest, 1146</p>
-                            <p className="exact-location-line2">Városliget 3.</p>
-                        </div> 
                     </div>
+                    <div className="social-container mt-auto ps-4">
+                        <div className="social-container-position">
+                            <p className="follow-us-text fs-4">Follow Us!</p>
+                            <div className="d-flex">
+                                <FaFacebookF className="social-icons fs-4 me-4"/>
+                                <FaTwitter className="social-icons fs-4 me-4"/>
+                                <FaInstagram className="social-icons fs-4"/>
+                            </div>
+                        </div>
+                    </div>                       
                 </div>
-                <div className="social-container mt-auto ps-4">
-                    <p className="follow-us-text fs-4">Follow Us!</p>
-                    <div className="d-flex">
-                        <FaFacebookF className="social-icons fs-4 me-3"/>
-                        <FaTwitter className="social-icons fs-4 me-3"/>
-                        <FaInstagram className="social-icons fs-4"/>
-                    </div>
-                </div>                       
-            </div>
         </div>           
     )
 }

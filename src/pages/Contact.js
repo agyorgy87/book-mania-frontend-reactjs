@@ -19,9 +19,9 @@ const Contact = () => {
                             <div className="col-xl-6 col-lg-12 col-md-12 col-sm-12 col-xs-12 d-flex justify-content-center message-form-container">
                                 <MessageForm/>
                             </div>
-                            <div className="col-xl-6 col-lg-12 col-md-12 col-sm-12 col-xs-12 d-flex justify-content-center">
+                            <div className="col-xl-6 col-lg-12 col-md-12 col-sm-12 col-xs-12 d-flex justify-content-center map-location-container">
                                 <MapLocation/>
-                            </div>
+                            </div> 
                         </div>
                     </div>
                 </div>
