@@ -70,6 +70,7 @@ const Login = () => {
     }
 
     const login = (e) => {
+        
     if(userEmail === "" && password === ""){
         setLoginMessage("")
     }

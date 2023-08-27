@@ -25,21 +25,6 @@ const MessageForm = () => {
         message: "Please enter Your Message",
     }
 
-    /*
-    const contactFormValidation = (e) => {
-
-        e.preventDefault();
-        if(name.length === 0) {
-            setNameErrorMessage(true);
-        }
-        if(email.length === 0 ) {//regex
-            setEmailErrorMessage(true);
-        }
-        if(message.length === 0) {
-            setMessageErrorMessage(true);
-        }  
-    }
-    */
     const sendMessage = () => {
 
         let sender = {
@@ -54,7 +39,6 @@ const MessageForm = () => {
                 console.log(response.data)
             })
         }else{
-            alert("the message was not sent");
             setNameErrorMessage(true);
             setEmailErrorMessage(true);
             setMessageErrorMessage(true);
@@ -64,7 +48,7 @@ const MessageForm = () => {
 
     return (
         <div className="d-flex contact-form rounded shadow">
-                <form  className="form-message-container ps-4 pt-4 pe-4">{/*onSubmit={contactFormValidation}*/}
+                <form onSubmit={sendMessage} className="form-message-container ps-4 pt-4 pe-4">
                         <div className="form-group">
                             <label htmlFor="name" className="form-label contact-labels-name">Name</label>
                                 <div className="input-height">
@@ -121,7 +105,7 @@ const MessageForm = () => {
                                 }                                                    
                         </div>                                    
                         <div>  
-                            <button type="submit" className="btn message-form-button" onClick={sendMessage}>Send Message</button>
+                            <button type="submit" className="btn message-form-button" >Send Message</button>
                         </div>
                 </form>
 
