@@ -7,7 +7,7 @@
     color: #2b2f3c;
     font-family: 'Roboto', sans-serif;
     font-weight: 300;
-    font-size: 3rem;
+    font-size: 3rem;  
 }
 
 .book-card {
@@ -31,6 +31,10 @@
     font-family: 'Open Sans', sans-serif;
     cursor: pointer;
     text-decoration: none;
+}
+
+.home-book-title:hover {
+    color: black;
 }
 
 .home-author-name {

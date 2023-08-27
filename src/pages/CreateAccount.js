@@ -109,13 +109,13 @@ const CreateAccount = () => {
                                                         ref={nameInput}
                                                         />
                                                     </div>
-                                                {errors.firstName ?
-                                                    <div className="d-flex mt-1">
-                                                        <AiOutlineExclamationCircle className="sign-up-alert-mark fs-5 me-1"/>
-                                                        <p className="invalid-data-text ms-1">{errors.firstName}</p> 
-                                                    </div>
-                                                : null
-                                                }
+                                                    {errors.firstName ?
+                                                        <div className="d-flex mt-1">
+                                                            <AiOutlineExclamationCircle className="sign-up-alert-mark fs-5 me-1"/>
+                                                            <p className="invalid-data-text ms-1">{errors.firstName}</p> 
+                                                        </div>
+                                                    : null
+                                                    }
                                             </div>
                                             <div className="form-group label-input-container registration-containers">
                                                 <label htmlFor="lastName" className="form-label labels fw-bold">Last Name</label>
