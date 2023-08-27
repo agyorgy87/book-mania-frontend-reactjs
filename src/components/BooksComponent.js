@@ -13,7 +13,7 @@ const RecommendedBooks = (props) => {
 
     let navigate = useNavigate();
 
-    let list = props.list
+    let listOfRecommendedBooks = props.list
 
     const userData = useContext(UserContext);
 
@@ -33,21 +33,26 @@ const RecommendedBooks = (props) => {
             })
     }, [])
 
-
     const addBookToWishListFromHomePage = (bookId) => {
+
+        let nameOfTheWishListBookId = "book_id";
+        let allBookIdInTheWishList = userWishList.map((book) => book[nameOfTheWishListBookId]);
+        let bookIdSearchAnswer = allBookIdInTheWishList.includes(bookId);
 
         if(!userData.value.jwt){
             setOpenModal(true); 
+        }else if(bookIdSearchAnswer){
+            alert("yes include")
         }else{
             let body = {userId: userData.value.id, bookId: bookId };
                 axios.post("http://localhost:4000/add-wishlist", body)
                     .then(response => {
                         if(response.data.success === true) {
-                        console.log(response.data)
+                        //console.log(response.data);
                         setFullOrEmptyHeart(true);
                     }
             })
-        }    
+        }   
     }
 
     return (
@@ -59,7 +64,7 @@ const RecommendedBooks = (props) => {
                 <div className="mb-2">
                     <h1 className="text-of-recommended-books">{props.text}</h1> 
                 </div>   
-                        { list.map((book, index) => (
+                        { listOfRecommendedBooks.map((book, index) => (
                             <div className="row d-flex flex-column book-card mb-5" key={"newness-div" + index}>
                                 <div className="d-flex justify-content-center mt-3 mb-4 mt-4">
                                     <img 
@@ -90,7 +95,7 @@ const RecommendedBooks = (props) => {
                                             <button 
                                             className="heart-button" 
                                             onClick={() => addBookToWishListFromHomePage(book.id)}> 
-                                            <AiFillHeart className="book-heart-icon-full"/>                                            
+                                            <AiOutlineHeart className="book-heart-icon"/>                                            
                                             </button>
                                         {/* 
                                         {   fullOrEmptyHeart ?
