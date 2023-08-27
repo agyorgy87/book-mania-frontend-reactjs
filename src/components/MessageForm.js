@@ -66,7 +66,7 @@ const MessageForm = () => {
                                                 <AiOutlineExclamationCircle className="alert-mark fs-5 me-1"/>
                                                     <p className="alert-message">{errors.name}</p>
                                         </div>
-                                    : null
+                                    : null 
                                 }
                         </div>                                                             
                         <div className="form-group">

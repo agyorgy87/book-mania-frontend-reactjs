@@ -96,46 +96,48 @@ const CreateAccount = () => {
                             <h1 className="sign-up-title fw-bold">Sign up</h1>
                         </div>                                                               
                                 <form className="form-row ps-5 pe-5" autoComplete="off" onSubmit={handleSubmit}>
-                                        <div className="mb-4">
-                                            <div class="form-group label-input-container">      
-                                                <label htmlFor="firstName" className="form-label labels fw-bold">First Name</label>                                               
-                                                <input 
-                                                type="text"
-                                                className={`form-control inputs ${errors.firstName ? 'invalid' : ''}`}
-                                                name="firstName"
-                                                id="firstName"
-                                                value={values.firstName}
-                                                onChange={handleChange}
-                                                ref={nameInput}
-                                                />
+                                            <div class="form-group label-input-container registration-containers">      
+                                                <label htmlFor="firstName" className="form-label labels fw-bold">First Name</label>
+                                                    <div className="registration-inputs-height">                                               
+                                                        <input 
+                                                        type="text"
+                                                        className={`form-control inputs ${errors.firstName ? 'invalid' : ''}`}
+                                                        name="firstName"
+                                                        id="firstName"
+                                                        value={values.firstName}
+                                                        onChange={handleChange}
+                                                        ref={nameInput}
+                                                        />
+                                                    </div>
+                                                {errors.firstName ?
+                                                    <div className="d-flex mt-1">
+                                                        <AiOutlineExclamationCircle className="sign-up-alert-mark fs-5 me-1"/>
+                                                        <p className="invalid-data-text ms-1">{errors.firstName}</p> 
+                                                    </div>
+                                                : null
+                                                }
                                             </div>
-                                            {errors.firstName ?
-                                                <div className="d-flex mt-1">
-                                                    <AiOutlineExclamationCircle className="sign-up-alert-mark fs-5 me-1"/>
-                                                    <p className="invalid-data-text ms-1">{errors.firstName}</p> 
-                                                </div>
-                                            : null}
-                                        </div>
-                                        <div className="mb-4">
-                                            <div className="form-group label-input-container">
+                                            <div className="form-group label-input-container registration-containers">
                                                 <label htmlFor="lastName" className="form-label labels fw-bold">Last Name</label>
-                                                <input
-                                                type="text"
-                                                className={`form-control inputs ${errors.lastName ? 'invalid' : ''}`} 
-                                                name="lastName"
-                                                id="lastName"
-                                                value={values.lastName}
-                                                onChange={handleChange}
-                                                />
-                                            </div>
+                                                    <div className="registration-inputs-height">
+                                                        <input
+                                                        type="text"
+                                                        className={`form-control inputs ${errors.lastName ? 'invalid' : ''}`} 
+                                                        name="lastName"
+                                                        id="lastName"
+                                                        value={values.lastName}
+                                                        onChange={handleChange}
+                                                        />
+                                                    </div>
                                             {errors.lastName ?
                                                 <div className="d-flex mt-1">
                                                     <AiOutlineExclamationCircle className="sign-up-alert-mark fs-5 me-1"/>
                                                     <p className="invalid-data-text ms-1">{errors.lastName}</p> 
                                                 </div>
-                                            : null}
-                                        </div>
-                                        <div className="mb-4">                                                                           
+                                            : null
+                                            }
+                                            </div>
+                                        <div className="registration-containers-check">                                                                           
                                             <div className="form-check form-check-inline ">
                                                 <label className="form-check-label labels fw-bold" htmlFor="male">Male</label>
                                                     <input 
@@ -161,126 +163,131 @@ const CreateAccount = () => {
                                                     />
                                             </div>
                                             {errors.gender ?
-                                                <div className="d-flex mt-1">
+                                                <div className="d-flex">
                                                     <AiOutlineExclamationCircle className="sign-up-alert-mark fs-5 me-1"/>
                                                     <p className="invalid-data-text ms-1">{errors.gender}</p> 
                                                 </div>
                                             : null}
-                                        </div>
-                                        <div className="mb-4">
-                                            <div class="form-group label-input-container">
-                                                <label htmlFor="address" className="form-label labels fw-bold">Address</label>
-                                                <input 
-                                                type="text"
-                                                className={`form-control inputs ${errors.address ? 'invalid' : ''}`} 
-                                                name="address"
-                                                id="address"
-                                                value={values.address}
-                                                onChange={handleChange}
-                                                />
-                                            </div>
-                                            {errors.address ?
-                                                <div className="d-flex mt-1">
-                                                    <AiOutlineExclamationCircle className="sign-up-alert-mark fs-5 me-1"/>
-                                                    <p className="invalid-data-text ms-1">{errors.address}</p> 
+                                        </div>                                           
+                                        <div class="form-group label-input-container registration-containers">
+                                            <label htmlFor="address" className="form-label labels fw-bold">Address</label>
+                                                <div className="registration-inputs-height">
+                                                    <input 
+                                                    type="text"
+                                                    className={`form-control inputs ${errors.address ? 'invalid' : ''}`} 
+                                                    name="address"
+                                                    id="address"
+                                                    value={values.address}
+                                                    onChange={handleChange}
+                                                    />
                                                 </div>
-                                            : null}
-                                        </div> 
-                                        <div className="mb-4">                         
-                                            <div className="form-group label-input-container">
-                                                <label htmlFor="city" className="form-label labels fw-bold">City</label>
-                                                <input 
-                                                type="text"
-                                                className={`form-control inputs ${errors.city ? 'invalid' : ''}`} 
-                                                name="city"
-                                                id="city"
-                                                value={values.city}
-                                                onChange={handleChange}
-                                                />
-                                            </div>
-                                            {errors.city ?
-                                                <div className="d-flex mt-1">
-                                                    <AiOutlineExclamationCircle className="sign-up-alert-mark fs-5 me-1"/>
-                                                    <p className="invalid-data-text ms-1">{errors.city}</p> 
+                                                {errors.address ?
+                                                    <div className="d-flex mt-1">
+                                                        <AiOutlineExclamationCircle className="sign-up-alert-mark fs-5 me-1"/>
+                                                        <p className="invalid-data-text ms-1">{errors.address}</p> 
+                                                    </div>
+                                                : null
+                                                }
+                                        </div>                                                                   
+                                        <div className="form-group label-input-container registration-containers">
+                                            <label htmlFor="city" className="form-label labels fw-bold">City</label>
+                                                <div className="registration-inputs-height">
+                                                    <input 
+                                                    type="text"
+                                                    className={`form-control inputs ${errors.city ? 'invalid' : ''}`} 
+                                                    name="city"
+                                                    id="city"
+                                                    value={values.city}
+                                                    onChange={handleChange}
+                                                    />
                                                 </div>
-                                            : null}
-                                        </div>
-                                        <div className="mb-4">
-                                            <div className="form-group label-input-container">
-                                                <label htmlFor="zip" className="form-label labels fw-bold">Zip Code</label>
-                                                <input 
-                                                type="text"
-                                                className={`form-control inputs ${errors.zip ? 'invalid' : ''}`} 
-                                                name="zip"
-                                                id="zip"
-                                                value={values.zip}
-                                                onChange={handleChange}
-                                            />
-                                            </div>
-                                            {errors.city ?
+                                                {errors.city ?
                                                 <div className="d-flex mt-1">
                                                     <AiOutlineExclamationCircle className="sign-up-alert-mark fs-5 me-1"/>
                                                     <p className="invalid-data-text ms-1">{errors.city}</p> 
                                                 </div>
-                                            : null}   
-                                        </div>  
-                                        <div className="mb-4">                            
-                                            <div className="form-group label-input-container">
-                                                <label htmlFor="email" className="form-label labels fw-bold">Email</label>
-                                                <input 
-                                                type="email"
-                                                className={`form-control inputs ${errors.email ? 'invalid' : ''}`} 
-                                                name="email" 
-                                                id="email"
-                                                value={values.email}
-                                                onChange={handleChange} 
-                                                />
-                                            </div>
-                                            {errors.email ?
-                                                <div className="d-flex mt-1">
-                                                    <AiOutlineExclamationCircle className="sign-up-alert-mark fs-5 me-1"/>
-                                                    <p className="invalid-data-text ms-1">{errors.email}</p> 
+                                                : null
+                                                }
+                                        </div>                                           
+                                        <div className="form-group label-input-container registration-containers">
+                                            <label htmlFor="zip" className="form-label labels fw-bold">Zip Code</label>
+                                                <div className="registration-inputs-height">
+                                                    <input 
+                                                    type="text"
+                                                    className={`form-control inputs ${errors.zip ? 'invalid' : ''}`} 
+                                                    name="zip"
+                                                    id="zip"
+                                                    value={values.zip}
+                                                    onChange={handleChange}
+                                                    />
                                                 </div>
-                                            : null}
-                                        </div>
-                                        <div className="mb-4">
-                                            <div className="form-group label-input-container"> 
-                                                <label htmlFor="password" className="form-label labels fw-bold">Password</label>                                     
-                                                <input
-                                                className={`form-control inputs ${errors.password ? 'invalid' : ''}`} 
-                                                name="password" 
-                                                id="password"
-                                                type="password"
-                                                value={values.password}
-                                                onChange={handleChange}
-                                                />
-                                            </div>                                       
-                                            <p className="password-help">Your password must be least 8 characters and minimum 1 number.</p>
-                                            {errors.password ?
-                                                <div className="d-flex mt-1">
-                                                    <AiOutlineExclamationCircle className="sign-up-alert-mark fs-5 me-1"/>
-                                                    <p className="invalid-data-text ms-1">{errors.password}</p> 
+                                                {errors.city ?
+                                                    <div className="d-flex mt-1">
+                                                        <AiOutlineExclamationCircle className="sign-up-alert-mark fs-5 me-1"/>
+                                                        <p className="invalid-data-text ms-1">{errors.city}</p> 
+                                                    </div>
+                                                : null
+                                                }
+                                        </div>                                                                         
+                                        <div className="form-group label-input-container registration-containers">
+                                            <label htmlFor="email" className="form-label labels fw-bold">Email</label>
+                                                <div className="registration-inputs-height">
+                                                    <input 
+                                                    type="email"
+                                                    className={`form-control inputs ${errors.email ? 'invalid' : ''}`} 
+                                                    name="email" 
+                                                    id="email"
+                                                    value={values.email}
+                                                    onChange={handleChange} 
+                                                    />
                                                 </div>
-                                            : null}
-                                        </div>
-                                        <div className="mb-4">
-                                            <div className="form-group label-input-container">
-                                                <label htmlFor="password" className="form-label labels fw-bold">Password Again</label>
-                                                <input 
-                                                className={`form-control inputs ${errors.passwordAgain ? 'invalid' : ''}`} 
-                                                name="passwordAgain"
-                                                id="passwordAgain"
-                                                type="password"  
-                                                value={values.passwordAgain}
-                                                onChange={handleChange}
-                                                />
-                                            </div>
-                                            {errors.passwordAgain ?
-                                                <div className="d-flex mt-1">
-                                                    <AiOutlineExclamationCircle className="sign-up-alert-mark fs-5 me-1"/>
-                                                    <p className="invalid-data-text ms-1">{errors.passwordAgain}</p> 
+                                                {errors.email ?
+                                                    <div className="d-flex mt-1">
+                                                        <AiOutlineExclamationCircle className="sign-up-alert-mark fs-5 me-1"/>
+                                                        <p className="invalid-data-text ms-1">{errors.email}</p> 
+                                                    </div>
+                                                : null
+                                                }
+                                        </div>                                       
+                                        <div className="form-group label-input-container registration-containers mb-5"> 
+                                            <label htmlFor="password" className="form-label labels fw-bold">Password</label>  
+                                                <div className="registration-inputs-height">                                  
+                                                    <input
+                                                    className={`form-control inputs ${errors.password ? 'invalid' : ''}`} 
+                                                    name="password" 
+                                                    id="password"
+                                                    type="password"
+                                                    value={values.password}
+                                                    onChange={handleChange}
+                                                    />
+                                                    <p className="password-help">Your password must be least 8 characters and minimum 1 number.</p>
+                                                </div>                                     
+                                                {errors.password ?
+                                                    <div className="d-flex mt-3">
+                                                        <AiOutlineExclamationCircle className="sign-up-alert-mark fs-5 me-1"/>
+                                                            <p className="invalid-data-text ms-1">{errors.password}</p> 
+                                                    </div>
+                                                : null
+                                                }
+                                        </div>                                                                                  
+                                        <div className="form-group label-input-container registration-container">
+                                            <label htmlFor="password" className="form-label labels fw-bold">Password Again</label>
+                                                <div className="registration-inputs-height">
+                                                    <input 
+                                                    className={`form-control inputs ${errors.passwordAgain ? 'invalid' : ''}`} 
+                                                    name="passwordAgain"
+                                                    id="passwordAgain"
+                                                    type="password"  
+                                                    value={values.passwordAgain}
+                                                    onChange={handleChange}
+                                                    />
                                                 </div>
-                                            : null}
+                                                {errors.passwordAgain ?
+                                                    <div className="d-flex mt-1">
+                                                        <AiOutlineExclamationCircle className="sign-up-alert-mark fs-5 me-1"/>
+                                                        <p className="invalid-data-text ms-1">{errors.passwordAgain}</p> 
+                                                    </div>
+                                                : null}
                                         </div>
                                         {/*
                                         <div className="form-group d-flex justify-content-center">

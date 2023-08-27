@@ -13,6 +13,19 @@
     color: #1e7b85;
 }
 
+.registration-containers {
+    height: 7rem;
+    margin-bottom: 30px;
+}
+
+.registration-containers-check {
+    height: 3.5rem;
+}
+
+.registration-inputs-height {
+    height: 45px;
+}
+
 .label-input-container {
     height: 5rem;
 }
@@ -40,9 +53,9 @@
     box-shadow: none !important;
     outline: none !important;
 }
-
+ 
 .invalid {
-   border-color: #aa1527;
+   border-color: #aa1527 !important;
 }
 
 .sign-up-alert-mark {
