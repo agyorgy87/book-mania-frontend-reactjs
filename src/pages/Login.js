@@ -71,8 +71,8 @@ const Login = () => {
 
     const login = (e) => {
         
-    if(userEmail === "" && password === ""){
-        setLoginMessage("")
+    if(userEmail === "" && password === ""){ 
+        setLoginMessage("");
     }
 
     e.preventDefault();
@@ -131,68 +131,70 @@ const Login = () => {
                         </div>
                         <div className="ps-5 pe-5 email-password-container">
                             <label htmlFor="InputEmail" className="form-label email-password-label">Email</label>
-                            <input 
-                                autoFocus 
-                                type="email" 
-                                aria-describedby="emailHelp" 
-                                id="InputEmail" 
-                                className={`form-control email-password-input 
-                                ${emailInputError ? 'input-alert' : '' } 
-                                ${emailInputErrorMessage ? 'input-alert' : ''}`}
-                                value={userEmail} 
-                                onBlur={() => setTouched(true)} 
-                                onChange={(e) => setUserEmail(e.target.value)}
-                            />
-                        </div>                                           
-                        {   touched ? 
+                            <div className="email-password-inputs-height">
+                                <input 
+                                    autoFocus 
+                                    type="email" 
+                                    aria-describedby="emailHelp" 
+                                    id="InputEmail" 
+                                    className={`form-control email-password-input 
+                                    ${emailInputError ? 'input-alert' : '' } 
+                                    ${emailInputErrorMessage ? 'input-alert' : ''}`}
+                                    value={userEmail} 
+                                    onBlur={() => setTouched(true)} 
+                                    onChange={(e) => setUserEmail(e.target.value)}
+                                />
+                            </div>
+                            {   touched ? 
                                 (emailInputErrorMessage ? 
-                                    <div className="mt-1 ms-5 me-5 d-flex">
+                                    <div className="mt-1 me-5 d-flex">
                                         <AiOutlineExclamationCircle className="alert-mark fs-5 me-1"/>
                                             <p className="alert-message">Please enter an email.</p>
                                     </div>  
                                 :
                                 null)
-                            :
-                            null
-                        }    
-                        {   loginMessage ? 
-                                <div className="mt-1 ms-5 me-5 d-flex">
-                                    <AiOutlineExclamationCircle className="login-alert-mark fs-3 me-1"/>
-                                    <p className="alert-message">{loginMessage}</p>
-                                </div>
                                 :
                                 null
-                        }                  
-                        <div className="ms-5 me-5 mt-4 email-password-container">
+                            }    
+                            {   loginMessage ? 
+                                    <div className="mt-1 me-5 d-flex">
+                                        <AiOutlineExclamationCircle className="login-alert-mark fs-3 me-1"/>
+                                        <p className="alert-message">{loginMessage}</p>
+                                    </div>
+                                :
+                                null
+                            } 
+                        </div>                                                                                   
+                        <div className="ps-5 pe-5 email-password-container">
                                 <label htmlFor="InputPassword" className="form-label email-password-label">Password</label>
-                            <div className="password-container">                               
+                            <div className="password-container email-password-inputs-height">                               
                                 <input 
                                     type={passwordShow ? "text" : "password"} 
                                     className={`form-control email-password-input ${passwordInputError ? 'input-alert' : ''}`}
                                     id="InputPassword" 
                                     onChange={(e) => {setPassword(e.target.value); setPasswordInfo(true)} }
-                                />                   
-                                    {   passwordShow ?
-                                            <i className="eye-icons bi bi-eye fs-4" onClick={togglePassword}></i>                                      
-                                            :
-                                            <i className="eye-icons bi bi-eye-slash fs-4" onClick={togglePassword}></i>
-                                    }
-                                    {   passwordInfo ?
-                                            <p className="password-help">Your password must be least 8 characters and minimum 1 number.</p>
-                                            :
-                                            null
-                                    } 
-                                    {   passwordInputErrorMessage ?
-                                            <div className="d-flex mt-1">
-                                                <AiOutlineExclamationCircle className="alert-mark fs-5 me-1"/>
-                                                <p className="alert-message">Please enter a password.</p>
-                                            </div>  
-                                            :
-                                            null
-                                    }                                               
+                                />                                                                                     
                             </div>
+                            {   passwordShow ?
+                                    <i className="eye-icons bi bi-eye fs-4" onClick={togglePassword}></i>                                      
+                                    :
+                                    <i className="eye-icons bi bi-eye-slash fs-4" onClick={togglePassword}></i>
+                            }
+                            {   passwordInfo ?
+                                    <p className="password-help">Your password must be least 8 characters and minimum 1 number.</p>
+                                    :
+                                    null
+                            } 
+                            {   passwordInputErrorMessage ?
+                                    <div className="d-flex mt-1">
+                                        <AiOutlineExclamationCircle className="alert-mark fs-5 me-1"/>
+                                            <p className="alert-message">Please enter a password.</p>
+                                    </div>  
+                                    :
+                                    null
+                            }                
                         </div>             
-                        <div className="mt-5 ms-5 me-5 mb-4">
+                        <div className="mt-3 ms-5 me-5 mb-4">
                             <button type="submit" className="btn w-100 fs-5 login-button">Sign in</button>
                         </div>
                         <div className="d-flex justify-content-center mb-4">

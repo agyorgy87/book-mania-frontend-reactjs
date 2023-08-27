@@ -21,9 +21,9 @@
     color: #1e7b85;
     transform: translateY(6px);
 }
- 
+
 .email-password-container {
-    height: 5rem;
+    height: 7rem;
 }
 
 .email-password-label {
@@ -33,6 +33,10 @@
 
 .email-password-label:hover {
     text-decoration: underline; 
+}
+
+.email-password-inputs-height {
+    height: 45px;
 }
 
 .email-password-input {
@@ -46,7 +50,7 @@
 }
 
 .alert-mark {
-    transform: translateY(2px);
+    transform: translateY(2px); 
     color: #aa1527;
 }
 
