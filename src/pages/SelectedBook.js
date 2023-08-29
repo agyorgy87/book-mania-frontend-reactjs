@@ -8,17 +8,12 @@ import { AiFillHeart } from "react-icons/ai";
 import { useContext } from 'react';
 import { UserContext } from "../context/UserContext.js";
 import { CartContext } from "../context/CartContext";
-import facebookLogo from "../icons/facebook.png";
-import twitterLogo from "../icons/twitter.png";
 import { CgShoppingCart } from "react-icons/cg";
 import WishListModal from "../modal/WishListModal.js";
+import BookPictureAndData from "../components/BookPictureAndData";
 
-/*
-import facebookLogo from "../icons/facebook.png";
-import twitterLogo from "../icons/twitter.png";
-<img src={facebookLogo}/>
-<img src={twitterLogo}/>
-*/
+
+
 
 const SelectedBook = () => {
 
@@ -30,34 +25,9 @@ const SelectedBook = () => {
     const [bookDetails, setBookDetails] = useState({});
     const [heartIconFull, setHeartIconFull] = useState(false);
 
-    const [twitterHover, setTwitterHover] = useState(false);
-    const [facebookHover, setFacebookHover] = useState(false);
-
     const [openModal, setOpenModal] = useState(false);
 
-    const twitterText = "Share on Twitter"
-    const facebookText = "Share on Facebook"
-
-    const onHoverTwitter = (e) => {
-        e.preventDefault();
-        setTwitterHover(true); 
-      };
-
-      const onHoverTwitterOver = (e) => {
-        e.preventDefault();
-        setTwitterHover(false);
-      };
-
-    const onHoverFacebook = (e) => {
-        e.preventDefault();
-        setFacebookHover(true); 
-      };
-
-      const onHoverFacebookOver = (e) => {
-        e.preventDefault();
-        setFacebookHover(false);
-      };
-
+    
     useEffect(() => {
         axios.get("http://localhost:4000/get-book-by-id/" + params.id)
             .then(response => {
@@ -119,55 +89,18 @@ const SelectedBook = () => {
             <div>
                 <NavigationBar/>
             </div> 
-            <div>
+            <div> 
                 {openModal && <WishListModal close={closeModal}/>}  
             </div>
             {/*style={{ background: `url("http://localhost:4000/books_img/${bookDetails.img_directory}/${bookDetails.image_big}")` }}*/}
             <div className="container d-flex flex-column">
-                <div className="d-flex justify-content-between book-buttons-container mt-4 mb-5">
-                    
-                    <div className="d-flex col-lg-9 col-md-9 col-sm-9 col-12 book-container">
-                        <div className="me-2">
-                            <img 
-                            src={"http://localhost:4000/books_img/" + bookDetails.img_directory + "/" + bookDetails.image_big}
-                            className="img-fluid shadow"                                             
-                            alt="book"
-                            />
-                        </div>
-                        <div>
-                            <div className="selected-book-title mb-2">
-                                {bookDetails.title}
-                            </div>
-                            <div className="selected-book-author-name mb-4">
-                                by {bookDetails.author_name}
-                            </div>
-                            <div>
-                                <div className="pt-2">
-                                <p className="share-text pe-2">Share:</p>
-                                <img 
-                                    src={twitterLogo} 
-                                    className="social-icons pe-1" 
-                                    alt="Share on Twitter" 
-                                    onMouseEnter={(e) => onHoverTwitter(e)} 
-                                    onMouseLeave={(e) => onHoverTwitterOver(e)}
-                                />
-                                <img 
-                                    src={facebookLogo} 
-                                    className="social-icons" 
-                                    alt="Share on Facebook" 
-                                    onMouseEnter={(e) => onHoverFacebook(e)} 
-                                    onMouseLeave={(e) => onHoverFacebookOver(e)}
-                                />
-                                </div>
-                                <div className="social-hover-text ps-4 pt-1">
-                                    {twitterHover && <p>{twitterText}</p>}
-                                    {facebookHover && <p>{facebookText}</p>}
-                                </div>
-                            </div>
-                        </div>
-                    </div> 
-                    
-                    
+                <div className="mt-5 mb-5">
+                    <BookPictureAndData bookData={bookDetails}/> 
+                </div> 
+                <div>
+                    <p>price and buttons</p>
+                </div>
+                    {/*
                     <div className="col-lg-3 col-md-3 col-sm-3 col-12 selected-book-price-container">
                             <div className="d-flex flex-column">
                                 <div>
@@ -190,6 +123,7 @@ const SelectedBook = () => {
                                 </div>
                             </div>                   
                     </div> 
+                                */}
                 </div>   
                 <div>
                 <nav>
@@ -236,7 +170,6 @@ const SelectedBook = () => {
                 </div>
                 </div>
             </div>           
-        </div>
     )
 }
 

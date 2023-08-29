@@ -23,7 +23,7 @@ const RecommendedBooks = (props) => {
     const closeModal = () => {
         setOpenModal(false);
     }
-
+/*
     const [userWishList, setUserWishList] = useState([]);
 
     useEffect(() => {
@@ -54,7 +54,7 @@ const RecommendedBooks = (props) => {
             })
         }   
     }
-
+*/
     return (
         <div className="container"> 
             <div>
@@ -66,7 +66,7 @@ const RecommendedBooks = (props) => {
                 </div>   
                         { listOfRecommendedBooks.map((book, index) => (
                             <div className="row d-flex flex-column book-card mb-5" key={"newness-div" + index}>
-                                <div className="d-flex justify-content-center mt-3 mb-4 mt-4">
+                                <div className="d-flex justify-content-center mb-4 mt-4">
                                     <img 
                                     src={"http://localhost:4000/books_img/" + book.img_directory + "/" + book.image}
                                     className="img-fluid home-book-pics shadow"                                             
@@ -94,7 +94,7 @@ const RecommendedBooks = (props) => {
                                         <div>
                                             <button 
                                             className="heart-button" 
-                                            onClick={() => addBookToWishListFromHomePage(book.id)}> 
+                                            >{/*onClick={() => addBookToWishListFromHomePage(book.id)} */}
                                             <AiOutlineHeart className="book-heart-icon"/>                                            
                                             </button>
                                         {/* 
@@ -115,7 +115,7 @@ const RecommendedBooks = (props) => {
                                 </div>                                           
                             </div>                                        
                             ))
-                        }
+                        } 
                     </div>
         </div>
     )
