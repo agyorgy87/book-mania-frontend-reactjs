@@ -4,7 +4,8 @@ import { useParams } from "react-router-dom";
 import NavigationBar from '../components/NavigationBar.js';
 import axios from "axios";
 import BookPictureAndData from "../components/BookPictureAndData.js";
-import BookPriceAndButtons from "../components/BookPriceAndButtons.js"
+import BookPriceAndButtons from "../components/BookPriceAndButtons.js";
+import BookOverviewAndDetails from "../components/BookOverviewAndDetails.js";
 
 
 const SelectedBook = () => {
@@ -32,51 +33,11 @@ const SelectedBook = () => {
                     <div className="mt-5 mb-5 selected-book-price-and-buttons">
                         <BookPriceAndButtons bookData={bookDetails}/>
                     </div>
-                </div>   
-                <div>
-                <nav>
-                <div className="nav nav-tabs" id="nav-tab" role="tablist">
-                    <button className="nav-link active tabs-style" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Overview</button>
-                    <button className="nav-link tabs-style" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Book Details</button>
-                </div>
-                </nav>
-                <div className="tab-content" id="nav-tabContent">
-                    <div className="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                        <div className="overview mt-3">   
-                            <p className="overview-value">{bookDetails.book_description}</p>              
-                        </div> 
-                    </div>
-                    <div className="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                    <div className="content d-flex mt-3">
-                            <div>
-                                <p className="content-title">Release date</p>
-                            </div>
-                            <div>
-                                <p className="content-value">{bookDetails.release_date}</p>
-                            </div>                 
-                        </div>
-                            <hr/>
-                        <div className="content d-flex">
-                            <div>
-                                <p className="content-title">Number of page</p>
-                            </div>
-                            <div>
-                                <p className="content-value">{bookDetails.number_of_page}</p>
-                            </div>                 
-                        </div>
-                            <hr/>
-                        <div className="content d-flex">
-                            <div>
-                                <p className="content-title">Genre</p>
-                            </div>
-                            <div>
-                                <p className="content-value">{bookDetails.genre_type}</p>
-                            </div>                 
-                        </div>
-                    </div>
-                </div>
-                </div>
-            </div>           
+                </div> 
+                <div className="container">
+                    <BookOverviewAndDetails bookData={bookDetails}/>
+                </div>          
+        </div>           
     )
 }
 
