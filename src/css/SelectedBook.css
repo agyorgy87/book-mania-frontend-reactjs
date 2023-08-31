@@ -1,11 +1,18 @@
-/*
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Open+Sans:wght@300;400;500;600&display=swap');
 
 .selected-book-page {
-    background-color: white !important;
+    background-color: #ffffff;
     height: 100vh;
 }
 
+.selected-book-picture-and-title {
+    width: 80%;
+}
+
+.selected-book-price-and-buttons {
+    width: 30%;
+}
+/*
 .selected-book-title { 
     font-family: 'Open Sans', sans-serif;
     font-weight: 600;

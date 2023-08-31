@@ -173,13 +173,13 @@ const Login = () => {
                                     className={`form-control email-password-input ${passwordInputError ? 'input-alert' : ''}`}
                                     id="InputPassword" 
                                     onChange={(e) => {setPassword(e.target.value); setPasswordInfo(true)} }
-                                />                                                                                     
-                            </div>
+                                />  
                             {   passwordShow ?
                                     <i className="eye-icons bi bi-eye fs-4" onClick={togglePassword}></i>                                      
                                     :
                                     <i className="eye-icons bi bi-eye-slash fs-4" onClick={togglePassword}></i>
-                            }
+                            }                                                                                   
+                            </div>                           
                             {   passwordInfo ?
                                     <p className="password-help">Your password must be least 8 characters and minimum 1 number.</p>
                                     :

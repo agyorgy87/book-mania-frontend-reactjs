@@ -1,14 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap');
 
-.selected-book-container {
+.selected-book-picture-container {
     height: 25rem !important;
-    width: 23rem !important; 
+    width: 26rem !important; 
     background: linear-gradient(180deg, #eaeee7 70%, #ffffff 30%);
 }
 
 .selected-book-picture {
-    height: 20rem;
+    height: 20rem; 
 }
 
 .selected-book-title {
@@ -22,4 +22,9 @@
     font-weight: 600;
 }
 
+/*
+@media (max-width:786px) {
+
+}
+*/
 

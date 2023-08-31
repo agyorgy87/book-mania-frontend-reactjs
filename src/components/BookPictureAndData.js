@@ -2,12 +2,7 @@ import React, { useState } from 'react';
 import "../css/BookPictureAndData.css";
 import facebookLogo from "../icons/facebook.png";
 import twitterLogo from "../icons/twitter.png";
-/*
-import facebookLogo from "../icons/facebook.png";
-import twitterLogo from "../icons/twitter.png";
-<img src={facebookLogo}/>
-<img src={twitterLogo}/>
-*/
+
 
 const BookPictureAndData = (props) => {
 
@@ -42,14 +37,14 @@ const BookPictureAndData = (props) => {
 
     return (
         <div className="d-flex">
-            <div className="selected-book-container d-flex justify-content-center align-items-center me-5">
+            <div className="selected-book-picture-container d-flex justify-content-center align-items-center me-5">
                 <img 
                 src={"http://localhost:4000/books_img/" + bookDetails.img_directory + "/" + bookDetails.image_big}
                 className="shadow selected-book-picture"                                             
                 alt="book"
                 />
             </div>
-            <div>
+            <div>  
                 <div className="mb-2">
                     <p className="selected-book-title">{bookDetails.title}</p>
                 </div>
