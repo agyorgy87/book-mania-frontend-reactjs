@@ -25,7 +25,9 @@ const MessageForm = () => {
         message: "Please enter Your Message",
     }
 
-    const sendMessage = () => {
+    const sendMessage = (e) => {
+
+        e.preventDefault(); 
 
         let sender = {
             name: name,
