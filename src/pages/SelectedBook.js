@@ -22,11 +22,11 @@ const SelectedBook = () => {
     },[])
 
     return (
-        <div className="selected-book-page">
+        <div className="selected-book-page">   
             <div>
                 <NavigationBar/>
             </div> 
-                <div className="container d-flex">
+                <div className="container selected-book-picture-data-price-buttons-container">
                     <div className="mt-5 mb-5 selected-book-picture-and-title">
                         <BookPictureAndData bookData={bookDetails}/> 
                     </div> 

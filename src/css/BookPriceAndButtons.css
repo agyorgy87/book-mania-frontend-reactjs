@@ -7,11 +7,12 @@
     color: #ffffff !important;
     font-weight: 500 !important;
     font-family: 'Source Sans 3', sans-serif;
+    font-size: 20px !important;
 } 
 
 .selected-book-add-to-cart-button:hover {
     background-color: #155a62 !important; 
-}
+} 
 
 .selected-book-cart-icon {
     transform: translateY(-4px);
@@ -25,6 +26,7 @@
     border: 1px solid #1e7b85 !important;
     font-weight: 500 !important;
     font-family: 'Source Sans 3', sans-serif;
+    font-size: 20px !important;
 }
 
 .selected-book-add-to-wishlist-button:hover {
@@ -37,4 +39,20 @@
 
 .selected-book-full-heart-icon {
     transform: translateY(-4px);
+}
+
+
+@media (max-width:1200px) {
+
+    .selected-book-add-to-cart-button {
+        height: 2.5rem !important;
+        width: 17rem !important;
+        font-size: 20px !important;
+    } 
+
+    .selected-book-add-to-wishlist-button {
+        height: 2.5rem !important;
+        width: 17rem !important;
+        font-size: 20px !important;
+    }
 }

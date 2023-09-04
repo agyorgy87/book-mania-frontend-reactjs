@@ -69,7 +69,7 @@ const BookPriceAndButtons = (props) => {
         bookDetailsCopy.quantity = 1
         const cartDataCopy = [...cartData.value, bookDetailsCopy]
         cartData.setValue(cartDataCopy);
-        localStorage.setItem("cart", JSON.stringify(cartDataCopy));
+        localStorage.setItem("cart", JSON.stringify(cartDataCopy)); 
     }
 
     const closeModal = () => {
@@ -77,7 +77,7 @@ const BookPriceAndButtons = (props) => {
     }
 
     return (
-        <div className="col-lg-3 col-md-3 col-sm-3 col-12 selected-book-price-container">
+        <div className="selected-book-price-container">
             <div> 
                 {openModal && <WishListModal close={closeModal}/>}  
             </div>
@@ -95,10 +95,10 @@ const BookPriceAndButtons = (props) => {
                             <CgShoppingCart className="fs-4 ms-2 selected-book-cart-icon"/>
                     </button>
                 </div>
-                <div>
+                <div> 
                     { heartIconFull ?
                     <button 
-                    className="selected-book-add-to-wishlist-button btn fs-5 fw-bold" 
+                    className="selected-book-add-to-wishlist-button btn fw-bold" 
                     onClick={addToWishList}>
                         Remove from Wishlist
                             <AiFillHeart 
@@ -106,7 +106,7 @@ const BookPriceAndButtons = (props) => {
                     </button>
                     :
                     <button 
-                    className="selected-book-add-to-wishlist-button btn fs-5 fw-bold"
+                    className="selected-book-add-to-wishlist-button btn fw-bold"
                     onClick={addToWishList}>
                         Add To Wishlist
                             <AiOutlineHeart 

@@ -36,20 +36,22 @@ const BookPictureAndData = (props) => {
 
 
     return (
-        <div className="d-flex">
-            <div className="selected-book-picture-container d-flex justify-content-center align-items-center me-5">
-                <img 
-                src={"http://localhost:4000/books_img/" + bookDetails.img_directory + "/" + bookDetails.image_big}
-                className="shadow selected-book-picture"                                             
-                alt="book"
-                />
-            </div>
-            <div>  
-                <div className="mb-2">
-                    <p className="selected-book-title">{bookDetails.title}</p>
+        <div className="d-flex book-picture-and-title-container">
+            <div className="d-flex justify-content-center">
+                <div className="book-picture-container d-flex justify-content-center align-items-center me-3">
+                    <img 
+                    src={"http://localhost:4000/books_img/" + bookDetails.img_directory + "/" + bookDetails.image_big}
+                    className="shadow book-picture"                                             
+                    alt="book"
+                    /> 
                 </div>
-                <div className="d-flex mb-4">
-                    <p className="me-1">By</p><p className="selected-book-author-name">{bookDetails.author_name}</p>
+            </div>
+            <div className="book-title-author-social-container">   
+                <div className="mb-2"> 
+                    <p className="book-title">{bookDetails.title}</p>
+                </div>
+                <div className="mb-4 book-author-name-container">
+                    <p className="me-1">By</p><p className="book-author-name">{bookDetails.author_name}</p>
                 </div>
                 <div>
                     <p className="share-text">Share:</p>

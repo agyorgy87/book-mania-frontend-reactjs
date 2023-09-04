@@ -2,16 +2,39 @@
 
 .selected-book-page {
     background-color: #ffffff;
-    height: 100vh;
+    height: 100vh; 
+}
+
+.selected-book-picture-data-price-buttons-container {
+    display: flex;
 }
 
 .selected-book-picture-and-title {
-    width: 80%;
+    width: 70%; 
 }
 
 .selected-book-price-and-buttons {
     width: 30%;
 }
+
+
+@media (max-width: 1000px) {
+
+    .selected-book-picture-data-price-buttons-container {
+        flex-direction: column !important;
+    }
+
+    .selected-book-picture-and-title {
+        width: 100%;
+    }
+
+    .selected-book-price-and-buttons {
+        margin-left: 50px;
+        width: 100%;
+    }
+
+}
+
 /*
 .selected-book-title { 
     font-family: 'Open Sans', sans-serif;
