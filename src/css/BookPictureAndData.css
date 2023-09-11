@@ -12,10 +12,10 @@
 }
 
 .book-title {
-    font-family: 'Source Serif 4', serif;
-    font-weight: 600;
-    font-size: 30px;
     padding-right: 3rem;
+    font-size: 30px;
+    font-weight: 600;
+    font-family: 'Source Serif 4', serif;
 }
 
 .book-author-name-container {
@@ -23,8 +23,8 @@
 }
 
 .book-author-name, .share-text { 
-    font-family: 'Open Sans', sans-serif;
     font-weight: 600;
+    font-family: 'Open Sans', sans-serif;
 }
 
 
@@ -68,6 +68,7 @@
 
     .book-title-author-social-container {
         margin: auto;
+        margin-left: 50px !important;
     }
 
     .book-author-name-container {

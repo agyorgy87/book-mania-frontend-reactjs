@@ -15,14 +15,14 @@ const SelectedBook = () => {
     const [bookDetails, setBookDetails] = useState({});
 
     useEffect(() => {
-        axios.get("http://localhost:4000/get-book-by-id/" + params.id)
+        axios.get("http://localhost:4000/get-book-by-id/" + params.id) 
             .then(response => {
                 setBookDetails(response.data);
             })
     },[])
 
     return (
-        <div className="selected-book-page">   
+        <div className="selected-book-page">    
             <div>
                 <NavigationBar/>
             </div> 

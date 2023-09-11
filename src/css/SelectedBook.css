@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Open+Sans:wght@300;400;500;600&display=swap');
 
 .selected-book-page {
-    background-color: #ffffff;
     height: 100vh; 
+    background-color: #ffffff;
 }
 
 .selected-book-picture-data-price-buttons-container {
@@ -18,7 +18,7 @@
 }
 
 
-@media (max-width: 1000px) {
+@media (max-width: 1000px) { 
 
     .selected-book-picture-data-price-buttons-container {
         flex-direction: column !important;
@@ -29,134 +29,9 @@
     }
 
     .selected-book-price-and-buttons {
-        margin-left: 50px;
         width: 100%;
+        margin-left: 50px;
     }
 
 }
 
-/*
-.selected-book-title { 
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 600;
-    font-size: 30px;
-}
-
-.selected-book-author-name {
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 400;
-    font-size: 20px;
-}
-
-.share-text {
-    display: inline;
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 400;
-    font-size: 15px;
-}
-
-.social-icons {
-    height: 28px;
-    cursor: pointer;
-}
-
-.social-hover-text {
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 400;
-    font-size: 15px;
-}
-
-.selected-book-price-container {
-    padding: 10px 10px 10px 10px;
-    border: 1px solid #c7c8c9;
-    border-radius: 10px;
-    height: 210px;
-    width: 30% !important;
-}
-
-.selected-book-add-to-cart-button {
-    width: 100%;
-    height: 2.5rem;
-    border: none;
-    border-radius: 6px;
-    background-color: #30475f;
-    color: #FFFF;
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 400;
-}
-
-.cart-icon {
-    transform: translateY(-2px);
-}
-
-.selected-book-add-to-wishlist-button { 
-    width: 100%;
-    height: 2.5rem;
-    border: none;
-    border-radius: 6px;
-    background-color: #30475f;
-    color: #FFFF;
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 400;
-}
-
-.heart-icon {
-    transform: translateY(-2px);
-    color: #FFFF;
-}
-
-.tabs-style {
-    color: black !important;
-}
-
-hr {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    border: 0;
-    border-top: 1px solid rgb(108, 108, 108);
-  }
-
-.content {
-    width: 20%;
-    height: 20px !important;
-    margin-top: -10px;
-}
-
-.content-title {
-    width: 12rem;
-}
-
-@media (max-width:786px) {
-    .selected-book-title {
-        font-size: 20px;
-    }
-    .selected-book-author-name {
-        font-size: 14px;  
-    }
-    .selected-book-add-to-cart-button, .selected-book-add-to-wishlist-button {
-        font-size: 12px;
-    }
-}
-
-@media (max-width:576px) {
-    .book-buttons-container {
-        display: flex !important;
-        flex-direction: column !important;
-    }
-
-    .book-container {
-        padding-left: 20px;
-    }
-
-    .selected-book-price-container {
-        padding-right: 10px 20px 10px 20px;
-        margin-top: 30px;
-        margin-left: 20px;
-        width: 90% !important;
-    }
-
-    .selected-book-add-to-cart-button, .selected-book-add-to-wishlist-button {
-        font-size: 18px;
-    }
-}
-*/

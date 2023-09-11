@@ -77,13 +77,13 @@ const BookPriceAndButtons = (props) => {
     }
 
     return (
-        <div className="selected-book-price-container">
+        <div className="selected-book-price-container"> 
             <div> 
                 {openModal && <WishListModal close={closeModal}/>}  
             </div>
             <div className="d-flex flex-column">
                 <div>
-                    <p className="mb-5 display-6">{bookDetails.price}$</p>
+                    <p className="book-price-number">{bookDetails.price}$</p>
                 </div>
                 <div className="align-items-center">
                 <div className="mb-3">

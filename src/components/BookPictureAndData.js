@@ -36,7 +36,7 @@ const BookPictureAndData = (props) => {
 
 
     return (
-        <div className="d-flex book-picture-and-title-container">
+        <div className="d-flex book-picture-and-title-container"> 
             <div className="d-flex justify-content-center">
                 <div className="book-picture-container d-flex justify-content-center align-items-center me-3">
                     <img 

@@ -12,9 +12,9 @@
 }
 
 .login-name-of-the-website {
-    display: inline-block;
     color: #1e7b85;
     font-family: 'Cinzel', serif;
+    display: inline-block;
 }
 
 .book-mania-icon {
@@ -27,8 +27,8 @@
 }
 
 .email-password-label {
-    font-family: 'Source Sans 3', sans-serif;
     font-weight: 600 !important;
+    font-family: 'Source Sans 3', sans-serif;
 }
 
 .email-password-label:hover {
@@ -50,8 +50,8 @@
 }
 
 .alert-mark {
-    transform: translateY(2px); 
     color: #aa1527;
+    transform: translateY(2px); 
 }
 
 .email-input-alert {
@@ -87,13 +87,13 @@
 }
 
 .login-alert-mark {
-    transform: translateY(-2px);
     color: #aa1527;
+    transform: translateY(-2px);
 }
 
 .login-button {
-    background-color: #1e7b85 !important;
     color: #ffffff !important;
+    background-color: #1e7b85 !important;
     font-weight: 500 !important;
     font-family: 'Source Sans 3', sans-serif;
 }
@@ -103,8 +103,8 @@
 }
 
 .forgot-password-button {
-    background-color: #ffffff !important;
     color:#1e7b85 !important;
+    background-color: #ffffff !important;
     font-family: 'Source Sans 3', sans-serif;
 }
 
@@ -120,7 +120,7 @@
 
 .sign-up-link {
     color:#1e7b85 !important;
-    text-decoration: none;
     font-family: 'Source Sans 3', sans-serif;
+    text-decoration: none;
 }
 

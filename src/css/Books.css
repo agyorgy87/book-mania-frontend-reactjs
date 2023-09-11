@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Open+Sans:wght@300;400;500;600&display=swap');
 
 .book-page {
+    height: 100%;
     padding-top: 100px;
     background-color: #F1F6F9 !important;
-    height: 100%;
 } 
 
 .search-input-container {
@@ -11,10 +11,10 @@
 }
 
 .search-input {
-    background-color: #fbfbfb !important;
     border-top-right-radius: 80px !important;
     border-bottom-right-radius: 80px !important;
     font-size: 30px !important;
+    background-color: #fbfbfb !important;
 }
 
 [type="search"]::-webkit-search-cancel-button,
@@ -24,10 +24,10 @@
 }
 
 .search-input:focus {
+    border-left: none !important;
+    border-color: #ced4da !important;
     box-shadow: none !important;
     outline: none !important;
-    border-color: #ced4da !important;
-    border-left: none !important;
 }
 
 .btn {
@@ -40,8 +40,8 @@
 }
 
 .search-button{
-    border-top: 1px solid #ced4da !important;
     border-left: 1px solid #ced4da !important;
+    border-top: 1px solid #ced4da !important;
     border-bottom: 1px solid #ced4da !important;
     border-top-left-radius: 80px !important;
     border-bottom-left-radius: 80px !important;
@@ -56,9 +56,9 @@
 }
 
 .options-for-filtering:hover{
+    border-radius: 5px;
     color: #337ab7 !important;
     background-color: #cfcfcf !important;
-    border-radius: 5px;
 }
 
 .list-group-item {
@@ -67,9 +67,9 @@
 
 .search-result-books {
     color: #2b2f3c;
-    font-family: 'Open Sans', sans-serif; 
     font-size: 25px;
     font-weight: 100;
+    font-family: 'Open Sans', sans-serif; 
 }
 
 .book-title-container {
@@ -82,23 +82,23 @@
 }
 
 .book-title { 
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 700;
-    cursor: pointer;
-    font-size: 90%;
     color: black;
+    font-size: 90%;
+    font-weight: 700;
+    font-family: 'Open Sans', sans-serif;
+    cursor: pointer;
     text-decoration: none;
 }
 
 .book-add-to-cart-buttons {
-    width: 60%;
     height: 2.5rem;
+    width: 60%;
     border: none;
     border-radius: 6px;
-    background-color: #30475f ;
     color: #EEE9DA;
-    font-family: 'Open Sans', sans-serif;
+    background-color: #30475f ;
     font-weight: 400;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .book-add-to-cart-buttons:hover {

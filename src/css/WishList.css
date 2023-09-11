@@ -14,11 +14,11 @@
 }
 
 .wishlist-book-title { 
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 600;
-    cursor: pointer;
-    font-size: 90%;
     color: black;
+    font-size: 90%;
+    font-weight: 600;
+    font-family: 'Open Sans', sans-serif;
+    cursor: pointer;
     text-decoration: none;
 }
 
@@ -27,14 +27,14 @@
 }
 
 .wishlist-author-name {
-    font-family: 'Open Sans', sans-serif;
     font-weight: 400;
     font-size: small;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .wishlist-value-of-the-book {
-    font-family: 'Open Sans', sans-serif;
     font-weight: 600;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .wishlist-add-to-cart-buttons {
@@ -42,10 +42,10 @@
     width: 55%;
     border-radius: 6px;
     border: none;
-    background-color: #30475f;
     color: #EEE9DA;
-    font-family: 'Open Sans', sans-serif;
+    background-color: #30475f;
     font-weight: 400;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .wishlist-add-to-cart-buttons:hover {

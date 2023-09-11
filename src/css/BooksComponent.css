@@ -5,9 +5,9 @@
 .text-of-recommended-books {
     margin-left: -1rem;
     color: #2b2f3c;
-    font-family: 'Roboto', sans-serif;
-    font-weight: 300;
     font-size: 3rem;  
+    font-weight: 300;
+    font-family: 'Roboto', sans-serif;
 }
 
 .book-card {

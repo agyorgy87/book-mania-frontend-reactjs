@@ -2,23 +2,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
 
 .navbar {
+    background-color: #f9faff;
     top: 0 !important;
     position: sticky !important;
-    background-color: #f9faff;
 }
 
 .name-of-the-website {
-    display: inline-block;
     color: #1e7b85;
     font-size: 1.7rem;
     font-weight: 600;
     font-family: 'Cinzel', serif;
+    display: inline-block;
 }
 
 .icon {
     color: #1e7b85;
-    transform: translateY(-6px);
     font-size: 2rem;  
+    transform: translateY(-6px);
 }
 
 .navigation-menus {  

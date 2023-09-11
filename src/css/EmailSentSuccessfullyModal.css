@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3&display=swap');
 
 .overlay {
-    width: 100%;
     height: 100%;
+    width: 100%;
     background-color: rgba(171,176,192, 0.7);
     position: fixed;
     top: 0;
@@ -20,8 +20,8 @@
 .email-sent-successfully-svg {
     height: 8rem;
     width: 8rem;
-    display: block;
     color: #1e7b85;
+    display: block;
   }
   
 .circle {
@@ -45,9 +45,9 @@
 }
 
 .navigate-to-login {
-    background-color: #1e7b85 !important;
-    color: #ffffff !important;
     width: 100%;
+    color: #ffffff !important;
+    background-color: #1e7b85 !important;
 }
 
 .navigate-to-login:hover {

@@ -18,19 +18,19 @@
 
 .coupon-card{
     border-radius: 15px;
-    position: relative;
-    background: linear-gradient(135deg, #CAC531, #eef767);
     color: #2b2f3c;
+    background: linear-gradient(135deg, #CAC531, #eef767);
+    position: relative;
 }
 
 .circle1, .circle2{
     height: 50px;
     width: 50px;
     border-radius: 50%;
+    background: #ffffff;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: #ffffff;
 }
 
 .circle1{

@@ -69,8 +69,8 @@
 }
 
 .plus-minus-icon {
-    transform: translateY(-2px);
     font-size: 20px;
+    transform: translateY(-2px);
 }
 
 .current-book-number {
@@ -86,10 +86,10 @@
     width: 2rem;
     border-radius: 6px;
     border: 1px solid #b2b2b2;
-    background-color: #FFF;
     color: #353535;
-    font-family: 'Open Sans', sans-serif;
+    background-color: #FFF;
     font-weight: 400;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .delete-cart-button {
@@ -98,8 +98,8 @@
     border: none;
     background-color: #F1F6F9;
     color: black;
-    font-family: 'Open Sans', sans-serif;
     font-weight: 600;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .delete-cart-button:hover {
@@ -108,10 +108,9 @@
 
 .paying-container {
     height: 100%;
-    /*width: 95% !important;*/
     border: 1px solid #b2b2b2;
-    background-color: #FFF;
     border-radius: 5px;
+    background-color: #FFF;
 }
 
 .subtotal-items-text {
@@ -119,8 +118,8 @@
 }
 
 .total-text {
-    font-family: 'Open Sans', sans-serif;
     font-weight: 700;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .coupon-code-input {
@@ -129,19 +128,19 @@
 }
 
 .coupon-code-input:hover {
-    outline: none !important;
     border-color: #b2b2b2 !important;
+    outline: none !important;
 }
 
 .coupon-question {
-    font-family: 'Open Sans', sans-serif;
     font-size: 15px;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .add-coupon-code-button {
-    font-family: 'Open Sans', sans-serif !important;
     color: black;
     border-color: #b2b2b2 !important;
+    font-family: 'Open Sans', sans-serif !important;
 }
 
 .add-coupon-code-button:hover {
@@ -153,10 +152,10 @@
     width: 100%;
     border-radius: 6px;
     border: none;
-    background-color: #30475f;
     color: #EEE9DA;
-    font-family: 'Open Sans', sans-serif;
+    background-color: #30475f;
     font-weight: 400;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .payment-button:hover {
