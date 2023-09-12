@@ -2,15 +2,16 @@ import '../css/Cart.css';
 import { useState, useEffect, useRef } from 'react';
 import NavigationBar from '../components/NavigationBar.js';
 import axios from "axios";
-import { BiPlus } from "react-icons/bi";
-import { BiMinus } from "react-icons/bi";
-import { MdOutlineRemoveShoppingCart } from "react-icons/md";
+//import { BiPlus } from "react-icons/bi";
+//import { BiMinus } from "react-icons/bi";
+//import { MdOutlineRemoveShoppingCart } from "react-icons/md";
 import { useContext } from 'react';
 import { CartContext } from "../context/CartContext";
 import { UserContext } from "../context/UserContext";
 import LoginWarning from "../modal/LoginWarning.js";
+import CartBooks from "../components/CartBooks.js";
 
-const Cart = () => { 
+const Cart = () => {  
 
     const userData = useContext(UserContext)
 
@@ -31,7 +32,6 @@ const Cart = () => {
     const [couponCodeIsCorrectOrIncorrect, setCouponCodeIsCorrectOrIncorrect] = useState(true);
 
     const [openModal, setOpenModal] = useState(false);
-
 
     const couponCodeCheck = () => {
         axios.get(`http://localhost:4000/get-coupon-code/${couponCodeInput}`)
@@ -102,7 +102,7 @@ const Cart = () => {
         }
         return sum;
     }
-
+/*
     const deleteSelectedBook = (book) => {
         let searchedBookID = book.id;
         let cartDatas = localStorage.getItem("cart");
@@ -141,8 +141,10 @@ const Cart = () => {
         localStorage.setItem("cart", stringifiedCartData);   
         cartData.setValue(allCartData);  
     }
+*/
 
     let allQuantity = allItems(); 
+
     return (      
         <div className="cart-page"> 
             <div className="fixed-top">
@@ -158,7 +160,10 @@ const Cart = () => {
                 </div>                
                 <div>
                     <div className="row">
-                        <div className="col-md-8 col-lg-8 continer-fluid">                           
+                        <div className="col-md-8 col-lg-8 continer-fluid"> 
+                            <CartBooks/>
+                        </div> 
+                        {/*                         
                             {
                                 cartData.value.map((book, index) => (
                                     <div className="selected-book-for-purchase mb-3 d-flex justify-content-between" key={"cart-data-div" + index}>
@@ -219,7 +224,7 @@ const Cart = () => {
                             : 
                             null
                             }
-                        </div>                       
+                        */}                                             
                         <div className="col-md-4 col-lg-4 container-fluid paying-container">
                             <div className="mt-2">
                                 <p className="h3">Order Summary</p>
