@@ -1,19 +1,38 @@
 import '../css/Cart.css';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import NavigationBar from '../components/NavigationBar.js';
-import axios from "axios";
+//import axios from "axios";
 //import { BiPlus } from "react-icons/bi";
 //import { BiMinus } from "react-icons/bi";
 //import { MdOutlineRemoveShoppingCart } from "react-icons/md";
 import { useContext } from 'react';
 import { CartContext } from "../context/CartContext";
-import { UserContext } from "../context/UserContext";
-import LoginWarning from "../modal/LoginWarning.js";
+//import { UserContext } from "../context/UserContext";
+//import LoginWarning from "../modal/LoginWarning.js";
 import CartBooks from "../components/CartBooks.js";
+import OrderSummary from "../components/OrderSummary.js";
 
 const Cart = () => {  
 
-    const userData = useContext(UserContext)
+    const cartData = useContext(CartContext);
+
+    const [allQuantity, setAllQuantity] = useState()
+
+    const allItems = () => {
+        let allData = cartData.value
+        let sum = 0;
+        for(let book of allData) {
+            sum += book.quantity
+        }
+        return sum; 
+    }
+
+    useEffect(() => {
+        allItems()
+    },[])
+    
+    /*
+    const userData = useContext(UserContext);
 
     const cartData = useContext(CartContext);
    
@@ -25,7 +44,7 @@ const Cart = () => {
 
     const [bookMultiple, setBookMultiple] = useState(1);
 
-    const [showinDiscount, setShowingDiscount] = useState(0);
+    const [showingDiscount, setShowingDiscount] = useState(0);
 
     const [couponCodeValidationMessage, setCouponCodeValidationMessage] = useState(false);
 
@@ -100,9 +119,8 @@ const Cart = () => {
         for(let book of allData) {
             sum += book.quantity
         }
-        return sum;
+        return sum; 
     }
-/*
     const deleteSelectedBook = (book) => {
         let searchedBookID = book.id;
         let cartDatas = localStorage.getItem("cart");
@@ -143,15 +161,10 @@ const Cart = () => {
     }
 */
 
-    let allQuantity = allItems(); 
-
     return (      
         <div className="cart-page"> 
             <div className="fixed-top">
                 <NavigationBar/>
-            </div>
-            <div>
-                {openModal && <LoginWarning close={closeModal}/>}  
             </div>
             <div className="container">
                 <div className="mb-3">
@@ -225,7 +238,9 @@ const Cart = () => {
                             null
                             }
                         */}                                             
-                        <div className="col-md-4 col-lg-4 container-fluid paying-container">
+                        <div className="col-md-4 col-lg-4">
+                            <OrderSummary/>
+                            {/*
                             <div className="mt-2">
                                 <p className="h3">Order Summary</p>
                             </div>
@@ -278,6 +293,7 @@ const Cart = () => {
                             <div>
                                 <button className="payment-button mb-4" onClick={proceedToCheckout}>Procced To Checkout</button>
                             </div>
+                        */}
                         </div>
                     </div>
                 </div>

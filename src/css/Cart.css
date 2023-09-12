@@ -10,7 +10,7 @@
 .cart-page {
     min-height: 100vh;
     padding-top: 100px;
-    background-color: #F1F6F9 !important;
+    background-color: #ffffff !important;
 }
 
 .top-my-cart-text {
@@ -23,67 +23,6 @@
     display: inline;
 }
 
-.paying-container {
-    height: 100%;
-    border: 1px solid #b2b2b2;
-    border-radius: 5px;
-    background-color: #FFF;
-}
-
-.subtotal-items-text {
-    font-family: 'Open Sans', sans-serif;
-}
-
-.total-text {
-    font-weight: 700;
-    font-family: 'Open Sans', sans-serif;
-}
-
-.coupon-code-input {
-    outline: none !important;
-    border-color: #b2b2b2 !important;
-}
-
-.coupon-code-input:hover {
-    border-color: #b2b2b2 !important;
-    outline: none !important;
-}
-
-.coupon-question {
-    font-size: 15px;
-    font-family: 'Open Sans', sans-serif;
-}
-
-.add-coupon-code-button {
-    color: black;
-    border-color: #b2b2b2 !important;
-    font-family: 'Open Sans', sans-serif !important;
-}
-
-.add-coupon-code-button:hover {
-    background-color: #e0e0e0 !important;
-}
-
-.payment-button {
-    height: 2.5rem;
-    width: 100%;
-    border-radius: 6px;
-    border: none;
-    color: #EEE9DA;
-    background-color: #30475f;
-    font-weight: 400;
-    font-family: 'Open Sans', sans-serif;
-}
-
-.payment-button:hover {
-    background-color: #212A3E;
-}
-
-@media (max-width:768px) {
-    .paying-container {
-        width: 95% !important;
-    }
-}
 
 
     
