@@ -22,6 +22,7 @@ const Cart = () => {
         setAllQuantity(sum);
     },[allQuantity]);
 */
+
     return (      
         <div className="cart-page"> 
             <div className="fixed-top">

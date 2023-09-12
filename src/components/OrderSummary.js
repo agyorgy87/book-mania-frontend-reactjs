@@ -98,65 +98,77 @@ const OrderSummary = () => {
         setOpenModal(false);
     }
 
-    let allQuantity = allItems();
+    let allQuantity = allItems(); 
 
     return (
-        <div className="container-fluid paying-container">
+        <div className="container-fluid paying-container ps-4 pe-4">
             <div>
                 {openModal && <LoginWarning close={closeModal}/>}  
             </div>
-              <div className="mt-2">
-                                <p className="h3">Order Summary</p>
-                            </div>
-                            <div className="mt-3">
-                                <p className="subtotal-items-text">{allQuantity} items Subtotal</p>
-                            </div>                           
-                            <div className="d-flex justify-content-between">
-                                <div>
-                                    <h5 className="total-text">Total</h5>
-                                </div>
-                                <div className="pe-4 mb-3">                               
-                                    <h5>{totatPriceInOrderSummary} $</h5>                               
-                                </div>
-                            </div>
-                            { bookMultiple !== 1 ?
-                                <div className="d-flex flex-column">
-                                    <div className="d-flex flex-row-reverse me-4">
-                                        <h5>-{showingDiscount}%</h5>
+                <div className="mt-3 d-flex justify-content-center">
+                    <p className="order-summary-text">Order Summary</p>
+                </div>
+                <div className="mt-3 d-flex flex-row-reverse">
+                    <p className="subtotal-items-text">{allQuantity} items Subtotal</p>
+                </div>                           
+                <div className="d-flex justify-content-between">
+                    <div>
+                        <p className="total-text">Total:</p>
+                    </div>
+                    <div>                               
+                        <p className="total-price-in-number">{totatPriceInOrderSummary} $</p>                               
+                    </div>
+                </div>
+                    { 
+                        bookMultiple !== 1 ?
+                            <div className="d-flex flex-column">
+                                <div className="d-flex justify-content-between">
+                                    <div>
+                                        <p className="discount-text">Discount:</p>
                                     </div>
-                                    <div className="d-flex justify-content-between">
-                                        <div>
-                                            <h5 className="total-text">Discounted Price</h5> 
-                                        </div>
-                                        <div className="pe-4">
-                                            <h5>{(bookMultiple * totatPriceInOrderSummary).toFixed(2)} $</h5>
-                                        </div>
-                                    </div>                                  
+                                    <div>
+                                        <p className="discount-percentage">-{showingDiscount}%</p>
+                                    </div>
                                 </div>
-                            :
-                            null
-                            }
-                            <div>
-                                <p className="coupon-question">Have a coupon code?</p>
+                                
+                                <div className="d-flex justify-content-between">
+                                    <div>
+                                        <p className="discounted-price-text">Discounted Price:</p> 
+                                    </div>
+                                    <div>
+                                        <p className="discounted-price">{(bookMultiple * totatPriceInOrderSummary).toFixed(2)} $</p>
+                                    </div>
+                                </div>                                  
                             </div>
-                            <div className="input-group mb-4">
-                                <input type="text" className="form-control coupon-code-input" placeholder="Enter coupon code" ref={couponCodeInputRef} onChange={(e) => setCouponCodeInput(e.target.value)}/>                             
-                                    <button className="btn add-coupon-code-button" type="button" onClick={couponCodeCheck}>Add</button>                              
-                            </div> 
-                            { couponCodeValidationMessage ?
-                                <div className={`${couponCodeIsCorrectOrIncorrect ? "alert alert-success" : "alert alert-danger"}`} role="alert">
-                                    { couponCodeIsCorrectOrIncorrect ?
-                                        "Coupon Code Correct."
-                                        :
-                                        "Coupon Code Incorrect."
-                                    }                                   
-                                </div>
-                                :
-                                null
-                            }
-                            <div>
-                                <button className="payment-button mb-4" onClick={proceedToCheckout}>Procced To Checkout</button>
-                            </div>  
+                        :
+                            null
+                    }
+                    <div>
+                        <label htmlFor="coupon-code-input" className="coupon-question form-label">Have a coupon code?</label>
+                        <div className="input-group mb-4 coupon-code-input-container">
+                            <input 
+                            type="text" 
+                            id="coupon-code-input"
+                            className="form-control coupon-code-input" 
+                            placeholder="Enter coupon code" 
+                            ref={couponCodeInputRef} 
+                            onChange={(e) => setCouponCodeInput(e.target.value)}
+                            />                             
+                            <button className="btn add-coupon-code-button" type="button" onClick={couponCodeCheck}>Apply</button>                              
+                        </div> 
+                    </div> 
+                { 
+                    couponCodeValidationMessage ?
+                        <div className={`${couponCodeIsCorrectOrIncorrect ? "alert alert-success" : "alert alert-danger"}`} 
+                        role="alert">
+                        { couponCodeIsCorrectOrIncorrect ? "Coupon Code Correct." : "Coupon Code Incorrect." }                                   
+                        </div>
+                    :
+                        null
+                }
+                <div>
+                    <button className="btn payment-button mt-3 mb-4" onClick={proceedToCheckout}>Procced To Checkout</button>
+                </div>  
         </div>
     )
 }
