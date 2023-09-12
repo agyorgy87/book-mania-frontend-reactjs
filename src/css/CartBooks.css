@@ -17,21 +17,32 @@
     border: 1px solid #b2b2b2;
     height: 150px;
     filter: drop-shadow(2px 2px 2px );
+    cursor: pointer;
 }
 
 .cart-book-title { 
     font-family: 'Open Sans', sans-serif;
     font-weight: 600;
     cursor: pointer;
-    font-size: 18px;
+    font-size: 23px;
     color: black;
     text-decoration: none;
+}
+
+.cart-book-title:hover {
+    color: black;
 }
 
 .cart-book-author-name {
     font-family: 'Open Sans', sans-serif;
     font-weight: 400;
-    font-size: 14px;
+    font-size: 16px;
+}
+
+.cart-book-price {
+    color: black;
+    font-size: 30px;
+    font-weight: 400;
 }
 
 .plus-minus-button {
@@ -46,7 +57,7 @@
 }
 
 .plus-minus-button:hover, .remove-book-button:hover {
-    background-color: #e0e0e0;
+    border: 3px solid #1e7b85;
 }
 
 .plus-minus-icon {
@@ -61,8 +72,9 @@
 .remove-book-button {
     height: 2rem;
     width: 2rem;
+    margin-right: 6px;
     border-radius: 6px;
-    border: 1px solid #b2b2b2;
+    border: 1px solid #b2b2b2; 
     color: #353535;
     background-color: #FFF;
     font-weight: 400;
@@ -71,16 +83,18 @@
 
 .delete-cart-button {
     height: 2rem;
-    width: 8rem;
+    width: 10rem;
     border: none;
-    background-color: #F1F6F9;
     color: black;
+    background-color: #ffffff;
+    font-size: 20px;
     font-weight: 600;
     font-family: 'Open Sans', sans-serif;
 }
 
 .delete-cart-button:hover {
     text-decoration: underline;
+    color: #1e7b85;
 }
 
 @media (max-width:992px) {
@@ -89,6 +103,9 @@
     }
     .cart-book-author-name {
         font-size: 12px;
+    }
+    .cart-book-price {
+        font-size: 25px;
     }
 }
 

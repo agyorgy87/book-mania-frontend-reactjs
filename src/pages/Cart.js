@@ -28,8 +28,8 @@ const Cart = () => {
                 <NavigationBar/>
             </div>
             <div className="container">
-                <div className="mb-3">
-                    <h1 className="top-my-cart-text me-2">My Cart</h1>
+                <div className="mt-4 mb-3"> 
+                    <h1 className="my-cart-text me-2">My Cart</h1>
                     <h4 className="my-cart-items-text">({allQuantity} items)</h4>
                 </div>                
                 <div>

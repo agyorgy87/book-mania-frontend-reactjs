@@ -2,7 +2,7 @@ import '../css/BooksComponent.css';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom'; 
 import { useNavigate } from "react-router-dom";
-import { AiOutlineHeart } from "react-icons/ai";
+//import { AiOutlineHeart } from "react-icons/ai";
 //import { AiFillHeart } from "react-icons/ai";
 //import { useContext } from 'react';
 //import { UserContext } from "../context/UserContext.js";
@@ -67,7 +67,7 @@ const RecommendedBooks = (props) => {
                             <div className="row d-flex flex-column book-card mb-5" key={"newness-div" + index}>
                                 <div className="d-flex justify-content-center mb-4 mt-4">
                                     <img 
-                                    src={"http://localhost:4000/books_img/" + book.img_directory + "/" + book.image}
+                                    src={"http://localhost:4000/books_img/" + book.img_directory + "/" + book.image} 
                                     className="img-fluid home-book-pics shadow"                                             
                                     onClick={() => {navigate("/selectedbook/" + book.id)}}
                                     alt="book"

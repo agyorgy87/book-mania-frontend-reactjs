@@ -65,6 +65,7 @@ const BookPriceAndButtons = (props) => {
     }
 
     const SelectedBookAddToCart = () => {
+        
         const bookDetailsCopy = {...bookDetails}
         bookDetailsCopy.quantity = 1
         const cartDataCopy = [...cartData.value, bookDetailsCopy]

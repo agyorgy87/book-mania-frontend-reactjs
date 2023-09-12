@@ -1,5 +1,7 @@
 import "../css/CartBooks.css";
 import { useEffect } from 'react';
+import { Link } from 'react-router-dom'; 
+import { useNavigate } from "react-router-dom";
 import { BiPlus } from "react-icons/bi";
 import { BiMinus } from "react-icons/bi";
 import { MdOutlineRemoveShoppingCart } from "react-icons/md";
@@ -8,6 +10,8 @@ import { CartContext } from "../context/CartContext";
 //import { NumberOfCartItems } from "../context/NumberOfCartItems";
 
 const CartBooks = () => {
+
+    let navigate = useNavigate();
 
     const cartData = useContext(CartContext);
 /*   
@@ -22,7 +26,7 @@ const CartBooks = () => {
         NumberOfCartData.setValue(sum);
     }
 */
-    const plusOneBook = (book) => {      
+    const plusOneBook = (book) => {       
         let allCartData = [...cartData.value]
         let foundIndex = allCartData.findIndex(x => x.id === book.id);
         let bookForModification = allCartData[foundIndex];
@@ -65,27 +69,33 @@ const CartBooks = () => {
         <div>
             {
                 cartData.value.map((book, index) => (
-                    <div className="selected-book-for-purchase mb-3 d-flex justify-content-between" key={"cart-data-div" + index}>
+                    <div className="selected-book-for-purchase mb-4 d-flex justify-content-between" key={"cart-data-div" + index}>
                         <div className="book-title-author-publisher-container d-flex"> 
                             <div>
                                 <img 
                                 src={"http://localhost:4000/books_img/" + book.img_directory + "/" + book.image}
                                 className="cart-book-pics mt-2"                                             
                                 alt="book"
+                                onClick={() => {navigate("/selectedbook/" + book.id)}}
                                 /> 
                             </div>
                             <div className="mt-2 ms-4">
-                                <p className="cart-book-title">{book.title}</p>
-                                <p className="cart-book-author-name mb-4">{book.author_name}</p>
+                                <Link 
+                                className="cart-book-title"
+                                to={"/selectedbook/" + book.id}
+                                > 
+                                {book.title}
+                                </Link>
+                                <p className="cart-book-author-name mt-3">{book.author_name}</p>
                             </div>
                         </div>                                       
                         <div className="d-flex flex-column pt-2 pe-3">
-                            <div className="d-flex flex-row-reverse mb-2">
+                            <div className="d-flex flex-row-reverse mb-3">
                                 <div>
                                     <h4 className="cart-book-price">{(book.price * book.quantity).toFixed(2)} $</h4>
                                 </div>                                                 
                             </div> 
-                            <div className="d-flex mb-4">                                                                           
+                            <div className="d-flex mb-3">                                                                           
                                 <div>
                                     <button 
                                     className="plus-minus-button" 
@@ -115,9 +125,9 @@ const CartBooks = () => {
             }
             {
                 cartData.value.length > 0 ?
-                    <div className="d-flex flex-row-reverse me-5"> 
+                    <div className="d-flex flex-row-reverse me-3"> 
                         <div className="float-right">
-                            <button className="delete-cart-button mb-5" onClick={deleteAllBooksFromLocal}>Clear Your Cart</button>
+                            <button className="delete-cart-button" onClick={deleteAllBooksFromLocal}>Clear Your Cart</button>
                         </div>
                     </div>
                 : 
