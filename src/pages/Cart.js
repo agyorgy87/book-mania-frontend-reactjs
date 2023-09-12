@@ -11,11 +11,17 @@ const Cart = () => {
     const cartData = useContext(CartContext);
 
     const [allQuantity, setAllQuantity] = useState(0);
-
+    
+/*
     useEffect(() => {
-        setAllQuantity(cartData.value.length);
-    },[]);
-
+        let allData = cartData.value
+        let sum = 0;
+        for(let book of allData) {
+            sum += book.quantity
+        }    
+        setAllQuantity(sum);
+    },[allQuantity]);
+*/
     return (      
         <div className="cart-page"> 
             <div className="fixed-top">

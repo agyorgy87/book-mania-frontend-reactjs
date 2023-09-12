@@ -2,11 +2,10 @@ import '../css/BooksComponent.css';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom'; 
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import { AiOutlineHeart } from "react-icons/ai";
-import { AiFillHeart } from "react-icons/ai";
-import { useContext } from 'react';
-import { UserContext } from "../context/UserContext.js";
+//import { AiFillHeart } from "react-icons/ai";
+//import { useContext } from 'react';
+//import { UserContext } from "../context/UserContext.js";
 import WishListModal from "../modal/WishListModal.js";
 
 const RecommendedBooks = (props) => {
@@ -15,10 +14,10 @@ const RecommendedBooks = (props) => {
 
     let listOfRecommendedBooks = props.list
 
-    const userData = useContext(UserContext);
+    //const userData = useContext(UserContext);
 
     const [openModal, setOpenModal] = useState(false);
-    const [fullOrEmptyHeart, setFullOrEmptyHeart] = useState(false);
+    //const [fullOrEmptyHeart, setFullOrEmptyHeart] = useState(false);
 
     const closeModal = () => {
         setOpenModal(false);
@@ -80,7 +79,7 @@ const RecommendedBooks = (props) => {
                                         className="home-book-title"
                                         to={"/selectedbook/" + book.id}
                                         >                                      
-                                        { book.title.length > 26 ? book.title.substring(0,28) + " ..." : book.title}                                                                                        
+                                        { book.title.length > 26 ? book.title.substring(0,28) + " ..." : book.title }                                                                                        
                                         </Link>
                                     </div>
                                     <div className="d-flex ps-2 pe-2 mt-2">
@@ -89,14 +88,17 @@ const RecommendedBooks = (props) => {
                                 </div> 
                                 <div className="d-flex justify-content-between ps-4 pe-5 book-price-heart-container pb-2">                                       
                                         <div>
-                                            <h5 className="home-value-of-the-book">{book.price} $</h5>
+                                            <p className="home-value-of-the-book">{book.price} $</p>
                                         </div>
+                                        
                                         <div>
+                                            {/*
                                             <button 
                                             className="heart-button" 
-                                            >{/*onClick={() => addBookToWishListFromHomePage(book.id)} */}
+                                            >{/*onClick={() => addBookToWishListFromHomePage(book.id)} 
                                             <AiOutlineHeart className="book-heart-icon"/>                                            
                                             </button>
+                                            */}
                                         {/* 
                                         {   fullOrEmptyHeart ?
                                         <AiFillHeart className="book-heart-icon-full"/>

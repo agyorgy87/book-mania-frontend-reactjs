@@ -11,7 +11,7 @@
 }
 
 .book-card {
-    height: 29rem;
+    height: 28rem;
     width: 18rem !important;
     margin-right: 3rem !important;
     border: 1px solid #e6e9f1;
@@ -52,8 +52,8 @@
 
 .home-value-of-the-book {
     color: black;
-    font-size: 1.4rem;
-    font-weight: 600;
+    font-size: 1.7rem;
+    font-weight: 400;
 }
 
 .heart-button {

@@ -1,15 +1,27 @@
 import "../css/CartBooks.css";
-import React from 'react';
+import { useEffect } from 'react';
 import { BiPlus } from "react-icons/bi";
 import { BiMinus } from "react-icons/bi";
 import { MdOutlineRemoveShoppingCart } from "react-icons/md";
 import { useContext } from 'react';
 import { CartContext } from "../context/CartContext";
+//import { NumberOfCartItems } from "../context/NumberOfCartItems";
 
 const CartBooks = () => {
 
     const cartData = useContext(CartContext);
+/*   
+    const NumberOfCartData = useContext(NumberOfCartItems);
 
+    const allItems = () => {
+        let allData = cartData.value
+        let sum = 0;
+        for(let book of allData) {
+            sum += book.quantity
+        }
+        NumberOfCartData.setValue(sum);
+    }
+*/
     const plusOneBook = (book) => {      
         let allCartData = [...cartData.value]
         let foundIndex = allCartData.findIndex(x => x.id === book.id);
