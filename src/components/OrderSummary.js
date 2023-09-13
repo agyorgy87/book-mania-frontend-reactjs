@@ -1,5 +1,7 @@
 import "../css/OrderSummary.css";
 import { useState, useEffect, useRef } from 'react';
+import { BsFillEmojiSmileFill } from "react-icons/bs";
+import { BsFillEmojiFrownFill } from "react-icons/bs";
 import { useContext } from 'react';
 import { CartContext } from "../context/CartContext";
 import { UserContext } from "../context/UserContext";
@@ -159,9 +161,20 @@ const OrderSummary = () => {
                     </div> 
                 { 
                     couponCodeValidationMessage ?
-                        <div className={`${couponCodeIsCorrectOrIncorrect ? "alert alert-success" : "alert alert-danger"}`} 
-                        role="alert">
-                        { couponCodeIsCorrectOrIncorrect ? "Coupon Code Correct." : "Coupon Code Incorrect." }                                   
+                        <div className="d-flex justify-content-center">
+                            { 
+                                couponCodeIsCorrectOrIncorrect ?
+                                    <div className="d-flex">
+                                        <BsFillEmojiSmileFill className="emoji-smile me-2"/>
+                                            <p className="correct-message">The coupon code is correct.</p>
+                                    </div>
+                                    
+                                : 
+                                    <div className="d-flex">
+                                        <BsFillEmojiFrownFill className="emoji-sad me-2"/>
+                                            <p className="incorrect-message">The coupon code is incorrect.</p>
+                                    </div>
+                             }                                   
                         </div>
                     :
                         null

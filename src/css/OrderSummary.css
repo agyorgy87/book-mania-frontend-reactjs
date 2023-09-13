@@ -78,6 +78,26 @@
     background-color: #1e7b85 !important; 
 }
 
+.emoji-smile {
+    color: #1e7b85;
+    font-size: 23px;
+}
+
+.correct-message {
+    color: #1e7b85;
+    font-weight: 600;
+}
+
+.emoji-sad {
+    color: #aa1527;
+    font-size: 23px;
+}
+
+.incorrect-message {
+    color: #aa1527;
+    font-weight: 600;
+}
+
 .payment-button {
     height: 3rem;
     width: 100%;
