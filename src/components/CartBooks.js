@@ -89,7 +89,7 @@ const CartBooks = () => {
                                 <p className="cart-book-author-name mt-3">{book.author_name}</p>
                             </div>
                         </div>                                       
-                        <div className="d-flex flex-column pt-2 pe-3">
+                        <div className="d-flex flex-column pt-2 pe-3 price-quantity-buttons-remove-button-container">
                             <div className="d-flex flex-row-reverse mb-3">
                                 <div>
                                     <h4 className="cart-book-price">{(book.price * book.quantity).toFixed(2)} $</h4>
@@ -112,7 +112,7 @@ const CartBooks = () => {
                                     onClick={() => plusOneBook(book)}>
                                     <BiPlus className="plus-minus-icon"/>
                                     </button>
-                                </div>
+                                </div> 
                             </div>                                         
                             <div className="d-flex flex-row-reverse">
                                 <div>
@@ -125,7 +125,7 @@ const CartBooks = () => {
             }
             {
                 cartData.value.length > 0 ?
-                    <div className="d-flex flex-row-reverse me-3"> 
+                    <div className="d-flex flex-row-reverse me-3 mb-5"> 
                         <div className="float-right">
                             <button className="delete-cart-button" onClick={deleteAllBooksFromLocal}>Clear Your Cart</button>
                         </div>

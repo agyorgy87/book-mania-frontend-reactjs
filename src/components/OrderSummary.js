@@ -122,7 +122,7 @@ const OrderSummary = () => {
                     </div>
                 </div>
                     { 
-                        bookMultiple !== 1 ?
+                        bookMultiple !== 1 ? 
                             <div className="d-flex flex-column">
                                 <div className="d-flex justify-content-between">
                                     <div>

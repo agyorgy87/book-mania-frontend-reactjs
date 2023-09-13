@@ -24,7 +24,7 @@ const Cart = () => {
 */
 
     return (      
-        <div className="cart-page"> 
+        <div className="cart-page">  
             <div className="fixed-top">
                 <NavigationBar/>
             </div>
@@ -35,10 +35,10 @@ const Cart = () => {
                 </div>                
                 <div>
                     <div className="row">
-                        <div className="col-md-8"> 
+                        <div className="col-12 col-lg-8"> 
                             <CartBooks/>
                         </div>                                             
-                        <div className="col-md-4">
+                        <div className="col-12 col-lg-4">
                             <OrderSummary/>
                         </div>
                     </div>
