@@ -20,7 +20,6 @@ const BookPriceAndButtons = (props) => {
     const cartData = useContext(CartContext);
 
     const [heartIconFull, setHeartIconFull] = useState(false);
-
     const [openModal, setOpenModal] = useState(false);
 
     
@@ -37,6 +36,7 @@ const BookPriceAndButtons = (props) => {
             })
         }
     }, [])
+
 
     const addToWishList = () => {
         if(!userData.value.jwt){
@@ -64,18 +64,41 @@ const BookPriceAndButtons = (props) => {
         }           
     }
 
-    const SelectedBookAddToCart = () => {
+
+    const SelectedBookAddToCart = () => { 
+
+        let currentBookId = bookDetails.id;
+
+        let cartDataIdValues = [];
+
+        let cartDataValues = cartData.value;
+
+        for(let i = 0; i < cartDataValues.length; i++) {
+            let currentObject = cartDataValues[i];
+
+            if('id' in currentObject) {
+                cartDataIdValues.push(currentObject.id);
+            }
+        }
+
+        let idSearchResultInTheArray = cartDataIdValues.includes(currentBookId);
         
-        const bookDetailsCopy = {...bookDetails}
-        bookDetailsCopy.quantity = 1
-        const cartDataCopy = [...cartData.value, bookDetailsCopy]
-        cartData.setValue(cartDataCopy);
-        localStorage.setItem("cart", JSON.stringify(cartDataCopy)); 
+        if(idSearchResultInTheArray) {
+            console.log("this book is already exist in the cart.")
+        }else{
+            const bookDetailsCopy = {...bookDetails}
+            bookDetailsCopy.quantity = 1
+            const cartDataCopy = [...cartData.value, bookDetailsCopy]
+            cartData.setValue(cartDataCopy);
+            localStorage.setItem("cart", JSON.stringify(cartDataCopy)); 
+        }
     }
+
 
     const closeModal = () => {
         setOpenModal(false);
     }
+
 
     return (
         <div className="selected-book-price-container"> 
