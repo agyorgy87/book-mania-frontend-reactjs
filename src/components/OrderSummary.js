@@ -89,7 +89,7 @@ const OrderSummary = () => {
 
     const allItems = () => {
         let allData = cartData.value
-        let sum = 0;
+        let sum = 0; 
         for(let book of allData) {
             sum += book.quantity
         }

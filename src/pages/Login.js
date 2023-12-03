@@ -97,7 +97,7 @@ const Login = () => {
                     setEmailInputError(true);
                     setEmailInputErrorMessage(true);
                 }else{               
-                    setLoginMessage("Invalid Email address or Password. Please try again.");
+                    setLoginMessage("Invalid Email or Password.");
                     setEmailInputError(true);
                     setEmailInputErrorMessage(false);
                     setPasswordInfo(false);
@@ -158,7 +158,7 @@ const Login = () => {
                             }    
                             {   loginMessage ? 
                                     <div className="mt-1 me-5 d-flex">
-                                        <AiOutlineExclamationCircle className="login-alert-mark fs-3 me-1"/>
+                                        <AiOutlineExclamationCircle className="login-alert-mark fs-5 mt-1 me-1"/>
                                         <p className="alert-message">{loginMessage}</p>
                                     </div>
                                 :
