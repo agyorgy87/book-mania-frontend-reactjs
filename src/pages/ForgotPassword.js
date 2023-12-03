@@ -42,8 +42,8 @@ const ForgotPassword = () => {
                 <NavigationBar/>
             </div>
             {openEmailSentSuccessfully && <EmailSentSuccessfullyModal/>}
-            <div className="col-12 col-sm-8 col-md-4 m-auto forgot-password-container rounded shadow mt-5">
-                <div className="d-flex flex-column justify-content-center mb-3 pt-5 ps-5 pe-5">
+            <div className="col-12 col-sm-8 col-md-4 m-auto forgot-password-container rounded shadow p-3 mt-5">
+                <div className="d-flex flex-column justify-content-center mb-3 pt-3 ">
                     <h3 className="text-center pb-2">Reset password</h3>
                     <p className="text-center">Enter your email address and we'll send you an email with a link to reset your password.</p>
                 </div>
@@ -79,7 +79,7 @@ const ForgotPassword = () => {
                 </div>
                 <hr className="mt-4"/>
                 <div className="d-flex justify-content-center">
-                    <Link className="back-to-sign-in-link mb-4 fw-bold" to={"/login"}>Back to sign in</Link>
+                    <Link className="back-to-sign-in-link mb-2 fw-bold" to={"/login"}>Back to sign in</Link>
                 </div>
             </div>
         </div>
