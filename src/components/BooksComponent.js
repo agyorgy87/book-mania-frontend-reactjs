@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 //import { AiFillHeart } from "react-icons/ai";
 //import { useContext } from 'react';
 //import { UserContext } from "../context/UserContext.js";
-import WishListModal from "../modal/WishListModal.js";
+import LoginWarning from "../modal/LoginWarning.js";
 
 const RecommendedBooks = (props) => {
 
@@ -54,10 +54,13 @@ const RecommendedBooks = (props) => {
         }   
     }
 */
+
+    const modalMessage = "?"
+
     return (
         <div className="container"> 
             <div>
-                {openModal && <WishListModal close={closeModal}/>}   
+                {openModal && <LoginWarning close={closeModal} message={modalMessage}/>}   
             </div>
             <div className="row d-flex justify-content-center" >
                 <div className="mb-2">

@@ -8,7 +8,7 @@ import OrderSummary from "../components/OrderSummary.js";
 
 const Cart = () => {  
 
-    const cartData = useContext(CartContext);
+    //const cartData = useContext(CartContext);
 
     const [allQuantity, setAllQuantity] = useState(0);
     

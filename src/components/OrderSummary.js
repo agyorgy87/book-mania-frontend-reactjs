@@ -30,6 +30,8 @@ const OrderSummary = () => {
 
     const [openModal, setOpenModal] = useState(false);
 
+    const modalMessage = "If you want to buy, please log in."
+
     useEffect(() => {
         if(bookMultiple === 0.8) {
             setShowingDiscount(20)
@@ -105,7 +107,7 @@ const OrderSummary = () => {
     return (
         <div className="container-fluid paying-container ps-4 pe-4">
             <div>
-                {openModal && <LoginWarning close={closeModal}/>}  
+                {openModal && <LoginWarning close={closeModal} message={modalMessage}/>}  
             </div>
                 <div className="mt-3 d-flex justify-content-center">
                     <p className="order-summary-text">Order Summary</p>

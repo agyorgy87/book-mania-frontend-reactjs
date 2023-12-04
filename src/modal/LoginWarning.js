@@ -14,7 +14,7 @@ const LoginWarning = (props) => {
                     <button className="modal-close-button" onClick={props.close}><IoMdClose/></button>
                 </div>
                 <div className="d-flex justify-content-center modal-text-container">
-                    <h4 className="modal-text">If you want to buy, please log in.</h4>
+                    <h4 className="modal-text text-center">{props.message}</h4>
                 </div>
                 <div className="d-flex justify-content-center">
                     <button className="navigate-to-login-button" onClick={() => {navigate("/login")}}>Login</button>

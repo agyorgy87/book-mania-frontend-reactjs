@@ -8,7 +8,7 @@ import { useContext } from 'react';
 import { UserContext } from "../context/UserContext.js";
 import { CartContext } from "../context/CartContext";
 import { useParams } from "react-router-dom";
-import WishListModal from "../modal/WishListModal.js";
+import LoginWarning from "../modal/LoginWarning.js";
 
 const BookPriceAndButtons = (props) => {
 
@@ -22,6 +22,7 @@ const BookPriceAndButtons = (props) => {
     const [heartIconFull, setHeartIconFull] = useState(false);
     const [openModal, setOpenModal] = useState(false);
 
+    const modalMessage = "If you want to add this book to your wishlist, please log in."
     
     useEffect(() => {
         if(!userData.value.jwt){
@@ -103,7 +104,7 @@ const BookPriceAndButtons = (props) => {
     return (
         <div className="selected-book-price-container"> 
             <div> 
-                {openModal && <WishListModal close={closeModal}/>}  
+                {openModal && <LoginWarning close={closeModal} message={modalMessage}/>}  
             </div>
             <div className="d-flex flex-column">
                 <div>
