@@ -20,9 +20,8 @@ const BookPriceAndButtons = (props) => {
     const cartData = useContext(CartContext);
 
     const [heartIconFull, setHeartIconFull] = useState(false);
-    const [openModal, setOpenModal] = useState(false);
-
-    const modalMessage = "If you want to add this book to your wishlist, please log in."
+    const [openModal, setOpenModal] = useState(false); 
+    const [modalMessage, setModalMessage] = useState("");
     
     useEffect(() => {
         if(!userData.value.jwt){
@@ -37,11 +36,12 @@ const BookPriceAndButtons = (props) => {
             })
         }
     }, [])
-
+    
 
     const addToWishList = () => {
         if(!userData.value.jwt){
             setOpenModal(true);
+            setModalMessage("If you want to add this book to your wishlist, please log in.")
         }else{ 
             if(heartIconFull) {
                 let body = {userId: userData.value.id, bookId: params.id};
@@ -85,7 +85,8 @@ const BookPriceAndButtons = (props) => {
         let idSearchResultInTheArray = cartDataIdValues.includes(currentBookId);
         
         if(idSearchResultInTheArray) {
-            console.log("this book is already exist in the cart.")
+            setOpenModal(true);
+            setModalMessage("This book is already exist in the cart.");
         }else{
             const bookDetailsCopy = {...bookDetails}
             bookDetailsCopy.quantity = 1
@@ -100,8 +101,9 @@ const BookPriceAndButtons = (props) => {
         setOpenModal(false);
     }
 
+    
 
-    return (
+    return ( 
         <div className="selected-book-price-container"> 
             <div> 
                 {openModal && <LoginWarning close={closeModal} message={modalMessage}/>}  
