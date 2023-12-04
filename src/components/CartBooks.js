@@ -1,5 +1,5 @@
 import "../css/CartBooks.css";
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom'; 
 import { useNavigate } from "react-router-dom";
 import { BiPlus } from "react-icons/bi";
@@ -7,15 +7,19 @@ import { BiMinus } from "react-icons/bi";
 import { MdOutlineRemoveShoppingCart } from "react-icons/md";
 import { useContext } from 'react';
 import { CartContext } from "../context/CartContext";
-//import { NumberOfCartItems } from "../context/NumberOfCartItems";
+import { NumberOfCartItems } from "../context/NumberOfCartItems";
 
 const CartBooks = () => {
 
     let navigate = useNavigate();
 
     const cartData = useContext(CartContext);
-/*   
-    const NumberOfCartData = useContext(NumberOfCartItems);
+
+    const [buttonDisabled, setButtonDisabled] = useState(false);
+
+   
+    /*
+    const numberOfCartData = useContext(NumberOfCartItems);
 
     const allItems = () => {
         let allData = cartData.value
@@ -25,8 +29,10 @@ const CartBooks = () => {
         }
         NumberOfCartData.setValue(sum);
     }
-*/
-    const plusOneBook = (book) => {       
+    */
+
+    const plusOneBook = (book) => {     
+        setButtonDisabled(false);  
         let allCartData = [...cartData.value]
         let foundIndex = allCartData.findIndex(x => x.id === book.id);
         let bookForModification = allCartData[foundIndex];
@@ -39,7 +45,10 @@ const CartBooks = () => {
     }
 
     const minusOneBook = (book) => {
-        let allCartData = [...cartData.value]
+        if(book.quantity < 1) {
+            setButtonDisabled(true);
+        }else{
+            let allCartData = [...cartData.value]
         let foundIndex = allCartData.findIndex(x => x.id === book.id);
         let bookForModification = allCartData[foundIndex];
         allCartData.splice(foundIndex, 1);
@@ -47,7 +56,9 @@ const CartBooks = () => {
         allCartData.splice(foundIndex, 0, bookForModification)
         let stringifiedCartData = JSON.stringify(allCartData)
         localStorage.setItem("cart", stringifiedCartData);   
-        cartData.setValue(allCartData);  
+        cartData.setValue(allCartData); 
+        }
+         
     }
 
     const deleteSelectedBook = (book) => {
@@ -99,6 +110,7 @@ const CartBooks = () => {
                                 <div>
                                     <button 
                                     className="plus-minus-button" 
+                                    disabled={buttonDisabled}
                                     onClick={() => minusOneBook(book)}>
                                     <BiMinus className="plus-minus-icon"/> 
                                     </button>

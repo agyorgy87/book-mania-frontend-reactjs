@@ -96,13 +96,11 @@ const BookPriceAndButtons = (props) => {
         }
     }
 
-
     const closeModal = () => {
         setOpenModal(false);
     }
 
     
-
     return ( 
         <div className="selected-book-price-container"> 
             <div> 

@@ -49,7 +49,7 @@ const ForgotPassword = () => {
                 </div>
                 <div className="ps-5 pe-5">
                     <div className="email-input-container">
-                    <label htmlFor="InputEmail" className="form-label email-password-label">Email</label>
+                        <label htmlFor="InputEmail" className="form-label email-password-label">Email</label>
                             <input 
                                 autoFocus 
                                 type="email" 
