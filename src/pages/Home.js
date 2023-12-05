@@ -47,9 +47,9 @@ const Home = () => {
                 </div>
             </div>
             */}
-            <div>
+            <div className="container">
                 <div>
-                    <BooksComponent text="Newness" list={newness}/>
+                    <BooksComponent text="Newness" list={newness}/> 
                 </div>
             </div>
             <div className="container">

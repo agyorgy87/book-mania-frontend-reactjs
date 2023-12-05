@@ -8,10 +8,11 @@ import { CartContext } from "../context/CartContext";
 import NavigationBar from '../components/NavigationBar.js';
 import { Link } from 'react-router-dom'; 
 import { CgShoppingCart } from "react-icons/cg";
+import BooksComponent from "../components/BooksComponent.js";
 
 
 
-const WishList = () => { 
+const WishList = () => {  
 
   let navigate = useNavigate();
 
@@ -29,8 +30,8 @@ const WishList = () => {
         })
   }, [])
 
-    const wishListAddToCart = (book) => {
-        
+/*
+    const wishListAddToCart = (book) => {  
         let allData = cartData.value;
         let allCartDataId = allData.map(obj => obj.id);
 
@@ -44,7 +45,7 @@ const WishList = () => {
             localStorage.setItem("cart", JSON.stringify(cartDataCopy));
         }
     }
-
+*/
 
   return (
     <div className="wishlist-page">
@@ -52,9 +53,12 @@ const WishList = () => {
             <NavigationBar/>
         </div>
         <div className="container">
-                <div className="mb-3">
-                    <h1>Wishlist</h1> 
-                </div>
+            <div>
+                <BooksComponent text="Wish list" list={userWishList}/> 
+            </div>
+        </div>
+        {/* 
+        <div className="container">
                 <div className="row mt-5">
                     { userWishList.map((book, index) => (
                         <div className="col-6 col-sm-6 col-md-6 col-lg-3 mb-5 d-flex flex-column" key={"newness-div" + index}>
@@ -95,6 +99,7 @@ const WishList = () => {
                     }
                 </div>
             </div>  
+            */}
     </div>
   )
 }
