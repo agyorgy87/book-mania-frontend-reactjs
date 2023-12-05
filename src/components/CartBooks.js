@@ -49,14 +49,14 @@ const CartBooks = () => {
             setButtonDisabled(true);
         }else{
             let allCartData = [...cartData.value]
-        let foundIndex = allCartData.findIndex(x => x.id === book.id);
-        let bookForModification = allCartData[foundIndex];
-        allCartData.splice(foundIndex, 1);
-        bookForModification["quantity"] = bookForModification["quantity"] - 1;
-        allCartData.splice(foundIndex, 0, bookForModification)
-        let stringifiedCartData = JSON.stringify(allCartData)
-        localStorage.setItem("cart", stringifiedCartData);   
-        cartData.setValue(allCartData); 
+            let foundIndex = allCartData.findIndex(x => x.id === book.id);
+            let bookForModification = allCartData[foundIndex];
+            allCartData.splice(foundIndex, 1);
+            bookForModification["quantity"] = bookForModification["quantity"] - 1;
+            allCartData.splice(foundIndex, 0, bookForModification)
+            let stringifiedCartData = JSON.stringify(allCartData)
+            localStorage.setItem("cart", stringifiedCartData);   
+            cartData.setValue(allCartData); 
         }
          
     }
@@ -100,13 +100,13 @@ const CartBooks = () => {
                                 <p className="cart-book-author-name mt-3">{book.author_name}</p>
                             </div>
                         </div>                                       
-                        <div className="d-flex flex-column pt-2 pe-3 price-quantity-buttons-remove-button-container">
+                        <div className="d-flex flex-column pt-2 pe-3">
                             <div className="d-flex flex-row-reverse mb-3">
                                 <div>
                                     <h4 className="cart-book-price">{(book.price * book.quantity).toFixed(2)} $</h4>
                                 </div>                                                 
                             </div> 
-                            <div className="d-flex mb-3">                                                                           
+                            <div className="d-flex align-self-end mb-3 ">                                                                           
                                 <div>
                                     <button 
                                     className="plus-minus-button" 
