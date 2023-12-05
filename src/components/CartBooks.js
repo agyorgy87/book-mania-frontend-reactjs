@@ -126,7 +126,7 @@ const CartBooks = () => {
                                     </button>
                                 </div> 
                             </div>                                         
-                            <div className="d-flex flex-row-reverse">
+                            <div className="d-flex align-self-end">
                                 <div>
                                     <button className="remove-book-button" onClick={() => deleteSelectedBook(book)}><MdOutlineRemoveShoppingCart className="plus-minus-icon"/></button>
                                 </div>
