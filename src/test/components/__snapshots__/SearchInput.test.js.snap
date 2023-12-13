@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test with function 1`] = `
+<div
+  className="input-group mt-3 search-input-container"
+>
+  <button
+    className="btn btn-lg search-button"
+    type="button"
+  >
+    <i
+      className="bi bi-search"
+    />
+  </button>
+  <input
+    className="form-control search-input"
+    id="example-search-input"
+    onChange={[Function]}
+    placeholder="Search..."
+    type="search"
+  />
+</div>
+`;

@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test filter props with array 1`] = `
+<div>
+  <li
+    className="list-group-item name-of-the-list active border-0 rounded"
+  />
+  <li
+    className="list-group-item list-group-item-action border-0 options-for-filtering"
+    onClick={[Function]}
+  >
+    Under 10$
+  </li>
+  <li
+    className="list-group-item list-group-item-action border-0 options-for-filtering"
+    onClick={[Function]}
+  >
+    Between 11$ and 20$
+  </li>
+  <li
+    className="list-group-item list-group-item-action border-0 options-for-filtering"
+    onClick={[Function]}
+  >
+    Between 21$ and 30$
+  </li>
+  <li
+    className="list-group-item list-group-item-action border-0 options-for-filtering"
+    onClick={[Function]}
+  >
+    Between 31$ and 40$
+  </li>
+  <li
+    className="list-group-item list-group-item-action border-0 options-for-filtering"
+    onClick={[Function]}
+  >
+    Over 40$
+  </li>
+</div>
+`;
+
+exports[`test filter props with empty array 1`] = `
+<div>
+  <li
+    className="list-group-item name-of-the-list active border-0 rounded"
+  />
+</div>
+`;
+
+exports[`test with empty string 1`] = `
+<div>
+  <li
+    className="list-group-item name-of-the-list active border-0 rounded"
+  />
+</div>
+`;
+
+exports[`test with null 1`] = `
+<div>
+  <li
+    className="list-group-item name-of-the-list active border-0 rounded"
+  />
+</div>
+`;
+
+exports[`test with something in the text 1`] = `
+<div>
+  <li
+    className="list-group-item name-of-the-list active border-0 rounded"
+  >
+    abcde
+  </li>
+</div>
+`;

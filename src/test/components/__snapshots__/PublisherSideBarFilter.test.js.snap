@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test with empty list 1`] = `
+<div>
+  <li
+    className="list-group-item name-of-the-list active border-0 rounded"
+  >
+    Publishers
+  </li>
+</div>
+`;
+
+exports[`test with options list 1`] = `
+<div>
+  <li
+    className="list-group-item name-of-the-list active border-0 rounded"
+  >
+    Publishers
+  </li>
+  <li
+    className="list-group-item list-group-item-action border-0 options-for-filtering"
+    onClick={[Function]}
+  >
+    dog
+  </li>
+</div>
+`;
+
+exports[`test with undefined 1`] = `
+<div>
+  <li
+    className="list-group-item name-of-the-list active border-0 rounded"
+  >
+    Publishers
+  </li>
+</div>
+`;
