@@ -1,0 +1,20 @@
+import React from 'react'
+
+const SearchInput = ( {onChange} ) => {
+    return (
+        <div className="input-group mt-3 search-input-container">
+            <button className="btn btn-lg search-button" type="button">
+                <i className="bi bi-search"></i>
+            </button>
+                <input 
+                    placeholder="Search..."
+                    className="form-control search-input" 
+                    type="search" 
+                    id="example-search-input"
+                    onChange={(e) => onChange(e.target.value)}
+                />                           
+        </div> 
+  )
+}
+
+export default SearchInput

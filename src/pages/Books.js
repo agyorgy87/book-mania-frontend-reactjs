@@ -8,6 +8,10 @@ import { useContext } from 'react';
 import { CartContext } from "../context/CartContext";
 import { Link } from 'react-router-dom';
 import Select from 'react-select';
+import SideBarFilters from '../components/SideBarFilters.js';
+import SearchInput from '../components/SearchInput.js';
+import GenreSideBarFilter from '../components/GenreSideBarFilter.js';
+import PublisherSideBarFilter from '../components/PublisherSideBarFilter.js';
 
 const Books = () => {
 
@@ -200,7 +204,6 @@ const Books = () => {
     }
 
     const callPublisherWithList = (publisherName) => {
-
         axios.get(`http://localhost:4000/get-all-by-publishers/${publisherName}`)
             .then((response) => {
             setVisibleBooks(response.data);
@@ -245,6 +248,28 @@ const Books = () => {
         cartData.setValue(cartDataCopy);
         localStorage.setItem("cart", JSON.stringify(cartDataCopy));
     }
+
+    const sideBarPriceFilters = [
+        {filterName: "Under 10$", filterFunction: () => callPriceWithList(0,10)},
+        {filterName: "Between 11$ and 20$", filterFunction: () => callPriceWithList(11,20)},
+        {filterName: "Between 21$ and 30$", filterFunction: () => callPriceWithList(21,30)},
+        {filterName: "Between 31$ and 40$", filterFunction: () => callPriceWithList(31,40)},
+        {filterName: "Over 40$", filterFunction: () => callPriceWithList(40,999)},
+    ]
+
+    const sideBarDateFilters = [
+        {filterName: "Before 2000", filterFunction: () => callReleaseDateWithList(0,2000)},
+        {filterName: "Between 2001 and 2010", filterFunction: () => callReleaseDateWithList(2001,2010)},
+        {filterName: "Between 2011 and 2020", filterFunction: () => callReleaseDateWithList(2011,2020)},
+        {filterName: "After 2020", filterFunction: () => callReleaseDateWithList(2020,9999)},
+    ]     
+
+    const sideBarOtherFilter = [
+        {filterName: "Cheapest books", filterFunction: () => callSpecialSearchWithList("price_name","asc")},
+        {filterName: "Expensive books", filterFunction: () => callSpecialSearchWithList("price_name","desc")},
+        {filterName: "ABC order", filterFunction: () => callSpecialSearchWithList("title_name","asc")},
+        {filterName: "Number of Page in ascending oder", filterFunction: () => callSpecialSearchWithList("number_of_page_name","asc")},
+    ]
     
     return(
         <div className="book-page">
@@ -261,47 +286,25 @@ const Books = () => {
             <div className="row">
                     <div className="col-md-3 col-lg-3 col-xl-3 col-xxl-2 side-bar d-none d-sm-none d-md-block">
                         <ul className="list-group mt-4">
-                            <li className="list-group-item name-of-the-list active border-0 rounded ">Categories</li>
-                            <li className="list-group-item list-group-item-action border-0 options-for-filtering" onClick={getAllBooks}>All</li> 
-                            {
-                                allGenre.map((genre, index) => (
-                                    <li key={"allgenre-list-div" + index} className="list-group-item list-group-item-action border-0 options-for-filtering" onClick={() => callGenreWithList(genre.genre_type)}>{genre.genre_type}</li>
-                                ))
-                            }                                               
+                            <GenreSideBarFilter options={allGenre} onFilterClick={callGenreWithList}/>                                         
                         </ul>
                         <ul className="list-group mt-4">
-                            <li className="list-group-item name-of-the-list active border-0 rounded">Price</li>
-                            <li className="list-group-item list-group-item-action border-0 options-for-filtering" onClick={() => callPriceWithList(0, 10)}>Under 10$</li>
-                            <li className="list-group-item list-group-item-action border-0 options-for-filtering" onClick={() => callPriceWithList(11, 20)}>Between 11$ and 20$</li>
-                            <li className="list-group-item list-group-item-action border-0 options-for-filtering" onClick={() => callPriceWithList(21, 30)}>Between 21$ and 30$</li>
-                            <li className="list-group-item list-group-item-action border-0 options-for-filtering" onClick={() => callPriceWithList(31, 40)}>Between 31$ and 40$</li>
-                            <li className="list-group-item list-group-item-action border-0 options-for-filtering" onClick={() => callPriceWithList(40, 9999)}>Over 40$</li>                                              
+                            <SideBarFilters text="Price" filter={sideBarPriceFilters}/>
                         </ul>
                         <ul className="list-group mt-4">
-                            <li className="list-group-item name-of-the-list active border-0 rounded">Release Date</li>
-                            <li className="list-group-item list-group-item-action border-0 options-for-filtering" onClick={() => callReleaseDateWithList(0, 2000)}>Before 2000</li>
-                            <li className="list-group-item list-group-item-action border-0 options-for-filtering" onClick={() => callReleaseDateWithList(2001, 2010)}>Between 2001 and 2010</li>
-                            <li className="list-group-item list-group-item-action border-0 options-for-filtering" onClick={() => callReleaseDateWithList(2011, 2020)}>Between 2011 and 2020</li>
-                            <li className="list-group-item list-group-item-action border-0 options-for-filtering" onClick={() => callReleaseDateWithList(2020, 9999)}>After 2020</li>                       
+                            <SideBarFilters text="Release Date" filter={sideBarDateFilters}/>
                         </ul>
                         <ul className="list-group mt-4">
-                            <li className="list-group-item name-of-the-list active border-0 rounded">Special</li>
-                            <li className="list-group-item list-group-item-action border-0 options-for-filtering" onClick={() => callSpecialSearchWithList("title_name", "asc")}>ABC order</li>
-                            <li className="list-group-item list-group-item-action border-0 options-for-filtering" onClick={() => callSpecialSearchWithList("number_of_page_name", "asc")}>Number of pages in ascending order</li>                       
-                            <li className="list-group-item list-group-item-action border-0 options-for-filtering" onClick={() => callSpecialSearchWithList("price_name", "asc")}>From the cheapest book</li>
-                            <li className="list-group-item list-group-item-action border-0 options-for-filtering" onClick={() => callSpecialSearchWithList("price_name", "desc")}>From the most expensive book</li>
-                            
+                            <SideBarFilters text="Other" filter={sideBarOtherFilter}/>
                         </ul>
                         <ul className="list-group mt-4">
-                            <li className="list-group-item name-of-the-list active border-0 rounded">Publishers</li>
-                            {
-                                allPublisher.map((publisher, index) => (
-                                    <li key={"all-publisher-div" + index} className="list-group-item list-group-item-action border-0 options-for-filtering" onClick={() => callPublisherWithList(publisher.publisher_name)}>{publisher.publisher_name}</li>
-                                ))
-                            }
+                            <PublisherSideBarFilter options={allPublisher} onFilterClick={callPublisherWithList}/> 
                         </ul>
                     </div>
                 <div className="col-md-9 col-lg-9 col-xl-9 col-xxl-10">
+                    <div className="row d-flex justify-content-center mb-3 mt-4 ">
+                        <SearchInput onChange={callAllTitlesAndAuthors} />                     
+                    </div>
                     <div className="d-block d-md-none d-flex flex-column align-items-center ">
                         <div className="select-div mt-3">
                                 <Select 
@@ -349,22 +352,6 @@ const Books = () => {
                                 />                                                  
                         </div>
                     </div> 
-
-                    <div className="row d-flex justify-content-center mb-5 mt-4 ">
-                        <div className="input-group mt-3 search-input-container">
-                            <button className="btn btn-lg search-button" type="button">
-                                <i className="bi bi-search"></i>
-                            </button>
-                            <input 
-                            placeholder="Search..."
-                            className="form-control search-input" 
-                            type="search" 
-                            id="example-search-input"
-                            onChange={(e) => callAllTitlesAndAuthors(e.target.value)}
-                            />                           
-                        </div>                       
-                    </div>
-
                     <div className="container search-result-container">   
                         <div className="row">
                             {   showResult ?
@@ -418,7 +405,6 @@ const Books = () => {
                 </div>
             </div> 
         </div>
-       {/* )}  */}
     </div>   
     )
 }
