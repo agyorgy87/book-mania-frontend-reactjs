@@ -50,7 +50,7 @@ const NavigationBar = () => {
                                 </li>
                                 :
                                 null
-                            }
+                            } 
                             {
                                 userData.value.jwt ?
                                 <li className="nav-item navigation-menus">
@@ -61,7 +61,7 @@ const NavigationBar = () => {
                                     <Link to={"/login"} className="nav-link fs-4 login-logout-button">Sign in</Link>
                                 </li>
                             }
-                            <li className="nav-item navigation-menus cart-container me-3"> 
+                            <li className="nav-item navigation-menus"> 
                                 <Link to={"/cart"} className="nav-link">
                                     <CgShoppingCart className="fs-2"/>
                                     {

@@ -42,15 +42,16 @@
     width: 8rem !important;
     border: none !important;
     background-color: #f9faff;
-
-}
-
-.cart-contianer {
-    width: 70px !important;
 }
 
 .cart-content-value {
     background-color: #1e7b85 !important;
+}
+
+@media (max-width:990px) {
+    .login-logout-button  {
+        text-align: left;
+    }
 }
 
 
