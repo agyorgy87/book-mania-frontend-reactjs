@@ -11,7 +11,7 @@ const SearchInput = ( {onChange} ) => {
                     className="form-control search-input" 
                     type="search" 
                     id="example-search-input"
-                    onChange={(e) => onChange(e.target.value)}
+                    onChange={(e) => onChange(e.target.value)} 
                 />                           
         </div> 
   )

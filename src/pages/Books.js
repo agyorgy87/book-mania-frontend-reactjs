@@ -28,6 +28,20 @@ const Books = () => {
     const [showResult, setShowResult] = useState(false);
     const [searchResult, setSearchResult] = useState("");
 
+    const [genreSelect, setGenreSelect] = useState();
+    const [priceSelect, setPriceSelect] = useState();
+    const [releaseDateSelect, setReleaseDateSelect] = useState();
+    const [specialSearchSelect, setSpecialSearchSelect] = useState();
+    const [publisherSelect, setPublisherSelect] = useState();
+
+    /*
+    setGenreSelect("");
+    setPriceSelect("");
+    setReleaseDateSelect("");
+    setSpecialSearchSelect("");
+    setPublisherSelect("");
+    */
+
     //const [isLoading, setIsLoading] = useState(true);
 /*
     useEffect(() => {
@@ -95,13 +109,26 @@ const Books = () => {
         { value: "IT", label: "IT" }
     ];
 
+
+
     const callGenreWithSelect = (selectedOption) => {
         if(selectedOption.value === "allBooks"){
-            getAllBooks();
+            setGenreSelect(selectedOption);
+            setPriceSelect("");
+            setReleaseDateSelect("");
+            setSpecialSearchSelect("");
+            setPublisherSelect("");
+            
         }else{
             axios.get(`http://localhost:4000/get-all-by-genre/"${selectedOption.value}"`)
             .then((response) => {
-            setVisibleBooks(response.data);
+            setVisibleBooks(response.data);          
+            setGenreSelect(selectedOption);
+            setPriceSelect("");
+            setReleaseDateSelect("");
+            setSpecialSearchSelect("");
+            setPublisherSelect("");
+        
         })
         }  
         setShowResult(false);  
@@ -138,6 +165,12 @@ const Books = () => {
         })
         setShowResult(false);
         scrollToUp();   
+
+        setGenreSelect("");
+        setPriceSelect(selectedOption);
+        setReleaseDateSelect("");
+        setSpecialSearchSelect("");
+        setPublisherSelect("");
     }
 
     const callReleaseDateWithList = (fromDate, toDate) => {
@@ -168,6 +201,12 @@ const Books = () => {
             setVisibleBooks(response.data);     
             })    
         setShowResult(false);
+
+        setGenreSelect("");
+        setPriceSelect("");
+        setReleaseDateSelect(selectedOption);
+        setSpecialSearchSelect("");
+        setPublisherSelect("");
     }
 
     const callSpecialSearchWithList = (selectedSpecialSearch, selectedSpecialOrder) => {
@@ -199,8 +238,14 @@ const Books = () => {
             .then((response) => {
             setVisibleBooks(response.data);  
               
-            })    
+        })    
         setShowResult(false);
+
+        setGenreSelect("");
+        setPriceSelect("");
+        setReleaseDateSelect("");
+        setSpecialSearchSelect(selectedOption);
+        setPublisherSelect("");
     }
 
     const callPublisherWithList = (publisherName) => {
@@ -211,7 +256,6 @@ const Books = () => {
         setShowResult(false);
         scrollToUp();
     }
-
 
     const publishersOptions = [
         { value: "Ad Astra", label: "Ad Astra" },
@@ -229,6 +273,12 @@ const Books = () => {
         }) 
         setShowResult(false);  
         scrollToUp();
+
+        setGenreSelect("");
+        setPriceSelect("");
+        setReleaseDateSelect("");
+        setSpecialSearchSelect("");
+        setPublisherSelect(selectedOption);
     }
 
 
@@ -303,7 +353,7 @@ const Books = () => {
                     </div>
                 <div className="col-md-9 col-lg-9 col-xl-9 col-xxl-10">
                     <div className="row d-flex justify-content-center mb-3 mt-4 ">
-                        <SearchInput onChange={callAllTitlesAndAuthors} />                     
+                        <SearchInput onChange={callAllTitlesAndAuthors} />                      
                     </div>
                     <div className="d-block d-md-none d-flex flex-column align-items-center ">
                         <div className="select-div mt-3">
@@ -313,6 +363,7 @@ const Books = () => {
                                     placeholder="All Categories"                                
                                     onChange={callGenreWithSelect}
                                     options={categoriesOptions}
+                                    value={genreSelect}
                                 />                                                  
                         </div>
                         <div className="select-div mt-3">
@@ -322,6 +373,7 @@ const Books = () => {
                                     placeholder="Price"                                
                                     onChange={callPriceWithSelect}
                                     options={priceOptions}
+                                    value={priceSelect}
                                 />                                                  
                         </div>
                         <div className="select-div mt-3">
@@ -331,6 +383,7 @@ const Books = () => {
                                     placeholder="Release Date"                                
                                     onChange={callReleaseDateWithSelect}
                                     options={releaseDateOptions}
+                                    value={releaseDateSelect}
                                 />                                                  
                         </div>
                         <div className="select-div mt-3">
@@ -340,6 +393,7 @@ const Books = () => {
                                     placeholder="Special"                                
                                     onChange={callSpecialSearchWithSelect}
                                     options={specialOptions}
+                                    value={specialSearchSelect}
                                 />                                                  
                         </div>
                         <div className="select-div mt-3">
@@ -349,6 +403,7 @@ const Books = () => {
                                     placeholder="Publishers"                                
                                     onChange={callPublishersWithSelect}
                                     options={publishersOptions}
+                                    value={publisherSelect}
                                 />                                                  
                         </div>
                     </div> 

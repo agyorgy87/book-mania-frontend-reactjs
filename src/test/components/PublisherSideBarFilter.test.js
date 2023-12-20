@@ -20,7 +20,7 @@ test("test with options list", () => {
 
 test("test with undefined", () => {
     let tree = renderer
-    .create(<PublisherSideBarFilter options={undefined} filter={() => {}}/>)
+    .create(<PublisherSideBarFilter options={undefined} filter={() => { }}/>)
     .toJSON()
     expect(tree).toMatchSnapshot();
 });
