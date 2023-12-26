@@ -34,14 +34,6 @@ const Books = () => {
     const [specialSearchSelect, setSpecialSearchSelect] = useState();
     const [publisherSelect, setPublisherSelect] = useState();
 
-    /*
-    setGenreSelect("");
-    setPriceSelect("");
-    setReleaseDateSelect("");
-    setSpecialSearchSelect("");
-    setPublisherSelect("");
-    */
-
     //const [isLoading, setIsLoading] = useState(true);
 /*
     useEffect(() => {
@@ -332,7 +324,7 @@ const Books = () => {
                 Loading...
                 </div>
             ) : (*/}
-            <div className="container-fluid">
+            <div className="container-fluid"> 
             <div className="row">
                     <div className="col-md-3 col-lg-3 col-xl-3 col-xxl-2 side-bar d-none d-sm-none d-md-block">
                         <ul className="list-group mt-4">

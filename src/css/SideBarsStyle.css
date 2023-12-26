@@ -1,0 +1,13 @@
+.name-of-the-list {
+    background-color: #1e7b85 !important;
+}
+
+.options-for-filtering {
+    background-color: #ffffff !important;
+}
+
+.options-for-filtering:hover{
+    border-radius: 5px;
+    color: #1e7b85 !important;
+    background-color: #f6f6f6 !important;
+}
