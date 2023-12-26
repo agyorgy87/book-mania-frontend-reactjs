@@ -2,6 +2,7 @@ import '../css/SearchInput.css';
 import React from 'react';
 
 const SearchInput = ( {onChange} ) => {
+
     return (
         <div className="input-group mt-3 search-input-container">
             <button className="btn btn-lg search-button" type="button">

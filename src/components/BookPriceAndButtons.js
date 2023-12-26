@@ -65,7 +65,6 @@ const BookPriceAndButtons = (props) => {
         }           
     }
 
-
     const SelectedBookAddToCart = () => { 
 
         let currentBookId = bookDetails.id;

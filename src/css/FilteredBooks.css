@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap');
+
+.filtered-book-card {
+    height: 23rem !important;
+    width: 14rem !important;
+    margin-right: 3rem !important;
+    border: 1px solid #e6e9f1;
+    background: linear-gradient(180deg, #eaeee7 40%, #ffffff 40%);
+    position: relative;
+}
+
+.filtered-book-pics {
+    height: 130px;
+    cursor: pointer; 
+}
+
+.filtered-book-title { 
+    color: black;
+    font-size: 0.8rem;
+    font-weight: 500;
+    font-family: 'Open Sans', sans-serif;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.filtered-book-title:hover {
+    color: black;
+}
+
+.filtered-author-name {
+    color: #1e7b85;
+    font-size: 0.7rem;
+    font-weight: 600;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.filtered-book-price-heart-container {
+    width: 85%;
+    position: absolute;
+    bottom: 0;
+}
+
+.filtered-value-of-the-book {
+    color: black;
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+/*
+.heart-button {
+    border: none;
+    background: #ffffff;
+    font-size: 2rem;
+    transform: translateY(-15px); 
+}
+
+.book-heart-icon {
+    color: #596280;
+}
+
+.book-heart-icon-full {
+    color:#1e7b85
+}
+*/
+
+
+/*
+@media (max-width:1400px) {
+    .text-of-recommended-books {
+        margin-left: 3.5rem;
+    }
+}
+
+@media (max-width:1200px) {
+    .text-of-recommended-books {
+        margin-left: 8rem;
+    }
+}
+
+@media (max-width:992px) {
+    .text-of-recommended-books {
+        margin-left: 0.5rem;
+    }
+}
+
+@media (max-width:768px) {
+    .text-of-recommended-books {
+        margin-left: 5rem;
+    }
+}
+
+@media (max-width:576px) {
+    .text-of-recommended-books {
+        margin-left: 6rem;
+    }
+}
+
+@media (max-width:480px) {
+    .text-of-recommended-books {
+        margin-left: 4.5rem;
+    }
+    .book-card {
+        margin-right: 0rem !important;
+    }
+}
+
+@media (max-width:380px) {
+    .text-of-recommended-books {
+        margin-left: 1.5rem;
+    }
+}
+*/
