@@ -1,4 +1,5 @@
-import React from 'react'
+import '../css/SearchInput.css';
+import React from 'react';
 
 const SearchInput = ( {onChange} ) => {
     return (
@@ -7,7 +8,6 @@ const SearchInput = ( {onChange} ) => {
                 <i className="bi bi-search"></i>
             </button>
                 <input 
-                    placeholder="Search..."
                     className="form-control search-input" 
                     type="search" 
                     id="example-search-input"
@@ -17,4 +17,4 @@ const SearchInput = ( {onChange} ) => {
   )
 }
 
-export default SearchInput
+export default SearchInput;

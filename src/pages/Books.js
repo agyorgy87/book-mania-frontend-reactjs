@@ -48,6 +48,12 @@ const Books = () => {
         getAllPublisher();
     }, [])
 
+    useEffect(() => {
+        if(searchResult === "") {
+            setShowResult(false);
+        }
+    },[searchResult]);
+
     const scrollToUp = () => {
         window.scrollTo(0, 0)
       }
@@ -344,9 +350,17 @@ const Books = () => {
                         </ul>
                     </div>
                 <div className="col-md-9 col-lg-9 col-xl-9 col-xxl-10">
-                    <div className="row d-flex justify-content-center mb-3 mt-4 ">
+                    <div className="row d-flex justify-content-center mb-4 mt-4">
                         <SearchInput onChange={callAllTitlesAndAuthors} />                      
                     </div>
+                    {   
+                        showResult ?                  
+                            <div className="mb-3">    
+                                <h1 className="search-result-books d-flex">Results for "{searchResult}"</h1>             
+                            </div> 
+                        :
+                        null
+                    } 
                     <div className="d-block d-md-none d-flex flex-column align-items-center ">
                         <div className="select-div mt-3">
                                 <Select 
@@ -401,13 +415,7 @@ const Books = () => {
                     </div> 
                     <div className="container search-result-container">   
                         <div className="row">
-                            {   showResult ?
-                                <div className="mb-3">    
-                                    <h1 className="search-result-books d-flex">Results for "{searchResult}"</h1>             
-                                </div> 
-                                :
-                                null
-                            } 
+                            
                             <div className="row">
                                 { visibleBooks.map((book, index) => (
                                     <div className="col-6 col-sm-6 col-md-4 col-lg-4 col-xl-3 mb-5 col-xl-ps-5" key={"visiblediv" + index}>

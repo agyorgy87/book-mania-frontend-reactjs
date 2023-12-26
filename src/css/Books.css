@@ -6,6 +6,7 @@
     background-color: #ffffff;
 } 
 
+/*
 .search-input-container {
     width: 80% !important;
 }
@@ -29,7 +30,7 @@
     box-shadow: none !important;
     outline: none !important;
 }
-
+*/
 .btn {
     background-color: #fbfbfb !important;
 }
