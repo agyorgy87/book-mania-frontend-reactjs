@@ -1,8 +1,8 @@
 import '../css/Cart.css';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import NavigationBar from '../components/NavigationBar.js';
-import { useContext } from 'react';
-import { CartContext } from "../context/CartContext";
+//import { useContext } from 'react';
+//import { CartContext } from "../context/CartContext";
 import CartBooks from "../components/CartBooks.js";
 import OrderSummary from "../components/OrderSummary.js";
 
@@ -23,7 +23,7 @@ const Cart = () => {
     },[allQuantity]);
 */
 
-    return (      
+    return (       
         <div className="cart-page">  
             <div className="fixed-top">
                 <NavigationBar/>
@@ -44,7 +44,6 @@ const Cart = () => {
                     </div>
                 </div>
             </div>
-
         </div>
     )
 }

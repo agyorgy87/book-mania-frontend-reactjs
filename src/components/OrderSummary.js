@@ -7,8 +7,11 @@ import { CartContext } from "../context/CartContext";
 import { UserContext } from "../context/UserContext";
 import axios from "axios";
 import LoginWarning from "../modal/LoginWarning.js";
+import { useNavigate } from "react-router-dom";
 
 const OrderSummary = () => {
+
+    let navigate = useNavigate();
 
     const cartData = useContext(CartContext);
 
@@ -67,16 +70,34 @@ const OrderSummary = () => {
                 }
         })
     }
-
+/*
     const proceedToCheckout = () => {
         if(userData.value.jwt){
             axios.get(`http://localhost:4000/set-coupon-used/${couponCodeInput}`)
             .then(response => {
                 console.log(response);               
-                //navigate to payment page
+                navigate("/checkout");
+                console.log("lefut");
         })  
         }else{
             setOpenModal(true);
+        }
+    }
+*/
+
+    const proceedToCheckout = () => {
+
+        if(!userData.value.jwt){
+            setOpenModal(true);
+        }
+        else if(userData.value.jwt && couponCodeInput !== ""){
+            axios.get(`http://localhost:4000/set-coupon-used/${couponCodeInput}`)
+            .then(response => {
+                console.log(response);               
+        })
+        }
+        else if(userData.value.jwt) {
+            navigate("/checkout");
         }
     }
 
