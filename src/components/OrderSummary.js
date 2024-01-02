@@ -5,6 +5,7 @@ import { BsFillEmojiFrownFill } from "react-icons/bs";
 import { useContext } from 'react';
 import { CartContext } from "../context/CartContext";
 import { UserContext } from "../context/UserContext";
+import { TotalPriceContext } from "../context/TotalPriceContext.js";
 import axios from "axios";
 import LoginWarning from "../modal/LoginWarning.js";
 import { useNavigate } from "react-router-dom";
@@ -17,6 +18,8 @@ const OrderSummary = () => {
 
     const userData = useContext(UserContext);
 
+    const totalPriceData = useContext(TotalPriceContext);
+
     const couponCodeInputRef = useRef(null);
 
     const [totatPriceInOrderSummary, setTotalPriceInOrderSummary] = useState(0);
@@ -24,26 +27,38 @@ const OrderSummary = () => {
     const [couponCodeValidationMessage, setCouponCodeValidationMessage] = useState(false);
 
     const [couponCodeIsCorrectOrIncorrect, setCouponCodeIsCorrectOrIncorrect] = useState(true);
-    
+
     const [couponCodeInput, setCouponCodeInput] = useState("");
 
     const [bookMultiple, setBookMultiple] = useState(1);
 
     const [showingDiscount, setShowingDiscount] = useState(0);
 
+    const [discountedPrice, setDiscountedPrice] = useState(0);
+
     const [openModal, setOpenModal] = useState(false);
 
-    const modalMessage = "If you want to buy, please log in."
+    const modalMessage = "If you want to buy, please log in.";
+
+    let allPriceInOneArray = {
+        totalPriceKey: totatPriceInOrderSummary,
+        discountKey: showingDiscount,
+        discountedPriceKey: discountedPrice
+    };
 
     useEffect(() => {
         if(bookMultiple === 0.8) {
-            setShowingDiscount(20)
+            setShowingDiscount(20)   
         }else if(bookMultiple === 0.7){
             setShowingDiscount(30)
         }else if(bookMultiple === 0.5){
             setShowingDiscount(50)
         }
     }, [bookMultiple]);
+
+    useEffect(() => {
+        setDiscountedPrice((bookMultiple * totatPriceInOrderSummary).toFixed(2));
+    },[bookMultiple, totatPriceInOrderSummary]);
 
     useEffect(() => {
         if(couponCodeInput.length === 0) {
@@ -70,23 +85,8 @@ const OrderSummary = () => {
                 }
         })
     }
-/*
-    const proceedToCheckout = () => {
-        if(userData.value.jwt){
-            axios.get(`http://localhost:4000/set-coupon-used/${couponCodeInput}`)
-            .then(response => {
-                console.log(response);               
-                navigate("/checkout");
-                console.log("lefut");
-        })  
-        }else{
-            setOpenModal(true);
-        }
-    }
-*/
 
     const proceedToCheckout = () => {
-
         if(!userData.value.jwt){
             setOpenModal(true);
         }
@@ -95,8 +95,11 @@ const OrderSummary = () => {
             .then(response => {
                 console.log(response);               
         })
+        totalPriceData.setValue(allPriceInOneArray);
+        navigate("/checkout");
         }
         else if(userData.value.jwt) {
+            totalPriceData.setValue(allPriceInOneArray);
             navigate("/checkout");
         }
     }
@@ -124,6 +127,8 @@ const OrderSummary = () => {
     }
 
     let allQuantity = allItems(); 
+
+    console.log(allPriceInOneArray);
 
     return (
         <div className="container-fluid paying-container ps-4 pe-4">
@@ -161,7 +166,7 @@ const OrderSummary = () => {
                                         <p className="discounted-price-text">Discounted Price:</p> 
                                     </div>
                                     <div>
-                                        <p className="discounted-price">{(bookMultiple * totatPriceInOrderSummary).toFixed(2)} $</p>
+                                        <p className="discounted-price">{discountedPrice} $</p>
                                     </div>
                                 </div>                                  
                             </div>
@@ -209,4 +214,4 @@ const OrderSummary = () => {
     )
 }
 
-export default OrderSummary
+export default OrderSummary;

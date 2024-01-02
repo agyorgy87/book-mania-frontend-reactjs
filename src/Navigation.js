@@ -12,6 +12,7 @@ import ForgotPassword from "./pages/ForgotPassword.js";
 import Checkout from "./pages/Checkout.js";
 import { UserContext } from "./context/UserContext.js";
 import { CartContext } from "./context/CartContext.js";
+import { TotalPriceContext } from "./context/TotalPriceContext.js";
 
 const Navigation = () => {
 
@@ -39,30 +40,36 @@ const Navigation = () => {
         cartObj = JSON.parse(cartDetails);
     }
 
+    let totalPriceObj;
+
     const [userData, setUserData] = useState(obj);
 
     const [cartData, setCartData] = useState(cartObj);
 
+    const [totalPriceData, setTotalPriceData] = useState(totalPriceObj)
+
     return(
         <div>
-                <UserContext.Provider value={{value:userData, setValue:setUserData}}>
-                    <CartContext.Provider value={{value:cartData, setValue:setCartData}}>
-                    <BrowserRouter>
-                        <Routes>
-                            <Route path="/" element={<Home/>} />
-                            <Route path="/books" element={<Books/>} />
-                            <Route path="/contact" element={<Contact/>} />
-                            <Route path="/login" element={<Login/>} />                           
-                            <Route path="/forgotpassword" element={<ForgotPassword/>} />
-                            <Route path="/createaccount" element={<CreateAccount/>} />
-                            <Route path="/selectedbook/:id" element={<SelectedBook/>} />
-                            <Route path="/wishlist" element={<WishList/>} />
-                            <Route path="/cart" element={<Cart/>} /> 
-                            <Route path="/checkout" element={<Checkout/>} />                  
-                        </Routes>
-                    </BrowserRouter>
-                    </CartContext.Provider>
-                </UserContext.Provider>
+            <UserContext.Provider value={{value:userData, setValue:setUserData}}>
+            <CartContext.Provider value={{value:cartData, setValue:setCartData}}>
+            <TotalPriceContext.Provider value={{value:totalPriceData, setValue:setTotalPriceData}}>
+                <BrowserRouter>
+                    <Routes>
+                        <Route path="/" element={<Home/>} />
+                        <Route path="/books" element={<Books/>} />
+                        <Route path="/contact" element={<Contact/>} />
+                        <Route path="/login" element={<Login/>} />                           
+                        <Route path="/forgotpassword" element={<ForgotPassword/>} />
+                        <Route path="/createaccount" element={<CreateAccount/>} />
+                        <Route path="/selectedbook/:id" element={<SelectedBook/>} />
+                        <Route path="/wishlist" element={<WishList/>} />
+                        <Route path="/cart" element={<Cart/>} /> 
+                        <Route path="/checkout" element={<Checkout/>} />                  
+                    </Routes>
+                </BrowserRouter>
+            </TotalPriceContext.Provider>
+            </CartContext.Provider>
+            </UserContext.Provider>
         </div>
     )
 }

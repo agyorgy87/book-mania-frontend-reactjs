@@ -7,7 +7,6 @@ import { BiMinus } from "react-icons/bi";
 import { MdOutlineRemoveShoppingCart } from "react-icons/md";
 import { useContext } from 'react';
 import { CartContext } from "../context/CartContext";
-import { NumberOfCartItems } from "../context/NumberOfCartItems";
 
 const CartBooks = () => {
 
@@ -17,19 +16,7 @@ const CartBooks = () => {
 
     const [buttonDisabled, setButtonDisabled] = useState(false);
 
-   
-    /*
-    const numberOfCartData = useContext(NumberOfCartItems);
-
-    const allItems = () => {
-        let allData = cartData.value
-        let sum = 0;
-        for(let book of allData) {
-            sum += book.quantity
-        }
-        NumberOfCartData.setValue(sum);
-    }
-    */
+   console.log(cartData);
 
     const plusOneBook = (book) => {     
         setButtonDisabled(false);  
@@ -41,11 +28,12 @@ const CartBooks = () => {
         allCartData.splice(foundIndex, 0, bookForModification)
         let stringifiedCartData = JSON.stringify(allCartData)
         localStorage.setItem("cart", stringifiedCartData);   
-        cartData.setValue(allCartData);    
+        cartData.setValue(allCartData);  
+        console.log(allCartData);  
     }
 
     const minusOneBook = (book) => {
-        if(book.quantity < 1) {
+        if(book.quantity < 2) {
             setButtonDisabled(true);
         }else{
             let allCartData = [...cartData.value]
@@ -70,7 +58,7 @@ const CartBooks = () => {
         localStorage.setItem("cart", stringifiedCartData);
         cartData.setValue(newListWithoutSearchedBook);
     }
-
+ 
     const deleteAllBooksFromLocal = () => {
         localStorage.removeItem('cart');
         cartData.setValue([]);
