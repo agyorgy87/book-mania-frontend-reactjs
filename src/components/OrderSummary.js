@@ -78,7 +78,6 @@ const OrderSummary = () => {
                     setBookMultiple(response.data.bookMultiple);
                     setCouponCodeValidationMessage(true);
                     setCouponCodeIsCorrectOrIncorrect(true);
-                    //context set coupon code
                 }else{
                     setCouponCodeValidationMessage(true);
                     setCouponCodeIsCorrectOrIncorrect(false);
@@ -159,8 +158,7 @@ const OrderSummary = () => {
                                     <div>
                                         <p className="discount-percentage">-{showingDiscount}%</p>
                                     </div>
-                                </div>
-                                
+                                </div>                             
                                 <div className="d-flex justify-content-between">
                                     <div>
                                         <p className="discounted-price-text">Discounted Price:</p> 

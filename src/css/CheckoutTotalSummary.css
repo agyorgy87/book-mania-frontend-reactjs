@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Open+Sans:wght@300;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300&display=swap');
+/*
+.checkout-total-summary-container {
+    border: 1px solid #b2b2b2;
+    border-radius: 5px;
+    background-color: #FFF;
+}
+*/
+.items-and-prices-top-text {
+    font-size: 35px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.checkout-book-pics {
+    margin-left: 20px;
+    border: 1px solid #b2b2b2;
+    height: 150px;
+    filter: drop-shadow(2px 2px 2px );
+    cursor: pointer;
+}
+
+.checkout-title-multiplier-author-container {
+    width: 100%;
+}
+
+.checkout-book-title { 
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 23px;
+    color: black;
+    text-decoration: none;
+}
+
+.checkout-book-title:hover {
+    color: black;
+}
+
+.checkout-book-multiplier {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.checkout-book-author-name {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+}
+
+.checkout-total-container {
+    width: 60%;
+}
+
+.checkout-total-discount-text {
+    font-size: 22px;
+    font-weight: 600;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.checkout-total-discount-price {
+    font-size: 25px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.checkout-payment-button {
+    height: 3rem;
+    width: 70%;
+    border-radius: 5px;
+    border: none;
+    color: #ffffff !important;
+    background-color: #1e7b85 !important;
+    font-size: 20px !important;
+    font-weight: 500 !important;
+    font-family: 'Open Sans', sans-serif; 
+}
+
+.checkout-payment-button:hover {
+    background-color: #155a62 !important; 
+}

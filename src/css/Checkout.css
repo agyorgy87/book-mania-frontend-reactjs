@@ -5,11 +5,11 @@
 }
 
 .shipping-and-delivery-container {
-    width: 60%;
+    width: 50%;
     border: 2px solid black;
 }
 
 .order-summary-container {
-    width: 40%;
-    border: 2px solid black;
+    width: 50%;
+    /*border: 2px solid black;*/
 }

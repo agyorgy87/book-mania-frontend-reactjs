@@ -56,59 +56,58 @@ const CheckoutShippingAndDelivery = () => {
 
     return ( 
         <div>
-            <h1>Shipping $ Delivery</h1>
-                <form>
-                    <div>
-                        <label>First Name</label>
-                            <div>
-                                <input
-                                value={firstNameInputValue}
-                                onChange={firstNameInputChange}
-                                />
-                            </div>
-                    </div>
-                    <div>
-                        <label>Last Name</label>
-                            <div>
-                                <input
-                                value={lastNameInputValue}
-                                onChange={lastNameInputChange}
-                                />
-                            </div>
-                    </div>
-                    <div>
-                        <label>Address</label>
-                            <div>
-                                <input
-                                value={addressInputValue}
-                                onChange={addressInputChange}
-                                />
-                            </div>
-                    </div>
-                    <div>
-                        <label>City</label>
-                            <div>
-                                <input
-                                value={cityInputValue}
-                                onChange={cityInputChange}
-                                />
-                            </div>
-                    </div>
-                    <div>
-                        <label>Zip Code</label>
-                            <div>
-                                <input
-                                value={zipCodeInputValue}
-                                onChange={zipCodeInputChange}
-                                />
-                            </div>
-                    </div>
-                    <div>
-                        <button>Send</button>
-                    </div>
-                </form>
+            <form>
+                <div>
+                    <label>First Name</label>
+                        <div>
+                            <input
+                            value={firstNameInputValue}
+                            onChange={firstNameInputChange}
+                            />
+                        </div>
+                </div>
+                <div>
+                    <label>Last Name</label>
+                        <div>
+                            <input
+                            value={lastNameInputValue}
+                            onChange={lastNameInputChange}
+                            />
+                        </div>
+                </div>
+                <div>
+                    <label>Address</label>
+                        <div>
+                            <input
+                            value={addressInputValue}
+                            onChange={addressInputChange}
+                            />
+                        </div>
+                </div>
+                <div>
+                    <label>City</label>
+                        <div>
+                            <input
+                            value={cityInputValue}
+                            onChange={cityInputChange}
+                            />
+                        </div>
+                </div>
+                <div>
+                    <label>Zip Code</label>
+                        <div>
+                            <input
+                            value={zipCodeInputValue}
+                            onChange={zipCodeInputChange}
+                            />
+                        </div>
+                </div>
+                <div>
+                    <button>Send</button>
+                </div>
+            </form>
         </div>
     )
-    }
+}
 
 export default CheckoutShippingAndDelivery;

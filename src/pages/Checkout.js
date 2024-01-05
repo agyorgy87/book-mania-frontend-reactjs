@@ -11,16 +11,15 @@ const Checkout = () => {
             <div className="fixed-top">
                 <NavigationBar/>
             </div>
+                <h1 className="text-center">Shipping $ Delivery</h1>
             <div className="container d-flex">
-                <div>
-                    <h1>Shipping $ Delivery</h1>
+                <div className="shipping-and-delivery-container">
+                    <CheckoutShippingAndDelivery/>
                 </div>
                 <div className="order-summary-container">
                     <CheckoutTotalSummary/>
                 </div>
-                <div className="shipping-and-delivery-container">
-                    <CheckoutShippingAndDelivery/>
-                </div>
+                
             </div>
         </div>
     )
