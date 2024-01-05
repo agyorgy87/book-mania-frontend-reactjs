@@ -44,7 +44,11 @@ const CheckoutTotalSummary = () => {
                 </div>
             ))}
             <div>
-                <p>discount: {totalPriceData.value.discountKey}</p>
+                { totalPriceData.value.discountKey === 0 ?
+                    null
+                    :
+                    <p>discount: {totalPriceData.value.discountKey}</p>
+                }      
                 <p>discounted price: {totalPriceData.value.discountedPriceKey}</p>
                 <p>total price: {totalPriceData.value.totalPriceKey}</p>
             </div> 
