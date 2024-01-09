@@ -19,7 +19,7 @@ const CheckoutTotalSummary = () => {
     return (
         <div className="checkout-total-summary-container">
             <div className="mt-3 text-center items-and-prices-top-text">
-                Items & Prices
+                <p>Items & Prices</p>
             </div>
         <div className="p-3">
             { cartData.value.map((book, index) => ( 

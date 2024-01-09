@@ -276,6 +276,8 @@ const Books = () => {
         axios.get(`http://localhost:4000/get-book-title/${e}`)
             .then((response) => {
             setVisibleBooks(response.data);
+            console.log(e);
+            console.log(response.data);
         })
         setShowResult(true);
         setSearchResult(e);
@@ -334,6 +336,9 @@ const Books = () => {
                         </ul>
                     </div>
                 <div className="col-md-9 col-lg-9 col-xl-9 col-xxl-10">
+                    <div className="row d-flex justify-content-center mb-4 mt-4">
+                        <SearchInput onChange={callAllTitlesAndAuthors} />                                       
+                    </div>
                     <div className="d-block d-md-none d-flex flex-column align-items-center ">
                             <div className="select-div mt-3">
                                     <Select 
@@ -386,9 +391,6 @@ const Books = () => {
                                     />                                                  
                             </div>
                         </div> 
-                    <div className="row d-flex justify-content-center mb-4 mt-4">
-                        <SearchInput onChange={callAllTitlesAndAuthors} />                                       
-                    </div>
                     <div className="d-flex justify-content-center mb-5">
                         <div className="result-container">
                             { showResult ?                  
@@ -400,7 +402,7 @@ const Books = () => {
                             } 
                         </div>                      
                     </div>
-                    <div className="container">  
+                    <div>  
                         <FilteredBooks list={visibleBooks}/>
                     </div>                       
                 </div>

@@ -1,3 +1,4 @@
+import "../css/CheckoutShippingAndDelivery.css"; 
 import { useEffect, useState } from 'react';
 import axios from "axios";
 import { useContext } from 'react';
@@ -34,7 +35,7 @@ const CheckoutShippingAndDelivery = () => {
     },[]);
 
     const firstNameInputChange = (e) => {
-        setFirstNameInputValue(e.target.value);
+        setFirstNameInputValue(e.target.value); 
     }
 
     const lastNameInputChange = (e) => {
@@ -54,58 +55,71 @@ const CheckoutShippingAndDelivery = () => {
     }
 
 
-    return ( 
+    return (  
         <div>
-            <form>
-                <div>
-                    <label>First Name</label>
-                        <div>
-                            <input
-                            value={firstNameInputValue}
-                            onChange={firstNameInputChange}
-                            />
+            <div className="mt-3 text-center shipping-and-delivery-top-text">
+                <p>Shipping $ Delivery</p>
+            </div>
+                    <form className="ps-5 pe-5" autoComplete="off">
+                        <div className="form-group labels-and-inputs-container shipping-container">
+                            <label className="form-label shipping-label fw-bold">First Name</label>
+                                <div className="delivery-inputs-height">
+                                    <input
+                                    type="text"
+                                    className="form-control delivery-inputs"
+                                    value={firstNameInputValue}
+                                    onChange={firstNameInputChange}
+                                    />
+                                </div>
                         </div>
-                </div>
-                <div>
-                    <label>Last Name</label>
-                        <div>
-                            <input
-                            value={lastNameInputValue}
-                            onChange={lastNameInputChange}
-                            />
+                        <div className="form-group labels-and-inputs-container shipping-container">
+                            <label className="form-label shipping-label fw-bold">Last Name</label>
+                                <div className="delivery-inputs-height">
+                                    <input
+                                    type="text"
+                                    className="form-control delivery-inputs"
+                                    value={lastNameInputValue}
+                                    onChange={lastNameInputChange}
+                                    />
+                                </div>
+                        </div>                   
+                        <div className="form-group labels-and-inputs-container shipping-container">
+                            <label className="form-label shipping-label fw-bold">Address</label>
+                                <div className="delivery-inputs-height">
+                                    <input
+                                    type="text"
+                                    className="form-control delivery-inputs"
+                                    value={addressInputValue}
+                                    onChange={addressInputChange}
+                                    />
+                                </div>
+                        </div> 
+                        <div className="form-group labels-and-inputs-container shipping-container">
+                            <label className="form-label shipping-label fw-bold">City</label>
+                                <div className="delivery-inputs-height">
+                                    <input
+                                    type="text"
+                                    className="form-control delivery-inputs"
+                                    value={cityInputValue}
+                                    onChange={cityInputChange}
+                                    />
+                                </div>
+                        </div> 
+                        <div className="form-group labels-and-inputs-container shipping-container">
+                            <label className="form-label shipping-label fw-bold">Zip Code</label>
+                                <div className="delivery-inputs-height">
+                                    <input
+                                    type="text"
+                                    className="form-control delivery-inputs"
+                                    value={zipCodeInputValue}
+                                    onChange={zipCodeInputChange}
+                                    />
+                                </div>
                         </div>
-                </div>
-                <div>
-                    <label>Address</label>
-                        <div>
-                            <input
-                            value={addressInputValue}
-                            onChange={addressInputChange}
-                            />
+                        <div className="d-flex justify-content-center mt-3">
+                            <button className="btn w-100 fs-5 send-shipping-data-button">Save Delivery Address</button>
                         </div>
-                </div>
-                <div>
-                    <label>City</label>
-                        <div>
-                            <input
-                            value={cityInputValue}
-                            onChange={cityInputChange}
-                            />
-                        </div>
-                </div>
-                <div>
-                    <label>Zip Code</label>
-                        <div>
-                            <input
-                            value={zipCodeInputValue}
-                            onChange={zipCodeInputChange}
-                            />
-                        </div>
-                </div>
-                <div>
-                    <button>Send</button>
-                </div>
-            </form>
+                    </form>
         </div>
     )
 }

@@ -57,14 +57,14 @@ const FilteredBooks = (props) => {
 
     const modalMessage = "?"
 
-    return (
+    return ( 
         <div className="container"> 
             <div>
                 {openModal && <LoginWarning close={closeModal} message={modalMessage}/>}   
             </div>
-            <div className="row d-flex">
+            <div className="row ms-5">
                 { listOfBooks.map((book, index) => (
-                    <div className="row d-flex flex-column filtered-book-card mb-5" key={"newness-div" + index}>
+                    <div className="col-md-4 col-lg-3 col-xl-3 col-xxl-2 d-flex flex-column filtered-book-card mb-5" key={"newness-div" + index}>
                         <div className="d-flex justify-content-center mb-4 mt-4">
                             <img 
                             src={"http://localhost:4000/books_img/" + book.img_directory + "/" + book.image} 

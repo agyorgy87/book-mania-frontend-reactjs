@@ -1,12 +1,12 @@
 .checkout-page {
     min-height: 100vh;
-    padding-top: 100px;
+    padding-top: 120px;
     background-color: #ffffff !important;
 }
 
 .shipping-and-delivery-container {
     width: 50%;
-    border: 2px solid black;
+    /*border: 2px solid black;*/
 }
 
 .order-summary-container {
