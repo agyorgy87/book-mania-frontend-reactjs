@@ -61,8 +61,8 @@ const CheckoutShippingAndDelivery = () => {
                 <p>Shipping $ Delivery</p>
             </div>
                     <form className="ps-5 pe-5" autoComplete="off">
-                        <div className="form-group labels-and-inputs-container shipping-container">
-                            <label className="form-label shipping-label fw-bold">First Name</label>
+                        <div className="form-group shipping-container">
+                            <label className="form-label fw-bold">First Name</label>
                                 <div className="delivery-inputs-height">
                                     <input
                                     type="text"
@@ -72,8 +72,8 @@ const CheckoutShippingAndDelivery = () => {
                                     />
                                 </div>
                         </div>
-                        <div className="form-group labels-and-inputs-container shipping-container">
-                            <label className="form-label shipping-label fw-bold">Last Name</label>
+                        <div className="form-group shipping-container">
+                            <label className="form-label fw-bold">Last Name</label>
                                 <div className="delivery-inputs-height">
                                     <input
                                     type="text"
@@ -83,8 +83,8 @@ const CheckoutShippingAndDelivery = () => {
                                     />
                                 </div>
                         </div>                   
-                        <div className="form-group labels-and-inputs-container shipping-container">
-                            <label className="form-label shipping-label fw-bold">Address</label>
+                        <div className="form-group shipping-container">
+                            <label className="form-label fw-bold">Address</label>
                                 <div className="delivery-inputs-height">
                                     <input
                                     type="text"
@@ -94,8 +94,8 @@ const CheckoutShippingAndDelivery = () => {
                                     />
                                 </div>
                         </div> 
-                        <div className="form-group labels-and-inputs-container shipping-container">
-                            <label className="form-label shipping-label fw-bold">City</label>
+                        <div className="form-group shipping-container">
+                            <label className="form-label fw-bold">City</label>
                                 <div className="delivery-inputs-height">
                                     <input
                                     type="text"
@@ -105,8 +105,8 @@ const CheckoutShippingAndDelivery = () => {
                                     />
                                 </div>
                         </div> 
-                        <div className="form-group labels-and-inputs-container shipping-container">
-                            <label className="form-label shipping-label fw-bold">Zip Code</label>
+                        <div className="form-group shipping-container">
+                            <label className="form-label fw-bold">Zip Code</label>
                                 <div className="delivery-inputs-height">
                                     <input
                                     type="text"
