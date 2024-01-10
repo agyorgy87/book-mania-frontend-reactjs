@@ -127,8 +127,6 @@ const OrderSummary = () => {
 
     let allQuantity = allItems(); 
 
-    console.log(allPriceInOneArray);
-
     return (
         <div className="container-fluid paying-container ps-4 pe-4">
             <div>

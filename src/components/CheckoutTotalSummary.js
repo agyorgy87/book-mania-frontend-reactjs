@@ -13,8 +13,7 @@ const CheckoutTotalSummary = () => {
     const cartData = useContext(CartContext);
 
     const totalPriceData = useContext(TotalPriceContext);
-
-    console.log(totalPriceData);
+    console.log(totalPriceData.value);
 
     return (
         <div className="checkout-total-summary-container">

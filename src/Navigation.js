@@ -40,13 +40,17 @@ const Navigation = () => {
         cartObj = JSON.parse(cartDetails);
     }
 
-    let totalPriceObj;
+    let totalPriceObj = {
+        totalPriceKey: 0,
+        discountKey: 0,
+        discountedPriceKey: 0
+    }
 
     const [userData, setUserData] = useState(obj);
 
     const [cartData, setCartData] = useState(cartObj);
 
-    const [totalPriceData, setTotalPriceData] = useState(totalPriceObj)
+    const [totalPriceData, setTotalPriceData] = useState(totalPriceObj);
 
     return(
         <div>
