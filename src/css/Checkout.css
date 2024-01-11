@@ -2,6 +2,7 @@
     min-height: 100vh;
     padding-top: 120px;
     background-color: #ffffff !important;
+    overflow-x: hidden;
 }
 
 @media (max-width:992px) {

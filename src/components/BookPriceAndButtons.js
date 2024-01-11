@@ -51,7 +51,7 @@ const BookPriceAndButtons = (props) => {
                         console.log(response.data)
                         setHeartIconFull(false);
                         }
-                    })              
+                })              
             }else{
                 let body = {userId: userData.value.id, bookId: params.id};
                 axios.post("http://localhost:4000/add-wishlist", body)
