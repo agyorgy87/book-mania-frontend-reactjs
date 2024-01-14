@@ -51,14 +51,13 @@ const RecommendedBooks = (props) => {
             .then(response => {
                 if(response.data.success === true) {
                     //console.log(response.data);
-                    //setUserWishList(prevWishList => [...prevWishList, { book_id: bookId }]);
-                    //setFullOrEmptyHeart(true);
                 }
             })
         }   
     }
-/*
+
     const deleteBookFromTheHomePage = (deletedBookId) => {
+
         let body = {userId: userData.value.id, bookId: deletedBookId};
                 axios.post("http://localhost:4000/delete-wishlist", body)
                     .then(response => {
@@ -67,7 +66,7 @@ const RecommendedBooks = (props) => {
                         }
                 }) 
     }
-    */
+    
 
     const closeModal = () => {
         setOpenModal(false);
@@ -115,7 +114,7 @@ const RecommendedBooks = (props) => {
                                         { userFavoritBooksIDsInArray.includes(book.id) ?
                                             <button 
                                             className="heart-button" 
-                                            //onClick={deleteBookFromTheHomePage(book.id)}
+                                            onClick={() => deleteBookFromTheHomePage(book.id)}
                                             >
                                                 <AiFillHeart className="book-heart-icon-full"/>
                                             </button>
@@ -125,8 +124,7 @@ const RecommendedBooks = (props) => {
                                             onClick={() => addBookToWishListFromHomePage(book.id)}>
                                                 <AiOutlineHeart className="book-heart-icon"/>
                                             </button>
-                                        }     
-                                                                     
+                                        }                                                                        
                                         </div>                                                                                         
                                 </div>                                           
                             </div>                                        
