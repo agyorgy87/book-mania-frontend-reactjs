@@ -22,7 +22,7 @@ const RecommendedBooks = (props) => {
     //const [fullOrEmptyHeart, setFullOrEmptyHeart] = useState(false);
     const [userWishList, setUserWishList] = useState([]);
 
-    
+/*  
     useEffect(() => {
         if(userData.value.jwt){
             axios.get("http://localhost:4000/user-wishlist/" + userData.value.id)
@@ -31,7 +31,23 @@ const RecommendedBooks = (props) => {
             })
         }
     }, []);
+*/
 
+    useEffect(() => {
+        if(userData.value.jwt) {
+            const fetchData = () => {
+                try{
+                    axios.get("http://localhost:4000/user-wishlist/" + userData.value.id)
+                    .then(response => {
+                        setUserWishList(response.data);
+                      })
+                    }catch (error) {
+                        console.log("Error data:", error);
+                    }
+            }
+            fetchData();
+        }
+    })
 
     const userFavoritBooksIDsInArray = userWishList.map(item => item.book_id);
 
@@ -57,16 +73,14 @@ const RecommendedBooks = (props) => {
     }
 
     const deleteBookFromTheHomePage = (deletedBookId) => {
-
         let body = {userId: userData.value.id, bookId: deletedBookId};
-                axios.post("http://localhost:4000/delete-wishlist", body)
-                    .then(response => {
-                        if(response.data.success === true) {
-                        console.log(response.data)
-                        }
-                }) 
+            axios.post("http://localhost:4000/delete-wishlist", body)
+                .then(response => {
+                    if(response.data.success === true) {
+                    console.log(response.data)
+                    }
+            }) 
     }
-    
 
     const closeModal = () => {
         setOpenModal(false);
