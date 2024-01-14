@@ -16,6 +16,7 @@ const RecommendedBooks = (props) => {
     let listOfRecommendedBooks = props.list
 
     const userData = useContext(UserContext);
+    console.log(userData.value.id);
 
     const [openModal, setOpenModal] = useState(false);
     //const [fullOrEmptyHeart, setFullOrEmptyHeart] = useState(false);
@@ -23,14 +24,14 @@ const RecommendedBooks = (props) => {
 
     
     useEffect(() => {
-        axios.get("http://localhost:4000/user-wishlist/" + userData.value.id)
+        if(userData.value.jwt){
+            axios.get("http://localhost:4000/user-wishlist/" + userData.value.id)
             .then(response => {
               setUserWishList(response.data);
             })
+        }
     }, []);
 
-    //working - i can add books to whislist but the heart is not change on the button click
-    //
 
     const userFavoritBooksIDsInArray = userWishList.map(item => item.book_id);
 
@@ -72,7 +73,7 @@ const RecommendedBooks = (props) => {
         setOpenModal(false);
     }
     
-    const modalMessage = "?"
+    const modalMessage = "Sign in to add the book to your favorites list."
     
     return (
         <div className="container"> 

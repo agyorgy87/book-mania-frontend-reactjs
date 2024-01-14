@@ -14,7 +14,8 @@ const NavigationBar = () => {
 
     const logout = () => {
         userData.setValue({});
-        localStorage.removeItem("token")
+        localStorage.removeItem("token");
+        window.location.reload();
     }
 
     return (  
