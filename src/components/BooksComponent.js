@@ -16,10 +16,8 @@ const RecommendedBooks = (props) => {
     let listOfRecommendedBooks = props.list
 
     const userData = useContext(UserContext);
-    console.log(userData.value.id);
 
     const [openModal, setOpenModal] = useState(false);
-    //const [fullOrEmptyHeart, setFullOrEmptyHeart] = useState(false);
     const [userWishList, setUserWishList] = useState([]);
 
 /*  
@@ -77,7 +75,7 @@ const RecommendedBooks = (props) => {
             axios.post("http://localhost:4000/delete-wishlist", body)
                 .then(response => {
                     if(response.data.success === true) {
-                    console.log(response.data)
+                        //console.log(response.data)
                     }
             }) 
     }
@@ -124,21 +122,21 @@ const RecommendedBooks = (props) => {
                                         <div>
                                             <p className="home-value-of-the-book">{book.price} $</p>
                                         </div>                                       
-                                        <div>
-                                        { userFavoritBooksIDsInArray.includes(book.id) ?
-                                            <button 
-                                            className="heart-button" 
-                                            onClick={() => deleteBookFromTheHomePage(book.id)}
-                                            >
-                                                <AiFillHeart className="book-heart-icon-full"/>
-                                            </button>
-                                        :
-                                            <button 
-                                            className="heart-button" 
-                                            onClick={() => addBookToWishListFromHomePage(book.id)}>
-                                                <AiOutlineHeart className="book-heart-icon"/>
-                                            </button>
-                                        }                                                                        
+                                        <div className="d-flex align-items-center">
+                                            { userFavoritBooksIDsInArray.includes(book.id) ?
+                                                <button 
+                                                className="heart-button" 
+                                                onClick={() => deleteBookFromTheHomePage(book.id)}
+                                                >
+                                                    <AiFillHeart className="book-heart-icon-full"/>
+                                                </button>
+                                            :
+                                                <button 
+                                                className="heart-button" 
+                                                onClick={() => addBookToWishListFromHomePage(book.id)}>
+                                                    <AiOutlineHeart className="book-heart-icon"/>
+                                                </button>
+                                            }                                                                        
                                         </div>                                                                                         
                                 </div>                                           
                             </div>                                        

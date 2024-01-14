@@ -11,7 +11,7 @@
 }
 
 .filtered-book-pics {
-    height: 130px;
+    height: 80%;
     cursor: pointer; 
 }
 
@@ -37,7 +37,7 @@
 
 .filtered-book-price-heart-container {
     width: 85%;
-    position: absolute;
+    position: absolute; 
     bottom: 0;
 }
 

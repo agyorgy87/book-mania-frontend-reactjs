@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 //import { UserContext } from "../context/UserContext.js";
 import LoginWarning from "../modal/LoginWarning.js";
 
-const FilteredBooks = (props) => { 
+const FilteredBooks = (props) => {  
 
     let navigate = useNavigate();
 
@@ -79,7 +79,7 @@ const FilteredBooks = (props) => {
                                 className="filtered-book-title"
                                 to={"/selectedbook/" + book.id}
                                 >                                      
-                                    { book.title.length > 17 ? book.title.substring(0,19) + " ..." : book.title }                                                                                        
+                                { book.title.length > 17 ? book.title.substring(0,19) + " ..." : book.title }                                                                                        
                                 </Link>
                             </div>
                             <div className="d-flex ps-2 pe-2 mt-2">
