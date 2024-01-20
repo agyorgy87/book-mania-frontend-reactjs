@@ -13,18 +13,17 @@ const CheckoutTotalSummary = () => {
     const cartData = useContext(CartContext);
 
     const totalPriceData = useContext(TotalPriceContext);
-    console.log(totalPriceData.value);
 
     return (
         <div className="checkout-total-summary-container">
-            <div className="mt-3 text-center items-and-prices-top-text">
+            <div className="mt-3 text-center items-and-prices-top-text"> 
                 <p>Items & Prices</p>
             </div>
-        <div className="p-3">
+        <div className="pt-3">
             { cartData.value.map((book, index) => ( 
                 <div className="mb-4" key={"cart-data-div" + index}>
-                    <div className="d-flex"> 
-                        <div>
+                    <div className="d-flex checkout-bookimg-title-author-multiplier-contanier"> 
+                        <div className="checkout-book-img-container">
                             <img 
                             src={"http://localhost:4000/books_img/" + book.img_directory + "/" + book.image}
                             className="checkout-book-pics mt-2"                                             
@@ -32,7 +31,7 @@ const CheckoutTotalSummary = () => {
                             onClick={() => {navigate("/selectedbook/" + book.id)}}
                             /> 
                         </div>
-                        <div className="mt-2 ms-4 me-3 checkout-title-multiplier-author-container">
+                        <div className="mt-2 checkout-title-multiplier-author-container">
                             <div className="d-flex justify-content-between">
                                 <div>
                                     <Link 

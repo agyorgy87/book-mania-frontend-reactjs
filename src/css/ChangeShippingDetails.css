@@ -7,13 +7,13 @@
     top: 0;
     left: 0; 
     z-index: 10;  
-    overflow: auto;
+    overflow: auto; 
     background-color: rgba(171,176,192, 0.7);
 }
 
 .change-shipping-address-container {
     height: 46rem;
-    width: 30rem;
+    max-width: 30rem;
     margin-top: 8rem;
     background-color: #ffffff;
 }

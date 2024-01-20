@@ -73,7 +73,7 @@ const ChangeShippingDetails = (props) => {
             setCityError(false);
         }
 
-         if(zipCodeInputValue === ""){
+        if(zipCodeInputValue === "" || zipCodeInputValue.length < 4){
             setZipCodeError(true);
         }else{
             setZipCodeError(false);
@@ -105,10 +105,11 @@ const ChangeShippingDetails = (props) => {
     }
 
 
-    return (  
-        <div className="overlay"> 
-            <div className="change-shipping-address-container mx-auto d-flex flex-column shadow-lg pt-1 pe-1 bg-body-tertiary rounded">
-            <div className="d-flex flex-row-reverse change-shipping-modal-close-button-container">
+    return ( 
+        <div className="overlay">  
+            <div className="change-shipping-address-container mx-auto d-flex flex-column shadow-lg
+                pt-1 pe-1 bg-body-tertiary rounded col-lg-6 col-md-8 col-sm-10 col-12">
+                <div className="d-flex flex-row-reverse change-shipping-modal-close-button-container">
                     <button className="change-shipping-modal-close-button pt-2 pe-2" onClick={props.close}><IoMdClose/></button>
                 </div>
                 <div className="shipping-top-text d-flex justify-content-center">

@@ -1,0 +1,5 @@
+Coupon Codes
+
+1. -20% -> CP34FG76ZH
+2. -30% -> ER72TC20PG 
+3. -50% -> PY87BC49HY
