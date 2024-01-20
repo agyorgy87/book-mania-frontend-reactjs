@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Open+Sans:wght@300;400;600;700&display=swap');
+
+.overlay {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0; 
+    z-index: 10;  
+    overflow: auto;
+    background-color: rgba(171,176,192, 0.7);
+}
+
+.change-shipping-address-container {
+    height: 46rem;
+    width: 30rem;
+    margin-top: 8rem;
+    background-color: #ffffff;
+}
+
+.change-shipping-modal-close-button-container {
+    margin-top: -1rem;
+}
+
+.change-shipping-modal-close-button {
+    border: none;
+    color: #3a4357;
+    background: transparent;
+    font-size: 30px;
+    font-weight: 300;
+    cursor: pointer;
+}
+
+.shipping-top-text { 
+    font-size: 25px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.shipping-container {
+    height: 6.3rem;
+    width: 90%;
+    margin: 0 5%;
+    margin-bottom: 0.5rem;
+}
+
+.shipping-inputs-height {
+    height: 45px;
+}
+
+.shipping-inputs {
+    width: 100% !important;
+    padding: 10px 5px !important; 
+}
+
+.shipping-inputs:focus {
+    border: 3px solid #1e7b85 !important;
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+.save-shipping-address-button {
+    height: 3rem;
+    width: 90% !important;
+    margin: 0 5%;
+    border-radius: 5px;
+    border: none;
+    color: #ffffff !important;
+    background-color: #1e7b85 !important;
+    font-size: 19px !important;
+    font-weight: 500 !important;
+    font-family: 'Open Sans', sans-serif; 
+}
+
+.send-shipping-data-button:hover {
+    background-color: #155a62 !important; 
+} 

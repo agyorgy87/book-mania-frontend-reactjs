@@ -70,11 +70,11 @@ const Login = () => {
     }
 
     const login = (e) => {
-        
+     /*   
     if(userEmail === "" && password === ""){ 
         setLoginMessage("");
     }
-
+*/
     e.preventDefault();
 
     let userObj = {

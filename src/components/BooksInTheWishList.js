@@ -9,8 +9,6 @@ const BooksInTheWishList = (props) => {
 
     let navigate = useNavigate();
 
-    console.log(userWishList);
-
     return (
             <div className="container">
                 <div className="row d-flex justify-content-center">
