@@ -34,19 +34,17 @@ const Home = () => {
             <div className="fixed-top"> 
                 <NavigationBar/>
             </div>  
-            {/*
             <div className="container mt-5 mb-5 d-flex justify-content-center align-items-center">
                 <div className="coupon-card w-75 p-5 text-center shadow-sm">
-                    <h1>50% COUPON DISCOUNT</h1>
-                        <div>
-                            <p className="card-text discount-font">If you have a coupon code, you can buy books at half price!</p>
-                            <p className="card-text discount-font">You can find the coupon code in <a href="https://github.com/agyorgy87/book-mania-frontend-reactjs/blob/master/README.md"> my github repository, in CC.md file</a> :)</p>
+                    <h1>-20%, -30%, -50% COUPON DISCOUNTS</h1>
+                        <div className="mt-4">
+                            <p className="card-text discount-font">If you have a coupon code, you can buy books at discount price!</p>
+                            <p className="card-text discount-font">You can find the coupon codes in<a href="https://github.com/agyorgy87/book-mania-frontend-reactjs/blob/master/README.md"> my github repository, in CouponCodes.md file</a> :)</p>
                         </div>
                     <div className="circle1"></div>
                     <div className="circle2"></div>
                 </div>
             </div>
-            */}
             <div className="container">
                 <div>
                     <BooksComponent text="Newness" list={newness}/> 
