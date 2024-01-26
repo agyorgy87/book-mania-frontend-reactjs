@@ -45,7 +45,7 @@ const RecommendedBooks = (props) => {
             }
             fetchData();
         }
-    })
+    },[])
 
     const userFavoritBooksIDsInArray = userWishList.map(item => item.book_id);
 

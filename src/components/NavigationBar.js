@@ -16,14 +16,14 @@ const NavigationBar = () => {
     const cartData = useContext(CartContext);
 
     const logout = () => {
-        userData.setValue({});
+        userData.setValue({}); 
         localStorage.removeItem("token");
         navigate("/");
     }
 
     return (  
         <div>
-            <nav className="navbar navbar-expand-lg">
+            <nav className="navbar navbar-expand-xl">
                 <div className="container-fluid">                     
                     <Link to={"/"} className="navbar-brand pt-3 ps-3">                    
                         <p className="name-of-the-website">BOOK MANIA</p> 
@@ -50,7 +50,8 @@ const NavigationBar = () => {
                             {
                                 userData.value.jwt ? 
                                 <li className="nav-item navigation-menus">
-                                    <Link to={"/wishlist"} className="nav-link fs-4">Hi, {userData.value.firstName}</Link>      
+                                    <Link to={"/wishlist"} className="nav-link user-welcome">My Wishlist</Link>     
+                                    {/*{userData.value.firstName}*/} 
                                 </li>
                                 :
                                 null
@@ -58,11 +59,11 @@ const NavigationBar = () => {
                             {
                                 userData.value.jwt ?
                                 <li className="nav-item navigation-menus">
-                                    <button className="nav-link fs-4 login-logout-button" onClick={logout}>Log out</button>
+                                    <Link className="nav-link login-logout-link" onClick={logout}>Log out</Link>
                                 </li>
                                 :
                                 <li className="nav-item navigation-menus">
-                                    <Link to={"/login"} className="nav-link fs-4 login-logout-button">Sign in</Link>
+                                    <Link to={"/login"} className="nav-link login-logout-link">Sign in</Link>
                                 </li>
                             }
                             <li className="nav-item navigation-menus"> 

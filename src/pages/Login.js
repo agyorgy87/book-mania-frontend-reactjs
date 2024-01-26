@@ -83,6 +83,8 @@ const Login = () => {
     }
         axios.post("http://localhost:4000/auth", userObj)
         .then(response => {
+            console.log(response.data);
+            
             if(response.data.error) {
                 if(userEmail === "" && password === ""){
                     setPasswordInfo(false);
@@ -113,6 +115,7 @@ const Login = () => {
                 userData.setValue(response.data);  
                 setOpenSuccessfulLoginModal(true);           
             }
+            
         })      
     }
 

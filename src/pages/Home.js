@@ -27,7 +27,7 @@ const Home = () => {
                 setOnlyComputerComplex(response.data)
         })
 
-    }, [])
+    },[])
 
     return (
         <div className="home-page">
