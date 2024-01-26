@@ -3,11 +3,14 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ImBooks } from "react-icons/im";
 import { CgShoppingCart } from "react-icons/cg";
+import { useNavigate } from "react-router-dom";
 import { useContext } from 'react';
 import { UserContext } from "../context/UserContext.js";
 import { CartContext } from "../context/CartContext.js";
 
 const NavigationBar = () => {
+
+    let navigate = useNavigate();
 
     const userData = useContext(UserContext);
     const cartData = useContext(CartContext);
@@ -15,7 +18,7 @@ const NavigationBar = () => {
     const logout = () => {
         userData.setValue({});
         localStorage.removeItem("token");
-        window.location.reload();
+        navigate("/");
     }
 
     return (  
