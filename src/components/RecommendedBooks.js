@@ -1,4 +1,4 @@
-import '../css/BooksComponent.css';
+import '../css/RecommendedBooks.css';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom'; 
 import { useNavigate } from "react-router-dom";
@@ -141,9 +141,8 @@ const RecommendedBooks = (props) => {
                                 </div>                                           
                             </div>                                        
                             ))
-                        } 
-                        
-                    </div>
+                        }                        
+            </div>
         </div>
     )
 }

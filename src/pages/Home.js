@@ -2,7 +2,7 @@ import '../css/Home.css';
 import { useState, useEffect } from "react";
 import axios from "axios";
 import NavigationBar from '../components/NavigationBar.js';
-import BooksComponent from "../components/BooksComponent.js";
+import RecommendedBooks from "../components/RecommendedBooks.js";
 
 const Home = () => { 
 
@@ -47,17 +47,17 @@ const Home = () => {
             </div>
             <div className="container">
                 <div>
-                    <BooksComponent text="Newness" list={newness}/> 
+                    <RecommendedBooks text="Newness" list={newness}/> 
                 </div>
             </div>
             <div className="container">
                 <div>
-                    <BooksComponent text="Tolkien's Pen" list={onlyTolkien}/>
+                    <RecommendedBooks text="Tolkien's Pen" list={onlyTolkien}/>
                 </div>
             </div>               
             <div className="container">
                 <div>
-                    <BooksComponent text="Computer Complex Publisher" list={onlyComputerComplex}/>
+                    <RecommendedBooks text="Computer Complex Publisher" list={onlyComputerComplex}/>
                 </div>
             </div>
         </div>

@@ -18,7 +18,7 @@ const Books = () => {
     const [allPublisher, setAllPublisher] = useState([]);
 
     const [showResult, setShowResult] = useState(false);
-    const [searchResult, setSearchResult] = useState("");
+    const [searchResult, setSearchResult] = useState(""); 
 
     const [genreSelect, setGenreSelect] = useState();
     const [priceSelect, setPriceSelect] = useState();
