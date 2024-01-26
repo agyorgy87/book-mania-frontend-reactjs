@@ -76,8 +76,7 @@ const NavigationBar = () => {
                                         </span>
                                         :
                                         null
-                                    }
-                                    
+                                    }                                  
                                 </Link>
                             </li>
                         </ul>

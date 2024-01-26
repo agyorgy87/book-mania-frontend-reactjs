@@ -87,16 +87,16 @@ const RecommendedBooks = (props) => {
     const modalMessage = "Sign in to add the book to your favorites list."
     
     return (
-        <div className="container"> 
+        <div className="container d-flex justify-content-center"> 
             <div>
                 {openModal && <LoginWarning close={closeModal} message={modalMessage}/>}   
             </div>
-            <div className="row d-flex justify-content-center" >
+            <div className="row d-flex justify-content-center col-md-12 col-lg-10 col-xl-8 col-xxl-12">            
                 <div className="mb-2">
                     <h1 className="text-of-recommended-books">{props.text}</h1> 
                 </div>   
                         { listOfRecommendedBooks.map((book, index) => (
-                            <div className="row d-flex flex-column book-card mb-5" key={"newness-div" + index}>
+                            <div className="d-flex flex-column book-card mb-5" key={"newness-div" + index}>
                                 <div className="d-flex justify-content-center mb-4 mt-4">
                                     <img 
                                     src={"http://localhost:4000/books_img/" + book.img_directory + "/" + book.image} 
@@ -142,6 +142,7 @@ const RecommendedBooks = (props) => {
                             </div>                                        
                             ))
                         } 
+                        
                     </div>
         </div>
     )
