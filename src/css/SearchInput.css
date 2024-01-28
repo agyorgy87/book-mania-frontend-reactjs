@@ -37,10 +37,8 @@
     border-color: #ced4da !important;
 }
 
-/*
-[type="search"]::-webkit-search-cancel-button,
-[type="search"]::-webkit-search-decoration {
-  -webkit-appearance: none;
-  appearance: none;
+@media (max-width: 992px) {
+    .search-input-container {
+        width: 80% !important;
+    }
 }
-*/

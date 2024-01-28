@@ -45,20 +45,14 @@ const Home = () => {
                     <div className="circle2"></div>
                 </div>
             </div>
-            <div className="container">
-                <div>
-                    <RecommendedBooks text="Newness" list={newness}/> 
-                </div>
+            <div className="container">                
+                <RecommendedBooks text="Newness" list={newness}/>                 
             </div>
             <div className="container">
-                <div>
-                    <RecommendedBooks text="Tolkien's Pen" list={onlyTolkien}/>
-                </div>
+                    <RecommendedBooks text="Tolkien's Pen" list={onlyTolkien}/> 
             </div>               
             <div className="container">
-                <div>
-                    <RecommendedBooks text="Computer Complex Publisher" list={onlyComputerComplex}/>
-                </div>
+                <RecommendedBooks text="Computer Complex Publisher" list={onlyComputerComplex}/>
             </div>
         </div>
     );

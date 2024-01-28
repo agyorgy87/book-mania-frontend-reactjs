@@ -108,7 +108,7 @@ const RecommendedBooks = (props) => {
                                 <div className="d-flex flex-column">                      
                                     <div className="d-flex ps-2 pe-2">
                                         <Link 
-                                        className="home-book-title"
+                                        className="home-book-title" 
                                         to={"/selectedbook/" + book.id}
                                         >                                      
                                         { book.title.length > 26 ? book.title.substring(0,28) + " ..." : book.title }                                                                                        
@@ -141,7 +141,7 @@ const RecommendedBooks = (props) => {
                                 </div>                                           
                             </div>                                        
                             ))
-                        }                        
+                        }                                         
             </div>
         </div>
     )

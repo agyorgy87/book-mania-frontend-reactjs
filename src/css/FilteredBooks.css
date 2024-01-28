@@ -11,7 +11,7 @@
 }
 
 .filtered-book-pics {
-    height: 80%;
+    height: 80%; 
     cursor: pointer; 
 }
 
@@ -35,79 +35,21 @@
     font-family: 'Open Sans', sans-serif;
 }
 
-.filtered-book-price-heart-container {
-    width: 85%;
-    position: absolute; 
-    bottom: 0;
-}
-
-.filtered-value-of-the-book {
+.filtered-book-price {
     color: black;
     font-size: 1rem;
     font-weight: 400;
 }
 
-/*
-.heart-button {
-    border: none;
-    background: #ffffff;
-    font-size: 2rem;
-    transform: translateY(-15px); 
-}
-
-.book-heart-icon {
-    color: #596280;
-}
-
-.book-heart-icon-full {
-    color:#1e7b85
-}
-*/
-
-
-/*
-@media (max-width:1400px) {
-    .text-of-recommended-books {
-        margin-left: 3.5rem;
+@media (max-width: 1200px) {
+    .filtered-book-card-container {
+        display: flex;
+        justify-content: center;
     }
 }
 
-@media (max-width:1200px) {
-    .text-of-recommended-books {
-        margin-left: 8rem;
+@media (max-width: 768px) {
+    .filtered-book-card {
+        margin-right: 1.5rem !important;
     }
 }
-
-@media (max-width:992px) {
-    .text-of-recommended-books {
-        margin-left: 0.5rem;
-    }
-}
-
-@media (max-width:768px) {
-    .text-of-recommended-books {
-        margin-left: 5rem;
-    }
-}
-
-@media (max-width:576px) {
-    .text-of-recommended-books {
-        margin-left: 6rem;
-    }
-}
-
-@media (max-width:480px) {
-    .text-of-recommended-books {
-        margin-left: 4.5rem;
-    }
-    .book-card {
-        margin-right: 0rem !important;
-    }
-}
-
-@media (max-width:380px) {
-    .text-of-recommended-books {
-        margin-left: 1.5rem;
-    }
-}
-*/

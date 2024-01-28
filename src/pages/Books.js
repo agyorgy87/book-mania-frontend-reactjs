@@ -99,8 +99,6 @@ const Books = () => {
         { value: "IT", label: "IT" }
     ];
 
-
-
     const callGenreWithSelect = (selectedOption) => {
         if(selectedOption.value === "allBooks"){
             setGenreSelect(selectedOption);
@@ -196,7 +194,7 @@ const Books = () => {
         setPriceSelect("");
         setReleaseDateSelect(selectedOption);
         setSpecialSearchSelect("");
-        setPublisherSelect("");
+        setPublisherSelect(""); 
     }
 
     const callSpecialSearchWithList = (selectedSpecialSearch, selectedSpecialOrder) => {
@@ -317,8 +315,8 @@ const Books = () => {
                 </div>
             ) : (*/}
             <div className="container-fluid"> 
-            <div className="row">
-                    <div className="col-md-3 col-lg-3 col-xl-3 col-xxl-2 side-bar d-none d-sm-none d-md-block">
+                <div className="row">
+                    <div className="col-lg-3 col-xl-3 col-xxl-2 side-bar d-none d-md-none d-lg-block">
                         <ul className="list-group mt-4">
                             <GenreSideBarFilter options={allGenre} onFilterClick={callGenreWithList}/>                                         
                         </ul>
@@ -335,15 +333,15 @@ const Books = () => {
                             <PublisherSideBarFilter options={allPublisher} onFilterClick={callPublisherWithList}/> 
                         </ul>
                     </div>
-                <div className="col-md-9 col-lg-9 col-xl-9 col-xxl-10">
-                    <div className="row d-flex justify-content-center mb-4 mt-4">
+                <div className="col-md-12 col-lg-9 col-xl-9 col-xxl-10">
+                    <div className="row d-flex justify-content-center mb-5 mt-4">
                         <SearchInput onChange={callAllTitlesAndAuthors} />                                       
                     </div>
-                    <div className="d-block d-md-none d-flex flex-column align-items-center ">
+                    <div className="d-block d-lg-none d-flex flex-column align-items-center mb-3">
                             <div className="select-div mt-3">
                                     <Select 
                                         className="mb-1"
-                                        style={{ width: "100%" }}
+                                        style={{width: "100%"}}
                                         placeholder="All Categories"                                
                                         onChange={callGenreWithSelect}
                                         options={categoriesOptions}
@@ -353,7 +351,7 @@ const Books = () => {
                             <div className="select-div mt-3">
                                     <Select 
                                         className="mb-1"
-                                        style={{ width: "100%" }}
+                                        style={{width: "100%"}}
                                         placeholder="Price"                                
                                         onChange={callPriceWithSelect}
                                         options={priceOptions}
@@ -363,7 +361,7 @@ const Books = () => {
                             <div className="select-div mt-3">
                                     <Select 
                                         className="mb-1"
-                                        style={{ width: "100%" }}
+                                        style={{ width:"100%"}}
                                         placeholder="Release Date"                                
                                         onChange={callReleaseDateWithSelect}
                                         options={releaseDateOptions}
@@ -373,7 +371,7 @@ const Books = () => {
                             <div className="select-div mt-3">
                                     <Select 
                                         className="mb-1"
-                                        style={{ width: "100%"}}
+                                        style={{ width:"100%"}}
                                         placeholder="Special"                                
                                         onChange={callSpecialSearchWithSelect}
                                         options={specialOptions}
@@ -390,21 +388,21 @@ const Books = () => {
                                         value={publisherSelect}
                                     />                                                  
                             </div>
-                        </div> 
-                    <div className="d-flex justify-content-center mb-5">
-                        <div className="result-container">
-                            { showResult ?                  
-                                <div>    
-                                    <h1 className="search-result-books d-flex">Results for "{searchResult}"</h1>             
-                                </div> 
-                            :
-                                null
-                            } 
-                        </div>                      
-                    </div>
-                    <div>  
+                        </div>  
+                        <div className="d-flex justify-content-center">
+                            <div className="result-container mb-5 mt-2">
+                                { showResult ?                  
+                                    <div>    
+                                        <h1 className="search-result-books d-flex">Results for "{searchResult}"</h1>             
+                                    </div> 
+                                : 
+                                    null
+                                } 
+                            </div>                      
+                        </div>
+                    <div className="container">  
                         <FilteredBooks list={visibleBooks}/>
-                    </div>                       
+                    </div>                        
                 </div>
             </div> 
         </div>

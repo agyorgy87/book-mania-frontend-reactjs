@@ -1,7 +1,7 @@
 import '../css/SearchInput.css';
 import React from 'react';
 
-const SearchInput = ( {onChange} ) => {
+const SearchInput = ( {onChange} ) => { 
 
     return (
         <div className="input-group mt-3 search-input-container">

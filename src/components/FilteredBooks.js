@@ -55,67 +55,46 @@ const FilteredBooks = (props) => {
     }
 */
 
-    const modalMessage = "?"
-
+    const modalMessage = "?"; 
+    //col-md-4 col-lg-3 col-xl-3 col-xxl-2 
     return ( 
-        <div className="container"> 
+        <div className="container d-flex justify-content-center">  
             <div>
                 {openModal && <LoginWarning close={closeModal} message={modalMessage}/>}   
             </div>
-            <div className="row ms-5">
+            <div className="row"> 
                 { listOfBooks.map((book, index) => (
-                    <div className="col-md-4 col-lg-3 col-xl-3 col-xxl-2 d-flex flex-column filtered-book-card mb-5" key={"newness-div" + index}>
-                        <div className="d-flex justify-content-center mb-4 mt-4">
-                            <img 
-                            src={"http://localhost:4000/books_img/" + book.img_directory + "/" + book.image} 
-                            className="img-fluid filtered-book-pics shadow"                                             
-                            onClick={() => {navigate("/selectedbook/" + book.id)}}
-                            alt="book"
-                            />                                        
-                        </div>
-                        <div className="d-flex flex-column">                      
-                            <div className="d-flex ps-2 pe-2">
-                                <Link 
-                                className="filtered-book-title"
-                                to={"/selectedbook/" + book.id}
-                                >                                      
-                                { book.title.length > 17 ? book.title.substring(0,19) + " ..." : book.title }                                                                                        
-                                </Link>
+                    <div key={"newness-div" + index} 
+                    className="filtered-book-card-container col-sm-6 col-md-6 col-lg-6 col-xl-4 col-xxl-3 mb-5">
+                        <div className="d-flex flex-column filtered-book-card">
+                            <div className="d-flex justify-content-center mb-4 mt-4">
+                                <img 
+                                src={"http://localhost:4000/books_img/" + book.img_directory + "/" + book.image} 
+                                className="img-fluid filtered-book-pics shadow"                                             
+                                onClick={() => {navigate("/selectedbook/" + book.id)}}
+                                alt="book"
+                                />                                        
                             </div>
-                            <div className="d-flex ps-2 pe-2 mt-2">
-                                <p className="filtered-author-name">{book.author_name}</p>
-                            </div>                                                                                                                                                                  
-                        </div> 
-                        <div className="d-flex justify-content-between ps-4 pe-5 filtered-book-price-heart-container">                                       
-                            <div>
-                                <p className="filtered-value-of-the-book">{book.price} $</p>
-                            </div>                                       
-                                <div>
-                                    {/*
-                                    <button 
-                                    className="heart-button" 
-                                    >{/*onClick={() => addBookToWishListFromHomePage(book.id)} 
-                                    <AiOutlineHeart className="book-heart-icon"/>                                            
-                                    </button>
-                                    */}
-                                    {/* 
-                                    { fullOrEmptyHeart ?
-                                    <AiFillHeart className="book-heart-icon-full"/>
-                                    :
-                                    <AiOutlineHeart className="book-heart-icon"/>
-                                    }
-                                    */}
-                                    {/*
-                                    {fullOrEmptyHeart ?
-                                    <button className="heart-button" onClick={addBookToWishListFromHomePage}><AiFillHeart className="book-heart-icon-full"/></button>
-                                    :
-                                    <button className="heart-button" onClick={() => addBookToWishListFromHomePage(book.id)}></button>
-                                    }
-                                    */}
-                                </div>                                                                                         
-                        </div>                                           
-                    </div>                                        
+                            <div className="d-flex flex-column ps-4 pe-4">                      
+                                <div className="d-flex">
+                                    <Link 
+                                    className="filtered-book-title"
+                                    to={"/selectedbook/" + book.id}
+                                    >                                      
+                                    { book.title.length > 17 ? book.title.substring(0,23) + " ..." : book.title }                                                                                        
+                                    </Link>
+                                </div>
+                                <div className="d-flex mt-2">
+                                    <p className="filtered-author-name">{book.author_name}</p>
+                                </div>                                                                                                                                                                  
+                            </div> 
+                            <div className="d-flex ps-4">                                              
+                                <p className="filtered-book-price">{book.price} $</p>                                                                                                                                                   
+                            </div>                                           
+                        </div>    
+                    </div>                                    
                 ))}
+                
             </div>
         </div>
     )
