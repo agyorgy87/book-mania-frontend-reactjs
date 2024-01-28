@@ -58,12 +58,12 @@ const FilteredBooks = (props) => {
     const modalMessage = "?"; 
     //col-md-4 col-lg-3 col-xl-3 col-xxl-2 
     return ( 
-        <div className="container d-flex justify-content-center">  
+        <div className="container d-flex justify-content-center filtered-book-container"> 
             <div>
                 {openModal && <LoginWarning close={closeModal} message={modalMessage}/>}   
             </div>
             <div className="row"> 
-                { listOfBooks.map((book, index) => (
+                { listOfBooks.map((book, index) => ( 
                     <div key={"newness-div" + index} 
                     className="filtered-book-card-container col-sm-6 col-md-6 col-lg-6 col-xl-4 col-xxl-3 mb-5">
                         <div className="d-flex flex-column filtered-book-card">

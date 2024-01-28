@@ -4,7 +4,7 @@
 .filtered-book-card {
     height: 23rem !important;
     width: 14rem !important;
-    margin-right: 3rem !important;
+    margin-right: 10rem !important;
     border: 1px solid #e6e9f1;
     background: linear-gradient(180deg, #eaeee7 40%, #ffffff 40%);
     position: relative;
@@ -41,15 +41,21 @@
     font-weight: 400;
 }
 
-@media (max-width: 1200px) {
-    .filtered-book-card-container {
-        display: flex;
-        justify-content: center;
+@media (max-width: 992px) {
+    .filtered-book-card {
+        margin-right: 2rem !important;
     }
 }
 
 @media (max-width: 768px) {
     .filtered-book-card {
         margin-right: 1.5rem !important;
+    }
+}
+
+@media (max-width: 576px) {
+    .filtered-book-card-container {
+        display: flex;
+        justify-content: center;
     }
 }
