@@ -20,17 +20,6 @@ const RecommendedBooks = (props) => {
     const [openModal, setOpenModal] = useState(false);
     const [userWishList, setUserWishList] = useState([]);
 
-/*  
-    useEffect(() => {
-        if(userData.value.jwt){
-            axios.get("http://localhost:4000/user-wishlist/" + userData.value.id)
-            .then(response => {
-              setUserWishList(response.data);
-            })
-        }
-    }, []);
-*/
-
     useEffect(() => {
         if(userData.value.jwt) {
             const fetchData = () => {

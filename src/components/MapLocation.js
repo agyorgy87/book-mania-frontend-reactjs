@@ -14,4 +14,4 @@ const MapLocation = () => {
   )
 }
 
-export default MapLocation
+export default MapLocation;

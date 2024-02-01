@@ -21,7 +21,7 @@ const CheckoutShippingAndDelivery = () => {
             })
     },[]);
 
-    const openModal = () => {
+    const openModal = () => { 
         setOpenChangeShippingDetailsModal(true);
     }
 

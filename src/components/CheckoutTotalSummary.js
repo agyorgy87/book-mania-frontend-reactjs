@@ -1,9 +1,9 @@
-import React from 'react';
+import { useState, useEffect } from 'react';
 import "../css/CheckoutTotalSummary.css";
 import { Link } from 'react-router-dom'; 
 import { useContext } from 'react';
 import { CartContext } from "../context/CartContext";
-import { TotalPriceContext } from "../context/TotalPriceContext.js";
+import { TotalPriceContext } from "../context/TotalPriceContext.js"; 
 import { useNavigate } from "react-router-dom";
 
 const CheckoutTotalSummary = () => {
@@ -13,6 +13,17 @@ const CheckoutTotalSummary = () => {
     const cartData = useContext(CartContext);
 
     const totalPriceData = useContext(TotalPriceContext);
+
+    const [discountPriceState, setDiscountPriceState] = useState(false);
+
+    useEffect(() => {
+        let discountValue = totalPriceData.value.discountKey;
+        if(discountValue !== 0){
+            setDiscountPriceState(true)
+        }else{
+            setDiscountPriceState(false);
+        }
+    },[])
 
     return (
         <div className="checkout-total-summary-container">
@@ -55,7 +66,7 @@ const CheckoutTotalSummary = () => {
                 <div className="checkout-total-container ms-5 me-5">
                     <div className="d-flex justify-content-between">              
                         <p className="checkout-total-discount-text">Total:</p>
-                        <p className="checkout-total-discount-price">{totalPriceData.value.totalPriceKey}$</p>
+                        <p className={`checkout-total-discount-price ${discountPriceState ? "checkout-total-text-decoration" : null }`}>{totalPriceData.value.totalPriceKey} $</p>
                     </div>
                         { totalPriceData.value.discountKey === 0 ?
                             null
@@ -63,11 +74,11 @@ const CheckoutTotalSummary = () => {
                             <div>
                                 <div className="d-flex justify-content-between">
                                     <p className="checkout-total-discount-text">Discount:</p>
-                                    <p className="checkout-total-discount-price">{totalPriceData.value.discountKey}$</p>
+                                    <p className="checkout-total-discount-price">- {totalPriceData.value.discountKey} %</p>
                                 </div>
                                 <div className="d-flex justify-content-between">
                                     <p className="checkout-total-discount-text">Discounted price:</p>
-                                    <p className="checkout-total-discount-price">{totalPriceData.value.discountedPriceKey}$</p>
+                                    <p className="checkout-total-discount-price">{totalPriceData.value.discountedPriceKey} $</p>
                                 </div>
                             </div>
                         }        

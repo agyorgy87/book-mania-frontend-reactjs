@@ -25,7 +25,7 @@ const Cart = () => {
 
     return (       
         <div className="cart-page">  
-            <div className="fixed-top">
+            <div className="fixed-top"> 
                 <NavigationBar/>
             </div>
             <div className="container">

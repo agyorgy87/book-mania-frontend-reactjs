@@ -2,10 +2,6 @@ import '../css/FilteredBooks.css';
 import { useState } from 'react';
 import { Link } from 'react-router-dom'; 
 import { useNavigate } from "react-router-dom";
-//import { AiOutlineHeart } from "react-icons/ai";
-//import { AiFillHeart } from "react-icons/ai";
-//import { useContext } from 'react';
-//import { UserContext } from "../context/UserContext.js";
 import LoginWarning from "../modal/LoginWarning.js";
 
 const FilteredBooks = (props) => {  
@@ -14,49 +10,15 @@ const FilteredBooks = (props) => {
 
     let listOfBooks = props.list
 
-    //const userData = useContext(UserContext);
-
     const [openModal, setOpenModal] = useState(false);
-    //const [fullOrEmptyHeart, setFullOrEmptyHeart] = useState(false);
+
 
     const closeModal = () => {
         setOpenModal(false);
     }
-/*
-    const [userWishList, setUserWishList] = useState([]);
-
-    useEffect(() => {
-        axios.get("http://localhost:4000/user-wishlist/" + userData.value.id)
-            .then(response => {
-            setUserWishList(response.data);
-            })
-    }, [])
-
-    const addBookToWishListFromHomePage = (bookId) => {
-
-        let nameOfTheWishListBookId = "book_id";
-        let allBookIdInTheWishList = userWishList.map((book) => book[nameOfTheWishListBookId]);
-        let bookIdSearchAnswer = allBookIdInTheWishList.includes(bookId);
-
-        if(!userData.value.jwt){
-            setOpenModal(true); 
-        }else if(bookIdSearchAnswer){
-            alert("yes include")
-        }else{
-            let body = {userId: userData.value.id, bookId: bookId };
-                axios.post("http://localhost:4000/add-wishlist", body)
-                    .then(response => {
-                        if(response.data.success === true) {
-                        //console.log(response.data);
-                        setFullOrEmptyHeart(true);
-                    }
-            })
-        }   
-    }
-*/
 
     const modalMessage = "?"; 
-    //col-md-4 col-lg-3 col-xl-3 col-xxl-2 
+
     return ( 
         <div className="container d-flex justify-content-center filtered-book-container"> 
             <div>
@@ -98,7 +60,6 @@ const FilteredBooks = (props) => {
             </div>
         </div>
     )
-
 }
 
 export default FilteredBooks;

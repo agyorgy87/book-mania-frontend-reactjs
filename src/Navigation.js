@@ -14,7 +14,7 @@ import { UserContext } from "./context/UserContext.js";
 import { CartContext } from "./context/CartContext.js";
 import { TotalPriceContext } from "./context/TotalPriceContext.js";
 
-const Navigation = () => {
+const Navigation = () => { 
 
     let userDetails = localStorage.getItem("token")
 
@@ -38,7 +38,7 @@ const Navigation = () => {
         cartObj = [];
     }else{
         cartObj = JSON.parse(cartDetails);
-    }
+    } 
 
     let totalPriceObj = {
         totalPriceKey: 0,

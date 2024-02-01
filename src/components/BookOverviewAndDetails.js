@@ -50,4 +50,4 @@ const BookOverviewAndDetails = (props) => {
     )
 }
 
-export default BookOverviewAndDetails
+export default BookOverviewAndDetails;

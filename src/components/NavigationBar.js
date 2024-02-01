@@ -50,8 +50,7 @@ const NavigationBar = () => {
                             {
                                 userData.value.jwt ? 
                                 <li className="nav-item navigation-menus">
-                                    <Link to={"/wishlist"} className="nav-link user-welcome">My Wishlist</Link>     
-                                    {/*{userData.value.firstName}*/} 
+                                    <Link to={"/wishlist"} className="nav-link user-welcome">Hi, {userData.value.firstName}</Link>     
                                 </li>
                                 :
                                 null

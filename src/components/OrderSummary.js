@@ -40,12 +40,6 @@ const OrderSummary = () => {
 
     const modalMessage = "If you want to buy, please log in.";
 
-    let allPriceInOneArray = {
-        totalPriceKey: totatPriceInOrderSummary,
-        discountKey: showingDiscount,
-        discountedPriceKey: discountedPrice
-    };
-
     useEffect(() => {
         if(bookMultiple === 0.8) {
             setShowingDiscount(20)   
@@ -86,6 +80,13 @@ const OrderSummary = () => {
     }
 
     const proceedToCheckout = () => {
+
+        let allPriceInOneArray = {
+            totalPriceKey: totatPriceInOrderSummary,
+            discountKey: showingDiscount,
+            discountedPriceKey: discountedPrice
+        };
+
         if(!userData.value.jwt){
             setOpenModal(true);
         }
@@ -207,7 +208,7 @@ const OrderSummary = () => {
                     <button className="btn payment-button mt-3 mb-4" onClick={proceedToCheckout}>Procced To Checkout</button>
                 </div>  
         </div>
-    )
+    ) 
 }
 
 export default OrderSummary;
