@@ -25,8 +25,6 @@ const ChangeShippingDetails = (props) => {
     const addressErrorTextMessage = "Please enter your address."
     const cityErrorTextMessage = "Please enter you city."
     const zipCodeErrorMessage = "Please enter your zip code."
-
-    const [openChangeShippingAddress, setOpenChangeShippingAddress] = useState([]);
   
     const userData = useContext(UserContext);
     let userDataId = userData.value.id;
@@ -100,10 +98,17 @@ const ChangeShippingDetails = (props) => {
         setZipCodeInputValue(e.target.value);
     }
 
-    const sendPurchaseInformation = () => {
-        console.log("yes");
+    const saveNewShippingAddress = () => {
+        //console.log(props.userShippingAddress);
+        let userOrderDetails = {
+            firstName: firstNameInputValue,
+            lastName: lastNameInputValue,
+            address: addressInputValue,
+            city: cityInputValue,
+            zipCode: zipCodeInputValue
+        }
+        props.setUserShippingAddress(userOrderDetails);
     }
-
 
     return ( 
         <div className="overlay">  
@@ -210,7 +215,7 @@ const ChangeShippingDetails = (props) => {
                 <div className="d-flex justify-content-center mt-3 ps-3 pe-3">
                     <button 
                     className="btn fs-5 save-shipping-address-button"
-                    onClick={sendPurchaseInformation}
+                    onClick={saveNewShippingAddress}
                     >Save Shipping Address
                     </button>
                 </div>

@@ -3,9 +3,9 @@ import { useEffect, useState } from 'react';
 import axios from "axios";
 import { useContext } from 'react';
 import { UserContext } from "../context/UserContext";
-import ChangeShippingDetails from "../modal/ChangeShippingDetails.js";
+import ChangeShippingDetails from "../modal/ChangeShippingDetails.js"; 
 
-const CheckoutShippingAndDelivery = () => {
+const CheckoutShippingAndDelivery = (props) => {
     
     const userData = useContext(UserContext);
     let userDataId = userData.value.id;
@@ -18,6 +18,17 @@ const CheckoutShippingAndDelivery = () => {
         axios.get(`http://localhost:4000/get-registered-user/${userDataId}`)
             .then(response => {
                 setRecipientDetails(response.data);
+
+                let userOrderDetails = {
+                    firstName: response.data[0].first_name,
+                    lastName: response.data[0].last_name,
+                    address: response.data[0].address,
+                    city: response.data[0].city,
+                    zipCode: response.data[0].zip_code,
+                    email: response.data[0].email
+                };
+
+                props.setUserShippingAddress(userOrderDetails);
             })
     },[]);
 
@@ -32,7 +43,9 @@ const CheckoutShippingAndDelivery = () => {
     return (  
         <div>
             <div className="container-fluid">
-                {openChangeShippingADetailsModal && <ChangeShippingDetails close={closeModal}/>}
+                {openChangeShippingADetailsModal && <ChangeShippingDetails close={closeModal}
+                userShippingAddress={props.userShippingAddress} setUserShippingAddress={props.setUserShippingAddress}
+                />}
             </div>
             <div className="mt-3 text-center shipping-and-delivery-top-text">
                 <p>Shipping $ Delivery</p>

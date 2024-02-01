@@ -6,13 +6,13 @@ import { CartContext } from "../context/CartContext";
 import { TotalPriceContext } from "../context/TotalPriceContext.js"; 
 import { useNavigate } from "react-router-dom";
 
-const CheckoutTotalSummary = () => {
+const CheckoutTotalSummary = (props) => {
 
     let navigate = useNavigate();
 
     const cartData = useContext(CartContext);
 
-    const totalPriceData = useContext(TotalPriceContext);
+    const totalPriceData = useContext(TotalPriceContext); 
 
     const [discountPriceState, setDiscountPriceState] = useState(false);
 
@@ -24,6 +24,24 @@ const CheckoutTotalSummary = () => {
             setDiscountPriceState(false);
         }
     },[])
+
+    
+
+    const sendOrderDatas = () => {
+        
+        let bookDatasToTheDatabase = {};
+
+        cartData.value.forEach((obj, index) => {
+            bookDatasToTheDatabase[index] = {
+              title: obj.title,
+              quantity: obj.quantity,
+              price: obj.price
+            };
+        });
+        console.log(bookDatasToTheDatabase);
+        
+        console.log(props.userShippingAddress);
+    }
 
     return (
         <div className="checkout-total-summary-container">
@@ -58,7 +76,7 @@ const CheckoutTotalSummary = () => {
                             </div>
                             <p className="checkout-book-author-name mt-2">{book.author_name}</p>
                         </div>
-                    </div>                                                                                                                
+                    </div>                                                                                                                 
                 </div>
             ))}
             <hr className="dividing-line mt-5"/>
@@ -85,7 +103,7 @@ const CheckoutTotalSummary = () => {
                 </div> 
             </div>
             <div className="d-flex justify-content-center mt-3">
-                <button className="btn checkout-payment-button">Payment</button>
+                <button className="btn checkout-payment-button" onClick={sendOrderDatas}>Payment</button>
             </div> 
         </div>  
     </div>     
