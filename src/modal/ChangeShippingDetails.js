@@ -1,18 +1,15 @@
 import "../css/ChangeShippingDetails.css"; 
 import { useEffect, useState } from 'react';
-import axios from "axios";
-import { useContext } from 'react';
-import { UserContext } from "../context/UserContext";
 import { AiOutlineExclamationCircle } from "react-icons/ai"; 
 import { IoMdClose } from "react-icons/io";
 
-const ChangeShippingDetails = (props) => {
+const ChangeShippingDetails = ({shippingAddress, setShippingAddress, close}) => {
 
-    const [firstNameInputValue, setFirstNameInputValue] = useState(".");
-    const [lastNameInputValue, setLastNameInputValue] = useState(".");
-    const [addressInputValue, setAddressInputValue] = useState(".");
-    const [cityInputValue, setCityInputValue] = useState(".");
-    const [zipCodeInputValue, setZipCodeInputValue] = useState(".");
+    const [firstNameInputValue, setFirstNameInputValue] = useState(shippingAddress.firstName);
+    const [lastNameInputValue, setLastNameInputValue] = useState(shippingAddress.lastName);
+    const [addressInputValue, setAddressInputValue] = useState(shippingAddress.address);
+    const [cityInputValue, setCityInputValue] = useState(shippingAddress.city);
+    const [zipCodeInputValue, setZipCodeInputValue] = useState(shippingAddress.zipCode);
 
     const [firstNameError, setFirstNameError] = useState(false);
     const [lastNameError, setLastNameError] = useState(false);
@@ -25,26 +22,7 @@ const ChangeShippingDetails = (props) => {
     const addressErrorTextMessage = "Please enter your address."
     const cityErrorTextMessage = "Please enter you city."
     const zipCodeErrorMessage = "Please enter your zip code."
-  
-    const userData = useContext(UserContext);
-    let userDataId = userData.value.id;
 
-    useEffect(() => {
-        axios.get(`http://localhost:4000/get-registered-user/${userDataId}`)
-            .then(response => {
-                const userData = response.data[0];
-                if(userData) {
-                    setFirstNameInputValue(userData.first_name);
-                    setLastNameInputValue(userData.last_name);
-                    setAddressInputValue(userData.address);
-                    setCityInputValue(userData.city);
-                    setZipCodeInputValue(userData.zip_code);
-                }
-            })
-            .catch(error => {
-                console.log("Error message:", error);
-            })
-    },[]);
 
     useEffect (() => {
         if(firstNameInputValue === ""){
@@ -107,7 +85,9 @@ const ChangeShippingDetails = (props) => {
             city: cityInputValue,
             zipCode: zipCodeInputValue
         }
-        props.setUserShippingAddress(userOrderDetails);
+        console.log(userOrderDetails);
+        setShippingAddress(userOrderDetails);
+        close();
     }
 
     return ( 
@@ -115,7 +95,7 @@ const ChangeShippingDetails = (props) => {
             <div className="change-shipping-address-container mx-auto d-flex flex-column shadow-lg
                 pt-1 pe-1 bg-body-tertiary rounded col-lg-6 col-md-8 col-sm-10 col-12">
                 <div className="d-flex flex-row-reverse change-shipping-modal-close-button-container">
-                    <button className="change-shipping-modal-close-button pt-2 pe-2" onClick={props.close}><IoMdClose/></button>
+                    <button className="change-shipping-modal-close-button pt-2 pe-2" onClick={close}><IoMdClose/></button>
                 </div>
                 <div className="shipping-top-text d-flex justify-content-center">
                     <p>Change Shipping Address</p>
@@ -129,6 +109,7 @@ const ChangeShippingDetails = (props) => {
                                     className="form-control shipping-inputs"
                                     value={firstNameInputValue}
                                     onChange={firstNameInputChange}
+                                    disabled={true}
                                     />
                                 </div>
                                 {firstNameError ?
@@ -147,6 +128,7 @@ const ChangeShippingDetails = (props) => {
                                     className="form-control shipping-inputs"
                                     value={lastNameInputValue}
                                     onChange={lastNameInputChange}
+                                    disabled={true}
                                     />
                                 </div>
                                 {lastNameError ?

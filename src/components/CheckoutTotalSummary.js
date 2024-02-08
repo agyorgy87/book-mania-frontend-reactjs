@@ -3,14 +3,18 @@ import "../css/CheckoutTotalSummary.css";
 import { Link } from 'react-router-dom'; 
 import { useContext } from 'react';
 import { CartContext } from "../context/CartContext";
+import { UserContext } from "../context/UserContext";
 import { TotalPriceContext } from "../context/TotalPriceContext.js"; 
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
-const CheckoutTotalSummary = (props) => {
+const CheckoutTotalSummary = ({shippingAddress}) => {
 
     let navigate = useNavigate();
 
     const cartData = useContext(CartContext);
+
+    const userData = useContext(UserContext);
 
     const totalPriceData = useContext(TotalPriceContext); 
 
@@ -24,23 +28,30 @@ const CheckoutTotalSummary = (props) => {
             setDiscountPriceState(false);
         }
     },[])
-
-    
-
+ 
     const sendOrderDatas = () => {
         
-        let bookDatasToTheDatabase = {};
-
-        cartData.value.forEach((obj, index) => {
-            bookDatasToTheDatabase[index] = {
-              title: obj.title,
-              quantity: obj.quantity,
-              price: obj.price
-            };
+        let bookDatasToTheDatabase = [];
+        cartData.value.forEach((obj) => {
+            bookDatasToTheDatabase.push({
+                id: obj.id,
+                title: obj.title,
+                quantity: obj.quantity,
+                price: obj.price
+            });
         });
-        console.log(bookDatasToTheDatabase);
-        
-        console.log(props.userShippingAddress);
+
+        let request = {};
+        request.books = bookDatasToTheDatabase;
+        request.userId = userData.value.id;
+        request.address = shippingAddress;
+        request.totalPrice = totalPriceData.value.totalPriceKey;
+        request.discount = totalPriceData.value.discountKey;
+
+        axios.post(`http://localhost:4000/send-order`, request)
+            .then(response => {
+                alert('sikeres megrendelés');
+        })
     }
 
     return (
