@@ -71,19 +71,19 @@ const RecommendedBooks = (props) => {
             }) 
     }
 
-    const closeModal = () => {
+    const closeModal = () => { 
         setOpenModal(false);
     }
     
     const modalMessage = "Sign in to add the book to your favorites list."
     
     return (
-        <div className="container d-flex justify-content-center"> 
+        <div className="container d-flex justify-content-center">   
             <div>
                 {openModal && <LoginWarning close={closeModal} message={modalMessage}/>}   
             </div>
             <div className="row d-flex justify-content-center col-md-12 col-lg-10 col-xl-8 col-xxl-12">            
-                <div className="mb-2">
+                <div className="mb-3">
                     <h1 className="text-of-recommended-books">{props.text}</h1> 
                 </div>   
                         { listOfRecommendedBooks.map((book, index) => (

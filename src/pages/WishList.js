@@ -10,16 +10,16 @@ import BooksInTheWishList from "../components/BooksInTheWishList.js";
 
 const WishList = () => {  
 
-  const userData = useContext(UserContext);
+    const userData = useContext(UserContext);
 
-  const [userWishList, setUserWishList] = useState([])
-  
-  useEffect(() => {
-    axios.get("http://localhost:4000/user-wishlist/" + userData.value.id)
-        .then(response => {
-          setUserWishList(response.data);
-        })
-  }, [])
+    const [userWishList, setUserWishList] = useState([])
+    
+    useEffect(() => {
+        axios.get("http://localhost:4000/user-wishlist/" + userData.value.id)
+            .then(response => {
+            setUserWishList(response.data);
+            })
+    }, [])
 
     /*
     const wishListAddToCart = (book) => {  
@@ -31,7 +31,7 @@ const WishList = () => {
         }else{
             const bookDetailsCopy = {...book}
             bookDetailsCopy.quantity = 1
-            const cartDataCopy = [...cartData.value, bookDetailsCopy]
+            const cartDataCopy = [...cartData.value, bookDetailsCopy] 
             cartData.setValue(cartDataCopy);
             localStorage.setItem("cart", JSON.stringify(cartDataCopy));
         }
@@ -44,9 +44,12 @@ const WishList = () => {
                 <NavigationBar/>
             </div>
             <div className="container">
-                <div>
-                    <BooksInTheWishList text="Wish list" list={userWishList}/> 
+                <div className="mb-4"> 
+                    <h1 className="text-of-wish-list-books">My wish list</h1>
                 </div>
+                <div>
+                    <BooksInTheWishList list={userWishList}/> 
+                </div>               
             </div>
         </div>
     )

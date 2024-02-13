@@ -1,35 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap');
 
-.text-of-wish-list-books {
-    margin-left: -1rem;
-    color: #2b2f3c;
-    font-size: 3rem;  
-    font-weight: 300;
-    font-family: 'Roboto', sans-serif;
-}
-
 .wish-list-book-card {
     height: 23rem !important;
     width: 14rem !important;
-    margin-right: 3rem !important;
+    margin-right: 10rem !important; 
     border: 1px solid #e6e9f1;
     background: linear-gradient(180deg, #eaeee7 40%, #ffffff 40%);
     position: relative;
-
 }
 
-.wishlist-book-pics {
-    height: 100%;
-    cursor: pointer;
+.wish-list-book-pics {
+    height: 80%; 
+    cursor: pointer; 
 }
-/*
-.wishlist-book-title-container {
-    height: 55px; 
-    width: 80%;
-}
-*/
-.wishlist-book-title { 
+
+.wish-list-book-title { 
     color: black;
     font-size: 0.8rem;
     font-weight: 500;
@@ -38,87 +24,38 @@
     text-decoration: none;
 }
 
-.wishlist-book-title:hover {
+.wish-list-book-title:hover {
     color: black;
 }
 
-
-.wishlist-author-name {
+.wish-list-author-name {
     color: #1e7b85;
     font-size: 0.7rem;
     font-weight: 600;
     font-family: 'Open Sans', sans-serif;
 }
 
-
-.wishlist-value-of-the-book {
+.wish-list-book-price {
     color: black;
     font-size: 1rem;
     font-weight: 400;
 }
 
-.wishlist-add-to-cart-buttons {
-    height: 2.5rem;
-    width: 55%;
-    border-radius: 6px;
-    border: none;
-    color: #EEE9DA;
-    background-color: #30475f;
-    font-weight: 400;
-    font-family: 'Open Sans', sans-serif;
-}
-
-.wishlist-add-to-cart-buttons:hover {
-    background-color: #212A3E;
-}
-
-.wishlist-cart-icon { 
-    transform: translateY(-2px);
-}
-
-/*
-@media (max-width:1200px) {
-    .wishlist-add-to-cart-buttons {
-        width: 65%;
-    }
-
-    .wishlist-book-title-container {
-        height: 75px;
+@media (max-width: 992px) {
+    .wish-list-book-card {
+        margin-right: 2rem !important;
     }
 }
 
-@media (max-width:992px) {
-    .wishlist-add-to-cart-buttons {
-        width: 45%;
+@media (max-width: 768px) {
+    .wish-list-book-card {
+        margin-right: 1.5rem !important;
     }
 }
 
-@media (max-width:786px) {
-    .wishlist-add-to-cart-buttons {
-        width: 60%;
+@media (max-width: 576px) {
+    .wish-list-book-card-container {
+        display: flex;
+        justify-content: center;
     }
 }
- 
-@media (max-width:576px) {
-    .wishlist-add-to-cart-buttons {
-        width: 70%;
-    }
-
-    .wishlist-book-title-container {
-        height: 75px;
-        width: 90%;
-    }
-}
-
-@media (max-width:465px) {
-    .wishlist-add-to-cart-buttons {
-        width: 80%;
-    }
-}
-
-@media (max-width:365px) {
-    .wishlist-add-to-cart-buttons {
-        width: 90%;
-    }
-}
-*/

@@ -1,8 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap');
+
 .wishlist-page {
-    height: 100vh;
-    padding-top: 100px;
+    padding-top: 150px;
     background-color: #ffffff !important; 
 }
 
+.text-of-wish-list-books {
+    color: #2b2f3c; 
+    font-size: 3rem;  
+    font-weight: 300;
+    font-family: 'Roboto', sans-serif;
+}
+
+@media (max-width: 576px) {
+    .text-of-wish-list-books {
+        margin-left: -20px;
+        margin-bottom: 2rem;
+        display: flex;
+        justify-content: center;
+        font-size: 3.5rem;
+    }
+}
 
  

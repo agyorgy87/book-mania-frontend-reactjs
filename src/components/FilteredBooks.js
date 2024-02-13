@@ -16,11 +16,11 @@ const FilteredBooks = (props) => {
     const closeModal = () => {
         setOpenModal(false);
     }
-
+ 
     const modalMessage = "?"; 
 
     return ( 
-        <div className="container d-flex justify-content-center filtered-book-container"> 
+        <div className="container d-flex justify-content-center"> 
             <div>
                 {openModal && <LoginWarning close={closeModal} message={modalMessage}/>}   
             </div>
