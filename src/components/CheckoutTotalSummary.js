@@ -21,17 +21,21 @@ const CheckoutTotalSummary = ({shippingAddress}) => {
     const [discountPriceState, setDiscountPriceState] = useState(false);
 
     useEffect(() => {
+
         let discountValue = totalPriceData.value.discountKey;
+
         if(discountValue !== 0){
             setDiscountPriceState(true)
         }else{
             setDiscountPriceState(false);
         }
+
     },[])
  
     const sendOrderDatas = () => {
         
         let bookDatasToTheDatabase = [];
+        
         cartData.value.forEach((obj) => {
             bookDatasToTheDatabase.push({
                 id: obj.id,

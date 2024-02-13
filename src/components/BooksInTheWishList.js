@@ -21,7 +21,7 @@ const BooksInTheWishList = (props) => {
                                 <img 
                                 src={"http://localhost:4000/books_img/" + book.img_directory + "/" + book.image} 
                                 className="img-fluid wish-list-book-pics shadow"                                             
-                                onClick={() => {navigate("/selectedbook/" + book.id)}}
+                                onClick={() => {navigate("/selectedbook/" + book.book_id)}}
                                 alt="book"
                                 />                                        
                             </div>
