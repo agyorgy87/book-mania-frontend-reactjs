@@ -39,7 +39,9 @@ const Home = () => {
                     <h1>-20%, -30%, -50% COUPON DISCOUNTS</h1>
                         <div className="mt-4">
                             <p className="card-text discount-font">If you have a coupon code, you can buy books at discount price!</p>
-                            <p className="card-text discount-font">You can find the coupon codes in<a href="https://github.com/agyorgy87/book-mania-frontend-reactjs/blob/master/CouponCodes.md"> my github repository, in CouponCodes.md file</a> :)</p>
+                            <p className="card-text discount-font">You can find the coupon codes in 
+                                <a href="https://github.com/agyorgy87/book-mania-frontend-reactjs/blob/master/CouponCodes.md" target="_blank"> my github repository, in CouponCodes.md file</a> 
+                            :)</p>
                         </div>
                     <div className="circle1"></div>
                     <div className="circle2"></div>
