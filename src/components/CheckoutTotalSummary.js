@@ -54,39 +54,39 @@ const CheckoutTotalSummary = ({shippingAddress}) => {
         })
     }
 
-    return (
+    return ( 
         <div className="checkout-total-summary-container">
             <div className="mt-3 text-center items-and-prices-top-text"> 
                 <p>Items & Prices</p>
             </div>
-        <div className="pt-3">
+        <div className="pt-3 checkout-book-img-title-author-price-container">
             { cartData.value.map((book, index) => ( 
                 <div className="mb-4" key={"cart-data-div" + index}>
-                    <div className="d-flex checkout-bookimg-title-author-multiplier-contanier"> 
+                    <div className="d-flex checkout-book-img-title-author-price-container"> 
                         <div className="checkout-book-img-container">
                             <img 
                             src={"http://localhost:4000/books_img/" + book.img_directory + "/" + book.image}
-                            className="checkout-book-pics mt-2"                                             
+                            className="checkout-book-pics mt-2 me-3"                                             
                             alt="book"
                             onClick={() => {navigate("/selectedbook/" + book.id)}}
                             /> 
                         </div>
-                        <div className="mt-2 checkout-title-multiplier-author-container">
-                            <div className="d-flex justify-content-between">
-                                <div>
-                                    <Link 
-                                    className="checkout-book-title"
-                                    to={"/selectedbook/" + book.id}
-                                    > 
-                                    {book.title}
-                                    </Link>
-                                </div>
-                                <div>
-                                    <p className="checkout-book-multiplier ms-4 mt-1">x{book.quantity}</p>
-                                </div>
+                        <div className="d-flex flex-column checkout-book-title-author-container">
+                            <div>
+                                <Link 
+                                className="checkout-book-title"
+                                to={"/selectedbook/" + book.id}
+                                > 
+                                {book.title}
+                                </Link>
                             </div>
-                            <p className="checkout-book-author-name mt-2">{book.author_name}</p>
+                            <div>
+                                <p className="checkout-book-author-name mt-2">{book.author_name}</p>
+                            </div>
                         </div>
+                        <div className="checkout-book-price-container">
+                            <p className="checkout-book-multiplier ms-4 mt-1">x{book.quantity}</p>
+                        </div>                                                
                     </div>                                                                                                                 
                 </div>
             ))}

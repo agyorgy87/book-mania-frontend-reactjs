@@ -36,13 +36,13 @@ const Checkout = () => {
                 <NavigationBar/>
             </div>
             <div className="row d-flex justify-content-center">
-                <div className="shipping-and-delivery-container col-xl-5 col-lg-6 col-md-8 col-sm-12 col-xs-12">
+                <div className="shipping-and-delivery-container col-xl-6 col-lg-6 col-md-8 col-sm-12 col-xs-12">
                     <CheckoutShippingAndDelivery 
                     shippingAddress={shippingAddress}
                     setShippingAddress={setShippingAddress}
                     />
                 </div>
-                <div className="order-summary-container col-xl-5 col-lg-6 col-md-8 col-sm-12 col-xs-12">
+                <div className="order-summary-container col-xl-6 col-lg-6 col-md-8 col-sm-12 col-xs-12">
                     <CheckoutTotalSummary 
                     shippingAddress={shippingAddress}
                     />

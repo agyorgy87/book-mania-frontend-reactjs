@@ -9,11 +9,19 @@
 */ 
 .items-and-prices-top-text {
     font-size: 35px;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Open Sans', sans-serif; 
 }
 
-.checkout-book-img-container {
-    width: 30%;
+.checkout-book-img-container { 
+    width: 240px;
+}
+
+.checkout-book-title-author-container {
+    width: 60%;
+}
+
+.checkout-book-price-container {
+    width:20%;
 }
 
 .checkout-book-pics {
@@ -22,10 +30,6 @@
     height: 150px;
     filter: drop-shadow(2px 2px 2px );
     cursor: pointer;
-}
-
-.checkout-title-multiplier-author-container {
-    width: 100%;
 }
 
 .checkout-book-title { 
@@ -93,80 +97,35 @@
     background-color: #155a62 !important; 
 }
 
-/*
-@media (max-width: 1500px) {
-    .checkout-book-img-container {
-        width: 40%;
+
+@media (max-width: 768px) {
+
+    .checkout-book-img-title-author-price-container {
+        padding-left: 2rem;
+        padding-right: 2rem;
     }
+
 }
 
-@media (max-width: 1400px) {
-    .checkout-book-img-container {
-        width: 45%;
-    }
-}
+@media (max-width: 576px) {
 
-@media (max-width: 1300px) {
-    .checkout-book-img-container {
-        width: 45%;
-    }
-}
-
-@media (max-width: 1210px) {
-
-    .checkout-book-img-container {
-        width: 45%;
-    }
-
-    .checkout-title-multiplier-author-container {
-        padding-right:30px;
-        width: 100%;
+    .checkout-book-img-title-author-price-container {
+        padding-left: 1rem;
+        padding-right: 1rem;
     }
 
     .checkout-book-title {
         font-size: 18px;
     }
 
+    .checkout-book-author-name {
+        font-size: 14px;
+    }
+
     .checkout-book-multiplier {
         font-size: 18px;
     }
 
-    .checkout-book-author-name {
-        font-size: 14px;
-    }
-    
 }
 
 
-@media (max-width: 992px) {
-
-    .checkout-book-img-container {
-        width: 40%;
-    }
-
-}
-
-@media (max-width: 840px) {
-
-    .checkout-book-img-container {
-        width: 45%;
-    }
-
-}
-
-@media (max-width: 768px) {
-
-    .checkout-bookimg-title-author-multiplier-contanier {
-        padding: 0 40px;
-    }
-
-}
-
-@media (max-width: 768px) {
-
-    .checkout-bookimg-title-author-multiplier-contanier {
-        padding: 0 40px;
-    }
-
-}
-*/

@@ -36,8 +36,6 @@ const RecommendedBooks = (props) => {
         }
     },[])
 
-
-
     const userFavoritBooksIDsInArray = userWishList.map(item => item.book_id);
 
     const addBookToWishListFromHomePage = (bookId) => {
