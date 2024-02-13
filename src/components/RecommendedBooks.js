@@ -21,7 +21,7 @@ const RecommendedBooks = (props) => {
     const [userWishList, setUserWishList] = useState([]);
 
     useEffect(() => {
-        if(userData.value.jwt) {
+        if(userData.value.jwt) { 
             const fetchData = () => {
                 try{
                     axios.get("http://localhost:4000/user-wishlist/" + userData.value.id)
@@ -36,6 +36,8 @@ const RecommendedBooks = (props) => {
         }
     },[])
 
+
+
     const userFavoritBooksIDsInArray = userWishList.map(item => item.book_id);
 
     const addBookToWishListFromHomePage = (bookId) => {
@@ -47,13 +49,13 @@ const RecommendedBooks = (props) => {
         if(!userData.value.jwt){
             setOpenModal(true); 
         }else if(bookIdSearchAnswer){
-            alert("yes include")
+            console.log("yes include");
         }else{
             let body = {userId: userData.value.id, bookId: bookId };
             axios.post("http://localhost:4000/add-wishlist", body)
             .then(response => {
                 if(response.data.success === true) {
-                    //console.log(response.data);
+                    setUserWishList([...userWishList, { book_id: bookId }]);
                 }
             })
         }   
@@ -64,7 +66,7 @@ const RecommendedBooks = (props) => {
             axios.post("http://localhost:4000/delete-wishlist", body)
                 .then(response => {
                     if(response.data.success === true) {
-                        //console.log(response.data)
+                        setUserWishList(userWishList.filter(book => book.book_id !== deletedBookId));
                     }
             }) 
     }
@@ -107,7 +109,7 @@ const RecommendedBooks = (props) => {
                                         <p className="home-author-name">{book.author_name}</p>
                                     </div>                                                                                                                                                                  
                                 </div> 
-                                <div className="d-flex justify-content-between ps-4 pe-5 book-price-heart-container pb-2">                                       
+                                <div className="d-flex justify-content-between ps-2 pe-2 book-price-heart-container pb-2">                                       
                                         <div>
                                             <p className="home-value-of-the-book">{book.price} $</p>
                                         </div>                                       

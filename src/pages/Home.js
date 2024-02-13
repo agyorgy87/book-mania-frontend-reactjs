@@ -49,7 +49,7 @@ const Home = () => {
                 <RecommendedBooks text="Newness" list={newness}/>                 
             </div>
             <div className="container">
-                    <RecommendedBooks text="Tolkien's Pen" list={onlyTolkien}/> 
+                <RecommendedBooks text="Tolkien's Pen" list={onlyTolkien}/> 
             </div>               
             <div className="container">
                 <RecommendedBooks text="Computer Complex Publisher" list={onlyComputerComplex}/>
