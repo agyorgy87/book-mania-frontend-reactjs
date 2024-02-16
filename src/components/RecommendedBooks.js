@@ -40,14 +40,8 @@ const RecommendedBooks = (props) => {
 
     const addBookToWishListFromHomePage = (bookId) => {
         
-        let nameOfTheWishListBookId = "book_id";
-        let allBookIdInTheWishList = userWishList.map((book) => book[nameOfTheWishListBookId]);
-        let bookIdSearchAnswer = allBookIdInTheWishList.includes(bookId);
-        
         if(!userData.value.jwt){
             setOpenModal(true); 
-        }else if(bookIdSearchAnswer){
-            console.log("yes include");
         }else{
             let body = {userId: userData.value.id, bookId: bookId };
             axios.post("http://localhost:4000/add-wishlist", body)
@@ -73,7 +67,7 @@ const RecommendedBooks = (props) => {
         setOpenModal(false);
     }
     
-    const modalMessage = "Sign in to add the book to your favorites list."
+    const modalMessage = "Sign in to add the book to your wish list."
     
     return (
         <div className="container d-flex justify-content-center">   
