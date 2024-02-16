@@ -72,7 +72,6 @@ const CreateAccount = () => {
                 pass: values.password
             }
             axios.post("http://localhost:4000/register", user)
-            console.log(user);
             setOpenSuccessfulRegistrationModal(true);
             }
         })          

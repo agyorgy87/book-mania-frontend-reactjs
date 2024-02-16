@@ -29,7 +29,7 @@ const RecommendedBooks = (props) => {
                         setUserWishList(response.data);
                       })
                     }catch (error) {
-                        console.log("Error data:", error);
+                        //console.log("Error data:", error);
                     }
             }
             fetchData();

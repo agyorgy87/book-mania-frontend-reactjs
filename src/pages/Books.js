@@ -26,14 +26,6 @@ const Books = () => {
     const [specialSearchSelect, setSpecialSearchSelect] = useState();
     const [publisherSelect, setPublisherSelect] = useState();
 
-    //const [isLoading, setIsLoading] = useState(true);
-/*
-    useEffect(() => {
-        setTimeout(() => {
-          setIsLoading(false);
-        }, 4000);
-      }, []);
-*/
     useEffect(() => { 
         getAllBooks();  
         getAllGenre();
@@ -201,7 +193,6 @@ const Books = () => {
         axios.get(`http://localhost:4000/get-all-by-special/${selectedSpecialSearch}/${selectedSpecialOrder}`)
             .then((response) => {
             setVisibleBooks(response.data);
-            console.log(response.data) 
         })
         setShowResult(false);
         scrollToUp();
@@ -218,7 +209,6 @@ const Books = () => {
 
         const twoParameters = selectedOption.value;
         const twoPart = twoParameters.split("-");
-        console.log(twoPart);
         const selectedOptionOrderBy = twoPart[0];
         const selectedOptionOrder = twoPart[1];
         
@@ -269,29 +259,14 @@ const Books = () => {
         setPublisherSelect(selectedOption);
     }
 
-    /*
-    const callAllTitlesAndAuthors = (e) => {
-        axios.get(`http://localhost:4000/get-book-title/${e}`)
-            .then((response) => {
-            setVisibleBooks(response.data);
-            console.log(e);
-            console.log(response.data);
-        })
-        setShowResult(true);
-        setSearchResult(e);
-    }
-    */
-
     const callAllTitlesAndAuthors = (e) => {
         if (e.trim() !== "") {
             axios.get(`http://localhost:4000/get-book-title/${e}`)
                 .then((response) => {
                     setVisibleBooks(response.data);
-                    console.log(e);
-                    console.log(response.data);
                 })
                 .catch((error) => {
-                    console.error("Error fetching book titles:", error);
+                    //console.error("Error fetching book titles:", error);
                 });
             setShowResult(true);
             setSearchResult(e);
@@ -332,12 +307,6 @@ const Books = () => {
             <div className="fixed-top">
                 <NavigationBar/>
             </div>
-            {/*
-            { isLoading ? (
-                <div>
-                Loading...
-                </div>
-            ) : (*/}
             <div className="container-fluid"> 
                 <div className="row">
                     <div className="col-lg-3 col-xl-3 col-xxl-2 side-bar d-none d-md-none d-lg-block">

@@ -77,7 +77,6 @@ const ChangeShippingDetails = ({shippingAddress, setShippingAddress, close}) => 
     }
 
     const saveNewShippingAddress = () => {
-        //console.log(props.userShippingAddress);
         let userOrderDetails = {
             firstName: firstNameInputValue,
             lastName: lastNameInputValue,
@@ -85,7 +84,6 @@ const ChangeShippingDetails = ({shippingAddress, setShippingAddress, close}) => 
             city: cityInputValue,
             zipCode: zipCodeInputValue
         }
-        console.log(userOrderDetails);
         setShippingAddress(userOrderDetails);
         close();
     }

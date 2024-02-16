@@ -22,8 +22,6 @@ const WishList = () => {
             })
     }, [])
 
-    console.log(userWishList);
-
     /*
     const wishListAddToCart = (book) => {  
         let allData = cartData.value;

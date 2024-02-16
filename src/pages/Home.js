@@ -62,4 +62,4 @@ const Home = () => {
 
 export default Home;
 
-//style={{ backgroundImage: `url('${"http://localhost:4000/books_img/" + books.img_directory + "/" + books.image}')`}}
+

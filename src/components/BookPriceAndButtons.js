@@ -48,7 +48,6 @@ const BookPriceAndButtons = (props) => {
                 axios.post("http://localhost:4000/delete-wishlist", body)
                     .then(response => {
                         if(response.data.success === true) {
-                        console.log(response.data)
                         setHeartIconFull(false);
                         }
                 })              
@@ -57,7 +56,6 @@ const BookPriceAndButtons = (props) => {
                 axios.post("http://localhost:4000/add-wishlist", body)
                     .then(response => {
                         if(response.data.success === true) {
-                        console.log(response.data)
                         setHeartIconFull(true);
                         }
                     })

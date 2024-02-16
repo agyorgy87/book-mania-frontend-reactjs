@@ -43,4 +43,4 @@ const SelectedBook = () => {
 
 export default SelectedBook;
 
-{/*style={{ background: `url("http://localhost:4000/books_img/${bookDetails.img_directory}/${bookDetails.image_big}")` }}*/}
+

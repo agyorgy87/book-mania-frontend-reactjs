@@ -16,8 +16,6 @@ const CartBooks = () => {
 
     const [buttonDisabled, setButtonDisabled] = useState(false);
 
-   console.log(cartData);
-
     const plusOneBook = (book) => {     
         setButtonDisabled(false);  
         let allCartData = [...cartData.value]
@@ -28,8 +26,7 @@ const CartBooks = () => {
         allCartData.splice(foundIndex, 0, bookForModification)
         let stringifiedCartData = JSON.stringify(allCartData)
         localStorage.setItem("cart", stringifiedCartData);   
-        cartData.setValue(allCartData);  
-        console.log(allCartData);  
+        cartData.setValue(allCartData);   
     }
 
     const minusOneBook = (book) => {

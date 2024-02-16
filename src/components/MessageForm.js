@@ -38,7 +38,7 @@ const MessageForm = () => {
         if(name.length > 0 && email.length > 0 && message.length > 10){
             axios.post("http://localhost:4000/message-sender", sender)
             .then(response => {
-                console.log(response.data)
+                //...
             })
         }else{
             setNameErrorMessage(true);

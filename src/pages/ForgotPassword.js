@@ -26,7 +26,6 @@ const ForgotPassword = () => {
     const sendUserEmail = () => {
         axios.get(`http://localhost:4000/get-forgot-password/${userEmailInput}`)
             .then(response => {
-                console.log(response);
                 if(response.data.success === true) {
                     setOpenEmailSentSuccessfully(true);
                     /*I did not create an email sending service for the app*/

@@ -67,7 +67,6 @@ const OrderSummary = () => {
     const couponCodeCheck = () => {
         axios.get(`http://localhost:4000/get-coupon-code/${couponCodeInput}`)
             .then(response => {
-                console.log(response);
                 if(response.data.success === true) {
                     setBookMultiple(response.data.bookMultiple);
                     setCouponCodeValidationMessage(true);
@@ -93,7 +92,7 @@ const OrderSummary = () => {
         else if(userData.value.jwt && couponCodeInput !== ""){
             axios.get(`http://localhost:4000/set-coupon-used/${couponCodeInput}`)
             .then(response => {
-                console.log(response);               
+                //...
         })
         totalPriceData.setValue(allPriceInOneArray);
         navigate("/checkout");

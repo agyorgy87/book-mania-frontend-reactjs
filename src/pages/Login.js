@@ -70,11 +70,11 @@ const Login = () => {
     }
 
     const login = (e) => {
-     /*   
+    /*   
     if(userEmail === "" && password === ""){ 
         setLoginMessage("");
     }
-*/
+    */
     e.preventDefault();
 
     let userObj = {
@@ -82,9 +82,7 @@ const Login = () => {
         pass: password
     }
         axios.post("http://localhost:4000/auth", userObj)
-        .then(response => {
-            console.log(response.data);
-            
+        .then(response => {          
             if(response.data.error) {
                 if(userEmail === "" && password === ""){
                     setPasswordInfo(false);

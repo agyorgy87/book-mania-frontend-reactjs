@@ -26,7 +26,6 @@ const Checkout = () => {
                         email: response.data[0].email
                     };
                     setShippingAddress(userOrderDetails);
-                    //console.log(userOrderDetails);
             })       
     },[]);
 

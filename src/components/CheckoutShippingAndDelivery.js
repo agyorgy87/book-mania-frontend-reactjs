@@ -1,5 +1,5 @@
 import "../css/CheckoutShippingAndDelivery.css"; 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 
 import ChangeShippingDetails from "../modal/ChangeShippingDetails.js"; 
