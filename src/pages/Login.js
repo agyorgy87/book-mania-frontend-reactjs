@@ -40,6 +40,7 @@ const Login = () => {
     useEffect(() => {
         if(userEmail === "" && password !== "") {
             setEmailInputErrorMessage(true);
+            setLoginMessage("");
         }
     },[userEmail,password])
 
