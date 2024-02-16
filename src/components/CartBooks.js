@@ -1,5 +1,5 @@
 import "../css/CartBooks.css";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom'; 
 import { useNavigate } from "react-router-dom";
 import { BiPlus } from "react-icons/bi";
@@ -8,13 +8,19 @@ import { MdOutlineRemoveShoppingCart } from "react-icons/md";
 import { useContext } from 'react';
 import { CartContext } from "../context/CartContext";
 
-const CartBooks = () => {
+const CartBooks = ({setAllQuantity}) => {
 
-    let navigate = useNavigate();
+    let navigate = useNavigate(); 
 
     const cartData = useContext(CartContext);
 
     const [buttonDisabled, setButtonDisabled] = useState(false);
+
+    useEffect(() => {
+        const allQuantityInOneArray = cartData.value.map(item => item.quantity);
+        const sumAllQuantity = allQuantityInOneArray.reduce((previousAmount, currentValue) => previousAmount + currentValue, 0);
+        setAllQuantity(sumAllQuantity);
+    }, [cartData]);
 
     const plusOneBook = (book) => {     
         setButtonDisabled(false);  
@@ -26,7 +32,7 @@ const CartBooks = () => {
         allCartData.splice(foundIndex, 0, bookForModification)
         let stringifiedCartData = JSON.stringify(allCartData)
         localStorage.setItem("cart", stringifiedCartData);   
-        cartData.setValue(allCartData);   
+        cartData.setValue(allCartData);  
     }
 
     const minusOneBook = (book) => {

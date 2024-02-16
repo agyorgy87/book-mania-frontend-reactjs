@@ -1,13 +1,13 @@
 import '../css/Cart.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import NavigationBar from '../components/NavigationBar.js';
 import CartBooks from "../components/CartBooks.js";
 import OrderSummary from "../components/OrderSummary.js";
 
 const Cart = () => {  
 
-    const [allQuantity, setAllQuantity] = useState(0);
-    
+    const [allQuantity, setAllQuantity] = useState(0); 
+
     return (       
         <div className="cart-page">  
             <div className="fixed-top"> 
@@ -21,7 +21,7 @@ const Cart = () => {
                 <div>
                     <div className="row">
                         <div className="col-12 col-lg-8"> 
-                            <CartBooks/>
+                            <CartBooks setAllQuantity={setAllQuantity}/>
                         </div>                                             
                         <div className="col-12 col-lg-4">
                             <OrderSummary/>
