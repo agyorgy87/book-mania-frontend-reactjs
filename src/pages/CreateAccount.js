@@ -22,9 +22,10 @@ const CreateAccount = () => {
     useEffect(() => {
         nameInput.current.focus();
     }, [])
+   
+    /*     
+    //development mode
 
-    
-    /*            
     const firstRun = useRef(0);
 
     useEffect(() => {
@@ -50,8 +51,9 @@ const CreateAccount = () => {
         }
     },[errors])
     console.log(values.dataProtection);
-*/
+    */
 
+    
     const sendUserDatas = () => {
 
         axios.get(`http://localhost:4000/get-user-email/${values.email}`)
@@ -75,7 +77,7 @@ const CreateAccount = () => {
             }
         })          
     } 
-
+    
     const closePopup = () => {
         setOpenExistingEmailAddress(false);
     }
@@ -96,7 +98,7 @@ const CreateAccount = () => {
                             <h1 className="sign-up-title fw-bold">Sign up</h1>
                         </div>                                                               
                                 <form className="form-row ps-5 pe-5" autoComplete="off" onSubmit={handleSubmit}>
-                                            <div class="form-group label-input-container registration-containers">      
+                                            <div className="form-group label-input-container registration-containers">      
                                                 <label htmlFor="firstName" className="form-label labels fw-bold">First Name</label>
                                                     <div className="registration-inputs-height">                                               
                                                         <input 
@@ -169,7 +171,7 @@ const CreateAccount = () => {
                                                 </div>
                                             : null}
                                         </div>                                           
-                                        <div class="form-group label-input-container registration-containers">
+                                        <div className="form-group label-input-container registration-containers">
                                             <label htmlFor="address" className="form-label labels fw-bold">Address</label>
                                                 <div className="registration-inputs-height">
                                                     <input 
@@ -322,4 +324,4 @@ const CreateAccount = () => {
     )
 }
 
-export default CreateAccount
+export default CreateAccount;

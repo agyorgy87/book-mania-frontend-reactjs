@@ -269,7 +269,7 @@ const Books = () => {
         setPublisherSelect(selectedOption);
     }
 
-
+    /*
     const callAllTitlesAndAuthors = (e) => {
         axios.get(`http://localhost:4000/get-book-title/${e}`)
             .then((response) => {
@@ -279,6 +279,30 @@ const Books = () => {
         })
         setShowResult(true);
         setSearchResult(e);
+    }
+    */
+
+    const callAllTitlesAndAuthors = (e) => {
+        if (e.trim() !== "") {
+            axios.get(`http://localhost:4000/get-book-title/${e}`)
+                .then((response) => {
+                    setVisibleBooks(response.data);
+                    console.log(e);
+                    console.log(response.data);
+                })
+                .catch((error) => {
+                    console.error("Error fetching book titles:", error);
+                });
+            setShowResult(true);
+            setSearchResult(e);
+        } else {
+            axios.get("http://localhost:4000/get-all-books")
+             .then((response) => {
+                setVisibleBooks(response.data);
+            });
+            setShowResult(false);
+            setSearchResult("");
+        }
     }
 
     const sideBarPriceFilters = [
