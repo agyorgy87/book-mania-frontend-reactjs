@@ -24,7 +24,7 @@ const SelectedBook = () => {
     return (
         <div className="selected-book-page">    
             <div>
-                <NavigationBar/>
+                <NavigationBar/> 
             </div> 
                 <div className="container selected-book-picture-data-price-buttons-container">
                     <div className="mt-5 mb-5 selected-book-picture-and-title">

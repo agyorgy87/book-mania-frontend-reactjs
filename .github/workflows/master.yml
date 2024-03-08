@@ -1,0 +1,22 @@
+name: Tests
+
+on:
+  pull_request:
+    branches: 
+      - master
+
+jobs: 
+  run-tests:
+    runs-on: ubuntu-latest
+    steps: 
+      - uses: actions/checkout@v3
+      - name: Use Node.js LTS
+        uses: actions/setup-node@v1
+        with:
+          node-version: '17.x'
+      - name: install dependecies
+        run: npm install 
+      - name: run tests
+        run: npm run test
+             
+            

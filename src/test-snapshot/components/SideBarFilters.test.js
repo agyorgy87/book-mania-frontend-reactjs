@@ -2,7 +2,7 @@ import renderer from 'react-test-renderer';
 import SideBarFilters from "../../components/SideBarFilters.js";
 
 test("test with null", () => { 
-    let tree = renderer
+    let tree = renderer 
     .create(<SideBarFilters text={null} filter={null}/>)
     .toJSON()
     expect(tree).toMatchSnapshot();
