@@ -17,8 +17,7 @@ const WishList = () => {
     useEffect(() => {
         axios.get("http://localhost:4000/user-wishlist/" + userData.value.id)
             .then(response => {
-            setUserWishList(response.data);
-            
+            setUserWishList(response.data);           
             })
     }, [])
 

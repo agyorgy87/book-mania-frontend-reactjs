@@ -16,7 +16,6 @@ exports[`test with function 1`] = `
     className="form-control search-input"
     id="example-search-input"
     onChange={[Function]}
-    placeholder="Search..."
     type="search"
   />
 </div>
