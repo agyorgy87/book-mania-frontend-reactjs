@@ -69,7 +69,7 @@ const CheckoutTotalSummary = ({shippingAddress}) => {
                     <div className="d-flex checkout-book-img-title-author-price-container"> 
                         <div className="checkout-book-img-container">
                             <img 
-                            src={"http://localhost:4000/books_img/" + book.img_directory + "/" + book.image}
+                            src={process.env.REACT_APP_API_URL + "/books_img/" + book.img_directory + "/" + book.image}
                             className="checkout-book-pics mt-2 me-3"                                             
                             alt="book"
                             onClick={() => {navigate("/selectedbook/" + book.id)}}

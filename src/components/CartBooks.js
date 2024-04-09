@@ -75,7 +75,7 @@ const CartBooks = ({setAllQuantity}) => {
                         <div className="book-title-author-publisher-container d-flex"> 
                             <div>
                                 <img 
-                                src={"http://localhost:4000/books_img/" + book.img_directory + "/" + book.image}
+                                src={process.env.REACT_APP_API_URL + "/books_img/" + book.img_directory + "/" + book.image}
                                 className="cart-book-pics mt-2"                                             
                                 alt="book"
                                 onClick={() => {navigate("/selectedbook/" + book.id)}}

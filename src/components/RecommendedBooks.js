@@ -82,7 +82,7 @@ const RecommendedBooks = (props) => {
                             <div className="d-flex flex-column book-card mb-5" key={"newness-div" + index}>
                                 <div className="d-flex justify-content-center mb-4 mt-4">
                                     <img 
-                                    src={"http://localhost:4000/books_img/" + book.img_directory + "/" + book.image} 
+                                    src={process.env.REACT_APP_API_URL + "/books_img/" + book.img_directory + "/" + book.image} 
                                     className="img-fluid home-book-pics shadow"                                             
                                     onClick={() => {navigate("/selectedbook/" + book.id)}}
                                     alt="book"

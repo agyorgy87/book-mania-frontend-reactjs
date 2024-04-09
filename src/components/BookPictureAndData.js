@@ -40,7 +40,7 @@ const BookPictureAndData = (props) => {
             <div className="d-flex justify-content-center">
                 <div className="book-picture-container d-flex justify-content-center align-items-center me-3">
                     <img 
-                    src={"http://localhost:4000/books_img/" + bookDetails.img_directory + "/" + bookDetails.image_big}
+                    src={process.env.REACT_APP_API_URL + "/books_img/" + bookDetails.img_directory + "/" + bookDetails.image_big}
                     className="shadow book-picture"                                             
                     alt="book"
                     /> 
