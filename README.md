@@ -1,3 +1,13 @@
+# Link for the Book Mania Webshop:
+
+https://book-mania-frontend-reactjs.onrender.com
+
+### `IMPORTANT`
+If a visitor opens the page and does not close it within half an hour, Render will stop the server.
+If you click on the page and the images and data are not yet loaded, 
+please be patient. It may take 1-2 minutes before the server restarts.
+thank you :)
+
 # Installed Packages:
 
 npm install react-router-dom@6
