@@ -15,7 +15,7 @@ const SelectedBook = () => {
     const [bookDetails, setBookDetails] = useState({});
 
     useEffect(() => {
-        axios.get("http://localhost:4000/get-book-by-id/" + params.id) 
+        axios.get(process.env.REACT_APP_API_URL + "/get-book-by-id/" + params.id) 
             .then(response => {
                 setBookDetails(response.data);
             })

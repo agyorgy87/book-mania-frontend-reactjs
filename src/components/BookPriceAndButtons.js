@@ -28,7 +28,7 @@ const BookPriceAndButtons = (props) => {
             setHeartIconFull(false);
         }
         if(userData.value.jwt){       
-            axios.get("http://localhost:4000/display-wishlist/" + userData.value.id + "/" + params.id)
+            axios.get(`${process.env.REACT_APP_API_URL}/display-wishlist/` + userData.value.id + "/" + params.id)
             .then(response => {
                 if(response.data.length > 0) {
                     setHeartIconFull(true);
@@ -45,7 +45,7 @@ const BookPriceAndButtons = (props) => {
         }else{ 
             if(heartIconFull) {
                 let body = {userId: userData.value.id, bookId: params.id};
-                axios.post("http://localhost:4000/delete-wishlist", body)
+                axios.post(`${process.env.REACT_APP_API_URL}/delete-wishlist`, body)
                     .then(response => {
                         if(response.data.success === true) {
                         setHeartIconFull(false);
@@ -53,7 +53,7 @@ const BookPriceAndButtons = (props) => {
                 })              
             }else{
                 let body = {userId: userData.value.id, bookId: params.id};
-                axios.post("http://localhost:4000/add-wishlist", body)
+                axios.post(process.env.REACT_APP_API_URL + "/add-wishlist", body)
                     .then(response => {
                         if(response.data.success === true) {
                         setHeartIconFull(true);

@@ -36,7 +36,7 @@ const MessageForm = () => {
         }
 
         if(name.length > 0 && email.length > 0 && message.length > 10){
-            axios.post("http://localhost:4000/message-sender", sender)
+            axios.post(process.env.REACT_APP_API_URL + "/message-sender", sender)
             .then(response => {
                 //...
             })

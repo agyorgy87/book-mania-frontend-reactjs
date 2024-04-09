@@ -52,7 +52,7 @@ const CheckoutTotalSummary = ({shippingAddress}) => {
         request.totalPrice = totalPriceData.value.totalPriceKey;
         request.discount = totalPriceData.value.discountKey;
 
-        axios.post(`http://localhost:4000/send-order`, request)
+        axios.post(process.env.REACT_APP_API_URL + `/send-order`, request)
             .then(response => {
                 alert('sikeres megrendelés');
         })

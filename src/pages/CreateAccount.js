@@ -60,7 +60,7 @@ const CreateAccount = () => {
     
     const sendUserDatas = () => {
 
-        axios.get(`http://localhost:4000/get-user-email/${values.email}`)
+        axios.get(`${process.env.REACT_APP_API_URL}/get-user-email/${values.email}`)
         .then(response => {
             if(response.data.success === true) {
                 setOpenExistingEmailAddress(true);
@@ -75,7 +75,7 @@ const CreateAccount = () => {
                 email: values.email,
                 pass: values.password
             }
-            axios.post("http://localhost:4000/register", user)
+            axios.post(process.env.REACT_APP_API_URL + "/register", user)
             setOpenSuccessfulRegistrationModal(true);
             }
         })          

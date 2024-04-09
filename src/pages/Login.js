@@ -82,7 +82,7 @@ const Login = () => {
         email: userEmail,
         pass: password
     }
-        axios.post("http://localhost:4000/auth", userObj)
+        axios.post(process.env.REACT_APP_API_URL + "/auth", userObj)
         .then(response => {          
             if(response.data.error) {
                 if(userEmail === "" && password === ""){

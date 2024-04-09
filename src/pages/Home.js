@@ -17,17 +17,17 @@ const Home = () => {
     },[])
 
     useEffect(() => {  
-        axios.get("http://localhost:4000/get-all-by-newness/1")
+        axios.get(process.env.REACT_APP_API_URL + "/get-all-by-newness/1")
             .then(response => {
                 setNewness(response.data)
             })
 
-        axios.get("http://localhost:4000/get-all-by-author/J.R.R.%20Tolkien")
+        axios.get(process.env.REACT_APP_API_URL + "/get-all-by-author/J.R.R.%20Tolkien")
             .then(response => {
                 setOnlyTolkien(response.data)
             })
 
-        axios.get(`http://localhost:4000/get-all-by-publishers/ComputerComplex`)
+        axios.get(process.env.REACT_APP_API_URL + `/get-all-by-publishers/ComputerComplex`)
             .then(response => {
                 setOnlyComputerComplex(response.data)
         })

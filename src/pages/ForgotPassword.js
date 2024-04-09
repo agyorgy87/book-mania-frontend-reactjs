@@ -24,7 +24,7 @@ const ForgotPassword = () => {
 
 
     const sendUserEmail = () => {
-        axios.get(`http://localhost:4000/get-forgot-password/${userEmailInput}`)
+        axios.get(process.env.REACT_APP_API_URL + `/get-forgot-password/${userEmailInput}`)
             .then(response => {
                 if(response.data.success === true) {
                     setOpenEmailSentSuccessfully(true);

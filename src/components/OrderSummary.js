@@ -65,7 +65,7 @@ const OrderSummary = () => {
     }, [cartData.value]);
 
     const couponCodeCheck = () => {
-        axios.get(`http://localhost:4000/get-coupon-code/${couponCodeInput}`)
+        axios.get(process.env.REACT_APP_API_URL + `/get-coupon-code/${couponCodeInput}`)
             .then(response => {
                 if(response.data.success === true) {
                     setBookMultiple(response.data.bookMultiple);
@@ -90,7 +90,7 @@ const OrderSummary = () => {
             setOpenModal(true);
         }
         else if(userData.value.jwt && couponCodeInput !== ""){
-            axios.get(`http://localhost:4000/set-coupon-used/${couponCodeInput}`)
+            axios.get(process.env.REACT_APP_API_URL + `/set-coupon-used/${couponCodeInput}`)
             .then(response => {
                 //...
         })

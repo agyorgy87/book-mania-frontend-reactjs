@@ -24,7 +24,7 @@ const RecommendedBooks = (props) => {
         if(userData.value.jwt) { 
             const fetchData = () => {
                 try{
-                    axios.get("http://localhost:4000/user-wishlist/" + userData.value.id)
+                    axios.get(process.env.REACT_APP_API_URL + "/user-wishlist/" + userData.value.id)
                     .then(response => {
                         setUserWishList(response.data);
                       })
@@ -44,7 +44,7 @@ const RecommendedBooks = (props) => {
             setOpenModal(true); 
         }else{
             let body = {userId: userData.value.id, bookId: bookId };
-            axios.post("http://localhost:4000/add-wishlist", body)
+            axios.post(process.env.REACT_APP_API_URL + "/add-wishlist", body)
             .then(response => {
                 if(response.data.success === true) {
                     setUserWishList([...userWishList, { book_id: bookId }]);
@@ -55,7 +55,7 @@ const RecommendedBooks = (props) => {
 
     const deleteBookFromTheHomePage = (deletedBookId) => {
         let body = {userId: userData.value.id, bookId: deletedBookId};
-            axios.post("http://localhost:4000/delete-wishlist", body)
+            axios.post(process.env.REACT_APP_API_URL + "/delete-wishlist", body)
                 .then(response => {
                     if(response.data.success === true) {
                         setUserWishList(userWishList.filter(book => book.book_id !== deletedBookId));
