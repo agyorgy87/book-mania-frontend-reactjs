@@ -8,19 +8,24 @@ import { Link } from 'react-router-dom';
 import { AiOutlineExclamationCircle } from "react-icons/ai";
 import SuccessfulRegistrationModal from "../modal/SuccessfulRegistrationModal.js";
 import ExistingEmailAddress from '../popup/ExistingEmailAddress.js';
+import NotDataPhishing from '../popup/NotDataPhishing.js'; 
 
 const CreateAccount = () => {
 
     const {handleChange, values, handleSubmit, errors} = useForm(validate);
 
     const [openSuccessfulRegistrationModal, setOpenSuccessfulRegistrationModal] = useState(false);
-
     const [openExistingEmailAddress, setOpenExistingEmailAddress] = useState(false);
+    const [openNotDataPhishing, setOpenNotDataPhishing] = useState(false);
 
     let nameInput = useRef(null);
 
     useEffect(() => {
         nameInput.current.focus();
+    }, [])
+
+    useEffect(() => {
+        setOpenNotDataPhishing(true);
     }, [])
    
     /*     
@@ -52,7 +57,6 @@ const CreateAccount = () => {
     },[errors])
     console.log(values.dataProtection);
     */
-
     
     const sendUserDatas = () => {
 
@@ -77,8 +81,12 @@ const CreateAccount = () => {
         })          
     } 
     
-    const closePopup = () => {
+    const closePopupExistingEmailAddress = () => {
         setOpenExistingEmailAddress(false);
+    }
+
+    const closePopupNotDataPhishing = () => {
+        setOpenNotDataPhishing(false);
     }
         
     return ( 
@@ -90,7 +98,10 @@ const CreateAccount = () => {
                     {openSuccessfulRegistrationModal && <SuccessfulRegistrationModal/>}
                 </div>
                 <div>
-                    {openExistingEmailAddress && <ExistingEmailAddress close={closePopup}/>}  
+                    {openExistingEmailAddress && <ExistingEmailAddress close={closePopupExistingEmailAddress}/>}  
+                </div>
+                <div>
+                    {openNotDataPhishing && <NotDataPhishing close={closePopupNotDataPhishing}/>}  
                 </div>
                     <div className="col-12 col-sm-8 col-md-4 m-auto rounded shadow sign-up-container pt-3 mt-5 mb-5">                           
                         <div className="text-center">

@@ -1,0 +1,43 @@
+.overlay {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(171,176,192, 0.7);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;     
+}
+
+.not-dataphishing-container {
+    max-height: 90vh;
+    max-width: 90vw;
+    height: 22rem;
+    width: 30rem;
+    margin: auto;
+    margin-top: 15rem !important;
+    background-color: aliceblue;
+}
+
+.alert-icon {
+    color: #aa1527;
+}
+
+.alert-modal-text {
+    color: #aa1527;
+    font-family: 'Source Sans 3', sans-serif;
+}
+
+.understand-text {
+    color: #0083da;
+    text-decoration: underline;
+}
+
+.close-button {
+    width: 100%;
+    color: #ffffff !important;
+    background-color: #1e7b85 !important;
+}
+
+.close-button:hover {
+    background-color: #19646c !important;
+}

@@ -3,15 +3,20 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import NavigationBar from '../components/NavigationBar.js';
 import RecommendedBooks from "../components/RecommendedBooks.js";
+import NotDataPhishing from '../popup/NotDataPhishing.js'; 
 
 const Home = () => { 
 
     const [newness, setNewness] = useState([]); 
     const [onlyTolkien, setOnlyTolkien] = useState([]);
     const [onlyComputerComplex, setOnlyComputerComplex] = useState([]);  
+    const [openNotDataPhishing, setOpenNotDataPhishing] = useState(false);
+
+    useEffect(() => {
+        setOpenNotDataPhishing(true);
+    },[])
 
     useEffect(() => {  
-
         axios.get("http://localhost:4000/get-all-by-newness/1")
             .then(response => {
                 setNewness(response.data)
@@ -26,14 +31,20 @@ const Home = () => {
             .then(response => {
                 setOnlyComputerComplex(response.data)
         })
-
     },[])
+
+    const closePopup = () => {
+        setOpenNotDataPhishing(false);
+    }
 
     return (
         <div className="home-page">
             <div className="fixed-top">  
                 <NavigationBar/>
             </div>  
+            <div>
+                {openNotDataPhishing && <NotDataPhishing close={closePopup}/>}  
+            </div>
             <div className="container mt-5 mb-5 d-flex justify-content-center align-items-center">
                 <div className="coupon-card w-75 p-5 text-center shadow-sm">
                     <h1>-20%, -30%, -50% COUPON DISCOUNTS</h1>

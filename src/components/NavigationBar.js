@@ -62,7 +62,7 @@ const NavigationBar = () => {
                                 </li>
                                 :
                                 <li className="nav-item navigation-menus">
-                                    <Link to={"/login"} className="nav-link login-logout-link">Sign in</Link>
+                                    <Link to={"/login"} className="nav-link login-logout-link" id="sign-in-button">Sign in</Link>
                                 </li>
                             }
                             <li className="nav-item navigation-menus"> 
