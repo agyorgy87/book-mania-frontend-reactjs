@@ -22,7 +22,7 @@ const FilteredBooks = (props) => {
     const envAndLocal = "http://localhost:3001" || process.env.REACT_APP_API_URL
 
     return ( 
-        <div className="container d-flex justify-content-center"> 
+        <div className="ps-5 pe-5"> 
             <div>
                 {openModal && <LoginWarning close={closeModal} message={modalMessage}/>}   
             </div>

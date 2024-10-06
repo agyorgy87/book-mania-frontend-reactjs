@@ -333,68 +333,63 @@ const Books = () => {
                         <SearchInput onChange={callAllTitlesAndAuthors} />                                       
                     </div>
                     <div className="d-block d-lg-none d-flex flex-column align-items-center mb-3">
-                            <div className="select-div mt-3">
-                                    <Select 
-                                        className="mb-1"
-                                        style={{width: "100%"}}
-                                        placeholder="All Categories"                                
-                                        onChange={callGenreWithSelect}
-                                        options={categoriesOptions}
-                                        value={genreSelect}
-                                    />                                                  
-                            </div>
-                            <div className="select-div mt-3">
-                                    <Select 
-                                        className="mb-1"
-                                        style={{width: "100%"}}
-                                        placeholder="Price"                                
-                                        onChange={callPriceWithSelect}
-                                        options={priceOptions}
-                                        value={priceSelect}
-                                    />                                                  
-                            </div>
-                            <div className="select-div mt-3">
-                                    <Select 
-                                        className="mb-1"
-                                        style={{ width:"100%"}}
-                                        placeholder="Release Date"                                
-                                        onChange={callReleaseDateWithSelect}
-                                        options={releaseDateOptions}
-                                        value={releaseDateSelect}
-                                    />                                                  
-                            </div>
-                            <div className="select-div mt-3">
-                                    <Select 
-                                        className="mb-1"
-                                        style={{ width:"100%"}}
-                                        placeholder="Special"                                
-                                        onChange={callSpecialSearchWithSelect}
-                                        options={specialOptions}
-                                        value={specialSearchSelect}
-                                    />                                                  
-                            </div>
-                            <div className="select-div mt-3">
-                                    <Select 
-                                        className="mb-1"
-                                        style={{ width: "100%"}}
-                                        placeholder="Publishers"                                
-                                        onChange={callPublishersWithSelect}
-                                        options={publishersOptions}
-                                        value={publisherSelect}
-                                    />                                                  
-                            </div>
-                        </div>  
-                        <div className="d-flex justify-content-center">
-                            <div className="result-container mb-5 mt-2">
-                                { showResult ?                  
-                                    <div>    
-                                        <h1 className="search-result-books d-flex">Results for "{searchResult}"</h1>             
-                                    </div> 
-                                : 
-                                    null
-                                } 
-                            </div>                      
+                        <div className="select-div mt-3">
+                            <Select 
+                            className="mb-1"
+                            style={{width: "100%"}}
+                            placeholder="All Categories"                                
+                            onChange={callGenreWithSelect}
+                            options={categoriesOptions}
+                            value={genreSelect}/>                                                  
                         </div>
+                        <div className="select-div mt-3">
+                            <Select 
+                            className="mb-1"
+                            style={{width: "100%"}}
+                            placeholder="Price"                                
+                            onChange={callPriceWithSelect}
+                            options={priceOptions}
+                            value={priceSelect}/>                                                  
+                        </div>
+                        <div className="select-div mt-3">
+                            <Select 
+                            className="mb-1"
+                            style={{ width:"100%"}}
+                            placeholder="Release Date"                                
+                            onChange={callReleaseDateWithSelect}
+                            options={releaseDateOptions}
+                            value={releaseDateSelect}/>                                                  
+                        </div>
+                        <div className="select-div mt-3">
+                            <Select 
+                            className="mb-1"
+                            style={{ width:"100%"}}
+                            placeholder="Special"                                
+                            onChange={callSpecialSearchWithSelect}
+                            options={specialOptions}
+                            value={specialSearchSelect}/>                                                  
+                        </div>
+                        <div className="select-div mt-3">
+                            <Select 
+                            className="mb-1"
+                            style={{ width: "100%"}}
+                            placeholder="Publishers"                                
+                            onChange={callPublishersWithSelect}
+                            options={publishersOptions}
+                            value={publisherSelect}/>                                                  
+                        </div>
+                    </div>  
+                    <div className="container">
+                        <div className="result-container mb-4 mt-2 ps-5">
+                            { showResult ?                  
+                                <div>    
+                                    <h1 className="search-result-books d-flex">Results for "{searchResult}"</h1>             
+                                </div> 
+                            : 
+                                null
+                            } 
+                        </div>
+                    </div>                       
                     <div className="container">  
                         <FilteredBooks list={visibleBooks}/>
                     </div>                        
