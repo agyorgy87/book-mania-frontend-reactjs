@@ -40,10 +40,12 @@ const Books = () => {
 
     const scrollToUp = () => {
         window.scrollTo(0, 0)
-      }
+    }
+
+    const envAndLocal = "http://localhost:3001" || process.env.REACT_APP_API_URL
 
     const getAllBooks = () => {
-        axios.get(process.env.REACT_APP_API_URL + "/get-all-books")
+        axios.get(envAndLocal + "/get-all-books")
              .then((response) => {
                 setVisibleBooks(response.data);
                 allBooks.current = response.data;
@@ -52,7 +54,7 @@ const Books = () => {
     }
 
     const getAllGenre = () => {
-        axios.get(process.env.REACT_APP_API_URL + `/get-all-genre`)
+        axios.get(envAndLocal + `/get-all-genre`)
             .then((response) => {
             setAllGenre(response.data);
         })
@@ -61,7 +63,7 @@ const Books = () => {
     }
 
     const getAllPublisher = () => {
-        axios.get(process.env.REACT_APP_API_URL + `/get-all-publisher`)
+        axios.get(envAndLocal + `/get-all-publisher`)
             .then((response) => {
             setAllPublisher(response.data);
         })
@@ -73,7 +75,7 @@ const Books = () => {
         if(genreName === "allBooks"){
             getAllBooks();
         }else{
-            axios.get(process.env.REACT_APP_API_URL + `/get-all-by-genre/"${genreName}"`)
+            axios.get(envAndLocal + `/get-all-by-genre/"${genreName}"`)
             .then((response) => {
             setVisibleBooks(response.data);
         })
@@ -100,7 +102,7 @@ const Books = () => {
             setPublisherSelect("");
             
         }else{
-            axios.get(process.env.REACT_APP_API_URL + `0/get-all-by-genre/"${selectedOption.value}"`)
+            axios.get(envAndLocal + `0/get-all-by-genre/"${selectedOption.value}"`)
             .then((response) => {
             setVisibleBooks(response.data);          
             setGenreSelect(selectedOption);
@@ -116,7 +118,7 @@ const Books = () => {
     }
 
     const callPriceWithList = (fromPrice, toPrice) => {
-        axios.get(process.env.REACT_APP_API_URL +  `/get-all-by-price/${fromPrice}/${toPrice}`)
+        axios.get(envAndLocal +  `/get-all-by-price/${fromPrice}/${toPrice}`)
             .then((response) => {
             setVisibleBooks(response.data);
         })
@@ -139,7 +141,7 @@ const Books = () => {
         const fromPrice = numbers[0];
         const toPrice = numbers[1];
         
-        axios.get(process.env.REACT_APP_API_URL + `/get-all-by-price/${fromPrice}/${toPrice}`)
+        axios.get(envAndLocal + `/get-all-by-price/${fromPrice}/${toPrice}`)
             .then((response) => {
             setVisibleBooks(response.data);
         })
@@ -154,7 +156,7 @@ const Books = () => {
     }
 
     const callReleaseDateWithList = (fromDate, toDate) => {
-        axios.get(process.env.REACT_APP_API_URL + `/get-all-by-release-date/${fromDate}/${toDate}`)
+        axios.get(envAndLocal + `/get-all-by-release-date/${fromDate}/${toDate}`)
             .then((response) => {
             setVisibleBooks(response.data);
         })
@@ -176,7 +178,7 @@ const Books = () => {
         const fromDate = numbers[0];
         const toDate = numbers[1];
         
-        axios.get(process.env.REACT_APP_API_URL + `/get-all-by-release-date/${fromDate}/${toDate}`)
+        axios.get(envAndLocal + `/get-all-by-release-date/${fromDate}/${toDate}`)
             .then((response) => {
             setVisibleBooks(response.data);     
             })    
@@ -190,7 +192,7 @@ const Books = () => {
     }
 
     const callSpecialSearchWithList = (selectedSpecialSearch, selectedSpecialOrder) => {
-        axios.get(process.env.REACT_APP_API_URL + `/get-all-by-special/${selectedSpecialSearch}/${selectedSpecialOrder}`)
+        axios.get(envAndLocal + `/get-all-by-special/${selectedSpecialSearch}/${selectedSpecialOrder}`)
             .then((response) => {
             setVisibleBooks(response.data);
         })
@@ -212,7 +214,7 @@ const Books = () => {
         const selectedOptionOrderBy = twoPart[0];
         const selectedOptionOrder = twoPart[1];
         
-        axios.get(process.env.REACT_APP_API_URL + `/get-all-by-special/${selectedOptionOrderBy}/${selectedOptionOrder}`)
+        axios.get(envAndLocal + `/get-all-by-special/${selectedOptionOrderBy}/${selectedOptionOrder}`)
             .then((response) => {
             setVisibleBooks(response.data);  
               
@@ -227,7 +229,7 @@ const Books = () => {
     }
 
     const callPublisherWithList = (publisherName) => {
-        axios.get(process.env.REACT_APP_API_URL + `/get-all-by-publishers/${publisherName}`)
+        axios.get(envAndLocal + `/get-all-by-publishers/${publisherName}`)
             .then((response) => {
             setVisibleBooks(response.data);
             })
@@ -245,7 +247,7 @@ const Books = () => {
 
     const callPublishersWithSelect = (selectedOption) => {
 
-        axios.get(process.env.REACT_APP_API_URL + `/get-all-by-publishers/${selectedOption.value}`)
+        axios.get(envAndLocal + `/get-all-by-publishers/${selectedOption.value}`)
             .then((response) => {
             setVisibleBooks(response.data);
         }) 
@@ -261,7 +263,7 @@ const Books = () => {
 
     const callAllTitlesAndAuthors = (e) => {
         if (e.trim() !== "") {
-            axios.get(process.env.REACT_APP_API_URL + `/get-book-title/${e}`)
+            axios.get(envAndLocal + `/get-book-title/${e}`)
                 .then((response) => {
                     setVisibleBooks(response.data);
                 })
@@ -271,7 +273,7 @@ const Books = () => {
             setShowResult(true);
             setSearchResult(e);
         } else {
-            axios.get(process.env.REACT_APP_API_URL + "/get-all-books")
+            axios.get(envAndLocal + "/get-all-books")
              .then((response) => {
                 setVisibleBooks(response.data);
             });

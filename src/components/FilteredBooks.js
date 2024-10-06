@@ -19,6 +19,8 @@ const FilteredBooks = (props) => {
  
     const modalMessage = "?"; 
 
+    const envAndLocal = "http://localhost:3001" || process.env.REACT_APP_API_URL
+
     return ( 
         <div className="container d-flex justify-content-center"> 
             <div>
@@ -31,19 +33,20 @@ const FilteredBooks = (props) => {
                         <div className="d-flex flex-column filtered-book-card">
                             <div className="d-flex justify-content-center mb-4 mt-4">
                                 <img 
-                                src={process.env.REACT_APP_API_URL + "/books_img/" + book.img_directory + "/" + book.image} 
+                                src={envAndLocal + "/books_img/" + book.img_directory + "/" + book.image} 
                                 className="img-fluid filtered-book-pics shadow"                                             
                                 onClick={() => {navigate("/selectedbook/" + book.id)}}
                                 alt="book"
                                 />                                        
                             </div>
                             <div className="d-flex flex-column ps-4 pe-4">                      
-                                <div className="d-flex">
+                                <div className="d-flex filtered-book-title-container">
                                     <Link 
                                     className="filtered-book-title"
                                     to={"/selectedbook/" + book.id}
-                                    >                                      
-                                    { book.title.length > 17 ? book.title.substring(0,23) + " ..." : book.title }                                                                                        
+                                    >  
+                                    {book.title}                                    
+                                    {/*{ book.title.length > 17 ? book.title.substring(0,22) + " ..." : book.title }*/}                                                                                    
                                     </Link>
                                 </div>
                                 <div className="d-flex mt-2">

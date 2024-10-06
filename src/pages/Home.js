@@ -11,6 +11,7 @@ const Home = () => {
     const [onlyComputerComplex, setOnlyComputerComplex] = useState([]);  
 
     useEffect(() => {  
+
         axios.get(process.env.REACT_APP_API_URL + "/get-all-by-newness/1")
             .then(response => {
                 setNewness(response.data)
@@ -24,7 +25,8 @@ const Home = () => {
         axios.get(process.env.REACT_APP_API_URL + `/get-all-by-publishers/ComputerComplex`)
             .then(response => {
                 setOnlyComputerComplex(response.data)
-        })
+            })
+
     },[])
 
 
