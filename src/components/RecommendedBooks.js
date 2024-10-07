@@ -20,11 +20,13 @@ const RecommendedBooks = (props) => {
     const [openModal, setOpenModal] = useState(false);
     const [userWishList, setUserWishList] = useState([]);
 
+    const envAndLocal = "http://localhost:3001" || process.env.REACT_APP_API_URL
+
     useEffect(() => {
         if(userData.value.jwt) { 
             const fetchData = () => {
                 try{
-                    axios.get(process.env.REACT_APP_API_URL + "/user-wishlist/" + userData.value.id)
+                    axios.get(envAndLocal + "/user-wishlist/" + userData.value.id)
                     .then(response => {
                         setUserWishList(response.data);
                       })
@@ -44,7 +46,7 @@ const RecommendedBooks = (props) => {
             setOpenModal(true); 
         }else{
             let body = {userId: userData.value.id, bookId: bookId };
-            axios.post(process.env.REACT_APP_API_URL + "/add-wishlist", body)
+            axios.post(envAndLocal + "/add-wishlist", body)
             .then(response => {
                 if(response.data.success === true) {
                     setUserWishList([...userWishList, { book_id: bookId }]);
@@ -55,7 +57,7 @@ const RecommendedBooks = (props) => {
 
     const deleteBookFromTheHomePage = (deletedBookId) => {
         let body = {userId: userData.value.id, bookId: deletedBookId};
-            axios.post(process.env.REACT_APP_API_URL + "/delete-wishlist", body)
+            axios.post(envAndLocal + "/delete-wishlist", body)
                 .then(response => {
                     if(response.data.success === true) {
                         setUserWishList(userWishList.filter(book => book.book_id !== deletedBookId));
@@ -82,7 +84,7 @@ const RecommendedBooks = (props) => {
                             <div className="d-flex flex-column book-card mb-5" key={"newness-div" + index}>
                                 <div className="d-flex justify-content-center mb-4 mt-4">
                                     <img 
-                                    src={process.env.REACT_APP_API_URL + "/books_img/" + book.img_directory + "/" + book.image} 
+                                    src={envAndLocal + "/books_img/" + book.img_directory + "/" + book.image} 
                                     className="img-fluid home-book-pics shadow"                                             
                                     onClick={() => {navigate("/selectedbook/" + book.id)}}
                                     alt="book"

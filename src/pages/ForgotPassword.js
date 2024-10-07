@@ -22,9 +22,11 @@ const ForgotPassword = () => {
         }
     },[userEmailInput])
 
+    const envAndLocal = "http://localhost:3001" || process.env.REACT_APP_API_URL
+
 
     const sendUserEmail = () => {
-        axios.get(process.env.REACT_APP_API_URL + `/get-forgot-password/${userEmailInput}`)
+        axios.get(envAndLocal + `/get-forgot-password/${userEmailInput}`)
             .then(response => {
                 if(response.data.success === true) {
                     setOpenEmailSentSuccessfully(true);

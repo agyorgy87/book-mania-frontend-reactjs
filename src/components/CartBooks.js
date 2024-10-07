@@ -16,6 +16,8 @@ const CartBooks = ({setAllQuantity}) => {
 
     const [buttonDisabled, setButtonDisabled] = useState(false);
 
+    const envAndLocal = "http://localhost:3001" || process.env.REACT_APP_API_URL
+
     useEffect(() => {
         const allQuantityInOneArray = cartData.value.map(item => item.quantity);
         const sumAllQuantity = allQuantityInOneArray.reduce((previousAmount, currentValue) => previousAmount + currentValue, 0);
@@ -75,7 +77,7 @@ const CartBooks = ({setAllQuantity}) => {
                         <div className="book-title-author-publisher-container d-flex"> 
                             <div>
                                 <img 
-                                src={process.env.REACT_APP_API_URL + "/books_img/" + book.img_directory + "/" + book.image}
+                                src={envAndLocal + "/books_img/" + book.img_directory + "/" + book.image}
                                 className="cart-book-pics mt-2"                                             
                                 alt="book"
                                 onClick={() => {navigate("/selectedbook/" + book.id)}}

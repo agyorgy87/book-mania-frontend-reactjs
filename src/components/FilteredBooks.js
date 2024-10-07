@@ -45,7 +45,7 @@ const FilteredBooks = (props) => {
                                     className="filtered-book-title"
                                     to={"/selectedbook/" + book.id}
                                     >  
-                                    {book.title}                                    
+                                    {book.title}                                                              
                                     {/*{ book.title.length > 17 ? book.title.substring(0,22) + " ..." : book.title }*/}                                                                                    
                                     </Link>
                                 </div>

@@ -12,10 +12,12 @@ const WishList = () => {
 
     const userData = useContext(UserContext);
 
-    const [userWishList, setUserWishList] = useState([])
+    const [userWishList, setUserWishList] = useState([]);
+
+    const envAndLocal = "http://localhost:3001" || process.env.REACT_APP_API_URL
     
     useEffect(() => {
-        axios.get(process.env.REACT_APP_API_URL + "/user-wishlist/" + userData.value.id)
+        axios.get(envAndLocal + "/user-wishlist/" + userData.value.id)
             .then(response => {
             setUserWishList(response.data);           
             })

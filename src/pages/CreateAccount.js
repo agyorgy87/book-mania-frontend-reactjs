@@ -57,10 +57,12 @@ const CreateAccount = () => {
     },[errors])
     console.log(values.dataProtection);
     */
+
+    const envAndLocal = "http://localhost:3001" || process.env.REACT_APP_API_URL
     
     const sendUserDatas = () => {
 
-        axios.get(`${process.env.REACT_APP_API_URL}/get-user-email/${values.email}`)
+        axios.get(`${envAndLocal}/get-user-email/${values.email}`)
         .then(response => {
             if(response.data.success === true) {
                 setOpenExistingEmailAddress(true);
@@ -75,7 +77,7 @@ const CreateAccount = () => {
                 email: values.email,
                 pass: values.password
             }
-            axios.post(process.env.REACT_APP_API_URL + "/register", user)
+            axios.post(envAndLocal + "/register", user)
             setOpenSuccessfulRegistrationModal(true);
             }
         })          

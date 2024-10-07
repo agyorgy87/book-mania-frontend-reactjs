@@ -12,17 +12,19 @@ const Home = () => {
 
     useEffect(() => {  
 
-        axios.get(process.env.REACT_APP_API_URL + "/get-all-by-newness/1")
+        const envAndLocal = "http://localhost:3001" || process.env.REACT_APP_API_URL
+
+        axios.get(envAndLocal + "/get-all-by-newness/1")
             .then(response => {
                 setNewness(response.data)
             })
 
-        axios.get(process.env.REACT_APP_API_URL + "/get-all-by-author/J.R.R.%20Tolkien")
+        axios.get(envAndLocal + "/get-all-by-author/J.R.R.%20Tolkien")
             .then(response => {
                 setOnlyTolkien(response.data)
             })
 
-        axios.get(process.env.REACT_APP_API_URL + `/get-all-by-publishers/ComputerComplex`)
+        axios.get(envAndLocal + `/get-all-by-publishers/ComputerComplex`)
             .then(response => {
                 setOnlyComputerComplex(response.data)
             })

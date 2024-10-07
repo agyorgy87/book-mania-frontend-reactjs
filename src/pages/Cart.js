@@ -1,5 +1,5 @@
 import '../css/Cart.css';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import NavigationBar from '../components/NavigationBar.js';
 import CartBooks from "../components/CartBooks.js";
 import OrderSummary from "../components/OrderSummary.js";

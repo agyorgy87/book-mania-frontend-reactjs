@@ -40,6 +40,8 @@ const OrderSummary = () => {
 
     const modalMessage = "If you want to buy, please log in.";
 
+    const envAndLocal = "http://localhost:3001" || process.env.REACT_APP_API_URL
+
     useEffect(() => {
         if(bookMultiple === 0.8) {
             setShowingDiscount(20)   
@@ -65,7 +67,7 @@ const OrderSummary = () => {
     }, [cartData.value]);
 
     const couponCodeCheck = () => {
-        axios.get(process.env.REACT_APP_API_URL + `/get-coupon-code/${couponCodeInput}`)
+        axios.get(envAndLocal + `/get-coupon-code/${couponCodeInput}`)
             .then(response => {
                 if(response.data.success === true) {
                     setBookMultiple(response.data.bookMultiple);
@@ -90,7 +92,7 @@ const OrderSummary = () => {
             setOpenModal(true);
         }
         else if(userData.value.jwt && couponCodeInput !== ""){
-            axios.get(process.env.REACT_APP_API_URL + `/set-coupon-used/${couponCodeInput}`)
+            axios.get(envAndLocal + `/set-coupon-used/${couponCodeInput}`)
             .then(response => {
                 //...
         })

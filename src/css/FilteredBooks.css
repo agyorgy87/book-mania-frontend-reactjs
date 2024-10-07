@@ -53,11 +53,11 @@
 
 @media (max-width: 768px) {
     .filtered-book-card {
-        margin-right: 1.5rem !important;
+        margin-right: 3rem !important;
     }
 }
-
 @media (max-width: 576px) {
+
     .filtered-book-card-container {
         display: flex;
         justify-content: center;

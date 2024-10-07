@@ -20,6 +20,8 @@ const CheckoutTotalSummary = ({shippingAddress}) => {
 
     const [discountPriceState, setDiscountPriceState] = useState(false);
 
+    const envAndLocal = "http://localhost:3001" || process.env.REACT_APP_API_URL
+
     useEffect(() => {
 
         let discountValue = totalPriceData.value.discountKey;
@@ -31,6 +33,7 @@ const CheckoutTotalSummary = ({shippingAddress}) => {
         }
 
     },[])
+
  
     const sendOrderDatas = () => {
         
@@ -52,7 +55,7 @@ const CheckoutTotalSummary = ({shippingAddress}) => {
         request.totalPrice = totalPriceData.value.totalPriceKey;
         request.discount = totalPriceData.value.discountKey;
 
-        axios.post(process.env.REACT_APP_API_URL + `/send-order`, request)
+        axios.post(envAndLocal + `/send-order`, request)
             .then(response => {
                 alert('sikeres megrendelés');
         })
@@ -69,7 +72,7 @@ const CheckoutTotalSummary = ({shippingAddress}) => {
                     <div className="d-flex checkout-book-img-title-author-price-container"> 
                         <div className="checkout-book-img-container">
                             <img 
-                            src={process.env.REACT_APP_API_URL + "/books_img/" + book.img_directory + "/" + book.image}
+                            src={envAndLocal + "/books_img/" + book.img_directory + "/" + book.image}
                             className="checkout-book-pics mt-2 me-3"                                             
                             alt="book"
                             onClick={() => {navigate("/selectedbook/" + book.id)}}

@@ -102,7 +102,7 @@ const Books = () => {
             setPublisherSelect("");
             
         }else{
-            axios.get(envAndLocal + `0/get-all-by-genre/"${selectedOption.value}"`)
+            axios.get(envAndLocal + `/get-all-by-genre/"${selectedOption.value}"`)
             .then((response) => {
             setVisibleBooks(response.data);          
             setGenreSelect(selectedOption);
@@ -390,7 +390,7 @@ const Books = () => {
                             } 
                         </div>
                     </div>                       
-                    <div className="container">  
+                    <div className="filtered-books-container container">  
                         <FilteredBooks list={visibleBooks}/>
                     </div>                        
                 </div>

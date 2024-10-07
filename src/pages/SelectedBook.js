@@ -14,8 +14,10 @@ const SelectedBook = () => {
 
     const [bookDetails, setBookDetails] = useState({});
 
+    const envAndLocal = "http://localhost:3001" || process.env.REACT_APP_API_URL
+
     useEffect(() => {
-        axios.get(process.env.REACT_APP_API_URL + "/get-book-by-id/" + params.id) 
+        axios.get(envAndLocal + "/get-book-by-id/" + params.id) 
             .then(response => {
                 setBookDetails(response.data);
             })

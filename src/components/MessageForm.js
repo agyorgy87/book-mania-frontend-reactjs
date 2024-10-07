@@ -25,6 +25,8 @@ const MessageForm = () => {
         message: "Please enter Your Message",
     }
 
+    const envAndLocal = "http://localhost:3001" || process.env.REACT_APP_API_URL
+
     const sendMessage = (e) => {
 
         e.preventDefault(); 
@@ -36,7 +38,7 @@ const MessageForm = () => {
         }
 
         if(name.length > 0 && email.length > 0 && message.length > 10){
-            axios.post(process.env.REACT_APP_API_URL + "/message-sender", sender)
+            axios.post(envAndLocal + "/message-sender", sender)
             .then(response => {
                 //...
             })

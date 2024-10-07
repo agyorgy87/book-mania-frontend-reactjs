@@ -9,8 +9,9 @@ const BooksInTheWishList = (props) => {
 
     let navigate = useNavigate();   
 
+    const envAndLocal = "http://localhost:3001" || process.env.REACT_APP_API_URL
+
     return ( 
-        
         <div className="container d-flex justify-content-center">  
             <div className="row"> 
                 { userWishList.map((book, index) => ( 
@@ -19,7 +20,7 @@ const BooksInTheWishList = (props) => {
                         <div className="d-flex flex-column wish-list-book-card">
                             <div className="d-flex justify-content-center mb-4 mt-4">
                                 <img 
-                                src={process.env.REACT_APP_API_URL + "/books_img/" + book.img_directory + "/" + book.image} 
+                                src={envAndLocal + "/books_img/" + book.img_directory + "/" + book.image} 
                                 className="img-fluid wish-list-book-pics shadow"                                             
                                 onClick={() => {navigate("/selectedbook/" + book.book_id)}}
                                 alt="book"

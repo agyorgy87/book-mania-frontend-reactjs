@@ -14,8 +14,10 @@ const Checkout = () => {
 
     const [shippingAddress, setShippingAddress] = useState({});
 
+    const envAndLocal = "http://localhost:3001" || process.env.REACT_APP_API_URL
+
     useEffect(() => {     
-            axios.get(process.env.REACT_APP_API_URL + `/get-registered-user/${userDataId}`)
+            axios.get(envAndLocal + `/get-registered-user/${userDataId}`)
                 .then(response => {                  
                     let userOrderDetails = {
                         firstName: response.data[0].first_name,

@@ -36,6 +36,7 @@ const Login = () => {
 
     const [passwordInfo, setPasswordInfo] = useState(false);
 
+    const envAndLocal = "http://localhost:3001" || process.env.REACT_APP_API_URL
 
     useEffect(() => {
         if(userEmail === "" && password !== "") {
@@ -82,7 +83,7 @@ const Login = () => {
         email: userEmail,
         pass: password
     }
-        axios.post(process.env.REACT_APP_API_URL + "/auth", userObj)
+        axios.post(envAndLocal + "/auth", userObj)
         .then(response => {          
             if(response.data.error) {
                 if(userEmail === "" && password === ""){

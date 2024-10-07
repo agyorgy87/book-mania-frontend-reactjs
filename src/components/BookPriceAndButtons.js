@@ -22,13 +22,15 @@ const BookPriceAndButtons = (props) => {
     const [heartIconFull, setHeartIconFull] = useState(false);
     const [openModal, setOpenModal] = useState(false); 
     const [modalMessage, setModalMessage] = useState("");
+
+    const envAndLocal = "http://localhost:3001" || process.env.REACT_APP_API_URL
     
     useEffect(() => {
         if(!userData.value.jwt){
             setHeartIconFull(false);
         }
         if(userData.value.jwt){       
-            axios.get(`${process.env.REACT_APP_API_URL}/display-wishlist/` + userData.value.id + "/" + params.id)
+            axios.get(`${envAndLocal}/display-wishlist/` + userData.value.id + "/" + params.id)
             .then(response => {
                 if(response.data.length > 0) {
                     setHeartIconFull(true);
@@ -45,7 +47,7 @@ const BookPriceAndButtons = (props) => {
         }else{ 
             if(heartIconFull) {
                 let body = {userId: userData.value.id, bookId: params.id};
-                axios.post(`${process.env.REACT_APP_API_URL}/delete-wishlist`, body)
+                axios.post(`${envAndLocal}/delete-wishlist`, body)
                     .then(response => {
                         if(response.data.success === true) {
                         setHeartIconFull(false);
@@ -53,7 +55,7 @@ const BookPriceAndButtons = (props) => {
                 })              
             }else{
                 let body = {userId: userData.value.id, bookId: params.id};
-                axios.post(process.env.REACT_APP_API_URL + "/add-wishlist", body)
+                axios.post(envAndLocal + "/add-wishlist", body)
                     .then(response => {
                         if(response.data.success === true) {
                         setHeartIconFull(true);
