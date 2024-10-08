@@ -81,7 +81,7 @@ const RecommendedBooks = (props) => {
                     <h1 className="text-of-recommended-books">{props.text}</h1> 
                 </div>   
                         { listOfRecommendedBooks.map((book, index) => (
-                            <div className="d-flex flex-column book-card mb-5" key={"newness-div" + index}>
+                            <div className="d-flex flex-column recommended-book-card-container mb-5" key={"newness-div" + index}>
                                 <div className="d-flex justify-content-center mb-4 mt-4">
                                     <img 
                                     src={envAndLocal + "/books_img/" + book.img_directory + "/" + book.image} 
@@ -91,12 +91,13 @@ const RecommendedBooks = (props) => {
                                     />                                        
                                 </div>
                                 <div className="d-flex flex-column">                      
-                                    <div className="d-flex ps-2 pe-2">
+                                    <div className="d-flex ps-2 pe-2 home-book-title-container">
                                         <Link 
                                         className="home-book-title" 
                                         to={"/selectedbook/" + book.id}
-                                        >                                      
-                                        { book.title.length > 26 ? book.title.substring(0,28) + " ..." : book.title }                                                                                        
+                                        >      
+                                        {book.title}                                
+                                        {/*{ book.title.length > 26 ? book.title.substring(0,28) + " ..." : book.title }*/}                                                                                      
                                         </Link>
                                     </div>
                                     <div className="d-flex ps-2 pe-2 mt-2">

@@ -272,6 +272,11 @@ const Books = () => {
                 });
             setShowResult(true);
             setSearchResult(e);
+            setGenreSelect("");
+            setPriceSelect("");
+            setReleaseDateSelect("");
+            setSpecialSearchSelect("");
+            setPublisherSelect("");
         } else {
             axios.get(envAndLocal + "/get-all-books")
              .then((response) => {
@@ -330,7 +335,7 @@ const Books = () => {
                     </div>
                 <div className="col-md-12 col-lg-9 col-xl-9 col-xxl-10">
                     <div className="row d-flex justify-content-center mb-5 mt-4">
-                        <SearchInput onChange={callAllTitlesAndAuthors} />                                       
+                        <SearchInput onChange={callAllTitlesAndAuthors}/>                                       
                     </div>
                     <div className="d-block d-lg-none d-flex flex-column align-items-center mb-3">
                         <div className="select-div mt-3">

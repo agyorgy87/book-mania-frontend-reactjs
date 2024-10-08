@@ -112,9 +112,9 @@ const MessageForm = () => {
                             <button type="submit" className="btn message-form-button" >Send Message</button>
                         </div>
                 </form>
-                <div className="contact-container ps-3 pe-3">
+                <div className="contact-container ">
                     <div className="mb-4">
-                        <div className="phone-container d-flex mb-4">
+                        <div className="phone-container d-flex">
                             <div className="phone-icon-container d-flex justify-content-center align-items-center me-2">
                                 <BsFillTelephoneFill className="phone-icon"/>    
                             </div>

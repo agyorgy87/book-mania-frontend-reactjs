@@ -13,6 +13,7 @@ const SearchInput = ( {onChange} ) => {
                     type="search" 
                     id="example-search-input"
                     onChange={(e) => onChange(e.target.value)} 
+                    placeholder="Search by title or author"
                 />                           
         </div> 
   )

@@ -46,7 +46,7 @@ const FilteredBooks = (props) => {
                                     to={"/selectedbook/" + book.id}
                                     >  
                                     {book.title}                                                              
-                                    {/*{ book.title.length > 17 ? book.title.substring(0,22) + " ..." : book.title }*/}                                                                                    
+                                    {/*{ book.title.length > 17 ? book.title.substring(0,22) + " ..." : book.title }*/}                                                                                     
                                     </Link>
                                 </div>
                                 <div className="d-flex mt-2">

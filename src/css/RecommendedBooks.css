@@ -9,8 +9,8 @@
     font-family: 'Roboto', sans-serif;
 }
 
-.book-card {
-    height: 28rem;
+.recommended-book-card-container {
+    height: 30rem;
     width: 17rem !important;
     margin-right: 2rem !important;
     border: 1px solid #e6e9f1;
@@ -35,6 +35,10 @@
 .home-book-pics {
     height: 200px;
     cursor: pointer; 
+}
+
+.home-book-title-container {
+    height: 6rem;
 }
 
 .home-book-title { 
