@@ -5,15 +5,12 @@ import {ImBooks} from "react-icons/im";
 import { useContext } from 'react'; 
 import { UserContext } from "../context/UserContext.js";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 import { Link } from 'react-router-dom';
 import { AiOutlineExclamationCircle } from "react-icons/ai";
 import SuccessfulLoginModal from '../modal/SuccessfulLoginModal.js';
 
 
 const Login = () => {
-
-    let navigate = useNavigate();
 
     const userData = useContext(UserContext);
 
@@ -99,7 +96,7 @@ const Login = () => {
                     setEmailInputError(true);
                     setEmailInputErrorMessage(true);
                 }else{               
-                    setLoginMessage("Invalid Email or Password.");
+                    setLoginMessage("Invalid Email or Password."); 
                     setEmailInputError(true);
                     setEmailInputErrorMessage(false);
                     setPasswordInfo(false);
@@ -127,7 +124,7 @@ const Login = () => {
                 <div>
                     {openSuccessfulLoginModal && <SuccessfulLoginModal/>}             
                 </div>
-                    <form className="col-12 col-sm-8 col-md-4 m-auto form-container rounded shadow p-3 mb-5 mt-5" onSubmit={login}>
+                    <form className="m-auto form-container" onSubmit={login}>
                         <div className="d-flex justify-content-center mt-4 mb-3">                         
                             <p className="fs-2 login-name-of-the-website">BOOK MANIA</p> 
                                 <ImBooks className="ms-2 fs-2 book-mania-icon"/>   
@@ -201,15 +198,17 @@ const Login = () => {
                             <button type="submit" className="btn w-100 fs-5 login-button">Sign in</button>
                         </div>
                         <div className="d-flex justify-content-center mb-4">
-                            <button 
-                            className="forgot-password-button border-0 fw-bold"
-                            onClick={() => {navigate("/forgotpassword")}}
-                            >Forgot your password?</button>
+                            <Link 
+                            className="forgot-password-link border-0 fw-bold"
+                            to={"/forgotpassword"}
+                            >
+                                Forgot your password?
+                            </Link>
                         </div>
-                        <hr className="mt-2 mb-3"/>
+                        <hr className="custom-hr mt-2 mb-2"/>
                         <div className="d-flex justify-content-center">
                             <p className="mt-3 me-2 fs-5 fw-lighter ask-account">Have an account?</p> 
-                            <Link className="sign-up-link mt-3 fs-5 fw-bold" to={"/createaccount"}>Sign up</Link>
+                            <Link className="sign-up-link mt-3 fs-5 fw-bold" to={"/createaccount"}>Create an account</Link>
                         </div>
                     </form> 
         </div> 

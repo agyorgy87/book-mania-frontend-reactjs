@@ -11,7 +11,7 @@ const Contact = () => {
                 <NavigationBar/> 
             </div>
                 <div className="contact-area">
-                    <div className="container">
+                    <div className="container"> 
                         <div className="text-center mt-3 mb-3"> 
                             <p className="send-us-message-text">SEND US A MESSAGE</p>
                         </div>

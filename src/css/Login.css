@@ -3,12 +3,11 @@
 
 .login-page {
     background-color: #ffffff !important;
+    
 }
 
 .form-container {
     width: 25rem !important;
-    border: 1px solid #e6e9f1;
-    background-color: #ffffff;
 }
 
 .login-name-of-the-website {
@@ -29,10 +28,6 @@
 .email-password-label {
     font-weight: 600 !important;
     font-family: 'Source Sans 3', sans-serif;
-}
-
-.email-password-label:hover {
-    text-decoration: underline; 
 }
 
 .email-password-inputs-height {
@@ -102,21 +97,27 @@
     background-color: #155a62 !important; 
 }
 
-.forgot-password-button {
+.forgot-password-link {
     color:#1e7b85 !important;
     background-color: #ffffff !important;
     font-family: 'Source Sans 3', sans-serif;
 }
 
-.forgot-password-button:hover, .sign-up-link:hover {
+.forgot-password-link:hover, .sign-up-link:hover {
     color: #155a62 !important;
     text-decoration: underline;
-    
 }
+
+.custom-hr {
+    width: 70% !important; /* Szélesség beállítása (pl. 50%) */
+    height: 1px; /* Magasság beállítása (pl. 2px) */
+    background-color: #8a8a8a; /* Vonal színe */
+    margin: 20px auto; /* Középre igazítás */
+  }
 
 .ask-account {
     font-family: 'Source Sans 3', sans-serif;
-}
+} 
 
 .sign-up-link {
     color:#1e7b85 !important;
