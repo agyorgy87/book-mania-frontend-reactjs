@@ -105,9 +105,9 @@ const CreateAccount = () => {
                 <div>
                     {openNotDataPhishing && <NotDataPhishing close={closePopupNotDataPhishing}/>}  
                 </div>
-                    <div className="col-12 col-sm-8 col-md-4 m-auto rounded shadow sign-up-container pt-3 mt-5 mb-5">                           
+                    <div className="col-12 col-sm-8 col-md-4 m-auto sign-up-container pt-3 mb-5 mt-2">                           
                         <div className="text-center">
-                            <h1 className="sign-up-title fw-bold">Sign up</h1>
+                            <h1 className="sign-up-title fw-bold">Create an account</h1>
                         </div>                                                               
                                 <form className="form-row ps-5 pe-5" autoComplete="off" onSubmit={handleSubmit}>
                                             <div className="form-group label-input-container registration-containers">      
@@ -326,7 +326,7 @@ const CreateAccount = () => {
                                             <p className="text-center">By signing up, you agree to our <Link>Terms of Service</Link> and<Link> Privacy Policy</Link></p>
                                         </div>
                                 </form> 
-                                <hr className="mt-2 mb-3"/>
+                                <hr className="custom-hr mt-2 mb-3"/>
                                 <div className="d-flex justify-content-center">
                                     <p className="mt-2 mb-4 me-2 fs-5 fw-lighter sign-up-ask">Have an account?</p> 
                                     <Link className="mt-2 fs-5 fw-bold sign-up-link" to={"/login"}>Login</Link>

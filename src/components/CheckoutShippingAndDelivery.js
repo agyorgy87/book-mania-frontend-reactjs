@@ -17,45 +17,45 @@ const CheckoutShippingAndDelivery = ({shippingAddress, setShippingAddress}) => {
     }
 
     return (  
-        <div>
+        <div className="shipping-and-delivery-table">
             <div className="container-fluid">
                 {openChangeShippingADetailsModal && <ChangeShippingDetails close={closeModal}
                 shippingAddress={shippingAddress}
                 setShippingAddress={setShippingAddress}
                 />}
             </div>
-            <div className="mt-3 text-center shipping-and-delivery-top-text">
+            <div className="text-center shipping-and-delivery-top-text"> 
                 <p>Shipping $ Delivery</p>
             </div>
-                <div className="mt-5">
-                    <div className="shipping-containers">
-                        <h5 >First Name:</h5>
-                        <h5 className="fw-bold">{shippingAddress?.firstName}</h5>
-                    </div>
-                    <div className="shipping-containers">
-                        <h5 >Last Name:</h5>
-                        <h5 className="fw-bold">{shippingAddress?.lastName}</h5>
-                    </div>
-                    <div className="shipping-containers">
-                        <h5>Address:</h5>
-                        <h5 className="fw-bold">{shippingAddress?.address}</h5>
-                    </div>
-                    <div className="shipping-containers">
-                        <h5>City:</h5>
-                        <h5 className="fw-bold">{shippingAddress?.city}</h5>
-                    </div>
-                    <div className="shipping-containers">
-                        <h5>Zip Code:</h5>
-                        <h5 className="fw-bold">{shippingAddress?.zipCode}</h5>
-                    </div>
+            <div className="mt-3">
+                <div className="shipping-containers">
+                    <p>First Name:</p>
+                    <p className="fw-bold">{shippingAddress?.firstName}</p> 
                 </div>
-                <div className="mt-3 d-flex justify-content-center send-shipping-data-button-container">
-                    <button 
-                    className="btn send-shipping-data-button" 
-                    onClick={openModal}
-                    >Change Shipping Details
-                    </button>
+                <div className="shipping-containers">
+                    <p>Last Name:</p>
+                    <p className="fw-bold">{shippingAddress?.lastName}</p>
                 </div>
+                <div className="shipping-containers">
+                    <p>Address:</p>
+                    <p className="fw-bold">{shippingAddress?.address}</p>
+                </div>
+                <div className="shipping-containers">
+                    <p>City:</p>
+                    <p className="fw-bold">{shippingAddress?.city}</p>
+                </div>
+                <div className="shipping-containers">
+                    <p>Zip Code:</p>
+                    <p className="fw-bold">{shippingAddress?.zipCode}</p>
+                </div>
+            </div>
+            <div className="mt-3 d-flex justify-content-center">
+                <button 
+                className="btn send-shipping-data-button" 
+                onClick={openModal}
+                >Change Shipping Details
+                </button>
+            </div>
         </div>
     )
 }

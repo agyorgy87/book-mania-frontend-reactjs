@@ -1,26 +1,28 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Open+Sans:wght@300;400;600;700&display=swap');
 
+.shipping-and-delivery-table {
+    width: 320px;
+    padding: 1rem;
+}
+
+
 .shipping-and-delivery-top-text { 
-    font-size: 35px;
+    font-size: 30px;
     font-family: 'Open Sans', sans-serif;
 }
 
 .shipping-containers {
-    height: 5rem;
-    width: 50%;
-    margin: 0 25%;
-    margin-bottom: 0.5rem;
+    height: 4rem;
 }
 
-.send-shipping-data-button-container {
-    padding-left: 20px;
-    padding-right: 20px;
+.shipping-containers p {
+    margin: 0;
+    padding: 0;
 }
 
 .send-shipping-data-button {
     height: 3rem;
-    width: 70% !important;
-    margin: 0 15%;
+    width: 18rem;
     border-radius: 5px;
     border: none;
     color: #ffffff !important;
