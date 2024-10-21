@@ -13,7 +13,7 @@ const CheckoutShippingAndDelivery = ({shippingAddress, setShippingAddress}) => {
     }
 
     const closeModal = () => {
-        setOpenChangeShippingDetailsModal(false);
+        setOpenChangeShippingDetailsModal(false); 
     }
 
     return (  
@@ -51,7 +51,7 @@ const CheckoutShippingAndDelivery = ({shippingAddress, setShippingAddress}) => {
             </div>
             <div className="mt-3 d-flex justify-content-center">
                 <button 
-                className="btn send-shipping-data-button" 
+                className="btn change-shipping-details-button" 
                 onClick={openModal}
                 >Change Shipping Details
                 </button>

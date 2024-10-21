@@ -1,15 +1,26 @@
 .checkout-page {
     min-height: 100vh;
     padding-top: 120px;
-    background-color: #ffffff !important;
+    background-color: #ffffff !important; 
     overflow-x: hidden;
 }
 
-@media (max-width:992px) {
+.checkout-page-container {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+@media (max-width:1024px) {
+    .checkout-page-container {
+        display: flex;
+        flex-direction: column;
+    }
+
     .shipping-and-delivery-container {
         margin-bottom: 50px;
     }
 }
+
 
 
 

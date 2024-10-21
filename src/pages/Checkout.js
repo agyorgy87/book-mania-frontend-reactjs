@@ -32,18 +32,18 @@ const Checkout = () => {
     },[]);
 
     return (
-        <div className="checkout-page mb-5">
+        <div className="checkout-page mb-5"> 
             <div className="fixed-top">
                 <NavigationBar/>
             </div>
-            <div className="row">
-                <div className="shipping-and-delivery-container d-flex justify-content-center col-xl-6 col-lg-6 col-md-12 ">
+            <div className="checkout-page-container">
+                <div className="shipping-and-delivery-container d-flex justify-content-center">
                     <CheckoutShippingAndDelivery 
                     shippingAddress={shippingAddress}
                     setShippingAddress={setShippingAddress}
                     />
                 </div>
-                <div className="col-xl-6 col-lg-6 col-md-12"> 
+                <div className="d-flex justify-content-center "> {/*col-xl-6 col-lg-6 col-md-12*/}
                     <CheckoutTotalSummary 
                     shippingAddress={shippingAddress}
                     />

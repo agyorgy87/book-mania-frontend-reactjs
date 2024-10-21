@@ -6,9 +6,10 @@
 }
 
 
-.shipping-and-delivery-top-text { 
+.shipping-and-delivery-top-text {  
     font-size: 30px;
     font-family: 'Open Sans', sans-serif;
+    text-decoration: underline;
 }
 
 .shipping-containers {
@@ -20,7 +21,7 @@
     padding: 0;
 }
 
-.send-shipping-data-button {
+.change-shipping-details-button {
     height: 3rem;
     width: 18rem;
     border-radius: 5px;
@@ -32,18 +33,21 @@
     font-family: 'Open Sans', sans-serif; 
 }
 
-.send-shipping-data-button:hover {
+.change-shipping-details-button:hover {
     background-color: #155a62 !important; 
 } 
 
-@media (max-width: 480px) {
+@media (max-width: 633px) {
 
-    .send-shipping-data-button-container {
-        padding-left: 0px;
-        padding-right: 0px;
+    .change-shipping-details-button {
+        font-size: 18px !important;
     }
 
-    .send-shipping-data-button {
+}
+
+@media (max-width: 480px) {
+
+    .change-shipping-details-button {
         width: 100% !important;
     }
 

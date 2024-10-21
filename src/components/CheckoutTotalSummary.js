@@ -29,7 +29,7 @@ const CheckoutTotalSummary = ({shippingAddress}) => {
         if(discountValue !== 0){
             setDiscountPriceState(true)
         }else{
-            setDiscountPriceState(false);
+            setDiscountPriceState(false); 
         }
 
     },[])
@@ -62,23 +62,23 @@ const CheckoutTotalSummary = ({shippingAddress}) => {
     }
 
     return ( 
-        <div className="checkout-total-summary-container">
-            <div className="mt-3 text-center items-and-prices-top-text"> 
-                <p>Items & Prices</p>
+        <div className="checkout-total-summary-table"> 
+            <div className="text-center items-and-prices-top-text"> 
+                <p>Books & Prices</p>
             </div>
-        <div className="pt-3 checkout-book-img-title-author-price-container">
+        <div className="checkout-book-img-title-author-price-container">
             { cartData.value.map((book, index) => ( 
                 <div className="mb-4" key={"cart-data-div" + index}>
                     <div className="d-flex checkout-book-img-title-author-price-container"> 
                         <div className="checkout-book-img-container">
                             <img 
                             src={envAndLocal + "/books_img/" + book.img_directory + "/" + book.image}
-                            className="checkout-book-pics mt-2 me-3"                                             
+                            className="checkout-book-pics"                                             
                             alt="book"
                             onClick={() => {navigate("/selectedbook/" + book.id)}}
                             /> 
                         </div>
-                        <div className="d-flex flex-column checkout-book-title-author-container">
+                        <div className="d-flex flex-column checkout-book-title-author-container pt-3">
                             <div>
                                 <Link 
                                 className="checkout-book-title"
@@ -91,7 +91,7 @@ const CheckoutTotalSummary = ({shippingAddress}) => {
                                 <p className="checkout-book-author-name mt-2">{book.author_name}</p>
                             </div>
                         </div>
-                        <div className="checkout-book-price-container">
+                        <div className="checkout-book-price-multiplier pt-5">
                             <p className="checkout-book-multiplier ms-4 mt-1">x{book.quantity}</p>
                         </div>                                                
                     </div>                                                                                                                 
