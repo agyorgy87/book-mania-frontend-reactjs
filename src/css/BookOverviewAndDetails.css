@@ -21,3 +21,11 @@
     font-family: 'Open Sans', sans-serif !important;
 }
 
+@media (max-width: 992px) {
+
+    .overview-book-details-container {
+        margin-left: 2rem !important;
+        margin-right: 2rem !important;
+    }
+}
+

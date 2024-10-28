@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap');
 
 .wish-list-book-card {
-    height: 23rem !important;
+    height: 24.5rem !important;
     width: 14rem !important;
     margin-right: 10rem !important; 
     border: 1px solid #e6e9f1;
@@ -13,6 +13,10 @@
 .wish-list-book-pics {
     height: 80%; 
     cursor: pointer; 
+}
+
+.books-title-wishlist-container {
+    height: 3rem;
 }
 
 .wish-list-book-title { 
@@ -49,7 +53,7 @@
 
 @media (max-width: 768px) {
     .wish-list-book-card {
-        margin-right: 1.5rem !important;
+        margin-right: 1.5rem !important; 
     }
 }
 

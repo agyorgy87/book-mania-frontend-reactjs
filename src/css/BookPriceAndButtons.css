@@ -5,10 +5,10 @@
     font-size: 40px;
     font-family: 'Open Sans', sans-serif;
     font-weight: 300 !important;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
 }
 
-.selected-book-add-to-cart-button {
+.selected-book-add-to-cart-button { 
     height: 3rem;
     width: 19rem;
     background-color: #1e7b85 !important;
@@ -22,7 +22,7 @@
     background-color: #155a62 !important; 
 } 
 
-.selected-book-cart-icon {
+.selected-book-cart-icon { 
     transform: translateY(-4px);
 }
 
@@ -49,25 +49,29 @@
     transform: translateY(-4px);
 }
 
-
 @media (max-width:1200px) {
+    
+    .book-price-number {
+        font-size: 33px;
+    }
 
     .selected-book-add-to-cart-button { 
-        height: 2.5rem !important;
-        width: 17rem !important;
-        font-size: 20px !important;
+        height: 2.5rem;
+        width: 15rem; 
+        font-size: 16px !important;
     } 
 
     .selected-book-add-to-wishlist-button {
-        height: 2.5rem !important;
-        width: 17rem !important;
-        font-size: 20px !important;
+        height: 2.5rem;
+        width: 15rem;
+        font-size: 16px !important;
     }
+
 }
 
-@media (max-width:1000px) {
-    
-    .book-price-number {
-        margin-bottom: 1.5rem;
+@media (max-width: 768px) {
+
+    .book-price-number-container {
+        margin-bottom: -15px;
     }
 }

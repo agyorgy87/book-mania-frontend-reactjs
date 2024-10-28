@@ -50,7 +50,7 @@ const NavigationBar = () => {
                             {
                                 userData.value.jwt ? 
                                 <li className="nav-item navigation-menus">
-                                    <Link to={"/wishlist"} className="nav-link user-welcome">Hi, {userData.value.firstName}</Link>     
+                                    <Link to={"/wishlist"} className="nav-link user-welcome">Hello, {userData.value.firstName}</Link>     
                                 </li>
                                 :
                                 null
@@ -70,7 +70,7 @@ const NavigationBar = () => {
                                     <CgShoppingCart className="fs-2"/>
                                     {
                                         cartData.value.length > 0 ?
-                                        <span className="translate-middle badge rounded-pill cart-content-value">
+                                        <span className="translate-middle badge rounded-pill cart-content-value"> 
                                             {cartData.value.length}
                                         </span>
                                         :
@@ -86,3 +86,7 @@ const NavigationBar = () => {
     )
     }
 export default NavigationBar;
+
+{/*
+
+    */}

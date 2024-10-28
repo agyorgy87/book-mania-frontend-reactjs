@@ -12,7 +12,7 @@ const BooksInTheWishList = (props) => {
     const envAndLocal = "http://localhost:3001" || process.env.REACT_APP_API_URL
 
     return ( 
-        <div className="container d-flex justify-content-center">  
+        <div className="container d-flex justify-content-center">   
             <div className="row"> 
                 { userWishList.map((book, index) => ( 
                     <div key={"newness-div" + index} 
@@ -27,12 +27,13 @@ const BooksInTheWishList = (props) => {
                                 />                                        
                             </div>
                             <div className="d-flex flex-column ps-4 pe-4">                      
-                                <div className="d-flex">
+                                <div className="d-flex books-wishlist-container">
                                     <Link 
                                     className="wish-list-book-title"
                                     to={"/selectedbook/" + book.id}
-                                    >                                      
-                                    { book.title.length > 17 ? book.title.substring(0,23) + " ..." : book.title }                                                                                        
+                                    >
+                                    {book.title}                                   
+                                    {/*{ book.title.length > 17 ? book.title.substring(0,23) + " ..." : book.title }*/}                                                                                       
                                     </Link>
                                 </div>
                                 <div className="d-flex mt-2">

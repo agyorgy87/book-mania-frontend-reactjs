@@ -19,7 +19,7 @@ const BookPictureAndData = (props) => {
         setTwitterHover(true); 
       };
 
-      const onHoverTwitterOver = (e) => {
+      const onHoverTwitterOver = (e) => { 
         e.preventDefault();
         setTwitterHover(false);
       };
@@ -51,10 +51,10 @@ const BookPictureAndData = (props) => {
                 <div className="mb-2"> 
                     <p className="book-title">{bookDetails.title}</p>
                 </div>
-                <div className="mb-4 book-author-name-container">
-                    <p className="me-1">By</p><p className="book-author-name">{bookDetails.author_name}</p>
+                <div className="mb-4 book-author-name-container ">
+                    <p className="book-author-name">{bookDetails.author_name}</p>
                 </div>
-                <div>
+                <div className="share-container">
                     <p className="share-text">Share:</p>
                         <img 
                         src={facebookLogo} 
@@ -67,12 +67,12 @@ const BookPictureAndData = (props) => {
                         src={twitterLogo} 
                         className="social-icons" 
                         alt="Share on Twitter" 
-                        onMouseEnter={(e) => onHoverTwitter(e)} 
+                        onMouseEnter={(e) => onHoverTwitter(e)}  
                         onMouseLeave={(e) => onHoverTwitterOver(e)}
                         />                      
-                    <div className="social-hover-text">
-                        {facebookHover && <p>{facebookText}</p>}
-                        {twitterHover && <p>{twitterText}</p>}
+                    <div>
+                        {facebookHover && <p className="share-on-facebook-text">{facebookText}</p>}
+                        {twitterHover && <p className="share-on-twitter-text">{twitterText}</p>}
                     </div> 
                 </div>                  
             </div>                 

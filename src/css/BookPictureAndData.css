@@ -27,61 +27,105 @@
     font-family: 'Open Sans', sans-serif;
 }
 
-
-@media (max-width:1400px) {
-
-    .book-title {
-        font-size: 27px !important;
-    }
-}
-
 @media (max-width:1200px) {
 
     .book-picture-container {
-        height: 20rem !important;
-        width: 18rem !important;
+        height: 21rem !important;
+        width: 18rem !important; 
     }
-
+    
     .book-picture { 
-        height: 17rem;  
+        height: 16rem;  
     }
 
     .book-title {
-        font-size: 27px !important;
+        font-size: 21px;
+    }
+
+    .book-author-name {
+        font-size: 13px;
+    }
+
+    .book-title-author-social-container {
+        width: 25rem;
     }
 }
 
-@media (max-width:1000px) {
+@media (max-width: 992px) {
 
-    .book-picture-and-title-container {
-        display: flex;
-        flex-direction: column;
+    .book-title {
+        font-size: 23px;
     }
 
+    .book-author-name {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+
     .book-picture-container {
-        height: 24rem !important;
+        height: 15rem !important;
+        width: 12rem !important; 
     }
 
     .book-picture { 
-        height: 20rem;  
+        height: 10rem;  
     }
 
-    .book-title-author-social-container {
-        margin: auto;
-        margin-left: 50px !important;
+    .book-title {
+        font-size: 17px;
     }
 
-    .book-author-name-container {
-        display: flex;
+    .book-author-name {
+        font-size: 11px;
     }
+
+    .share-container {
+        height: 7rem;
+    }
+
+    .share-text {
+        font-size:12px;
+    }
+
+    .share-on-facebook-text, .share-on-twitter-text { 
+        font-size: 12px;
+    }
+
 }
 
 @media (max-width: 576px) {
-    .book-title-author-social-container {
-        margin: auto;
-        margin-left: 20px;
+
+    .book-picture-container {
+       margin-left: 1rem;
     }
 }
 
+@media (max-width: 480px) {
+
+    .book-picture-container {
+        height: 11rem !important;
+        width: 8rem !important; 
+    }
+
+    .book-picture { 
+        height: 8rem;  
+    }
+
+    .book-title {
+        font-size: 13px;
+    }
+
+    .book-author-name {
+        font-size: 10px;
+    }
+
+    .share-text {
+        font-size:12px;
+        margin-bottom: 7px;
+    }
+       
+}
 
 

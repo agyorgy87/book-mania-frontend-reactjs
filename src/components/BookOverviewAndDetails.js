@@ -29,7 +29,7 @@ const BookOverviewAndDetails = (props) => {
                                 <p className="content-title book-details-title me-2">Release date: </p>
                             </div>
                             <div>
-                                <p className="content-title book-details-title me-2">Number of page:</p>
+                                <p className="content-title book-details-title me-2">Number of page:</p> 
                             </div>
                         </div>
                         <div className="ms-3">

@@ -19,7 +19,7 @@ const BookPriceAndButtons = (props) => {
     const userData = useContext(UserContext);
     const cartData = useContext(CartContext);
 
-    const [heartIconFull, setHeartIconFull] = useState(false);
+    const [heartIconFull, setHeartIconFull] = useState(false); 
     const [openModal, setOpenModal] = useState(false); 
     const [modalMessage, setModalMessage] = useState("");
 
@@ -106,7 +106,7 @@ const BookPriceAndButtons = (props) => {
                 {openModal && <LoginWarning close={closeModal} message={modalMessage}/>}  
             </div>
             <div className="d-flex flex-column">
-                <div>
+                <div className="book-price-number-container"> 
                     <p className="book-price-number">{bookDetails.price}$</p>
                 </div>
                 <div className="align-items-center">
