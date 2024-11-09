@@ -24,15 +24,17 @@ const NavigationBar = () => {
     return (  
         <div>
             <nav className="navbar navbar-expand-xl">
-                <div className="container-fluid">                     
-                    <Link to={"/"} className="navbar-brand pt-3 ps-3">                    
-                        <p className="name-of-the-website">BOOK MANIA</p> 
-                        <ImBooks className="ms-2 icon"/>
-                    </Link>  
+                <div className="container-fluid">   
+                    <div className="mt-3">
+                        <Link to={"/"} className="navbar-brand pt-3 ps-3">                    
+                            <p className="name-of-the-website">BOOK MANIA</p> 
+                            <ImBooks className="ms-2 icon"/>
+                        </Link>
+                    </div>                    
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>          
-                    <div className="collapse navbar-collapse" id="navbarNav">
+                    <div className="collapse navbar-collapse navigation-pages-container" id="navbarNav">
                         <ul className="navbar-nav ms-auto">
                             <li className="nav-item navigation-menus">
                                 <Link to={"/"} className="nav-link active fs-4">HOME</Link>
@@ -86,7 +88,3 @@ const NavigationBar = () => {
     )
     }
 export default NavigationBar;
-
-{/*
-
-    */}

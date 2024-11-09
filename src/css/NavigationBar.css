@@ -21,6 +21,12 @@
     transform: translateY(-6px);
 }
 
+.navigation-pages-container {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
 .navigation-menus {  
     margin: 5px 10px 0px 10px;
     font-weight: 300 !important;
