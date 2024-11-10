@@ -48,11 +48,13 @@ const BookPictureAndData = (props) => {
                 </div>
             </div>
             <div className="book-title-author-social-container">   
-                <div className="mb-2"> 
-                    <p className="book-title">{bookDetails.title}</p>
-                </div>
-                <div className="mb-4 book-author-name-container ">
-                    <p className="book-author-name">{bookDetails.author_name}</p>
+                <div>
+                    <div className="mb-2 book-title-container"> 
+                        <p className="book-title">{bookDetails.title}</p>
+                    </div>
+                    <div className="mb-4 book-author-name-container">
+                        <p className="book-author-name">{bookDetails.author_name}</p>
+                    </div>
                 </div>
                 <div className="share-container">
                     <p className="share-text">Share:</p>

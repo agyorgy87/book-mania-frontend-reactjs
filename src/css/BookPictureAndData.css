@@ -12,7 +12,6 @@
 }
 
 .book-title {
-    padding-right: 3rem;
     font-size: 30px;
     font-weight: 600;
     font-family: 'Source Serif 4', serif;
@@ -27,6 +26,13 @@
     font-family: 'Open Sans', sans-serif;
 }
 
+@media (max-width:1400px) {
+    .book-author-name-container {
+        margin-top: 6rem;
+    }
+}
+
+
 @media (max-width:1200px) {
 
     .book-picture-container {
@@ -40,6 +46,10 @@
 
     .book-title {
         font-size: 21px;
+    }
+
+    .book-author-name-container {
+        margin-top: 0rem;
     }
 
     .book-author-name {
@@ -65,28 +75,36 @@
 @media (max-width: 768px) {
 
     .book-picture-container {
-        height: 15rem !important;
-        width: 12rem !important; 
+        height: 19rem !important;
+        width: 16rem !important; 
     }
 
     .book-picture { 
-        height: 10rem;  
+        height: 16rem;  
+    }
+
+    .book-title-author-social-container {
+        width: 20rem;
     }
 
     .book-title {
-        font-size: 17px;
+        font-size: 21px;
+    }
+
+    .book-author-name-container {
+        margin-top: 3rem;
     }
 
     .book-author-name {
-        font-size: 11px;
+        font-size: 15px;
     }
-
+ 
     .share-container {
         height: 7rem;
     }
 
     .share-text {
-        font-size:12px;
+        font-size:15px;
     }
 
     .share-on-facebook-text, .share-on-twitter-text { 
@@ -95,35 +113,48 @@
 
 }
 
-@media (max-width: 576px) {
+@media (max-width: 570px) {
 
-    .book-picture-container {
-       margin-left: 1rem;
+    .book-picture-and-title-container {
+        display:flex;
+        flex-direction: column;
     }
-}
 
-@media (max-width: 480px) {
+    .book-title-author-social-container {
+        margin: 0px auto;
+        padding-right: 0rem;
+    }
 
     .book-picture-container {
-        height: 11rem !important;
-        width: 8rem !important; 
+        height: 20rem !important;
+        width: 18rem !important; 
     }
 
     .book-picture { 
-        height: 8rem;  
+        height: 16rem;  
+    }
+
+    .book-title-container {
+        display: flex;
+        justify-content: center !important;
     }
 
     .book-title {
-        font-size: 13px;
+        font-size: 23px;
+        text-align: center;
     }
 
+    .book-author-name-container {
+        margin-top: 3rem; 
+    }
+    
     .book-author-name {
-        font-size: 10px;
+        font-size: 15px;
     }
 
     .share-text {
-        font-size:12px;
-        margin-bottom: 7px;
+        font-size:18px;
+        
     }
        
 }

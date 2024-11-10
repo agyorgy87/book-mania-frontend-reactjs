@@ -110,7 +110,7 @@ const BookPriceAndButtons = (props) => {
                     <p className="book-price-number">{bookDetails.price}$</p>
                 </div>
                 <div className="align-items-center">
-                <div className="mb-3">
+                <div className="mb-3"> 
                     <button
                     type="button" 
                     className="selected-book-add-to-cart-button btn fs-5 border-0 fw-bold" 

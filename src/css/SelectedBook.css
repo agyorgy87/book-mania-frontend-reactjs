@@ -7,15 +7,19 @@
 
 @media (max-width: 992px) { 
 
-    .selected-book-picture-data-price-buttons-container {
-        flex-direction: column !important;
+    .selected-book-picture-data-price-buttons-container { 
+        flex-direction: column;
+        padding-inline: 30px !important;
     }
 
     .selected-book-picture-and-title {
         margin-bottom: -1.5rem; 
+
     }
 
-    .selected-book-price-and-buttons {
+    .selected-book-price-and-buttons { 
+        display: flex;
+        justify-content: center;
         margin-left: 4rem;
     }
 }
@@ -24,6 +28,7 @@
 
     .selected-book-picture-data-price-buttons-container {
         margin-bottom: 1rem;
+        padding-inline: 0px !important;
     }
 
     .selected-book-picture-and-title {
