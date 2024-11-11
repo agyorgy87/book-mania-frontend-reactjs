@@ -43,10 +43,12 @@
 
 .selected-book-not-full-heart-icon {
     transform: translateY(-4px);
+    font-size: 20px;
 }
 
 .selected-book-full-heart-icon {
     transform: translateY(-4px);
+    font-size: 20px;
 }
 
 @media (max-width:1200px) {
@@ -71,18 +73,27 @@
 
 @media (max-width: 992px) {
 
+    .book-price-number {
+        font-size: 35px !important;
+    }
+
     .selected-book-add-to-cart-button { 
         height: 5rem;
         width: 23rem;
         font-weight: 500 !important;
-        font-size: 40px !important;
+        font-size: 24px !important;
     } 
+
+    .selected-book-cart-icon { 
+        width: 35px;
+        height: 35px;
+    }
     
     .selected-book-add-to-wishlist-button {
         height: 5rem;
         width: 23rem;
         font-weight: 500 !important;;
-        font-size: 28px !important;
+        font-size: 24px !important;
     }
 
     .selected-book-not-full-heart-icon {
@@ -98,37 +109,9 @@
 }
 
 @media (max-width: 768px) {
-/*
-    .selected-book-add-to-cart-button { 
-        height: 3rem;
-        width: 19rem;
-        background-color: #1e7b85 !important;
-        color: #ffffff !important;
-        font-weight: 500 !important;
-        font-family: 'Source Sans 3', sans-serif;
-        font-size: 20px !important;
-    } 
-    
-    .selected-book-add-to-cart-button:hover {
-        background-color: #155a62 !important; 
-    } 
-    
-    .selected-book-cart-icon { 
-        transform: translateY(-4px);
-    }
-    
-    .selected-book-add-to-wishlist-button {
-        height: 3rem;
-        width: 19rem;
-        color: #1e7b85 !important;
-        background-color: #ffffff !important;
-        border: 1px solid #1e7b85 !important;
-        font-weight: 500 !important;
-        font-family: 'Source Sans 3', sans-serif;
-        font-size: 20px !important;
-    }
-*/
+
     .book-price-number-container {
         margin-bottom: -15px;
     }
+
 }

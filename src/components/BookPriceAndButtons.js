@@ -113,7 +113,7 @@ const BookPriceAndButtons = (props) => {
                 <div className="mb-3"> 
                     <button
                     type="button" 
-                    className="selected-book-add-to-cart-button btn fs-5 border-0 fw-bold" 
+                    className="selected-book-add-to-cart-button btn border-0 fw-bold" 
                     onClick={SelectedBookAddToCart}>                                                           
                         Add To Cart
                             <CgShoppingCart className="fs-4 ms-2 selected-book-cart-icon"/>
@@ -126,7 +126,7 @@ const BookPriceAndButtons = (props) => {
                     onClick={addToWishList}>
                         Remove from Wishlist
                             <AiFillHeart 
-                            className="fs-4 ms-2 selected-book-full-heart-icon"/>
+                            className="ms-2 selected-book-full-heart-icon"/>
                     </button>
                     :
                     <button 
@@ -134,7 +134,7 @@ const BookPriceAndButtons = (props) => {
                     onClick={addToWishList}>
                         Add To Wishlist
                             <AiOutlineHeart 
-                            className="fs-4 ms-2 selected-book-not-full-heart-icon"/>
+                            className="ms-2 selected-book-not-full-heart-icon"/>
                     </button>
                     }                           
                 </div> 

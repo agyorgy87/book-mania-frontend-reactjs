@@ -24,7 +24,7 @@ const SelectedBook = () => {
     },[])
 
     return (
-        <div className="selected-book-page">        
+        <div className="selected-book-page">         
             <div>
                 <NavigationBar/> 
             </div> 
