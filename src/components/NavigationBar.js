@@ -60,11 +60,11 @@ const NavigationBar = () => {
                             {
                                 userData.value.jwt ?
                                 <li className="nav-item navigation-menus">
-                                    <Link className="nav-link login-logout-link" onClick={logout}>Log out</Link>
+                                    <Link className="nav-link login-logout-link" onClick={logout}>Sign Out</Link>
                                 </li>
                                 :
                                 <li className="nav-item navigation-menus">
-                                    <Link to={"/login"} className="nav-link login-logout-link" id="sign-in-button">Sign in</Link>
+                                    <Link to={"/login"} className="nav-link login-logout-link" id="sign-in-button">Sign In</Link>
                                 </li>
                             }
                             <li className="nav-item navigation-menus"> 
