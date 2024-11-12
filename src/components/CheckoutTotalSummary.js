@@ -86,7 +86,7 @@ const CheckoutTotalSummary = ({shippingAddress}) => {
                                 > 
                                 {book.title}
                                 </Link>
-                            </div>
+                            </div> 
                             <div>
                                 <p className="checkout-book-author-name mt-2">{book.author_name}</p>
                             </div>

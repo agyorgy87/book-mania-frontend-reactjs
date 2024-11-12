@@ -17,7 +17,7 @@ const ChangeShippingDetails = ({shippingAddress, setShippingAddress, close}) => 
     const [cityError, setCityError] = useState(false);
     const [zipCodeError, setZipCodeError] = useState(false);
 
-    const firstNameErrorTextMessage = "Please enter your first name."
+    const firstNameErrorTextMessage = "Please enter your first name." 
     const lastNameErrorTextMessage = "Please enter your last name."
     const addressErrorTextMessage = "Please enter your address."
     const cityErrorTextMessage = "Please enter you city."
@@ -90,8 +90,8 @@ const ChangeShippingDetails = ({shippingAddress, setShippingAddress, close}) => 
 
     return ( 
         <div className="overlay">  
-            <div className="change-shipping-address-container mx-auto d-flex flex-column shadow-lg
-                pt-1 pe-1 bg-body-tertiary rounded col-lg-6 col-md-8 col-sm-10 col-12">
+            <div className="change-shipping-address-container mx-auto d-flex flex-column shadow-lg 
+                p-1 pe-1 bg-body-tertiary rounded col-lg-6 col-md-8 col-sm-10 col-12">
                 <div className="d-flex flex-row-reverse change-shipping-modal-close-button-container">
                     <button className="change-shipping-modal-close-button pt-2 pe-2" onClick={close}><IoMdClose/></button>
                 </div>

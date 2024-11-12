@@ -18,7 +18,7 @@ const SuccessfulRegistrationModal = () => {
                     </svg> 
                 </div>
                 <div className="d-flex justify-content-center mb-4">
-                    <h4 className="successful-registration-modal-text text-center fs-4">Successful Registration</h4>
+                    <h4 className="successful-registration-modal-text text-center fs-5">Successful Registration</h4>
                 </div>
                 <div className="d-flex justify-content-center ps-4 pe-4">
                     <button className="navigate-to-home btn outline-none fs-5" onClick={() => {navigate("/login")}}>Sign in</button>

@@ -10,7 +10,7 @@ const LoginWarning = (props) => {
     const [hideButton, setHideButton] = useState(false);
 
     useEffect(() => {
-        if(props.message === "This book is already exist in the cart.") {
+        if(props.message === "This book is already exist in the cart.") {  
             setHideButton(true);
         }
     }, [])
@@ -22,7 +22,7 @@ const LoginWarning = (props) => {
                     <button className="modal-close-button" onClick={props.close}><IoMdClose/></button>
                 </div>
                 <div className="d-flex justify-content-center modal-text-container">
-                    <h4 className="modal-text text-center">{props.message}</h4>
+                    <h4 className="modal-text text-center fs-5">{props.message}</h4> 
                 </div>
                 { hideButton ? 
                 null

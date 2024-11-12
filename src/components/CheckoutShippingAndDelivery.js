@@ -17,7 +17,7 @@ const CheckoutShippingAndDelivery = ({shippingAddress, setShippingAddress}) => {
     }
 
     return (  
-        <div className="shipping-and-delivery-table">
+        <div className="shipping-and-delivery-table"> 
             <div className="container-fluid">
                 {openChangeShippingADetailsModal && <ChangeShippingDetails close={closeModal}
                 shippingAddress={shippingAddress}

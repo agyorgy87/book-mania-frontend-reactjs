@@ -4,11 +4,11 @@
     height: 100%;
     width: 100%;
     position: fixed;
-    top: 0;
+    top: -30px;
     left: 0; 
     z-index: 10;  
     overflow: auto; 
-    background-color: rgba(171,176,192, 0.7);
+    background-color: rgba(171,176,192, 0.7); 
 }
 
 .change-shipping-address-container {

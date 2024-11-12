@@ -7,7 +7,7 @@ const EmailSentSuccessfullyModal = () => {
     let navigate = useNavigate();
 
     return (
-        <div className="overlay">
+        <div className="overlay">  
             <div className="reset-password-modal-container mx-auto d-flex flex-column shadow-lg pt-4 pe-5 ps-5 bg-body-tertiary rounded">
                 <div className="mb-4 d-flex justify-content-center"> 
                     <svg className="email-sent-successfully-svg" viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg">
@@ -17,7 +17,7 @@ const EmailSentSuccessfullyModal = () => {
                         </g>
                         </svg>
                 </div>
-                <div className="d-flex justify-content-center mb-3">
+                <div className="d-flex justify-content-center mb-3"> 
                     <h4 className="modal-text text-center fs-5">A password reminder has been sent to your email address.</h4>
                 </div>
                 <div className="d-flex justify-content-center">

@@ -43,7 +43,7 @@ const Checkout = () => {
                     setShippingAddress={setShippingAddress}
                     />
                 </div>
-                <div className="d-flex justify-content-center "> {/*col-xl-6 col-lg-6 col-md-12*/}
+                <div className="d-flex justify-content-center ">
                     <CheckoutTotalSummary 
                     shippingAddress={shippingAddress}
                     />

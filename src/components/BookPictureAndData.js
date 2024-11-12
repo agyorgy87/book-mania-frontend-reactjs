@@ -47,7 +47,7 @@ const BookPictureAndData = (props) => {
                     /> 
                 </div>
             </div>
-            <div className="book-title-author-social-container">   
+            <div className="book-title-author-social-container">    
                 <div>
                     <div className="mb-2 book-title-container"> 
                         <p className="book-title">{bookDetails.title}</p>

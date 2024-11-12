@@ -8,7 +8,7 @@ const SuccessfulLoginModal = () => {
 
     return (
         <div className="overlay">
-            <div className="login-modal-container d-flex flex-column shadow-lg pt-4 ps-4 pe-4 bg-body-tertiary rounded">
+            <div className="login-modal-container d-flex flex-column shadow-lg pt-4 ps-4 pe-4 bg-body-tertiary rounded"> 
                 <div className="mb-4 d-flex justify-content-center">
                     <svg className="successfulLogin-svg" viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg">
                         <g stroke="currentColor" stroke-width="2" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
@@ -28,4 +28,4 @@ const SuccessfulLoginModal = () => {
   )
 }
 
-export default SuccessfulLoginModal;
+export default SuccessfulLoginModal; 

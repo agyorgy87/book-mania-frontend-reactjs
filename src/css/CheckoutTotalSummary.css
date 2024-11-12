@@ -134,6 +134,10 @@
         padding-right: 2rem;
     }
 
+    .checkout-book-title-author-container {
+        padding-left: 10px;
+    }
+
     .checkout-book-title { 
         font-size: 12px;
     }
