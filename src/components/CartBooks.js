@@ -72,10 +72,10 @@ const CartBooks = ({setAllQuantity}) => {
     return (
         <div>
             {
-                cartData.value.map((book, index) => (
-                    <div className="selected-book-for-purchase mb-4 d-flex justify-content-between" key={"cart-data-div" + index}>
-                        <div className="book-title-author-publisher-container d-flex"> 
-                            <div>
+                cartData.value.map((book, index) => ( 
+                    <div className="selected-book-for-purchase mb-4" key={"cart-data-div" + index}>
+                        <div className="d-flex justify-content-between cart-book-container-mobile-view"> 
+                            <div className="cart-book-cover-container">
                                 <img 
                                 src={envAndLocal + "/books_img/" + book.img_directory + "/" + book.image}
                                 className="cart-book-pics mt-2"                                             
@@ -83,7 +83,7 @@ const CartBooks = ({setAllQuantity}) => {
                                 onClick={() => {navigate("/selectedbook/" + book.id)}}
                                 /> 
                             </div>
-                            <div className="mt-2 ms-4">
+                            <div className="cart-book-title-container mt-2"> 
                                 <Link 
                                 className="cart-book-title"
                                 to={"/selectedbook/" + book.id}
@@ -92,39 +92,39 @@ const CartBooks = ({setAllQuantity}) => {
                                 </Link>
                                 <p className="cart-book-author-name mt-3">{book.author_name}</p>
                             </div>
-                        </div>                                       
-                        <div className="d-flex flex-column pt-2 pe-3">
-                            <div className="d-flex flex-row-reverse mb-3">
-                                <div>
-                                    <h4 className="cart-book-price">{(book.price * book.quantity).toFixed(2)} $</h4>
-                                </div>                                                 
-                            </div> 
-                            <div className="d-flex align-self-end mb-3 ">                                                                           
-                                <div>
-                                    <button 
-                                    className="plus-minus-button" 
-                                    disabled={buttonDisabled}
-                                    onClick={() => minusOneBook(book)}>
-                                    <BiMinus className="plus-minus-icon"/> 
-                                    </button>
-                                </div>
-                                <div className="ms-2 current-book-number">
-                                    <p>{book.quantity}</p>
-                                </div>
-                                <div>
-                                    <button 
-                                    className="plus-minus-button ms-2" 
-                                    onClick={() => plusOneBook(book)}>
-                                    <BiPlus className="plus-minus-icon"/>
-                                    </button>
+                            <div className="cart-book-price-quantity-container d-flex flex-column pt-2 pe-3">
+                                <div className="d-flex flex-row-reverse mb-3">
+                                    <div>
+                                        <h4 className="cart-book-price">{(book.price * book.quantity).toFixed(2)} $</h4>
+                                    </div>                                                 
                                 </div> 
-                            </div>                                         
-                            <div className="d-flex align-self-end">
-                                <div>
-                                    <button className="remove-book-button" onClick={() => deleteSelectedBook(book)}><MdOutlineRemoveShoppingCart className="plus-minus-icon"/></button>
+                                <div className="d-flex align-self-end mb-3 ">                                                                           
+                                    <div>
+                                        <button 
+                                        className="plus-minus-button" 
+                                        disabled={buttonDisabled}
+                                        onClick={() => minusOneBook(book)}>
+                                        <BiMinus className="plus-minus-icon"/> 
+                                        </button>
+                                    </div>
+                                    <div className="ms-2 current-book-number">
+                                        <p>{book.quantity}</p>
+                                    </div>
+                                    <div>
+                                        <button 
+                                        className="plus-minus-button ms-2" 
+                                        onClick={() => plusOneBook(book)}>
+                                        <BiPlus className="plus-minus-icon"/>
+                                        </button>
+                                    </div> 
+                                </div>                                         
+                                <div className="d-flex align-self-end">
+                                    <div>
+                                        <button className="remove-book-button" onClick={() => deleteSelectedBook(book)}><MdOutlineRemoveShoppingCart className="plus-minus-icon"/></button>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>                                                                            
+                            </div> 
+                        </div>                                                                                                                                       
                     </div>
                 ))
             }
@@ -143,3 +143,23 @@ const CartBooks = ({setAllQuantity}) => {
 }
 
 export default CartBooks;
+
+/*<div className="d-flex book-picture-and-title-container"> 
+                            <div className="book-cover-container">
+                                <img 
+                                src={envAndLocal + "/books_img/" + book.img_directory + "/" + book.image}
+                                className="cart-book-pics mt-2"                                             
+                                alt="book"
+                                onClick={() => {navigate("/selectedbook/" + book.id)}}
+                                /> 
+                            </div>
+                            <div className="cart-book-title-container mt-2"> 
+                                <Link 
+                                className="cart-book-title"
+                                to={"/selectedbook/" + book.id}
+                                > 
+                                {book.title}
+                                </Link>
+                                <p className="cart-book-author-name mt-3">{book.author_name}</p>
+                            </div>
+                        </div>  */

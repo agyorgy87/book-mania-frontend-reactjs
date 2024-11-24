@@ -13,17 +13,17 @@ const Cart = () => {
             <div className="fixed-top"> 
                 <NavigationBar/>
             </div>
-            <div className="container ps-5 pe-5">
+            <div className="container ps-5 pe-5"> 
                 <div className="mt-4 mb-3"> 
                     <h1 className="my-cart-text me-2">My Cart</h1>
                     <h4 className="my-cart-items-text">({allQuantity} items)</h4>
                 </div>                
                 <div>
                     <div className="row">
-                        <div className="col-12 col-lg-8"> 
+                        <div className="col-12 col-xl-8"> 
                             <CartBooks setAllQuantity={setAllQuantity}/>
                         </div>                                             
-                        <div className="col-12 col-lg-4">
+                        <div className="col-12 col-xl-4">
                             <OrderSummary/>
                         </div>
                     </div>
