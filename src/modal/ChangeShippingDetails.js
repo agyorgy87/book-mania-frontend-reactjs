@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { AiOutlineExclamationCircle } from "react-icons/ai"; 
 import { IoMdClose } from "react-icons/io";
 
-const ChangeShippingDetails = ({shippingAddress, setShippingAddress, close}) => {
+const ChangeShippingDetails = ({shippingAddress, setShippingAddress, close}) => { 
 
     const [firstNameInputValue, setFirstNameInputValue] = useState(shippingAddress.firstName);
     const [lastNameInputValue, setLastNameInputValue] = useState(shippingAddress.lastName);
@@ -89,7 +89,7 @@ const ChangeShippingDetails = ({shippingAddress, setShippingAddress, close}) => 
     }
 
     return ( 
-        <div className="overlay">  
+        <div className="cha-overlay">  
             <div className="change-shipping-address-container mx-auto d-flex flex-column shadow-lg 
                 p-1 pe-1 bg-body-tertiary rounded col-lg-6 col-md-8 col-sm-10 col-12">
                 <div className="d-flex flex-row-reverse change-shipping-modal-close-button-container">

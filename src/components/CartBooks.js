@@ -22,7 +22,7 @@ const CartBooks = ({setAllQuantity}) => {
         const allQuantityInOneArray = cartData.value.map(item => item.quantity);
         const sumAllQuantity = allQuantityInOneArray.reduce((previousAmount, currentValue) => previousAmount + currentValue, 0);
         setAllQuantity(sumAllQuantity);
-    }, [cartData]);
+    }, [cartData]); 
 
     const plusOneBook = (book) => {     
         setButtonDisabled(false);  

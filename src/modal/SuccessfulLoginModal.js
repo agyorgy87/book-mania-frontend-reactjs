@@ -17,7 +17,7 @@ const SuccessfulLoginModal = () => {
                         </g>
                         </svg> 
                 </div>
-                <div className="d-flex justify-content-center ps-3 pe-3 mb-4">
+                <div className="d-flex justify-content-center ps-3 pe-3 mb-4"> 
                     <h4 className="modal-text fs-4">Successful login</h4>
                 </div>
                 <div className="d-flex justify-content-center ps-4 pe-4">
