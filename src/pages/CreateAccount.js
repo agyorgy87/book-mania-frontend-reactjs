@@ -62,6 +62,11 @@ const CreateAccount = () => {
     
     const sendUserDatas = () => {
 
+        if(values.password !== values.passwordAgain) {
+            alert("password wrong");
+            return;
+        }
+
         axios.get(`${envAndLocal}/get-user-email/${values.email}`)
         .then(response => {
             if(response.data.success === true) {
@@ -80,10 +85,13 @@ const CreateAccount = () => {
             axios.post(envAndLocal + "/register", user)
             setOpenSuccessfulRegistrationModal(true);
             }
-        })          
+        }) 
+        .catch(err => {
+            console.error("Error during registration process:", err); 
+        });        
     } 
     
-    const closePopupExistingEmailAddress = () => {
+    const closePopupExistingEmailAddress = () => { 
         setOpenExistingEmailAddress(false);
     }
 
@@ -262,7 +270,7 @@ const CreateAccount = () => {
                                                     </div>
                                                 : null
                                                 }
-                                        </div>                                       
+                                        </div>                                        
                                         <div className="form-group label-input-container registration-containers mb-5"> 
                                             <label htmlFor="password" className="form-label labels fw-bold">Password</label>  
                                                 <div className="registration-inputs-height">                                  
@@ -274,15 +282,14 @@ const CreateAccount = () => {
                                                     value={values.password}
                                                     onChange={handleChange}
                                                     />
-                                                    <p className="password-help">Your password must be least 8 characters and minimum 1 number.</p>
-                                                </div>                                     
-                                                {errors.password ?
-                                                    <div className="d-flex mt-3">
-                                                        <AiOutlineExclamationCircle className="sign-up-alert-mark fs-5 me-1"/>
-                                                            <p className="invalid-data-text ms-1">{errors.password}</p> 
-                                                    </div>
-                                                : null
-                                                }
+                                                    {errors.password ?
+                                                        <div className="d-flex mt-1">
+                                                            <AiOutlineExclamationCircle className="sign-up-alert-mark fs-5 me-1"/>
+                                                                <p className="invalid-data-text ms-1">{errors.password}</p> 
+                                                        </div>
+                                                    : <p className="password-help">Your password must be least 8 characters and minimum 1 number.</p>
+                                                    }
+                                                </div>                                                                                  
                                         </div>                                                                                  
                                         <div className="form-group label-input-container registration-container">
                                             <label htmlFor="password" className="form-label labels fw-bold">Password Again</label>
