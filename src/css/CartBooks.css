@@ -207,23 +207,35 @@
     }
 }
 
+@media (max-width:576px) {
+    .cart-book-title {
+        font-size: 15px;
+    }
+    .cart-book-author-name {
+        font-size: 15px;
+    }
+}
 /*
-.cart-book-container-mobile-view {
+@media (max-width:476px) {
+
+    .selected-book-for-purchase {
+        height: 80%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .cart-book-pics {
+        height: 180px;
+        max-width: 150px;
+    }
+
+    
+    .cart-book-container-mobile-view {
         display: flex;
         flex-direction: column !important;
     }
-        */
-
-@media (max-width:576px) {
-    .cart-book-title {
-        font-size: 16px;
-    }
-    .cart-book-author-name {
-        font-size: 12px;
-    }
-}
-
-@media (max-width:476px) {
+        
 
     .cart-book-pics {
         margin-right: -10px !important;
@@ -249,7 +261,7 @@
     }
 }
     
-
+/*
 @media (max-width:376px) {
     
     .cart-book-title {
@@ -269,3 +281,4 @@
         margin-left: 10px;
     }
 }
+    */

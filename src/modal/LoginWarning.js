@@ -15,8 +15,8 @@ const LoginWarning = (props) => {
         }
     }, [])
 
-    return ( 
-        <div className="overlay">
+    return (  
+        <div className="overlay-modal">
             <form className="form d-flex flex-column shadow-lg p-3 mb-5 bg-body-tertiary rounded"> 
                 <div className="d-flex flex-row-reverse modal-close-button-container">
                     <button className="modal-close-button" onClick={props.close}><IoMdClose/></button>

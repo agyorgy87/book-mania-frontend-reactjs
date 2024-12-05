@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap');
 
-.overlay {
+.overlay-modal {
     height: 100%;
     width: 100%;
     background-color: rgba(171,176,192, 0.7);
@@ -34,7 +34,7 @@
 
 .modal-text-container {
     margin: auto;
-    padding: 10px 10px;
+    padding: 10px 10px; 
 }
 
 .modal-text {

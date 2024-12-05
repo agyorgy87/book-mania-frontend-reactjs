@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3&display=swap');
 
-.overlay {
+.overlay-registration {
     height: 100%;
     width: 100%;
     background-color: rgba(171,176,192, 0.7);
@@ -14,7 +14,7 @@
     height: 20rem;
     width: 20rem;
     margin: auto;
-    margin-top: 15rem !important;
+    margin-top: 10rem !important;
     background-color: aliceblue;
 }
 

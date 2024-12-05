@@ -7,7 +7,7 @@ const SuccessfulRegistrationModal = () => {
     let navigate = useNavigate();
 
     return (
-        <div className="overlay">
+        <div className="overlay-registration">
             <div className="register-modal-container d-flex flex-column shadow-lg pt-4 pe-4 ps-4 bg-body-tertiary rounded">
                 <div className="mb-4 d-flex justify-content-center">
                     <svg className="successfulRegistration-svg" viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg">

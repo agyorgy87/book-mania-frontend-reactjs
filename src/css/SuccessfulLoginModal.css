@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3&display=swap');
 
-.overlay {
-    height: 100%;
+.overlay-login {
+    min-height: 100vh; 
     width: 100%;
     background-color: rgba(171,176,192, 0.7);
     position: fixed;
