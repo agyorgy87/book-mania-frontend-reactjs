@@ -52,7 +52,7 @@ export default function Validate (values) {
         errors.passwordAgain = 'Password is required'
         errors.error = true
     } else if(values.passwordAgain !== values.password) {
-        errors.passwordAgain = 'Passwords do not match'
+        errors.passwordAgain = 'Passwords does not match'
         errors.error = true
     }
     

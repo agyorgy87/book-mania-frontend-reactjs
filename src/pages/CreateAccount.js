@@ -63,7 +63,6 @@ const CreateAccount = () => {
     const sendUserDatas = () => {
 
         if(values.password !== values.passwordAgain) {
-            alert("password wrong");
             return;
         }
 
@@ -100,7 +99,7 @@ const CreateAccount = () => {
     }
         
     return ( 
-        <div className="sign-up-page">
+        <div className="sign-up-page"> 
             <div>
                 <NavigationBar/>
             </div>
@@ -236,7 +235,7 @@ const CreateAccount = () => {
                                                 <div className="registration-inputs-height">
                                                     <input 
                                                     type="text"
-                                                    className={`form-control inputs ${errors.zip ? 'invalid' : ''}`} 
+                                                    className={`form-control inputs ${errors.zip ? 'invalid' : ''}`}  
                                                     name="zip"
                                                     id="zip"
                                                     value={values.zip}
