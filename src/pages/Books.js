@@ -227,7 +227,7 @@ const Books = () => {
         setSpecialSearchSelect(selectedOption);
         setPublisherSelect("");
     }
-
+/*
     const callPublisherWithList = (publisherName) => {
         axios.get(envAndLocal + `/get-all-by-publishers/${publisherName}`)
             .then((response) => {
@@ -236,7 +236,7 @@ const Books = () => {
         setShowResult(false);
         scrollToUp();
     }
-
+*/
     const publishersOptions = [
         { value: "Ad Astra", label: "Ad Astra" },
         { value: "Bestline", label: "Bestline" },
@@ -307,7 +307,9 @@ const Books = () => {
                             <SideBarFilters text="Other" filter={sideBarOtherFilter}/>
                         </ul>
                         <ul className="list-group mt-4">
-                            <PublisherSideBarFilter options={allPublisher} onFilterClick={callPublisherWithList}/> 
+                            <PublisherSideBarFilter options={allPublisher} setVisibleBooks={setVisibleBooks}
+                            setShowResult={setShowResult} 
+                            /> 
                         </ul>
                     </div>
                 <div className="col-md-12 col-lg-9 col-xl-9 col-xxl-10">
