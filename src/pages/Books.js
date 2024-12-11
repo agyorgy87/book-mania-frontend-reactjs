@@ -261,32 +261,6 @@ const Books = () => {
         setPublisherSelect(selectedOption);
     }
 
-    const callAllTitlesAndAuthors = (e) => {
-        if (e.trim() !== "") {
-            axios.get(envAndLocal + `/get-book-title/${e}`)
-                .then((response) => {
-                    setVisibleBooks(response.data);
-                })
-                .catch((error) => {
-                    //console.error("Error fetching book titles:", error);
-                });
-            setShowResult(true);
-            setSearchResult(e);
-            setGenreSelect("");
-            setPriceSelect("");
-            setReleaseDateSelect("");
-            setSpecialSearchSelect("");
-            setPublisherSelect("");
-        } else {
-            axios.get(envAndLocal + "/get-all-books")
-             .then((response) => {
-                setVisibleBooks(response.data);
-            });
-            setShowResult(false);
-            setSearchResult("");
-        }
-    }
-
     const sideBarPriceFilters = [
         {filterName: "Under 10$", filterFunction: () => callPriceWithList(0,10)},
         {filterName: "Between 11$ and 20$", filterFunction: () => callPriceWithList(11,20)},
@@ -335,7 +309,9 @@ const Books = () => {
                     </div>
                 <div className="col-md-12 col-lg-9 col-xl-9 col-xxl-10">
                     <div className="row d-flex justify-content-center mb-5 mt-4">
-                        <SearchInput onChange={callAllTitlesAndAuthors}/>                                       
+                        {/*<SearchInput onChange={callAllTitlesAndAuthors}/>*/}
+                        <SearchInput setVisibleBooks={setVisibleBooks} setShowResult={setShowResult} setGenreSelect={setGenreSelect} setPriceSelect={setPriceSelect} 
+                        setReleaseDateSelect={setReleaseDateSelect} setSpecialSearchSelect={setSpecialSearchSelect} setPublisherSelect={setPublisherSelect}/>                            
                     </div>
                     <div className="d-block d-lg-none d-flex flex-column align-items-center mb-3">
                         <div className="select-div mt-3">
@@ -407,3 +383,4 @@ const Books = () => {
 
 export default Books;
                     
+//410 
