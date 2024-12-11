@@ -70,7 +70,7 @@ const Books = () => {
         setShowResult(false);
         scrollToUp();
     }
-
+/*
     const callGenreWithList = (genreName) => {
         if(genreName === "allBooks"){
             getAllBooks();
@@ -83,7 +83,7 @@ const Books = () => {
         setShowResult(false);  
         scrollToUp();
     }
-
+*/
     const categoriesOptions = [
         { value: "allBooks", label: "All Books" },
         { value: "Cooking", label: "Cooking" },
@@ -292,7 +292,10 @@ const Books = () => {
                 <div className="row">
                     <div className="col-lg-3 col-xl-3 col-xxl-2 side-bar d-none d-md-none d-lg-block">
                         <ul className="list-group mt-4">
-                            <GenreSideBarFilter options={allGenre} onFilterClick={callGenreWithList}/>                                         
+                            <GenreSideBarFilter options={allGenre} setVisibleBooks={setVisibleBooks}
+                            setShowResult={setShowResult} 
+                            />    
+                            {/*<GenreSideBarFilter options={allGenre} onFilterClick={callGenreWithList}/>*/}                                     
                         </ul>
                         <ul className="list-group mt-4">
                             <SideBarFilters text="Price" filter={sideBarPriceFilters}/>
@@ -310,8 +313,10 @@ const Books = () => {
                 <div className="col-md-12 col-lg-9 col-xl-9 col-xxl-10">
                     <div className="row d-flex justify-content-center mb-5 mt-4">
                         {/*<SearchInput onChange={callAllTitlesAndAuthors}/>*/}
-                        <SearchInput setVisibleBooks={setVisibleBooks} setShowResult={setShowResult} setGenreSelect={setGenreSelect} setPriceSelect={setPriceSelect} 
-                        setReleaseDateSelect={setReleaseDateSelect} setSpecialSearchSelect={setSpecialSearchSelect} setPublisherSelect={setPublisherSelect}/>                            
+                        <SearchInput setVisibleBooks={setVisibleBooks} setShowResult={setShowResult} 
+                        setGenreSelect={setGenreSelect} setPriceSelect={setPriceSelect} 
+                        setReleaseDateSelect={setReleaseDateSelect} setSpecialSearchSelect={setSpecialSearchSelect} 
+                        setPublisherSelect={setPublisherSelect}/>                            
                     </div>
                     <div className="d-block d-lg-none d-flex flex-column align-items-center mb-3">
                         <div className="select-div mt-3">
@@ -383,4 +388,4 @@ const Books = () => {
 
 export default Books;
                     
-//410 
+//410 volt
