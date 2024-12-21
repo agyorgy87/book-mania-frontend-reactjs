@@ -6,6 +6,7 @@ import { UserContext } from "../context/UserContext";
 import NavigationBar from '../components/NavigationBar.js';
 import CheckoutShippingAndDelivery from '../components/CheckoutShippingAndDelivery.js';
 import CheckoutTotalSummary from '../components/CheckoutTotalSummary.js';
+import SuccessfullOrderModal from "../modal/SuccessfullOrderModal.js";
 
 const Checkout = () => {
 
@@ -13,6 +14,7 @@ const Checkout = () => {
     let userDataId = userData.value.id;
 
     const [shippingAddress, setShippingAddress] = useState({});
+    const [openSuccessfullOrderModal, setOpenSuccessfullOrderModal] = useState(false); 
 
     const envAndLocal = "http://localhost:3001" || process.env.REACT_APP_API_URL
 
@@ -36,6 +38,9 @@ const Checkout = () => {
             <div className="fixed-top">
                 <NavigationBar/>
             </div>
+            <div>
+                {openSuccessfullOrderModal && <SuccessfullOrderModal/>}
+            </div>
             <div className="checkout-page-container">
                 <div className="shipping-and-delivery-container d-flex justify-content-center">
                     <CheckoutShippingAndDelivery 
@@ -43,9 +48,10 @@ const Checkout = () => {
                     setShippingAddress={setShippingAddress}
                     />
                 </div>
-                <div className="d-flex justify-content-center ">
-                    <CheckoutTotalSummary 
+                <div className="d-flex justify-content-center "> 
+                    <CheckoutTotalSummary   
                     shippingAddress={shippingAddress}
+                    setOpenModal={setOpenSuccessfullOrderModal}
                     />
                 </div>  
             </div>

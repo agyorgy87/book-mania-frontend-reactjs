@@ -8,7 +8,7 @@ import { TotalPriceContext } from "../context/TotalPriceContext.js";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-const CheckoutTotalSummary = ({shippingAddress}) => {
+const CheckoutTotalSummary = ({shippingAddress, setOpenModal}) => {
 
     let navigate = useNavigate();
 
@@ -57,7 +57,8 @@ const CheckoutTotalSummary = ({shippingAddress}) => {
 
         axios.post(envAndLocal + `/send-order`, request)
             .then(response => {
-                alert('sikeres megrendelés');
+                console.log('sikeres megrendelés'); 
+                setOpenModal(true);
         })
     }
 
