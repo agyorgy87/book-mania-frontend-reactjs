@@ -2,7 +2,7 @@ import "../css/MapLocation.css";
 import React from 'react';
 
 const MapLocation = () => {
-  return (
+    return (
         <div className="map-area">
             <iframe 
             title="address-point" 
@@ -11,7 +11,7 @@ const MapLocation = () => {
             loading="lazy"
             />
         </div>
-  )
+    )
 }
 
 export default MapLocation;

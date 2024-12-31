@@ -38,7 +38,7 @@ const SearchInput = ({setVisibleBooks, setShowResult, setSearchResult, setGenreS
     const handleInputChange = (e) => {
         const value = e.target.value;
         setSearchInput(value); 
-        callAllTitlesAndAuthors(value); 
+        callAllTitlesAndAuthors(value);
     };
 
     const handleInputBlur = () => {
@@ -55,13 +55,12 @@ const SearchInput = ({setVisibleBooks, setShowResult, setSearchResult, setGenreS
                     type="search" 
                     id="example-search-input"
                     value={searchInput}
-                    //onChange={(e) => callAllTitlesAndAuthors(e.target.value)} 
                     onChange={handleInputChange}
                     onBlur={handleInputBlur}
                     placeholder="Search by title or author"
                 />                           
         </div> 
-  )
+    )
 }
 
 export default SearchInput;

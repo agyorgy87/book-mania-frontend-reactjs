@@ -15,7 +15,6 @@ const GenreSideBarFilter = ({options, setVisibleBooks, setShowResult}) => {
         axios.get(envAndLocal + "/get-all-books")
              .then((response) => {
                 setVisibleBooks(response.data);
-                //allBooks.current = response.data;
         });
         setShowResult(false);
     }

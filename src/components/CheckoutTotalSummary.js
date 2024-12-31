@@ -34,7 +34,6 @@ const CheckoutTotalSummary = ({shippingAddress, setOpenModal}) => {
 
     },[])
 
- 
     const sendOrderDatas = () => {
         
         let bookDatasToTheDatabase = [];

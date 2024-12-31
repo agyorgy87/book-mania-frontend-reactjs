@@ -314,7 +314,6 @@ const Books = () => {
                     </div>
                 <div className="col-md-12 col-lg-9 col-xl-9 col-xxl-10">
                     <div className="row d-flex justify-content-center mb-5 mt-4">
-                        {/*<SearchInput onChange={callAllTitlesAndAuthors}/>*/} 
                         <SearchInput setVisibleBooks={setVisibleBooks} setShowResult={setShowResult} setSearchResult={setSearchResult}
                         setGenreSelect={setGenreSelect} setPriceSelect={setPriceSelect} 
                         setReleaseDateSelect={setReleaseDateSelect} setSpecialSearchSelect={setSpecialSearchSelect} 

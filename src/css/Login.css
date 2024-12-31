@@ -109,10 +109,10 @@
 }
 
 .custom-hr {
-    width: 70% !important; /* Szélesség beállítása (pl. 50%) */
-    height: 1px; /* Magasság beállítása (pl. 2px) */
-    background-color: #8a8a8a; /* Vonal színe */
-    margin: 20px auto; /* Középre igazítás */
+    width: 70% !important; 
+    height: 1px;
+    background-color: #8a8a8a;
+    margin: 20px auto; 
   }
 
 .ask-account {

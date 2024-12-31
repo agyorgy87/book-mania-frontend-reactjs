@@ -69,11 +69,7 @@ const Login = () => {
     }
 
     const login = (e) => {
-    /*   
-    if(userEmail === "" && password === ""){ 
-        setLoginMessage("");
-    }
-    */
+
     e.preventDefault();
 
     let userObj = {
@@ -127,7 +123,6 @@ const Login = () => {
                     <form className="m-auto form-container" onSubmit={login}>
                         <div className="d-flex justify-content-center mt-4 mb-3">                         
                             <p className="fs-2 login-name-of-the-website">Sign In</p>  
-                                {/*<ImBooks className="ms-2 fs-2 book-mania-icon"/>*/}
                         </div>
                         <div className="ps-5 pe-5 email-password-container">
                             <label htmlFor="InputEmail" className="form-label email-password-label">Email</label>

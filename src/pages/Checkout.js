@@ -51,7 +51,7 @@ const Checkout = () => {
                 <div className="d-flex justify-content-center "> 
                     <CheckoutTotalSummary   
                     shippingAddress={shippingAddress}
-                    setOpenModal={setOpenSuccessfullOrderModal}
+                    setOpenModal={setOpenSuccessfullOrderModal} 
                     />
                 </div>  
             </div>

@@ -143,23 +143,3 @@ const CartBooks = ({setAllQuantity}) => {
 }
 
 export default CartBooks;
-
-/*<div className="d-flex book-picture-and-title-container"> 
-                            <div className="book-cover-container">
-                                <img 
-                                src={envAndLocal + "/books_img/" + book.img_directory + "/" + book.image}
-                                className="cart-book-pics mt-2"                                             
-                                alt="book"
-                                onClick={() => {navigate("/selectedbook/" + book.id)}}
-                                /> 
-                            </div>
-                            <div className="cart-book-title-container mt-2"> 
-                                <Link 
-                                className="cart-book-title"
-                                to={"/selectedbook/" + book.id}
-                                > 
-                                {book.title}
-                                </Link>
-                                <p className="cart-book-author-name mt-3">{book.author_name}</p>
-                            </div>
-                        </div>  */
