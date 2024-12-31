@@ -1,10 +1,12 @@
 import '../css/SearchInput.css';
-import React from 'react';
+import React, { useState } from 'react';
 import axios from "axios";
 
 const SearchInput = ({setVisibleBooks, setShowResult, setSearchResult, setGenreSelect, setPriceSelect, setReleaseDateSelect, setSpecialSearchSelect, setPublisherSelect}) => { //{onChange}
 
     const envAndLocal = "http://localhost:3001" || process.env.REACT_APP_API_URL
+
+    const [searchInput, setSearchInput] = useState("");
 
     const callAllTitlesAndAuthors = (e) => {
         if (e.trim() !== "") {
@@ -22,6 +24,7 @@ const SearchInput = ({setVisibleBooks, setShowResult, setSearchResult, setGenreS
             setReleaseDateSelect("");
             setSpecialSearchSelect("");
             setPublisherSelect("");
+            setSearchInput(e.target.value);
         } else {
             axios.get(envAndLocal + "/get-all-books")
              .then((response) => {
@@ -32,6 +35,16 @@ const SearchInput = ({setVisibleBooks, setShowResult, setSearchResult, setGenreS
         }
     }
 
+    const handleInputChange = (e) => {
+        const value = e.target.value;
+        setSearchInput(value); 
+        callAllTitlesAndAuthors(value); 
+    };
+
+    const handleInputBlur = () => {
+        setSearchInput(""); 
+    };
+
     return (
         <div className="input-group mt-3 search-input-container">
             <button className="btn btn-lg search-button" type="button">
@@ -41,7 +54,10 @@ const SearchInput = ({setVisibleBooks, setShowResult, setSearchResult, setGenreS
                     className="form-control search-input" 
                     type="search" 
                     id="example-search-input"
-                    onChange={(e) => callAllTitlesAndAuthors(e.target.value)} 
+                    value={searchInput}
+                    //onChange={(e) => callAllTitlesAndAuthors(e.target.value)} 
+                    onChange={handleInputChange}
+                    onBlur={handleInputBlur}
                     placeholder="Search by title or author"
                 />                           
         </div> 

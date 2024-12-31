@@ -24,7 +24,7 @@ const Cart = () => {
                             <CartBooks setAllQuantity={setAllQuantity}/>
                         </div>                                             
                         <div className="col-12 col-xl-4">
-                            <OrderSummary/>
+                            <OrderSummary/> 
                         </div>
                     </div>
                 </div>

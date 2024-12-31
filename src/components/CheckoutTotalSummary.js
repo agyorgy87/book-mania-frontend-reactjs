@@ -57,8 +57,9 @@ const CheckoutTotalSummary = ({shippingAddress, setOpenModal}) => {
 
         axios.post(envAndLocal + `/send-order`, request)
             .then(response => {
-                console.log('sikeres megrendelés'); 
                 setOpenModal(true);
+                cartData.setValue([]);
+                totalPriceData.setValue({});
         })
     }
 
