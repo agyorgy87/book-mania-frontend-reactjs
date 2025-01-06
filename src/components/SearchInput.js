@@ -57,7 +57,7 @@ const SearchInput = ({setVisibleBooks, setShowResult, setSearchResult, setGenreS
                     value={searchInput}
                     onChange={handleInputChange}
                     onBlur={handleInputBlur}
-                    placeholder="Search by title or author"
+                    placeholder="Search"
                 />                           
         </div> 
     )

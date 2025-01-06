@@ -64,7 +64,7 @@ const CheckoutTotalSummary = ({shippingAddress, setOpenModal}) => {
 
     return ( 
         <div className="checkout-total-summary-table"> 
-            <div className="text-center items-and-prices-top-text"> 
+            <div className="text-center items-and-prices-top-text">  
                 <p>Books & Prices</p>
             </div>
         <div className="checkout-book-img-title-author-price-container">

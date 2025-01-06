@@ -72,9 +72,9 @@ const CartBooks = ({setAllQuantity}) => {
     return (
         <div>
             {
-                cartData.value.map((book, index) => ( 
-                    <div className="selected-book-for-purchase mb-4" key={"cart-data-div" + index}>
-                        <div className="d-flex justify-content-between cart-book-container-mobile-view"> 
+                cartData.value.map((book, index) => (  
+                    <div className="selected-book-for-purchase mb-4" key={"cart-data-div" + index}> 
+                        <div className="d-flex justify-content-between"> 
                             <div className="cart-book-cover-container">
                                 <img 
                                 src={envAndLocal + "/books_img/" + book.img_directory + "/" + book.image}
@@ -98,7 +98,7 @@ const CartBooks = ({setAllQuantity}) => {
                                         <h4 className="cart-book-price">{(book.price * book.quantity).toFixed(2)} $</h4>
                                     </div>                                                 
                                 </div> 
-                                <div className="d-flex align-self-end mb-3 ">                                                                           
+                                <div className="d-flex align-self-end mb-3">                                                                           
                                     <div>
                                         <button 
                                         className="plus-minus-button" 
