@@ -12,7 +12,7 @@ import LoginWarning from "../modal/LoginWarning.js";
 
 const BookPriceAndButtons = (props) => {
 
-    let bookDetails = props.bookData;
+    let bookDetails = props.bookData; 
 
     let params = useParams(); 
 
@@ -110,34 +110,34 @@ const BookPriceAndButtons = (props) => {
                     <p className="book-price-number">{bookDetails.price}$</p>
                 </div>
                 <div className="align-items-center">
-                <div className="mb-3"> 
-                    <button
-                    type="button" 
-                    className="selected-book-add-to-cart-button btn border-0 fw-bold" 
-                    onClick={SelectedBookAddToCart}>                                                           
-                        Add To Cart
-                            <CgShoppingCart className="fs-4 ms-2 selected-book-cart-icon"/>
-                    </button>
-                </div>
-                <div> 
-                    { heartIconFull ?
-                    <button 
-                    className="selected-book-add-to-wishlist-button btn fw-bold" 
-                    onClick={addToWishList}>
-                        Remove from Wishlist
-                            <AiFillHeart 
-                            className="ms-2 selected-book-full-heart-icon"/>
-                    </button>
-                    :
-                    <button 
-                    className="selected-book-add-to-wishlist-button btn fw-bold"
-                    onClick={addToWishList}>
-                        Add To Wishlist
-                            <AiOutlineHeart 
-                            className="ms-2 selected-book-not-full-heart-icon"/>
-                    </button>
-                    }                           
-                </div> 
+                    <div className="mb-3 selected-book-add-to-cart-button-container"> 
+                        <button
+                        type="button" 
+                        className="selected-book-add-to-cart-button btn border-0 fw-bold" 
+                        onClick={SelectedBookAddToCart}>                                                           
+                            Add To Cart
+                                <CgShoppingCart className="fs-4 ms-2 selected-book-cart-icon"/>
+                        </button>
+                    </div>
+                    <div className="selected-book-add-to-wishlist-button-container"> 
+                        { heartIconFull ?
+                        <button 
+                        className="selected-book-add-to-wishlist-button btn fw-bold" 
+                        onClick={addToWishList}>
+                            Remove from Wishlist
+                                <AiFillHeart 
+                                className="ms-2 selected-book-full-heart-icon"/>
+                        </button>
+                        :
+                        <button 
+                        className="selected-book-add-to-wishlist-button btn fw-bold"
+                        onClick={addToWishList}>
+                            Add To Wishlist
+                                <AiOutlineHeart 
+                                className="ms-2 selected-book-not-full-heart-icon"/>
+                        </button>
+                        }                           
+                    </div> 
                 </div>
             </div>                   
         </div> 

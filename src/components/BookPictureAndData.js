@@ -24,7 +24,7 @@ const BookPictureAndData = (props) => {
         setTwitterHover(false);
       };
 
-    const onHoverFacebook = (e) => {
+    const onHoverFacebook = (e) => { 
         e.preventDefault();
         setFacebookHover(true); 
       };
@@ -49,7 +49,7 @@ const BookPictureAndData = (props) => {
             </div>
             <div className="book-title-author-social-container">    
                 <div>
-                    <div className="mb-2 book-title-container"> 
+                    <div className="book-title-container"> 
                         <p className="book-title">{bookDetails.title}</p>
                     </div>
                     <div className="mb-4 book-author-name-container">
