@@ -6,11 +6,11 @@ import { MdLocationOn } from "react-icons/md";
 import { FaFacebookF } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
-import { AiOutlineExclamationCircle } from "react-icons/ai";
+import { AiOutlineExclamationCircle } from "react-icons/ai"; 
 
 
 const MessageForm = () => {
-
+/*
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [message, setMessage] = useState("");
@@ -37,10 +37,13 @@ const MessageForm = () => {
             text: message
         }
 
-        if(name.length > 0 && email.length > 0 && message.length > 10){
+        if(name.length > 0 && email.length > 0 && message.length > 0){
             axios.post(envAndLocal + "/message-sender", sender)
             .then(response => {
-                //...
+                //1. clean inputs
+                //2. modal
+                //3. clean errors
+                //refresh the page
             })
         }else{
             setNameErrorMessage(true);
@@ -48,65 +51,150 @@ const MessageForm = () => {
             setMessageErrorMessage(true);
         }
     }
+*/
 
+    const [formData, setFormData] = useState({
+        senderName: "",
+        senderEmail: "",
+        senderMessage: ""
+    })
+
+    const [errors, setErrors] = useState({})
+
+    const handleChange = (e) => {
+        const {name, value} = e.target;
+        setFormData({
+            ...formData, [name] : value
+        })
+    }
+
+    const envAndLocal = "http://localhost:3001" || process.env.REACT_APP_API_URL
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        const validationErrors = {}
+        if(!formData.senderName.trim()) {
+            validationErrors.senderName = "name is required."
+        }
+
+        if(!formData.senderEmail.trim()) {
+            validationErrors.senderEmail = "email is required."
+        } else if(!/\S+@\S+\.\S+/.test(formData.senderEmail)){
+            validationErrors.senderEmail = "email is not valid."
+        }
+
+        if(!formData.senderMessage.trim()) {
+            validationErrors.senderMessage = "message is required."
+        } else if(formData.senderMessage.length < 8){
+            validationErrors.senderMessage = "low number of characters. Min character 8."
+        }
+
+        setErrors(validationErrors);
+
+        if(Object.keys(validationErrors).length === 0) {
+            axios.post(envAndLocal + "/message-sender", )
+            .then(response => {
+                //1. clean inputs
+                //2. modal
+                //3. clean errors
+                //refresh the page
+            })
+        }
+ 
+    }
 
     return (
         <div className="d-flex contact-form rounded shadow">
-                <form onSubmit={sendMessage} className="form-message-container ps-4 pt-4 pe-4">
+                <form 
+                onSubmit={handleSubmit}
+                //onSubmit={sendMessage} 
+                className="form-message-container ps-4 pt-4 pe-4">
                         <div className="form-group">
                             <label htmlFor="name" className="form-label contact-labels-name">Name</label>
                                 <div className="input-height">
                                     <input 
                                     autoFocus
-                                    value={name}
-                                    onChange={(e) => setName(e.target.value)} 
+                                    onChange={handleChange}
+                                    //value={name}
+                                    //onChange={(e) => setName(e.target.value)} 
                                     type="text" 
-                                    className={`form-control contact-inputs ${nameErrorMessage ? 'input-alert' : ''}`}
+                                    name="senderName"
+                                    //className={`form-control contact-inputs ${nameErrorMessage ? 'input-alert' : ''}`}
+                                    className={`form-control contact-inputs ${errors.senderName ? 'input-alert' : ''}`}
                                     id="name" 
                                     />
                                 </div>
-                                {   nameErrorMessage ?
+                                {errors.senderName && 
+                                    <div className="d-flex">
+                                        <AiOutlineExclamationCircle className="alert-mark fs-5 me-1"/>
+                                            <p className="alert-message">{errors.senderName}</p>
+                                    </div>
+                                }
+                                {/*{   nameErrorMessage ?
                                         <div className="d-flex">
                                                 <AiOutlineExclamationCircle className="alert-mark fs-5 me-1"/>
                                                     <p className="alert-message">{errors.name}</p>
                                         </div>
                                     : null 
-                                }
+                                    }
+                                    */}
                         </div>                                                             
                         <div className="form-group">
                             <label htmlFor="email" className="form-label contact-labels-name">Email</label>
                                 <div className="input-height">
                                     <input 
-                                    value={email} 
-                                    onChange={(e) => setEmail(e.target.value)}
+                                    //value={email} 
+                                    //onChange={(e) => setEmail(e.target.value)}
                                     type="email" 
-                                    className={`form-control contact-inputs ${emailErrorMessage ? 'input-alert' : ''}`}
+                                    name="senderEmail"
+                                    onChange={handleChange}
+                                    //className={`form-control contact-inputs ${emailErrorMessage ? 'input-alert' : ''}`}
+                                    className={`form-control contact-inputs ${errors.senderEmail ? 'input-alert' : ''}`}
                                     id="email"
                                     />
                                 </div>
-                                {   emailErrorMessage ?
+                                {errors.senderEmail && 
+                                    <div className="d-flex">
+                                        <AiOutlineExclamationCircle className="alert-mark fs-5 me-1"/>
+                                            <p className="alert-message">{errors.senderEmail}</p>
+                                    </div>
+                                }
+                                {/*{   emailErrorMessage ?
                                         <div className="d-flex">
                                                 <AiOutlineExclamationCircle className="alert-mark fs-5 me-1"/>
                                                     <p className="alert-message">{errors.email}</p>
                                         </div>
                                     : null
                                 }
+                                    */}
                         </div>                       
                         <div className="textarea-container">                          
                             <label htmlFor="message" className="form-label contact-labels-name">Message</label>                                  
                                 <textarea 
-                                value={message} 
-                                onChange={(e) => setMessage(e.target.value)}
-                                className={`form-control contact-inputs textarea ${messageErrorMessage ? 'input-alert' : ''}`}                                 
-                                maxLength={1000}
-                                />                                  
+                                //value={message} 
+                                //onChange={(e) => setMessage(e.target.value)}
+                                //className={`form-control contact-inputs textarea ${messageErrorMessage ? 'input-alert' : ''}`}
+                                className={`form-control contact-inputs ${errors.senderMessage ? 'input-alert' : ''}`}
+                                name="senderMessage"                                 
+                                maxLength={100}
+                                onChange={handleChange}
+                                /> 
+                                {errors.senderMessage && 
+                                    <div className="d-flex">
+                                        <AiOutlineExclamationCircle className="alert-mark fs-5 me-1"/>
+                                            <p className="alert-message">{errors.senderMessage}</p>
+                                    </div>
+                                }
+                                {/*                                
                                 {   messageErrorMessage ?
                                         <div className="d-flex">
                                                 <AiOutlineExclamationCircle className="alert-mark fs-5 me-1"/>
                                                     <p className="alert-message">{errors.message}</p>
                                         </div>
                                     : null
-                                }                                                    
+                                }   
+                                    */}                                                 
                         </div>                                    
                         <div>  
                             <button type="submit" className="btn message-form-button" >Send Message</button>
