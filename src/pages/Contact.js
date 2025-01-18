@@ -3,7 +3,7 @@ import NavigationBar from '../components/NavigationBar.js';
 import MessageForm from "../components/MessageForm.js";
 import MapLocation from "../components/MapLocation.js";
 
-const Contact = () => {
+const Contact = () => { 
 
     return( 
         <div>

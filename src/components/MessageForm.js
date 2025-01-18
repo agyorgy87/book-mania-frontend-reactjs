@@ -7,7 +7,7 @@ import { FaFacebookF } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { AiOutlineExclamationCircle } from "react-icons/ai"; 
-
+import MessageSentSuccessfully from "../modal/MessageSentSuccessfully";
 
 const MessageForm = () => {
 /*
@@ -53,6 +53,8 @@ const MessageForm = () => {
     }
 */
 
+    const [openMessageSentSuccessfully, setOpenMessageSentSuccessfully] = useState(false);
+
     const [formData, setFormData] = useState({
         senderName: "",
         senderEmail: "",
@@ -84,7 +86,7 @@ const MessageForm = () => {
             validationErrors.senderEmail = "email is not valid."
         }
 
-        if(!formData.senderMessage.trim()) {
+        if(!formData.senderMessage.trim()) { 
             validationErrors.senderMessage = "message is required."
         } else if(formData.senderMessage.length < 8){
             validationErrors.senderMessage = "low number of characters. Min character 8."
@@ -93,19 +95,22 @@ const MessageForm = () => {
         setErrors(validationErrors);
 
         if(Object.keys(validationErrors).length === 0) {
-            axios.post(envAndLocal + "/message-sender", )
+            axios.post(envAndLocal + "/message-sender", formData)
             .then(response => {
-                //1. clean inputs
-                //2. modal
+                setOpenMessageSentSuccessfully(true);
+                //2. clean inputs
                 //3. clean errors
-                //refresh the page
             })
         }
  
     }
 
     return (
-        <div className="d-flex contact-form rounded shadow">
+        <div className="d-flex contact-form rounded shadow"> 
+            <div>
+                {openMessageSentSuccessfully && 
+                <MessageSentSuccessfully setOpenMessageSentSuccessfully={setOpenMessageSentSuccessfully}/>}  
+            </div>
                 <form 
                 onSubmit={handleSubmit}
                 //onSubmit={sendMessage} 
@@ -175,7 +180,7 @@ const MessageForm = () => {
                                 //value={message} 
                                 //onChange={(e) => setMessage(e.target.value)}
                                 //className={`form-control contact-inputs textarea ${messageErrorMessage ? 'input-alert' : ''}`}
-                                className={`form-control contact-inputs ${errors.senderMessage ? 'input-alert' : ''}`}
+                                className={`form-control contact-inputs text-area ${errors.senderMessage ? 'input-alert' : ''}`}
                                 name="senderMessage"                                 
                                 maxLength={100}
                                 onChange={handleChange}
