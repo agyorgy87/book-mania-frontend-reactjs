@@ -1,7 +1,6 @@
 import '../css/Login.css';
 import React, { useState, useEffect }  from 'react';
 import NavigationBar from '../components/NavigationBar.js';
-import {ImBooks} from "react-icons/im";
 import { useContext } from 'react'; 
 import { UserContext } from "../context/UserContext.js";
 import axios from "axios";

@@ -30,7 +30,6 @@ const ForgotPassword = () => {
             .then(response => {
                 if(response.data.success === true) {
                     setOpenEmailSentSuccessfully(true);
-                    /*I did not create an email sending service for the app*/
                 }else{
                     setInvalidEmailAddressErrorMessage(true);
                 }

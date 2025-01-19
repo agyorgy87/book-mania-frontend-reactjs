@@ -294,8 +294,7 @@ const Books = () => {
                         <ul className="list-group mt-4">
                             <GenreSideBarFilter options={allGenre} setVisibleBooks={setVisibleBooks}
                             setShowResult={setShowResult} 
-                            />    
-                            {/*<GenreSideBarFilter options={allGenre} onFilterClick={callGenreWithList}/>*/}                                     
+                            />                                     
                         </ul>
                         <ul className="list-group mt-4">
                             <SideBarFilters text="Price" filter={sideBarPriceFilters}/>
@@ -389,4 +388,3 @@ const Books = () => {
 
 export default Books;
                     
-//410 volt

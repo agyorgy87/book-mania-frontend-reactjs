@@ -2,7 +2,7 @@ import '../css/SearchInput.css';
 import React, { useState } from 'react';
 import axios from "axios";
 
-const SearchInput = ({setVisibleBooks, setShowResult, setSearchResult, setGenreSelect, setPriceSelect, setReleaseDateSelect, setSpecialSearchSelect, setPublisherSelect}) => { //{onChange}
+const SearchInput = ({setVisibleBooks, setShowResult, setSearchResult, setGenreSelect, setPriceSelect, setReleaseDateSelect, setSpecialSearchSelect, setPublisherSelect}) => {
 
     const envAndLocal = "http://localhost:3001" || process.env.REACT_APP_API_URL
 
@@ -15,7 +15,7 @@ const SearchInput = ({setVisibleBooks, setShowResult, setSearchResult, setGenreS
                     setVisibleBooks(response.data);
                 })
                 .catch((error) => {
-                    //console.error("Error fetching book titles:", error);
+                    console.error("Error fetching book titles:", error);
                 });
             setShowResult(true);
             setSearchResult(e);

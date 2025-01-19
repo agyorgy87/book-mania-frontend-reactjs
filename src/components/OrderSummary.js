@@ -82,10 +82,6 @@ const OrderSummary = () => {
 
     const proceedToCheckout = () => {
 
-        console.log(cartData.value);
-        console.log(userData.value);
-        console.log(totalPriceData.value);
-
         let allPriceInOneArray = {
             totalPriceKey: totatPriceInOrderSummary,
             discountKey: showingDiscount,

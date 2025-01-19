@@ -85,8 +85,8 @@ const CreateAccount = () => {
             setOpenSuccessfulRegistrationModal(true);
             }
         }) 
-        .catch(err => {
-            console.error("Error during registration process:", err); 
+        .catch(error => {
+            console.error("Error during registration process:", error); 
         });        
     } 
     

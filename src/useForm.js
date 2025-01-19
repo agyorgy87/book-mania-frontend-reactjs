@@ -30,8 +30,6 @@ const useForm = validate => {
         setErrors(validate(values));
     };
 
-    //console.log(values);
-
     return {handleChange, values, handleSubmit, errors};
 };
 
