@@ -53,6 +53,7 @@ const MessageForm = () => {
     }
 */
 
+
     const [openMessageSentSuccessfully, setOpenMessageSentSuccessfully] = useState(false);
 
     const [formData, setFormData] = useState({
@@ -97,10 +98,17 @@ const MessageForm = () => {
         if(Object.keys(validationErrors).length === 0) {
             axios.post(envAndLocal + "/message-sender", formData)
             .then(response => {
-                setOpenMessageSentSuccessfully(true);
-                //2. clean inputs
-                //3. clean errors
+                setOpenMessageSentSuccessfully(true); 
+                setFormData({
+                    senderName: "",
+                    senderEmail: "",
+                    senderMessage: ""
+                });
+                setErrors({});
             })
+            .catch((error) => {
+                console.error("Error sending message:", error);
+            });
         }
  
     }
@@ -121,6 +129,7 @@ const MessageForm = () => {
                                     <input 
                                     autoFocus
                                     onChange={handleChange}
+                                    value={formData.senderName}
                                     //value={name}
                                     //onChange={(e) => setName(e.target.value)} 
                                     type="text" 
@@ -151,6 +160,7 @@ const MessageForm = () => {
                                     <input 
                                     //value={email} 
                                     //onChange={(e) => setEmail(e.target.value)}
+                                    value={formData.senderEmail}
                                     type="email" 
                                     name="senderEmail"
                                     onChange={handleChange}
@@ -177,6 +187,7 @@ const MessageForm = () => {
                         <div className="textarea-container">                          
                             <label htmlFor="message" className="form-label contact-labels-name">Message</label>                                  
                                 <textarea 
+                                value={formData.senderMessage}
                                 //value={message} 
                                 //onChange={(e) => setMessage(e.target.value)}
                                 //className={`form-control contact-inputs textarea ${messageErrorMessage ? 'input-alert' : ''}`}

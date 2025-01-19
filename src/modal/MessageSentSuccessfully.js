@@ -15,7 +15,7 @@ const MessageSentSuccessfully = ({setOpenMessageSentSuccessfully}) => {
                         </svg> 
                 </div>
                 <div className="d-flex justify-content-center ps-3 pe-3 mb-4"> 
-                    <h4 className="modal-text fs-4">Message sent. We will respond soon.</h4>
+                    <h4 className="modal-text text-center fs-4">Message sent. We will respond soon.</h4> 
                 </div>
                 <div className="d-flex justify-content-center ps-4 pe-4">
                     <button className="navigate-to-home btn outline-none fs-5" onClick={() => setOpenMessageSentSuccessfully(false)}>OK</button>
